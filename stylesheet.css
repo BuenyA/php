@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  display: grid;
+}
+
+.navigationMenu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 12vh;
+}
+
+.navigationMenuLogo {
+  min-width: 180px;
+}
+
+.navigationElements {
+  min-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.navigationElements li {
+  display: table-cell; 
+  position: relative; 
+  padding: 15px 0;
+}
+
+.navigationElements a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+  color: black;
+  list-style: none; 
+  text-align: center;
+  transition: 0.1s;
+}
+
+.navigationElements a:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: rgb(255, 77, 0);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.navigationElements a:hover {
+  color: rgb(255, 77, 0);
+}
+
+.navigationElements a:hover:after { 
+  width: 100%; 
+  left: 0;
+}
+
+.navigationMenuButton {
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigationMenuButton button {
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(255, 77, 0);
+  padding: 5px;
+  color: white;
+  font-size: 12px;
+  transition: 0.5s;
+}
+
+.navigationMenuButton button:hover {
+  cursor: pointer;
+  background-color: rgb(255, 109, 46);
+}
+
+.searchBar {
+  border-top: 1px solid grey;
+  display: grid;
+  justify-self: center;
+  align-items: center;
+  min-height: 55px;
+  height: 10vh;
+}
+
+.searchBarBox {
+  color: white;
+  background-color: #202124;
+  width: 650px;
+  min-height: 25px;
+  justify-self: center;
+  border-radius: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.searchBarBox:hover,
+.searchBarBox:focus {
+  background-color: rgb(45, 46, 50);
+}
+
+.searchBarBox input {
+  color: white;
+  background-color: #202124;
+  outline: none;
+  width: 650px;
+  min-height: 40px;
+  border: 0;
+  padding-left: 15px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.searchBarBox input:hover {
+  background-color: rgb(45, 46, 50);
+}
+
+.searchBarBox img {
+  margin-left: 12px;
+  -webkit-filter: invert(100%);
+}
+
+.backgroundImageFilter {
+  background-image: url(image/sports-car-4815234.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-height: 78vh;
+}
+
+.filterBox {
+  display: flex;
+  justify-content: center;
+  min-width: 900px;
+  min-height: 180px;
+ }
+
+.filterBoxLeft {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-width: 10%;
+}
+
+.PKW, .MOPED, .LKW {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  min-width: 120%;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.05);
+  background-color: white;
+  transition: 0.1s;
+}
+
+.PKW {
+  background-color: rgb(255, 77, 0);
+}
+
+.filterBoxLeftPKWImg {
+  -webkit-filter: invert(100%);
+}
+
+.PKW:hover, .MOPED:hover, .LKW:hover {
+  cursor: pointer;
+}
+
+.filterBoxRight {
+  min-width: 750px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.05);
+  background-color: white;
+}
+
+.filterBoxRightAttribute {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 180px;
+}
+
+.filterBoxRight input, .filterBoxRight select {
+  border: 1px solid rgb(177, 177, 177);
+  border-radius: 8px;
+}
+
+.Marke, .Modell, .Preis, .KilometerBis, .Erstzulassung, .btnAngebotSuchenDiv {
+  width: 200px;
+  height: 70px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.filterBoxRightAttribute h2 {
+  font-size: 16px;
+}
+
+.Marke select {
+  width: 150px;
+  height: 30px;
+  padding-left: 5px;
+  transition: 0.3s;
+}
+
+.KilometerBis input {
+  height: 30px;
+  padding-left: 7px;
+}
+
+.Modell select {
+  width: 150px;
+  height: 30px;
+  padding-left: 5px;
+  transition: 0.3s;
+}
+
+.Erstzulassung input {
+  height: 30px;
+  padding-left: 7px;
+}
+
+.Preis input {
+  width: 70px;
+  height: 30px;
+  padding-left: 7px;
+}
+
+.Preis {
+  display: grid;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.preisAngabe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+}
+
+.btnAngebotSuchen {
+  background-color: rgb(255, 77, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 7px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 0;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btnAngebotSuchen:hover {
+  background-color: rgb(255, 109, 46);
+  cursor: pointer;
+}
+
+.btnAngebotSuchen img {
+  -webkit-filter: invert(100%);
+  padding-right: 10px;
+}
+
+.topOffer {
+  display: grid;
+  align-items: center;
+}
+
+.topOffersSegment {}
+
+.topOfferPlace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topOffers {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  background-color: white;
+  margin: 30px;
+  width: 550px;
+  height: 250px;
+  border-radius: 15px;
+  box-shadow: 3px 3px 3px 3px rgb(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.topOffers img {
+  object-fit: cover;
+  object-position: 40%;
+}
+
+.topOffer h1 {
+  padding: 50px;
+  font-size: 50px;
+  font-weight: 100;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+.topOffersRight {
+  margin-left: 10px;
+  display: grid;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.topOffersRightTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topOffersRightTop preis {
+  padding-right: 15px;
+}
+
+.btnMehrAnzeigen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 9999px;
+  font-size: 15px;
+  justify-self: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 10px;
+  width: 150px;
+  transition: 0.5s;
+}
+
+.topOffersRight button {
+  margin-left: 200px;
+  margin-right: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(172, 1, 1);
+  padding: 5px;
+  color: white;
+  font-size: 12px;
+  transition: 0.5s;
+}
+
+.topOffersRight button:hover {
+  cursor: pointer;
+  background-color: rgb(146, 0, 0);
+}
+
+.baldAblaufend {
+  display: grid;
+  align-items: center;
+}
+
+.baldAblaufend h1 {
+  padding: 50px;
+  font-size: 50px;
+  font-weight: 100;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+.angebotMachen {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+
+.angebotMachenBox {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  min-height: 400px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+.angebotMachenBox p {
+  text-align: center;
+}
+
+.angebotMachenBox:hover {
+  box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.15);
+}
+
+.angebotMachenBox h1 {
+  text-align: center;
+}
+
+.angebotMachenBoxText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  justify-self: center;
+}
+
+.angebotMachenBoxText p {
+  text-align: left;
+}
+
+.btnJetztInserieren {
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(172, 1, 1);
+  padding: 5px;
+  color: white;
+  font-size: 12px;
+  width: 100px;
+  justify-self: center;
+  transition: 0.5s;
+}
+
+.btnJetztInserieren:hover {
+  cursor: pointer;
+  background-color: rgb(146, 0, 0);
+}
+
+.footer {
+  min-height: 300px;
+  background-color: #191f22;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer h1 {
+  color: white;
+  font-size: 50px;
+  font-weight: 100;
+  text-align: center;
+}
+
+.footer p {
+  color: rgb(195, 195, 195);
+  font-size: 10px;
+  text-align: center;
+}
