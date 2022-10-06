@@ -66,7 +66,6 @@
                                         <option>RS6</option>
                                         <option>RS6</option>
                                         <option>RS6</option>
-                                        <option>UPDATE</option>
                                     </select>
                                 </div>
                             </div>
