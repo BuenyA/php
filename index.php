@@ -116,7 +116,7 @@
                     <div class="topOffersRight">
                         <div class="topOffersRightTop">
                             <h2>Audi A5 quattro</h2>
-                            <preis><b>24.000 €</b></preis>
+                            <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
                             52.000 km, 140 kW (190 PS), Kombi, Benzin, 
@@ -135,7 +135,7 @@
                     <div class="topOffersRight">
                         <div class="topOffersRightTop">
                             <h2>Audi A5 quattro</h2>
-                            <preis><b>24.000 €</b></preis>
+                            <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
                             52.000 km, 140 kW (190 PS), Kombi, Benzin, 
@@ -156,7 +156,7 @@
                     <div class="topOffersRight">
                         <div class="topOffersRightTop">
                             <h2>Audi A5 quattro</h2>
-                            <preis><b>24.000 €</b></preis>
+                            <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
                             52.000 km, 140 kW (190 PS), Kombi, Benzin, 
@@ -175,7 +175,7 @@
                     <div class="topOffersRight">
                         <div class="topOffersRightTop">
                             <h2>Audi A5 quattro</h2>
-                            <preis><b>24.000 €</b></preis>
+                            <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
                             52.000 km, 140 kW (190 PS), Kombi, Benzin, 
@@ -205,7 +205,7 @@
                     <div class="topOffersRight">
                         <div class="topOffersRightTop">
                             <h2>Audi A5 quattro</h2>
-                            <preis><b>24.000 €</b></preis>
+                            <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
                             52.000 km, 140 kW (190 PS), Kombi, Benzin, 
@@ -224,7 +224,7 @@
                     <div class="topOffersRight">
                         <div class="topOffersRightTop">
                             <h2>Audi A5 quattro</h2>
-                            <preis><b>24.000 €</b></preis>
+                            <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
                             52.000 km, 140 kW (190 PS), Kombi, Benzin, 
@@ -245,7 +245,7 @@
                     <div class="topOffersRight">
                         <div class="topOffersRightTop">
                             <h2>Audi A5 quattro</h2>
-                            <preis><b>24.000 €</b></preis>
+                            <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
                             52.000 km, 140 kW (190 PS), Kombi, Benzin, 
@@ -264,7 +264,7 @@
                     <div class="topOffersRight">
                         <div class="topOffersRightTop">
                             <h2>Audi A5 quattro</h2>
-                            <preis><b>24.000 €</b></preis>
+                            <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
                             52.000 km, 140 kW (190 PS), Kombi, Benzin, 
