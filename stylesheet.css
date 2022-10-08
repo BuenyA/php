@@ -98,11 +98,13 @@ body {
 }
 
 .searchBarFilterBox {
-  min-height: 30em;
+  min-height: 40em;
   display: grid;
   justify-content: left;
   align-items: center;
 }
+
+.searchBarSection {}
 
 .searchBarFilterBox h1 {
   color: white;
@@ -167,6 +169,8 @@ body {
   min-height: 100vh;
 }
 
+.filterBoxSection {}
+
 .filterBox {
   display: flex;
   justify-content: center;
@@ -176,7 +180,6 @@ body {
   display: grid;
   justify-content: center;
   align-items: center;
-  padding-right: 1em;
 }
 
 .PKW, .MOPED, .LKW {

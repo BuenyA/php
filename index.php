@@ -29,90 +29,93 @@
                 </div>
             </div>
             <div class="searchBarFilterBox">
-                <h1>Finde dein Traumauto</h1>
-                <p>
-                    Hier findest Du alles, was mit Fahrzeugen zu tun hat – </br>
-                    verschaff Dir ganz einfach einen Überblick über den gesamten Automarkt. </br>
-                    Hier warten täglich über 1,2 Millionen Fahrzeuge auf Dich.
-                </p>
-                <div class="searchBar">
-                    <div class="searchBarBox">
-                        <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
-                        <input type="search" text="Suchen...">
+                <div class="searchBarSection">
+                    <h1>Finde dein Traumauto</h1>
+                    <p>
+                        Hier findest Du alles, was mit Fahrzeugen zu tun hat – verschaff </br>
+                        Dir ganz einfach einen Überblick über den gesamten Automarkt. Hier warten täglich über 1,2 Millionen Fahrzeuge auf Dich.
+                    </p>
+                    <div class="searchBar">
+                        <div class="searchBarBox">
+                            <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
+                            <input type="search" text="Suchen...">
+                        </div>
                     </div>
                 </div>
-                <h1>Filter</h1>
-                <p>Verfeienere deine Suche, um ein perfektes Suchergebnis zur erreichen!</p>
-                <div class="filterBox">
-                    <div class="filterBoxLeft">
-                        <div class="PKW" id="PKW" onclick="colorSwitchPKW()">
-                            <img class="filterBoxLeftPKWImg" id="filterBoxLeftPKWImg" src="image/car.png" alt="PKW" width="50" height="50">
+                <div class="filterBoxSection">
+                    <h1>Filter</h1>
+                    <p>Verfeienere deine Suche, um ein perfektes Suchergebnis zur erreichen!</p>
+                    <div class="filterBox">
+                        <div class="filterBoxLeft">
+                            <div class="PKW" id="PKW" onclick="colorSwitchPKW()">
+                                <img class="filterBoxLeftPKWImg" id="filterBoxLeftPKWImg" src="image/car.png" alt="PKW" width="50" height="50">
+                            </div>
+                            <div class="MOPED" id="MOPED" onclick="colorSwitchMOPED()">
+                                <img class="filterBoxLeftMOPEDImg" id="filterBoxLeftMOPEDImg" src="image/motorbike(2).png" alt="MOPED" width="50" height="50">
+                            </div>
+                            <div class="LKW" id="LKW" onclick="colorSwitchLKW()">
+                                <img class="filterBoxLeftLKWImg" id="filterBoxLeftLKWImg" src="image/truck.png" alt="LKW" width="45" height="45">
+                            </div>
                         </div>
-                        <div class="MOPED" id="MOPED" onclick="colorSwitchMOPED()">
-                            <img class="filterBoxLeftMOPEDImg" id="filterBoxLeftMOPEDImg" src="image/motorbike(2).png" alt="MOPED" width="50" height="50">
-                        </div>
-                        <div class="LKW" id="LKW" onclick="colorSwitchLKW()">
-                            <img class="filterBoxLeftLKWImg" id="filterBoxLeftLKWImg" src="image/truck.png" alt="LKW" width="45" height="45">
-                        </div>
-                    </div>
-                    <div class="filterBoxRight">
-                        <div class="PKWRight">
-                            <div class="filterBoxRightAttribute">
-                                <div>
-                                    <div class="Marke">
-                                        <h2>Marke</h2>
-                                        <select>
-                                            <option>Audi</option>
-                                            <option>Audi</option>
-                                            <option>Audi</option>
-                                            <option>Audi</option>
-                                            <option>Tesla</option>
-                                        </select>
-                                    </div>
-                                    <div class="Modell">
-                                        <h2>Modell</h2>
-                                        <select>
-                                            <option>RS6</option>
-                                            <option>RS6</option>
-                                            <option>RS6</option>
-                                            <option>RS6</option>
-                                            <option>Modell S</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="KilometerBis">
-                                        <h2>Kilometer</h2>
-                                        <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number">
-                                    </div>
-                                    <div class="Erstzulassung">
-                                        <h2>Erstzulassung</h2>
-                                        <input type="search" placeholder="Jahr" autocomplete="off" maxlength="10" type="number">
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="Preis">
-                                        <h2>Preis</h2>
-                                        <div class="preisAngabe">
-                                            <input type="search" placeholder="Von..." autocomplete="off" maxlength="10" type="number">
-                                            <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number">
+                        <div class="filterBoxRight">
+                            <div class="PKWRight">
+                                <div class="filterBoxRightAttribute">
+                                    <div>
+                                        <div class="Marke">
+                                            <h2>Marke</h2>
+                                            <select>
+                                                <option>Audi</option>
+                                                <option>Audi</option>
+                                                <option>Audi</option>
+                                                <option>Audi</option>
+                                                <option>Tesla</option>
+                                            </select>
+                                        </div>
+                                        <div class="Modell">
+                                            <h2>Modell</h2>
+                                            <select>
+                                                <option>RS6</option>
+                                                <option>RS6</option>
+                                                <option>RS6</option>
+                                                <option>RS6</option>
+                                                <option>Modell S</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="btnAngebotSuchenDiv">
-                                        <h2>Eingabe</h2>
-                                        <button class="btnAngebotSuchen">
-                                            <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
-                                            Angebot suchen
-                                        </button>
+                                    <div>
+                                        <div class="KilometerBis">
+                                            <h2>Kilometer</h2>
+                                            <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number">
+                                        </div>
+                                        <div class="Erstzulassung">
+                                            <h2>Erstzulassung</h2>
+                                            <input type="search" placeholder="Jahr" autocomplete="off" maxlength="10" type="number">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="Preis">
+                                            <h2>Preis</h2>
+                                            <div class="preisAngabe">
+                                                <input type="search" placeholder="Von..." autocomplete="off" maxlength="10" type="number">
+                                                <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number">
+                                            </div>
+                                        </div>
+                                        <div class="btnAngebotSuchenDiv">
+                                            <h2>Eingabe</h2>
+                                            <button class="btnAngebotSuchen">
+                                                <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
+                                                Angebot suchen
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="MOPEDRight">
-    
-                        </div>
-                        <div class="LKWRight">
-    
+                            <div class="MOPEDRight">
+        
+                            </div>
+                            <div class="LKWRight">
+        
+                            </div>
                         </div>
                     </div>
                 </div>
