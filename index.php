@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <h1>hallo</h1>
     <section>
         <div class="navigationMenu">
             <div class="navigationMenuLogo">
