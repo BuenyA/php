@@ -20,7 +20,7 @@ body {
   justify-content: space-between;
   align-items: center;
   min-height: 12vh;
-  width: 100em;
+  width: 100%;
   align-self: flex-start;
 }
 
@@ -106,7 +106,6 @@ body {
   justify-self: center;
   align-items: center;
   min-height: 55px;
-  height: 10vh;
 }
 
 .searchBarBox {
