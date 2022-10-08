@@ -29,12 +29,16 @@
                 </div>
             </div>
             <div class="searchBarFilterBox">
+                <h1>Finde dein Traumauto</h1>
+                <p>Verfeienere deine Suche, um ein perfektes Suchergebnis zur erreichen!</p>
                 <div class="searchBar">
                     <div class="searchBarBox">
                         <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
                         <input type="search" text="Suchen...">
                     </div>
                 </div>
+                <h1>Filter</h1>
+                <p>Verfeienere deine Suche, um ein perfektes Suchergebnis zur erreichen!</p>
                 <div class="filterBox">
                     <div class="filterBoxLeft">
                         <div class="PKW" id="PKW" onclick="colorSwitchPKW()">

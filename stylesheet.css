@@ -20,7 +20,7 @@ body {
   justify-content: space-between;
   align-items: center;
   min-height: 12vh;
-  width: 75vw;
+  width: 85vw;
   align-self: flex-start;
 }
 
@@ -98,12 +98,23 @@ body {
 }
 
 .searchBarFilterBox {
+  min-height: 30em;
+  display: grid;
+  justify-content: left;
+  align-items: center;
+}
 
+.searchBarFilterBox h1 {
+  color: white;
+  font-size: 3em;
+}
+
+.searchBarFilterBox p {
+  color: white;
 }
 
 .searchBar {
   display: grid;
-  justify-self: center;
   align-items: center;
   min-height: 55px;
 }
@@ -111,12 +122,9 @@ body {
 .searchBarBox {
   color: white;
   background-color: #202124;
-  width: 650px;
-  min-height: 25px;
+  width: 45em;
   border-radius: 6vh;
   display: flex;
-  justify-self: center;
-  justify-content: center;
   align-items: center;
   overflow: hidden;
   transition: 0.3s;
@@ -131,7 +139,7 @@ body {
   color: white;
   outline: none;
   background-color: #202124;
-  width: 650px;
+  width: 50em;
   min-height: 40px;
   border: 0;
   padding-left: 15px;
@@ -162,8 +170,6 @@ body {
 .filterBox {
   display: flex;
   justify-content: center;
-  min-width: 900px;
-  min-height: 180px;
  }
 
 .filterBoxLeft {
