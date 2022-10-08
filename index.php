@@ -11,99 +11,101 @@
 </head>
 
 <body>
-    <section>
-        <div class="navigationMenu">
-            <div class="navigationMenuLogo">
-                <img src="image/acht-buchstaben-ein-bindestrich-das-coca-cola-logo-header.jpg" width="120" height="50">
-            </div>
-            <ul class="navigationElements">
-                <li><a href="">Home</a></li>
-                <li><a href="">Top Angebote</a></li>
-                <li><a href="">Last-Minute</a></li>
-                <li><a href="">Verkaufen</a></li>
-            </ul>
-            <div class="navigationMenuButton">
-                <button><b>Registrieren</b></button>
-                <button><b>Anmelden</b></button>
-            </div>
-        </div>
-        <div class="searchBar">
-            <div class="searchBarBox">
-                <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
-                <input type="search" text="Suchen...">
-            </div>
-        </div>
+    <section>   
         <div class="backgroundImageFilter">
-            <div class="filterBox">
-                <div class="filterBoxLeft">
-                    <div class="PKW" id="PKW" onclick="colorSwitchPKW()">
-                        <img class="filterBoxLeftPKWImg" id="filterBoxLeftPKWImg" src="image/car.png" alt="PKW" width="50" height="50">
-                    </div>
-                    <div class="MOPED" id="MOPED" onclick="colorSwitchMOPED()">
-                        <img class="filterBoxLeftMOPEDImg" id="filterBoxLeftMOPEDImg" src="image/motorbike(2).png" alt="MOPED" width="50" height="50">
-                    </div>
-                    <div class="LKW" id="LKW" onclick="colorSwitchLKW()">
-                        <img class="filterBoxLeftLKWImg" id="filterBoxLeftLKWImg" src="image/truck.png" alt="LKW" width="45" height="45">
+            <div class="navigationMenu">
+                <div class="navigationMenuLogo">
+                    <img src="image/mobile_logo.png" width="150" height="50">
+                </div>
+                <ul class="navigationElements">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Top Angebote</a></li>
+                    <li><a href="">Last-Minute</a></li>
+                    <li><a href="">Verkaufen</a></li>
+                </ul>
+                <div class="navigationMenuButton">
+                    <button><b>Registrieren</b></button>
+                    <button><b>Anmelden</b></button>
+                </div>
+            </div>
+            <div class="searchBarFilterBox">
+                <div class="searchBar">
+                    <div class="searchBarBox">
+                        <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
+                        <input type="search" text="Suchen...">
                     </div>
                 </div>
-                <div class="filterBoxRight">
-                    <div class="PKWRight">
-                        <div class="filterBoxRightAttribute">
-                            <div>
-                                <div class="Marke">
-                                    <h2>Marke</h2>
-                                    <select>
-                                        <option>Audi</option>
-                                        <option>Audi</option>
-                                        <option>Audi</option>
-                                        <option>Audi</option>
-                                        <option>Tesla</option>
-                                    </select>
-                                </div>
-                                <div class="Modell">
-                                    <h2>Modell</h2>
-                                    <select>
-                                        <option>RS6</option>
-                                        <option>RS6</option>
-                                        <option>RS6</option>
-                                        <option>RS6</option>
-                                        <option>Modell S</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="KilometerBis">
-                                    <h2>Kilometer</h2>
-                                    <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number">
-                                </div>
-                                <div class="Erstzulassung">
-                                    <h2>Erstzulassung</h2>
-                                    <input type="search" placeholder="Jahr" autocomplete="off" maxlength="10" type="number">
-                                </div>
-                            </div>
-                            <div>
-                                <div class="Preis">
-                                    <h2>Preis</h2>
-                                    <div class="preisAngabe">
-                                        <input type="search" placeholder="Von..." autocomplete="off" maxlength="10" type="number">
-                                        <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number">
+                <div class="filterBox">
+                    <div class="filterBoxLeft">
+                        <div class="PKW" id="PKW" onclick="colorSwitchPKW()">
+                            <img class="filterBoxLeftPKWImg" id="filterBoxLeftPKWImg" src="image/car.png" alt="PKW" width="50" height="50">
+                        </div>
+                        <div class="MOPED" id="MOPED" onclick="colorSwitchMOPED()">
+                            <img class="filterBoxLeftMOPEDImg" id="filterBoxLeftMOPEDImg" src="image/motorbike(2).png" alt="MOPED" width="50" height="50">
+                        </div>
+                        <div class="LKW" id="LKW" onclick="colorSwitchLKW()">
+                            <img class="filterBoxLeftLKWImg" id="filterBoxLeftLKWImg" src="image/truck.png" alt="LKW" width="45" height="45">
+                        </div>
+                    </div>
+                    <div class="filterBoxRight">
+                        <div class="PKWRight">
+                            <div class="filterBoxRightAttribute">
+                                <div>
+                                    <div class="Marke">
+                                        <h2>Marke</h2>
+                                        <select>
+                                            <option>Audi</option>
+                                            <option>Audi</option>
+                                            <option>Audi</option>
+                                            <option>Audi</option>
+                                            <option>Tesla</option>
+                                        </select>
+                                    </div>
+                                    <div class="Modell">
+                                        <h2>Modell</h2>
+                                        <select>
+                                            <option>RS6</option>
+                                            <option>RS6</option>
+                                            <option>RS6</option>
+                                            <option>RS6</option>
+                                            <option>Modell S</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="btnAngebotSuchenDiv">
-                                    <h2>Eingabe</h2>
-                                    <button class="btnAngebotSuchen">
-                                        <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
-                                        Angebot suchen
-                                    </button>
+                                <div>
+                                    <div class="KilometerBis">
+                                        <h2>Kilometer</h2>
+                                        <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number">
+                                    </div>
+                                    <div class="Erstzulassung">
+                                        <h2>Erstzulassung</h2>
+                                        <input type="search" placeholder="Jahr" autocomplete="off" maxlength="10" type="number">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="Preis">
+                                        <h2>Preis</h2>
+                                        <div class="preisAngabe">
+                                            <input type="search" placeholder="Von..." autocomplete="off" maxlength="10" type="number">
+                                            <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="btnAngebotSuchenDiv">
+                                        <h2>Eingabe</h2>
+                                        <button class="btnAngebotSuchen">
+                                            <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
+                                            Angebot suchen
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="MOPEDRight">
-
-                    </div>
-                    <div class="LKWRight">
-
+                        <div class="MOPEDRight">
+    
+                        </div>
+                        <div class="LKWRight">
+    
+                        </div>
                     </div>
                 </div>
             </div>
