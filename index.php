@@ -30,7 +30,11 @@
             </div>
             <div class="searchBarFilterBox">
                 <h1>Finde dein Traumauto</h1>
-                <p>Verfeienere deine Suche, um ein perfektes Suchergebnis zur erreichen!</p>
+                <p>
+                    Hier findest Du alles, was mit Fahrzeugen zu tun hat – </br>
+                    verschaff Dir ganz einfach einen Überblick über den gesamten Automarkt. </br>
+                    Hier warten täglich über 1,2 Millionen Fahrzeuge auf Dich.
+                </p>
                 <div class="searchBar">
                     <div class="searchBarBox">
                         <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
