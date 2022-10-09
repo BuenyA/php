@@ -30,7 +30,7 @@
             </div>
             <div class="searchBarFilterBox">
                 <div class="searchBarSection">
-                    <h1>Finde dein Traumauto</h1>
+                    <h1>Finde dein Traumauto!</h1>
                     <p>
                         Hier findest Du alles, was mit Fahrzeugen zu tun hat – verschaff </br>
                         Dir ganz einfach einen Überblick über den gesamten Automarkt. Hier warten täglich über 1,2 Millionen Fahrzeuge auf Dich.
