@@ -25,7 +25,7 @@ body {
     backdrop-filter: blur(20px);
     position: relative;
     height: 30em;
-    width: 40em;
+    width: 50em;
     border-radius: 15px;
     overflow: hidden;
 }
@@ -62,8 +62,8 @@ body {
     width: 720px;
     background: #FFF;
     border: 2px solid #ff6600;
-    top: -100px;
-    right: 120px;
+    top: -130px;
+    right: 250px;
     border-radius: 0 72px 0 0;
 }
 
