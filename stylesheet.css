@@ -484,3 +484,14 @@ body {
   font-size: 10px;
   text-align: center;
 }
+
+.LogInForm {
+  color: black;
+  font-size: 20px;
+  width: 100px;
+}
+
+.RegistrationForm {
+  color: black;
+  font-size: 15px;
+}

@@ -24,8 +24,8 @@
                     <li><a href="">Verkaufen</a></li>
                 </ul>
                 <div class="navigationMenuButton">
-                    <button><b>Registrieren</b></button>
-                    <button><b>Anmelden</b></button>
+                    <button onclick="window.location.href = 'registrieren.php';">Registrieren</button>
+                    <button onclick="window.location.href = 'anmelden.php';">Anmelden</button>
                 </div>
             </div>
             <div class="searchBarFilterBox">
