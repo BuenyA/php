@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coca Cola</title>
+    <title>Autostar</title>
     <link rel="stylesheet" href="stylesheet.css">
     <script language="javascript" type="text/javascript" src="javascript.js"></script>
 </head>
@@ -15,7 +15,7 @@
         <div class="backgroundImageFilter">
             <div class="navigationMenu">
                 <div class="navigationMenuLogo">
-                    <img src="image/mobile_logo.png" width="150" height="50">
+                    <img src="image/AutostarLogo.png" width="200" height="40">
                 </div>
                 <ul class="navigationElements">
                     <li><a href="">Home</a></li>

@@ -11,7 +11,7 @@
 <body>
     <div class="navigationMenu">
         <div class="navigationMenuLogo">
-            <img src="image/mobile_logo.png" width="150" height="50">
+            <img src="image/AutostarLogo.png" width="200" height="40">
         </div>
         <ul class="navigationElements">
             <li><a href="">Home</a></li>

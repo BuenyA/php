@@ -28,6 +28,10 @@ body {
   min-width: 180px;
 }
 
+.navigationMenuLogo {
+  filter: invert(100%);
+}
+
 .navigationElements {
   min-width: 400px;
   display: flex;
@@ -76,10 +80,10 @@ body {
 }
 
 .navigationMenuButton {
-  min-width: 180px;
+  min-width: 200px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .navigationMenuButton button {
