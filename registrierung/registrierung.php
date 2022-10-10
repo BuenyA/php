@@ -33,7 +33,7 @@
                     <div class="login__field__section">
                         <div class="login__field login__field__plz">
                             <i class="login__icon fas fa-user"></i>
-                            <input type="text" class="login__input login__input__plz" placeholder="PLZ">
+                            <input type="text" class="login__input login__input__plz" placeholder="PLZ" maxlength="5">
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
