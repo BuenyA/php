@@ -10,6 +10,9 @@
     <!-- <script language="javascript" type="text/javascript" src="javascript.js"></script> -->
 </head>
 <body>
+    <div class="navigationMenuLogo">
+        <img src="image/mobile_logo.png" width="150" height="50" onclick="window.location.href = '../index.php';">
+    </div>
     <div class="containerBlur"></div>
     <div class="container">
         <div class="screen">
