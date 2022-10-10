@@ -297,6 +297,11 @@
             <img src="image/right-arrows.png" width="20" height="20">
         </button>
     </section>
+    <section class="AutostarProduct">
+        <div class="AutostarProductBox">
+            <img src="image/AutostarProducts.png" width="1000" height="500">
+        </div>
+    </section>
     <section class="angebotMachen">
         <div class="angebotMachenBox">
             <div>

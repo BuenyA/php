@@ -423,6 +423,19 @@ body {
   text-align: center;
 }
 
+.AutostarProduct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 35em;
+}
+
+.AutostarProductBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .angebotMachen {
   display: grid;
   justify-content: center;
