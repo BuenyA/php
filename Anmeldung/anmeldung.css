@@ -15,8 +15,8 @@ body {
 }
 
 .navigationMenuLogo {
+    position: absolute;
     filter: invert(100%);
-    justify-self: center;
 }
 
 .navigationMenuLogo:hover {

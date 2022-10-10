@@ -25,7 +25,7 @@ body {
 }
 
 .navigationMenuLogo {
-  min-width: 180px;
+  min-width: 200px;
 }
 
 .navigationMenuLogo {
@@ -89,26 +89,40 @@ body {
 .navigationMenuButton button {
   border: none;
   border-radius: 5px;
-  background-color: rgb(255, 77, 0);
+  background-color: transparent;
   padding: 5px;
+  width: 8em;
   color: white;
   font-size: 12px;
   transition: 0.5s;
 }
 
-.navigationMenuButton button:hover {
+.navigationMenuButtonAnmelden button:hover {
+  color: rgb(255, 109, 46);
+  cursor: pointer;
+}
+
+.navigationMenuButtonRegistrieren button {
+  border: 1.5px solid rgb(255, 109, 46);
+}
+
+.navigationMenuButtonRegistrieren button:hover {
   cursor: pointer;
   background-color: rgb(255, 109, 46);
 }
 
 .searchBarFilterBox {
-  min-height: 40em;
+  min-height: 20em;
   display: grid;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
 }
 
-.searchBarSection {}
+.searchBarSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .searchBarFilterBox h1 {
   color: white;
@@ -190,8 +204,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 3.5em;
-  min-width: 3.5em;
+  min-height: 3.7em;
+  min-width: 3.7em;
   border-radius: 15px;
   box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.05);
   background-color: white;
@@ -469,7 +483,7 @@ body {
 }
 
 .footer {
-  min-height: 300px;
+  min-height: 30em;
   background-color: #191f22;
   display: grid;
   justify-content: center;
@@ -479,30 +493,25 @@ body {
 .footerArea {
   display: flex;
   justify-content: space-around;
+  width: 70em;
 }
 
 .footerRegion {
   color: rgb(195, 195, 195);
-  font-size: 10px;
+  font-size: 0.8em;
 }
 
-.littleHeadline {
+.footerRegion p {
+  margin-bottom: 0.2em;
+}
+
+.footerRegion h1 {
   margin-bottom: 0.5em;
+  font-size: 1.2em;
 }
 
 .footerFooter {
   color: rgb(195, 195, 195);
   font-size: 10px;
   text-align: center;
-}
-
-.LogInForm {
-  color: black;
-  font-size: 20px;
-  width: 100px;
-}
-
-.RegistrationForm {
-  color: black;
-  font-size: 15px;
 }

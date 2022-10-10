@@ -24,17 +24,16 @@
                     <li><a href="">Verkaufen</a></li>
                 </ul>
                 <div class="navigationMenuButton">
-                    <button onclick="window.location.href = 'registrierung/registrierung.php';">Registrieren</button>
-                    <button onclick="window.location.href = 'anmeldung/anmeldung.php';">Anmelden</button>
+                    <div class="navigationMenuButtonAnmelden">
+                        <button onclick="window.location.href = 'anmeldung/anmeldung.php';"><b>Anmelden</b></button>
+                    </div>
+                    <div class="navigationMenuButtonRegistrieren">
+                        <button onclick="window.location.href = 'registrierung/registrierung.php';"><b>Registrieren</b></button>
+                    </div>
                 </div>
             </div>
             <div class="searchBarFilterBox">
                 <div class="searchBarSection">
-                    <h1>Finde dein Traumauto!</h1>
-                    <p>
-                        Hier findest Du alles, was mit Fahrzeugen zu tun hat – verschaff </br>
-                        Dir ganz einfach einen Überblick über den gesamten Automarkt. Hier warten täglich über 1,2 Millionen Fahrzeuge auf Dich.
-                    </p>
                     <div class="searchBar">
                         <div class="searchBarBox">
                             <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
@@ -43,8 +42,6 @@
                     </div>
                 </div>
                 <div class="filterBoxSection">
-                    <h1>Filter</h1>
-                    <p>Verfeienere deine Suche, um ein perfektes Suchergebnis zur erreichen!</p>
                     <div class="filterBox">
                         <div class="filterBoxLeft">
                             <div class="PKW" id="PKW" onclick="colorSwitchPKW()">
@@ -321,13 +318,35 @@
     <section class="footer">
         <div class="footerArea">
             <div class="footerRegion">
-                <p class="littleHeadline"><b>Unternehmen</b></p>
+                <h1><b>Unternehmen</b></h1>
                 <p>Über Uns</p>
                 <p>Kontakt</p>
                 <p>Hilfe</p>
             </div>
             <div class="footerRegion">
-                <p class="littleHeadline"><b>Handel</b></p>
+                <h1><b>Verkaufen</b></h1>
+                <p>Verkäuferportal</p>
+                <p>Anleitung zum Verkaufen</p>
+                <p>News für gewerbliche Verkäufer</p>
+                <p>Gebühren</p>
+                <p>eBay Shop eröffnen</p>
+                <p>Grundsätze für Verkäufer: Übersicht</p>
+                <p>Verkäufer-Tools</p>
+                <p>Versand</p>
+                <p>International verkaufen</p>
+                <p>Rechtsportal</p>
+                <p>Verkäuferschutz</p>
+                <p>Elektronik-Ankauf</p>
+            </div>
+            <div class="footerRegion">
+                <h1><b>Handel</b></h1>
+                <p>Anmelden</p>
+                <p>Registrieren</p>
+                <p>Verkaufen</p>
+                <p>Händler AGBs</p>
+            </div>
+            <div class="footerRegion">
+                <h1><b>Handel</b></h1>
                 <p>Anmelden</p>
                 <p>Registrieren</p>
                 <p>Verkaufen</p>
