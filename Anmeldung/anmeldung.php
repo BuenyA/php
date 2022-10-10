@@ -24,6 +24,7 @@
                         <i class="login__icon fas fa-lock"></i>
                         <input type="password" class="login__input" placeholder="Passwort">
                     </div>
+                    <a href="../registrierung/registrierung.php">Noch keinen Account?</a><br />
                     <a href="">Passwort vergessen?</a>
                     <button class="button login__submit">
                         <span class="button__text">Anmelden</span>

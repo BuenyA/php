@@ -52,6 +52,7 @@
                             <input type="password" class="login__input" placeholder="Passwort">
                         </div>
                     </div>
+                    <a href="../anmeldung/anmeldung.php">Bereits Registriert?</a><br />
                     <button class="button login__submit">
                         <span class="button__text">Registrieren</span>
                         <i class="button__icon fas fa-chevron-right"></i>
