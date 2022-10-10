@@ -319,8 +319,22 @@
         </div>
     </section>
     <section class="footer">
-        <h1>Footer</h1>
-        <p>Unsere AGBs - Datenschutzerklärung - Impressum - Hinweise zu Cookies - Hinweise zu interessenbasierter Werbung </br>
+        <div class="footerArea">
+            <div class="footerRegion">
+                <p class="littleHeadline"><b>Unternehmen</b></p>
+                <p>Über Uns</p>
+                <p>Kontakt</p>
+                <p>Hilfe</p>
+            </div>
+            <div class="footerRegion">
+                <p class="littleHeadline"><b>Handel</b></p>
+                <p>Anmelden</p>
+                <p>Registrieren</p>
+                <p>Verkaufen</p>
+                <p>Händler AGBs</p>
+            </div>
+        </div>
+        <p class="footerFooter">Unsere AGBs - Datenschutzerklärung - Impressum - Hinweise zu Cookies - Hinweise zu interessenbasierter Werbung </br>
         ©1996-2022 Auktionshaus AG und Partner-Unternehmen</p>
     </section>
 </body>
