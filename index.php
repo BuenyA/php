@@ -310,8 +310,7 @@
             </div>
             <div class="angebotMachenBoxText">
                 <div class="angebotMachenBoxTextLinks">
-                    <p><b>Inseriere auf Deutschlands größtem Fahrzeugmarkt</b></br></br>
-                    Dann kannst Du Dein gebrauchtes Auto hier kostenlos verkaufen. Einfach und bequem. Zum maximalen Preis per Inserat oder schnell per Expressverkauf an einer mobile.de</p>
+                    <img src="image/immobilienmakler.png" width="200" height="200">
                 </div>
                 <div class="angebotMachenBoxTextRechts">
                     <p><b>Inseriere auf Deutschlands größtem Fahrzeugmarkt</b></br></br>
