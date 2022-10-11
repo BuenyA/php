@@ -46,6 +46,16 @@
                     <div class="login__field__section">
                         <div class="login__field">
                             <i class="login__icon fas fa-user"></i>
+                            <input type="text" class="login__input" placeholder="Telefonnummer">
+                        </div>
+                        <div class="login__field">
+                            <i class="login__icon fas fa-lock"></i>
+                            <input type="date" class="login__input" placeholder="Geburtsdatum">
+                        </div>
+                    </div>
+                    <div class="login__field__section">
+                        <div class="login__field">
+                            <i class="login__icon fas fa-user"></i>
                             <input type="text" class="login__input" placeholder="E-Mail">
                         </div>
                         <div class="login__field">

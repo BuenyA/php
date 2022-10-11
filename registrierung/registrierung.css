@@ -121,9 +121,8 @@ body {
 }
 
 .login__field {
-    padding: 20px 0px;
+    padding: 15px 0px;
     position: relative;
-    margin: 5px;
     width: 15em;
 }
 
@@ -158,7 +157,8 @@ body {
 .login__submit {
     background: #fff;
     font-size: 14px;
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
     padding: 16px 20px;
     border-radius: 26px;
     border: 1px solid #D4D3E8;

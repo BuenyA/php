@@ -456,7 +456,7 @@ body {
   align-items: center;
   width: 800px;
   min-height: 400px;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.05);
   transition: 0.3s;
 }
