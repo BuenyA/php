@@ -65,7 +65,7 @@ body {
   height: 2px;
   left: 50%;
   position: absolute;
-  background: rgb(255, 77, 0);
+  background: #ff4d00;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
@@ -421,6 +421,13 @@ body {
   font-weight: 100;
   padding-bottom: 0;
   text-align: center;
+}
+
+.AutostarApp {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-height: 35em;
 }
 
 .AutostarProduct {

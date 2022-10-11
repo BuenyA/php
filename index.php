@@ -298,10 +298,8 @@
             <img src="image/right-arrows.png" width="20" height="20">
         </button>
     </section>
-    <section class="AutostarProduct">
-        <div class="AutostarProductBox">
-            <img src="image/AutostarProducts.png" width="1000" height="500">
-        </div>
+    <section class="AutostarApp">
+        <img src="image/AutostarApp.png" width="1000" height="500">
     </section>
     <section class="angebotMachen">
         <div class="angebotMachenBox">
@@ -313,11 +311,16 @@
                     <img src="image/immobilienmakler.png" width="200" height="200">
                 </div>
                 <div class="angebotMachenBoxTextRechts">
-                    <p><b>Inseriere auf Deutschlands größtem Fahrzeugmarkt</b></br></br>
+                    <p><b>Inseriere auf Deutschlands größtem Fahrzeugauktionsmarkt</b></br></br>
                     Dann kannst Du Dein gebrauchtes Auto hier kostenlos verkaufen. Einfach und bequem. Zum maximalen Preis per Inserat oder schnell per Expressverkauf an einer mobile.de</p>
                 </div>
             </div>
             <button class="btnJetztInserieren">Jetzt inserieren</button>
+        </div>
+    </section>
+    <section class="AutostarProduct">
+        <div class="AutostarProductBox">
+            <img src="image/AutostarProducts.png" width="1000" height="500">
         </div>
     </section>
     <section class="footer">
