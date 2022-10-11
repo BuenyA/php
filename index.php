@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autostar</title>
+    <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="stylesheet.css">
     <script language="javascript" type="text/javascript" src="javascript.js"></script>
 </head>
@@ -98,7 +99,7 @@
                                             </div>
                                         </div>
                                         <div class="btnAngebotSuchenDiv">
-                                            <h2>Eingabe</h2>
+                                            <h2>Suchen</h2>
                                             <button class="btnAngebotSuchen">
                                                 <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
                                                 Angebot suchen
@@ -351,11 +352,11 @@
                 <p>Händler AGBs</p>
             </div>
             <div class="footerRegion">
-                <h1><b>Handel</b></h1>
-                <p>Anmelden</p>
-                <p>Registrieren</p>
-                <p>Verkaufen</p>
-                <p>Händler AGBs</p>
+                <h1><b>Hilfe</b></h1>
+                <p>Barrierefreiheit</p>
+                <p>Sicherheitsportal</p>
+                <p>Rechtsportal</p>
+                <p>Fragen und Antworten</p>
             </div>
         </div>
         <p class="footerFooter">Unsere AGBs - Datenschutzerklärung - Impressum - Hinweise zu Cookies - Hinweise zu interessenbasierter Werbung </br>
