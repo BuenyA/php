@@ -16,7 +16,7 @@
         <div class="backgroundImageFilter">
             <div class="navigationMenu">
                 <div class="navigationMenuLogo">
-                    <img src="image/AutostarLogo.png" width="200" height="40">
+                    <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = ''">
                 </div>
                 <ul class="navigationElements">
                     <li><a href="">Home</a></li>
@@ -140,7 +140,10 @@
                             Tel.: +49 123 456789</br>
                             Bietigheim-Bissigen
                         </p>
-                        <button>Bieten</button>
+                        <button>
+                            <img src="image/herz.png" width="13" height="13">
+                            Merken
+                        </button>
                     </div>
                 </div>
                 <div class="topOffers">
@@ -159,7 +162,10 @@
                             Tel.: +49 123 456789</br>
                             Bietigheim-Bissigen
                         </p>
-                        <button>Bieten</button>
+                        <button>
+                            <img src="image/herz.png" width="13" height="13">
+                            Merken
+                        </button>
                     </div>
                 </div>
             </div>
@@ -180,7 +186,10 @@
                             Tel.: +49 123 456789</br>
                             Bietigheim-Bissigen
                         </p>
-                        <button>Bieten</button>
+                        <button>
+                            <img src="image/herz.png" width="13" height="13">
+                            Merken
+                        </button>
                     </div>
                 </div>
                 <div class="topOffers">
@@ -199,7 +208,10 @@
                             Tel.: +49 123 456789</br>
                             Bietigheim-Bissigen
                         </p>
-                        <button>Bieten</button>
+                        <button>
+                            <img src="image/herz.png" width="13" height="13">
+                            Merken
+                        </button>
                     </div>
                 </div>
             </div>
@@ -210,7 +222,7 @@
         </button>
     </section>
     <section class="baldAblaufend">
-        <h1>Last-Minute...</h1>
+        <h1>Last-Minute-Angebote...</h1>
         <div class="topOfferPlace">
             <div>
                 <div class="topOffers">
@@ -229,7 +241,10 @@
                             Tel.: +49 123 456789</br>
                             Bietigheim-Bissigen
                         </p>
-                        <button>Bieten</button>
+                        <button>
+                            <img src="image/herz.png" width="13" height="13">
+                            Merken
+                        </button>
                     </div>
                 </div>
                 <div class="topOffers">
@@ -248,7 +263,10 @@
                             Tel.: +49 123 456789</br>
                             Bietigheim-Bissigen
                         </p>
-                        <button>Bieten</button>
+                        <button>
+                            <img src="image/herz.png" width="13" height="13">
+                            Merken
+                        </button>
                     </div>
                 </div>
             </div>
@@ -269,7 +287,10 @@
                             Tel.: +49 123 456789</br>
                             Bietigheim-Bissigen
                         </p>
-                        <button>Bieten</button>
+                        <button>
+                            <img src="image/herz.png" width="13" height="13">
+                            Merken
+                        </button>
                     </div>
                 </div>
                 <div class="topOffers">
@@ -288,7 +309,10 @@
                             Tel.: +49 123 456789</br>
                             Bietigheim-Bissigen
                         </p>
-                        <button>Bieten</button>
+                        <button>
+                            <img src="image/herz.png" width="13" height="13">
+                            Merken
+                        </button>
                     </div>
                 </div>
             </div>
@@ -299,7 +323,24 @@
         </button>
     </section>
     <section class="AutostarApp">
-        <img src="image/AutostarApp.png" width="1000" height="500">
+        <img src="image/AutostarApp.png" width="350" height="500">
+        <div class="AutostarAppText">
+            <div class="AutostarAppUberschrift">
+                <img src="image/AutostarLogo.png" width="250" height="50">
+                <h1>-App downloaden!</h1>
+            </div>
+            <p>Lade dir jetzt unsere kostenlose Mobil-App herunter!</p>
+            <div class="stores">
+                <a class="playstore" href="">
+                    <img src="image/playstore.png" width="40" height="40">
+                    <p>Play Store</p>
+                </a>
+                <a class="appstore" href="">
+                    <img src="image/app-store.png" width="40" height="40">
+                    <p>App Store</p>
+                </a>
+            </div>
+        </div>
     </section>
     <section class="angebotMachen">
         <div class="angebotMachenBox">
@@ -315,12 +356,12 @@
                     Dann kannst Du Dein gebrauchtes Auto hier kostenlos verkaufen. Einfach und bequem. Zum maximalen Preis per Inserat oder schnell per Expressverkauf an einer mobile.de</p>
                 </div>
             </div>
-            <button class="btnJetztInserieren">Jetzt inserieren</button>
+            <button class="btnJetztInserieren" onclick="window.location.href = 'Inserieren/inserieren.php';">Jetzt inserieren</button>
         </div>
     </section>
     <section class="AutostarProduct">
         <div class="AutostarProductBox">
-            <img src="image/AutostarProducts.png" width="1000" height="500">
+            <img src="image/AutostarProductsBig.png" width="1000" height="500">
         </div>
     </section>
     <section class="footer">
@@ -361,8 +402,11 @@
                 <p>Fragen und Antworten</p>
             </div>
         </div>
-        <p class="footerFooter">Unsere AGBs - Datenschutzerklärung - Impressum - Hinweise zu Cookies - Hinweise zu interessenbasierter Werbung </br>
-        ©1996-2022 Auktionshaus AG und Partner-Unternehmen</p>
+        <div class="footerBelow">
+            <img src="image/AutostarLogo.png" width="200" height="40">
+            <p class="footerFooter">Unsere AGBs - Datenschutzerklärung - Impressum - Hinweise zu Cookies - Hinweise zu interessenbasierter Werbung </br>
+            ©1996-2022 Autostar AG und Partner-Unternehmen</p>
+        </div>
     </section>
 </body>
 </html>
