@@ -464,6 +464,7 @@ body {
 
 .angebotMachenBox h1 {
   text-align: center;
+  margin-top: 1em;
 }
 
 .angebotMachenBoxText {
@@ -472,10 +473,19 @@ body {
   align-items: center;
   width: 90%;
   justify-self: center;
+  margin-top: 2em;
 }
 
 .angebotMachenBoxText p {
   text-align: left;
+}
+
+.angebotMachenBoxTextLinks, .angebotMachenBoxTextRechts {
+  width: 100%;
+}
+
+.angebotMachenBoxTextLinks {
+  margin-left: 5em;
 }
 
 .btnJetztInserieren {
@@ -493,6 +503,7 @@ body {
   color: #ff6600;
   box-shadow: 0px 2px 2px rgb(255, 77, 0);;
   cursor: pointer;
+  margin-bottom: 2em;
   transition: .2s;
 }
 
