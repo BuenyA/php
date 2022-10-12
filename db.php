@@ -8,6 +8,6 @@ try {
     exit( 'Connection failed: ' . $e->getMessage());
 }
 
-echo 'Connected'
+echo "Connection erfolgreich";
 
 ?>
