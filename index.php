@@ -26,7 +26,10 @@
                 </ul>
                 <div class="navigationMenuButton">
                     <div class="navigationMenuButtonAnmelden">
-                        <button onclick="window.location.href = 'account/anmeldung.php';"><b>Account</b></button>
+                        <button onclick="window.location.href = 'account/anmeldung.php';"><b>Anmelden</b></button>
+                    </div>
+                    <div class="navigationMenuButtonAnmelden">
+                        <button onclick="window.location.href = 'account/registrierung/registrierung.php';"><b>Registrieren</b></button>
                     </div>
                 </div>
             </div>
