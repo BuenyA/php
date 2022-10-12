@@ -22,7 +22,7 @@
                     <li><a href="">Home</a></li>
                     <li><a href="">Top Angebote</a></li>
                     <li><a href="">Last-Minute</a></li>
-                    <li><a href="">Verkaufen</a></li>
+                    <li><a href="inserieren/inserieren.php">Verkaufen</a></li>
                 </ul>
                 <div class="navigationMenuButton">
                     <div class="navigationMenuButtonAnmelden">
