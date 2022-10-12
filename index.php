@@ -331,11 +331,11 @@
             </div>
             <p>Lade dir jetzt unsere kostenlose Mobil-App herunter!</p>
             <div class="stores">
-                <a class="playstore" href="">
+                <a class="playstore" href="https://play.google.com/" target="_blank">
                     <img src="image/playstore.png" width="40" height="40">
                     <p>Play Store</p>
                 </a>
-                <a class="appstore" href="">
+                <a class="appstore" href="https://www.apple.com/de/app-store/" target="_blank">
                     <img src="image/app-store.png" width="40" height="40">
                     <p>App Store</p>
                 </a>
