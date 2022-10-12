@@ -12,7 +12,7 @@
 
 <body>
     <div class="navigationMenuLogo">
-        <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = '../index.php';">
+        <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = '../../index.php';">
     </div>
     <div class="container">
         <div class="screen">
@@ -63,7 +63,7 @@
                             <input type="password" class="login__input" placeholder="Passwort">
                         </div>
                     </div>
-                    <a href="../anmeldung/anmeldung.php">Bereits Registriert?</a><br />
+                    <a href="../../account/anmeldung.php">Bereits Registriert?</a><br />
                     <button class="button login__submit">
                         <span class="button__text">Registrieren</span>
                         <i class="button__icon fas fa-chevron-right"></i>

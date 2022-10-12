@@ -11,21 +11,25 @@
 </head>
 <body>
     <div class="navigationMenuLogo">
-        <img src="image/mobile_logo.png" width="150" height="50" onclick="window.location.href = '../index.php';">
+        <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = '../index.php';">
     </div>
-    <div class="containerBlur"></div>
     <div class="container">
         <div class="screen">
             <div class="screen__content">
-                <h1>Passwort <br /> Zurücksetzen</h1>
+                <h1>Anmelden</h1>
                 <form class="login">
                     <div class="login__field">
                         <i class="login__icon fas fa-user"></i>
                         <input type="text" class="login__input" placeholder="E-Mail">
                     </div>
-                    <a href="../Anmeldung/anmeldung.php">Zurück zum Login</a><br /><br/>
-                    <button class="button resetPw__submit">
-                        <span class="button__text">Code anfordern</span>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input type="password" class="login__input" placeholder="Passwort">
+                    </div>
+                    <a href="../account/registrierung/registrierung.php">Noch keinen Account?</a><br />
+                    <a href="../account/passwordReset.php">Passwort vergessen?</a>
+                    <button class="button login__submit">
+                        <span class="button__text">Anmelden</span>
                         <i class="button__icon fas fa-chevron-right"></i>
                     </button>
                 </form>
