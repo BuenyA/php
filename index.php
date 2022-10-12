@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autostar</title>
+    <title>Autostar - Deine Auktionsseite für Automobile</title>
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="stylesheet.css">
     <script language="javascript" type="text/javascript" src="javascript.js"></script>
@@ -20,9 +20,9 @@
                 </div>
                 <ul class="navigationElements">
                     <li><a href="">Home</a></li>
-                    <li><a href="">Top Angebote</a></li>
-                    <li><a href="">Last-Minute</a></li>
-                    <li><a href="inserieren/inserieren.php">Verkaufen</a></li>
+                    <li><a href="TopAngebote/topangebote.php">Top Angebote</a></li>
+                    <li><a href="LastMinute/lastminute.php">Last-Minute</a></li>
+                    <li><a href="Inserieren/inserieren.php">Verkaufen</a></li>
                 </ul>
                 <div class="navigationMenuButton">
                     <div class="navigationMenuButtonAnmelden">
