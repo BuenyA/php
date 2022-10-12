@@ -108,12 +108,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="MOPEDRight">
-        
-                            </div>
-                            <div class="LKWRight">
-        
-                            </div>
+                            <div class="MOPEDRight"></div>
+                            <div class="LKWRight"></div>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,3 @@
-<?php
-
-  ?>
 <!DOCTYPE html>
 <html>
 
@@ -10,15 +7,7 @@
 
 <body>
     <?php
-    session_start();
-    try {
-        $pdo = new PDO("mysql:dbname=Autostar;host=db;port=3306", 'root', '');
-        // set the PDO error mode to exception
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
-    } catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
+    require('db.php');
 
     $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 
@@ -43,7 +32,7 @@
 
         //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
         if (!$error) {
-            $statement = $pdo->prepare("SELECT * FROM accounts WHERE email = :email");
+            $statement = $db->prepare("SELECT * FROM accounts WHERE email = :email");
             $result = $statement->execute(array('email' => $email));
             $user = $statement->fetch();
 
@@ -57,7 +46,7 @@
         if (!$error) {
             $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-            $statement = $pdo->prepare("INSERT INTO accounts (account_ID, vorname, nachname, plz, ort, adresse, email, passwort) VALUES (2, 'Bünyamin', 'Aydemir', 74321, 'Bietigheim-Bissingen', 'Maria-...', :email, :passwort)");
+            $statement = $db->prepare("INSERT INTO accounts (account_ID, vorname, nachname, plz, ort, adresse, email, passwort) VALUES (4, 'Bünyamin', 'Aydemir', 74321, 'Bietigheim-Bissingen', 'Maria-...', :email, :passwort)");
             $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash));
 
             if ($result) {

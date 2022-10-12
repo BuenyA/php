@@ -110,3 +110,161 @@ body {
   background-color: rgb(255, 109, 46);
   color: white;
 }
+
+.baldAblaufend {
+  display: grid;
+  align-items: center;
+}
+
+.baldAblaufend h1 {
+  padding: 50px;
+  font-size: 3em;
+  font-weight: 200;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+.topOffersSegment {}
+
+.topOfferPlace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topOffers {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  background-color: white;
+  margin: 30px;
+  width: 550px;
+  height: 250px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid rgb(205, 205, 205);
+  transition: 0.2s;
+}
+
+.topOffers:hover {
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 10px 10px 10px 5px rgb(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.topOffers img {
+  object-fit: cover;
+  object-position: 40%;
+}
+
+.topOffer h1 {
+  padding: 50px;
+  font-size: 50px;
+  font-weight: 100;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+.topOffersRight {
+  margin-left: 10px;
+  display: grid;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.topOffersRightTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auktionspreis, .topOffersRightTop p {
+  padding-right: 15px;
+}
+
+.btnMehrAnzeigen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 9999px;
+  font-size: 15px;
+  justify-self: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 10px;
+  width: 150px;
+  transition: 0.5s;
+}
+
+.topOffersRight button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  margin-left: 200px;
+  margin-right: 15px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgb(205, 205, 205);
+}
+
+.topOffersRight button:hover {
+  filter: invert(100%);
+  background-color: #00b2ff;
+  border: 1px solid #00b2ff;
+  cursor: pointer;
+}
+
+.footer {
+  min-height: 30em;
+  background-color: #191f22;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerArea {
+  margin-top: 1.5em;
+  display: flex;
+  justify-content: space-around;
+  width: 70em;
+}
+
+.footerRegion {
+  color: rgb(195, 195, 195);
+  font-size: 0.8em;
+}
+
+.footerRegion p {
+  margin-bottom: 0.7em;
+}
+
+.footerRegion h1 {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+.footerBelow {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerFooter {
+  color: rgb(195, 195, 195);
+  font-size: 10px;
+  text-align: center;
+}
+
+.footer img {
+  justify-self: center;
+  filter: invert(100%);
+  margin-bottom: 1em;
+  opacity: 80%;
+}
