@@ -12,6 +12,20 @@
 </head>
 
 <body>
+    <?php
+    require_once '../db.php';
+
+    $query = "SELECT * FROM Inserat ORDER BY Erstzulassung ASC";
+
+    $res = $db->query($query);
+    if ($res !== false && $res->rowCount() > 0) {
+        foreach ($res as $row) {
+            echo 'Marke: ' . $row['Marke'] . ', Modell: ' . $row['Modell'];
+        }
+    }
+
+    unset($db);
+    ?>
     <div class="backgroundImageFilter">
         <div class="navigationMenu">
             <div class="navigationMenuLogo">
@@ -45,7 +59,7 @@
                             <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
-                            52.000 km, 140 kW (190 PS), Kombi, Benzin, 
+                            52.000 km, 140 kW (190 PS), Kombi, Benzin,
                             Automatik, HU 02/2024, 4/5 Türen...
                         </p>
                         <p>
@@ -67,7 +81,7 @@
                             <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
-                            52.000 km, 140 kW (190 PS), Kombi, Benzin, 
+                            52.000 km, 140 kW (190 PS), Kombi, Benzin,
                             Automatik, HU 02/2024, 4/5 Türen...
                         </p>
                         <p>
@@ -91,7 +105,7 @@
                             <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
-                            52.000 km, 140 kW (190 PS), Kombi, Benzin, 
+                            52.000 km, 140 kW (190 PS), Kombi, Benzin,
                             Automatik, HU 02/2024, 4/5 Türen...
                         </p>
                         <p>
@@ -113,7 +127,7 @@
                             <p class="auktionspreis"><b>24.000 €</b></p>
                         </div>
                         <p>
-                            52.000 km, 140 kW (190 PS), Kombi, Benzin, 
+                            52.000 km, 140 kW (190 PS), Kombi, Benzin,
                             Automatik, HU 02/2024, 4/5 Türen...
                         </p>
                         <p>
@@ -175,7 +189,7 @@
         <div class="footerBelow">
             <img src="image/AutostarLogo.png" width="200" height="40">
             <p class="footerFooter">Unsere AGBs - Datenschutzerklärung - Impressum - Hinweise zu Cookies - Hinweise zu interessenbasierter Werbung </br>
-            ©1996-2022 Autostar AG und Partner-Unternehmen</p>
+                ©1996-2022 Autostar AG und Partner-Unternehmen</p>
         </div>
     </section>
 </body>
