@@ -12,13 +12,7 @@
 
 <body>
     <?php
-    $dsn = 'mysql:dbname=Autostar;host=db;port=3306';
-
-    try {
-        $db = new PDO($dsn, 'root', '');
-    } catch (Exception $e) {
-        exit('Connect failed: ' . $e->getMessage());
-    }
+    require_once '../db.php';
 
     $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 
