@@ -359,8 +359,8 @@ body {
 
 .topOffer h1 {
   padding: 50px;
-  font-size: 50px;
-  font-weight: 100;
+  font-size: 2.5em;
+  font-weight: 400;
   padding-bottom: 0;
   text-align: center;
 }
@@ -428,8 +428,8 @@ body {
 
 .baldAblaufend h1 {
   padding: 50px;
-  font-size: 50px;
-  font-weight: 100;
+  font-size: 2.5em;
+  font-weight: 400;
   padding-bottom: 0;
   text-align: center;
 }

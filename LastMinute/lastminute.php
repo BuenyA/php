@@ -12,20 +12,6 @@
 </head>
 
 <body>
-    <?php
-    require_once '../db.php';
-
-    $query = "SELECT * FROM Inserat ORDER BY Erstzulassung ASC";
-
-    $res = $db->query($query);
-    if ($res !== false && $res->rowCount() > 0) {
-        foreach ($res as $row) {
-            echo 'Marke: ' . $row['Marke'] . ', Modell: ' . $row['Modell'];
-        }
-    }
-
-    unset($db);
-    ?>
     <div class="backgroundImageFilter">
         <div class="navigationMenu">
             <div class="navigationMenuLogo">
@@ -49,100 +35,78 @@
     </div>
     <section class="baldAblaufend">
         <h1>Last-Minute-Angebote...</h1>
-        <div class="topOfferPlace">
-            <div>
-                <div class="topOffers">
-                    <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                    <div class="topOffersRight">
-                        <div class="topOffersRightTop">
-                            <h2>Audi A5 quattro</h2>
-                            <p class="auktionspreis"><b>24.000 €</b></p>
+        <?php
+        require_once '../db.php';
+
+        $counter = 0;
+        $showMax = 6;
+        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
+        $resInserat = $db->query($queryInserat);
+        
+        if ($resInserat !== false && $resInserat->rowCount() > 0) {
+            foreach ($resInserat as $row) {
+                if ($counter == $showMax) {
+                    break;
+                }
+                if (($counter % 2) == 0) {
+                    echo '
+                        <div class="topOfferPlace">
+                            <div class="topOffers">
+                                <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                <div class="topOffersRight">
+                                    <div class="topOffersRightTop">
+                                        <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
+                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                    </div>
+                                    <p>
+                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                    </p>
+                                    <p>
+                                        ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
+                                        Tel.: +49 123 456789</br>
+                                        Ort: ' . $row['ort'] . '
+                                    </p>
+                                    <button>
+                                        <img src="image/herz.png" width="13" height="13">
+                                        Merken
+                                    </button>
+                                </div>
+                            </div>
+                        ';
+                } else {
+                    echo '
+                            <div class="topOffers">
+                                <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                <div class="topOffersRight">
+                                    <div class="topOffersRightTop">
+                                        <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
+                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
+                                    </div>
+                                    <p>
+                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                    </p>
+                                    <p>
+                                        ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
+                                        Tel.: +49 123 456789</br>
+                                        Ort: ' . $row['ort'] . '
+                                    </p>
+                                    <button>
+                                        <img src="image/herz.png" width="13" height="13">
+                                        Merken
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <p>
-                            52.000 km, 140 kW (190 PS), Kombi, Benzin,
-                            Automatik, HU 02/2024, 4/5 Türen...
-                        </p>
-                        <p>
-                            Bünyamin Aydemir</br>
-                            Tel.: +49 123 456789</br>
-                            Bietigheim-Bissigen
-                        </p>
-                        <button>
-                            <img src="image/herz.png" width="13" height="13">
-                            Merken
-                        </button>
-                    </div>
-                </div>
-                <div class="topOffers">
-                    <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                    <div class="topOffersRight">
-                        <div class="topOffersRightTop">
-                            <h2>Audi A5 quattro</h2>
-                            <p class="auktionspreis"><b>24.000 €</b></p>
-                        </div>
-                        <p>
-                            52.000 km, 140 kW (190 PS), Kombi, Benzin,
-                            Automatik, HU 02/2024, 4/5 Türen...
-                        </p>
-                        <p>
-                            Bünyamin Aydemir</br>
-                            Tel.: +49 123 456789</br>
-                            Bietigheim-Bissigen
-                        </p>
-                        <button>
-                            <img src="image/herz.png" width="13" height="13">
-                            Merken
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="topOffers">
-                    <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                    <div class="topOffersRight">
-                        <div class="topOffersRightTop">
-                            <h2>Audi A5 quattro</h2>
-                            <p class="auktionspreis"><b>24.000 €</b></p>
-                        </div>
-                        <p>
-                            52.000 km, 140 kW (190 PS), Kombi, Benzin,
-                            Automatik, HU 02/2024, 4/5 Türen...
-                        </p>
-                        <p>
-                            Bünyamin Aydemir</br>
-                            Tel.: +49 123 456789</br>
-                            Bietigheim-Bissigen
-                        </p>
-                        <button>
-                            <img src="image/herz.png" width="13" height="13">
-                            Merken
-                        </button>
-                    </div>
-                </div>
-                <div class="topOffers">
-                    <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                    <div class="topOffersRight">
-                        <div class="topOffersRightTop">
-                            <h2>Audi A5 quattro</h2>
-                            <p class="auktionspreis"><b>24.000 €</b></p>
-                        </div>
-                        <p>
-                            52.000 km, 140 kW (190 PS), Kombi, Benzin,
-                            Automatik, HU 02/2024, 4/5 Türen...
-                        </p>
-                        <p>
-                            Bünyamin Aydemir</br>
-                            Tel.: +49 123 456789</br>
-                            Bietigheim-Bissigen
-                        </p>
-                        <button>
-                            <img src="image/herz.png" width="13" height="13">
-                            Merken
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        ';
+                }
+                $counter++;
+            }
+            if (($counter % 2) != 0) {
+                echo '</div>';
+            }
+        }
+        unset($db);
+        ?>
         <button class="btnMehrAnzeigen">
             Mehr Anzeigen
             <img src="image/down-arrow.png" width="20" height="20">

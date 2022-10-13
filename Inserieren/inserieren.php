@@ -25,6 +25,7 @@
         $kilometerstand = $_POST['kilometerstand'];
         $ps = $_POST['ps'];
         $kraftstoffart = $_POST['kraftstoffart'];
+        $getriebeart = $_POST['getriebeart'];
         $erstzulassung = $_POST['erstzulassung'];
 
         /* if (strlen($marke) == 0) {
@@ -33,7 +34,7 @@
         } */
 
         if (!$error) {
-            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Erstzulassung, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$erstzulassung', 1)";
+            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', 1)";
             $db->query($query);
         }
 
@@ -75,9 +76,11 @@
             <input type="number" size="40" maxlength="250" name="ps"><br>
             Kraftstoffart<br>
             <input type="text" size="40" maxlength="250" name="kraftstoffart"><br>
+            Getriebeart<br>
+            <input type="text" size="40" maxlength="250" name="getriebeart"><br>
             Erstzulassung<br>
             <input type="date" size="40" maxlength="250" name="erstzulassung"><br>
-
+            
             <input type="submit" value="Abschicken">
         </form>
     </section>
