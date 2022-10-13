@@ -382,6 +382,10 @@ body {
   padding-right: 15px;
 }
 
+.topOffersRightTop h2 {
+  font-size: 1.2em;
+}
+
 .btnMehrAnzeigen {
   display: flex;
   justify-content: space-between;
