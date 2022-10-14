@@ -12,7 +12,7 @@
 
 <body>
     <?php
-    require_once '../db.php';
+    //require_once '../db.php';
 
     $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 
@@ -63,7 +63,16 @@
     <section class="eingaben">
         <form action="?inserieren=1" method="post">
             Marke<br>
-            <input type="text" size="40" maxlength="250" name="marke"><br>
+            <select name="marke">
+                <option value="audi">Audi</option>
+                <option>Audi</option>
+                <option>Audi</option>
+                <option>Audi</option>
+                <option>Tesla</option>
+            </select> <br>
+            Preis1 <br>
+            <input type="number" size="10" name="preis1" value="100000" id="preisanzeige" class="preisanzeige" max="200000" min="0" step="100">
+            <input type="range" min="0" max="200000" step="100" id="regler"> <br>
             Modell<br>
             <input type="text" size="40" maxlength="250" name="modell"><br>
             Preis<br>
@@ -79,11 +88,14 @@
             Getriebeart<br>
             <input type="text" size="40" maxlength="250" name="getriebeart"><br>
             Erstzulassung<br>
-            <input type="date" size="40" maxlength="250" name="erstzulassung"><br>
+            <input type="month" min="YYYY-MM" max="YYYY-MM" value="YYYY-MM" size="40" maxlength="250" name="erstzulassung" ><br>
             
             <input type="submit" value="Abschicken">
         </form>
     </section>
+    <script src="./inserieren.js"> 
+
+    </script> 
 </body>
 
 </html>
