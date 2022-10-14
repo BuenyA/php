@@ -11,6 +11,34 @@
 </head>
 
 <body>
+
+<?php
+
+//Warten bis Benutzer einen Registrier Versuch startet
+if(isset($_GET['registrieren__submit'])){
+
+    //Datenbank import
+    require('../../db.php');
+    require('function_registrierung.php');
+
+    //Überprüfung ob die Eingabe korrekt war
+    $fehler = new function_registrierung ($_GET['input__vorname'], $_GET['input__nachname'], $_GET['input__plz'], $_GET['input__ort'], 
+    $_GET['input__adresse'], $_GET['input__telefonnummer'], $_GET['input__geburtstag'], $_GET['input__email'], $_GET['input__passwort']);
+    $fehler->input__test();
+    if(!$fehler) {
+        echo 'Fehler';
+    } else {
+        echo 'Kein Fehler';
+    }
+
+}
+
+
+
+
+
+?>
+
     <div class="navigationMenuLogo">
         <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = '../../index.php';">
     </div>
@@ -22,49 +50,59 @@
                     <div class="login__field__section">
                         <div class="login__field">
                             <i class="login__icon fas fa-user"></i>
-                            <input type="text" class="login__input" placeholder="Vorname">
+                            <!-- input vorname -->
+                            <input type="text" class="login__input" placeholder="Vorname" name="input__vorname">
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
-                            <input type="text" class="login__input" placeholder="Nachname">
+                            <!-- input nachname -->
+                            <input type="text" class="login__input" placeholder="Nachname" name="input__nachname">
                         </div>
                     </div>
                     <div class="login__field__section">
                         <div class="login__field login__field__plz">
                             <i class="login__icon fas fa-user"></i>
-                            <input type="text" class="login__input login__input__plz" placeholder="PLZ" maxlength="5">
+                            <!-- input plz -->
+                            <input type="text" class="login__input login__input__plz" placeholder="PLZ" maxlength="5" name="input__plz">
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
-                            <input type="text" class="login__input" placeholder="Ort">
+                            <!-- input ort -->
+                            <input type="text" class="login__input" placeholder="Ort" name="input__ort">
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
-                            <input type="text" class="login__input" placeholder="Straße und Hausnummer">
+                            <!-- input adresse -->
+                            <input type="text" class="login__input" placeholder="Straße und Hausnummer" name="input__adresse">
                         </div>
                     </div>
                     <div class="login__field__section">
                         <div class="login__field">
                             <i class="login__icon fas fa-user"></i>
-                            <input type="text" class="login__input" placeholder="Telefonnummer">
+                            <!-- input telefonnummer -->
+                            <input type="text" class="login__input" placeholder="Telefonnummer" name="input__telefonnummer">
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
-                            <input type="date" class="login__input" placeholder="Geburtsdatum">
+                            <!-- input geburtstag -->
+                            <input type="date" class="login__input" placeholder="Geburtsdatum" name="input__geburtstag">
                         </div>
                     </div>
                     <div class="login__field__section">
                         <div class="login__field">
                             <i class="login__icon fas fa-user"></i>
-                            <input type="text" class="login__input" placeholder="E-Mail">
+                            <!-- input email -->
+                            <input type="text" class="login__input" placeholder="E-Mail" name="input__email">
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
-                            <input type="password" class="login__input" placeholder="Passwort">
+                            <!-- input passwort -->
+                            <input type="password" class="login__input" placeholder="Passwort" name="input__passwort">
                         </div>
                     </div>
                     <a href="../../account/anmeldung.php">Bereits Registriert?</a><br />
-                    <button class="button login__submit">
+                    <!-- sumbit button -->
+                    <button class="button login__submit" name="registrieren__submit">
                         <span class="button__text">Registrieren</span>
                         <i class="button__icon fas fa-chevron-right"></i>
                     </button>
