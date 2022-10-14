@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autostar - Deine Auktionsseite für Automobile Etst</title>
+    <title>Autostar - Deine Auktionsseite für Automobile</title>
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="stylesheet.css">
     <script language="javascript" type="text/javascript" src="javascript.js"></script>
