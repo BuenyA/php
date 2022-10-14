@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <section>   
+    <section>
         <div class="backgroundImageFilter">
             <div class="navigationMenu">
                 <div class="navigationMenuLogo">

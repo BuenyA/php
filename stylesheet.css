@@ -174,7 +174,7 @@ body {
 }
 
 .backgroundImageFilter {
-  background-image: url(image/sports-car-4815234.jpg);
+  background-image: /* linear-gradient(rgba(0,0,0,0.2), rgb(255, 77, 0, 0.1)), */ url("image/sports-car-4815234.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
