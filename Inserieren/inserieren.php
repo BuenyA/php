@@ -88,7 +88,7 @@
             Getriebeart<br>
             <input type="text" size="40" maxlength="250" name="getriebeart"><br>
             Erstzulassung<br>
-            <input type="month" min="YYYY-MM" max="YYYY-MM" value="YYYY-MM" size="40" maxlength="250" name="erstzulassung" ><br>
+            <input type="date" size="40" maxlength="250" name="erstzulassung" ><br>
             
             <input type="submit" value="Abschicken">
         </form>
