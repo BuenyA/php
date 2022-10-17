@@ -102,7 +102,7 @@
                                             <h2>Suchen</h2>
                                             <button class="btnAngebotSuchen">
                                                 <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
-                                                Angebot suchen
+                                                <b>Angebot suchen</b>
                                             </button>
                                         </div>
                                     </div>

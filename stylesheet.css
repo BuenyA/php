@@ -20,7 +20,7 @@ body {
   justify-content: space-between;
   align-items: center;
   min-height: 12vh;
-  width: 85vw;
+  width: 80vw;
   align-self: flex-start;
 }
 
@@ -302,10 +302,11 @@ body {
   align-items: center;
   color: white;
   padding: 7px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
   border: 0;
   border-radius: 8px;
+  font-weight: 400;
   transition: 0.3s;
 }
 
