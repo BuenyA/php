@@ -31,6 +31,9 @@
                     <div class="navigationMenuButtonRegistrieren">
                         <button onclick="window.location.href = 'account/registrierung/registrierung.php';"><b>Registrieren</b></button>
                     </div>
+                    <div class="navigationMenuButtonMeinAccount">
+                        <button onclick="window.location.href = 'account/registrierung/registrierung.php';"><img src="image/nutzer.png" width="15" height="15"><b>Mein Account</b></button>
+                    </div>
                 </div>
             </div>
             <div class="searchBarFilterBox">

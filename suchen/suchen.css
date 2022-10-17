@@ -111,15 +111,15 @@ body {
   color: white;
 }
 
-.baldAblaufend {
+.suchergebnisse {
   display: grid;
   align-items: center;
 }
 
-.baldAblaufend h1 {
+.suchergebnisse h1 {
   padding: 50px;
-  font-size: 3em;
-  font-weight: 200;
+  font-size: 2.5em;
+  font-weight: 400;
   padding-bottom: 0;
   text-align: center;
 }
@@ -180,6 +180,10 @@ body {
 
 .auktionspreis, .topOffersRightTop p {
   padding-right: 15px;
+}
+
+.topOffersRightTop h2 {
+  font-size: 1.2em;
 }
 
 .btnMehrAnzeigen {
