@@ -12,7 +12,7 @@
 
 <body>
     <?php
-    //require_once '../db.php';
+    require_once '../db.php';
 
     $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 
@@ -27,6 +27,10 @@
         $kraftstoffart = $_POST['kraftstoffart'];
         $getriebeart = $_POST['getriebeart'];
         $erstzulassung = $_POST['erstzulassung'];
+        $auktionsbeginnDatum = $_POST['auktionsbeginnDatum'];
+        $auktionsendeDatum = $_POST['auktionsendeDatum'];
+        $auktionsbeginnUhrzeit = $_POST['auktionsbeginnUhrzeit'];
+        $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
 
         /* if (strlen($marke) == 0) {
             echo 'Das Feld darf nicht leer sein!';
@@ -34,7 +38,7 @@
         } */
 
         if (!$error) {
-            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', 1)";
+            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsbeginn_Uhrzeit, Auktionsende, Auktionsende_Uhrzeit, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum', '$auktionsbeginnUhrzeit', '$auktionsendeDatum', '$auktionsendeUhrzeit', 1)";
             $db->query($query);
         }
 
@@ -63,13 +67,7 @@
     <section class="eingaben">
         <form action="?inserieren=1" method="post">
             Marke<br>
-            <select name="marke">
-                <option value="audi">Audi</option>
-                <option>Audi</option>
-                <option>Audi</option>
-                <option>Audi</option>
-                <option>Tesla</option>
-            </select> <br>
+            <input type="text" size="40" maxlength="250" name="modell"><br>
             Preis1 <br>
             <input type="number" size="10" name="preis1" value="100000" id="preisanzeige" class="preisanzeige" max="200000" min="0" step="100">
             <input type="range" min="0" max="200000" step="100" id="regler"> <br>
@@ -88,7 +86,15 @@
             Getriebeart<br>
             <input type="text" size="40" maxlength="250" name="getriebeart"><br>
             Erstzulassung<br>
-            <input type="date" size="40" maxlength="250" name="erstzulassung" ><br>
+            <input type="date" size="40" maxlength="250" name="erstzulassung"><br>
+            Auktionsbeginn<br>
+            <input type="date" size="40" maxlength="250" name="auktionsbeginnDatum"><br>
+            Uhrzeit<br>
+            <input type="time" size="40" maxlength="250" name="auktionsbeginnUhrzeit"><br>
+            Auktionsende<br>
+            <input type="date" size="40" maxlength="250" name="auktionsendeDatum"><br>
+            Uhrzeit<br>
+            <input type="time" size="40" maxlength="250" name="auktionsendeUhrzeit"><br>
             
             <input type="submit" value="Abschicken">
         </form>
