@@ -67,7 +67,7 @@
     <section class="eingaben">
         <form action="?inserieren=1" method="post">
             Marke<br>
-            <input type="text" size="40" maxlength="250" name="modell"><br>
+            <input type="text" size="40" maxlength="250" name="marke"><br>
             Preis1 <br>
             <input type="number" size="10" name="preis1" value="100000" id="preisanzeige" class="preisanzeige" max="200000" min="0" step="100">
             <input type="range" min="0" max="200000" step="100" id="regler"> <br>
