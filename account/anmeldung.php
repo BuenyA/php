@@ -14,6 +14,7 @@
     <div class="navigationMenuLogo">
         <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = '../index.php';">
     </div>
+    <div class="falschesPasswort" id="falschesPasswort">Test</div>
     <div class="container">
         <?php
         require('../db.php');
@@ -24,13 +25,15 @@
             echo "<script>reloadWindow();</script>";
         }
         if (isset($_GET['anmelden']) && sizeof($_POST) !== 0) {
+            echo $_POST['input__passwort'];
+            echo password_hash($_POST['input__passwort'], PASSWORD_DEFAULT);
+            echo var_dump(password_hash($_POST['input__passwort'], PASSWORD_DEFAULT));
             $queryInserat = "SELECT * FROM Accounts WHERE email = '" . $_POST['input__email'] . "'" . " AND passwort = '" . $_POST['input__passwort'] . "'";
             $res = $db->query($queryInserat);
             if ($res !== false && $res->rowCount() > 0) {
-                $_SESSION['user'] = $_POST['input__email']; // login
-                $_SESSION['count'] = 0;
+                $_SESSION['user'] = $_POST['input__email'];
             } else {
-                echo 'Nochmal';
+                echo "<script>showPasswordError();</script>";
             }
         }
         if (empty($_SESSION['user'])) {
@@ -48,6 +51,9 @@
                         <i class="login__icon fas fa-lock"></i>
                         <!-- input passwort -->
                         <input type="password" name="input__passwort" class="login__input login__input__passwort" placeholder="Passwort">
+                    </div>
+                    <div class="falschesPasswort" id="falschesPasswort">
+                        <p>Die Eingabe ist falsch! Bitte erneut versuchen.</p>
                     </div>
                     <a href="../account/registrierung/registrierung.php">Noch keinen Account?</a><br />
                     <a href="../account/passwordReset.php">Passwort vergessen?</a>

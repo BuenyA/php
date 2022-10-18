@@ -144,6 +144,13 @@ body {
     border-bottom-color: #ff6600;
 }
 
+.falschesPasswort {
+    display: none;
+    color: red;
+    font-size: 0.75em;
+    padding-bottom: 1em;
+}
+
 .login__submit {
     background: #fff;
     font-size: 14px;
