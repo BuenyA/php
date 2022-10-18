@@ -3,5 +3,5 @@ function reloadWindow() {
 }
 
 function showPasswordError() {
-    document.getElementById("falschesPasswort").style.display="grid";
+    document.getElementById('falschesPasswort').style.display = "grid";
 }

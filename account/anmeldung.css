@@ -145,7 +145,6 @@ body {
 }
 
 .falschesPasswort {
-    display: none;
     color: red;
     font-size: 0.75em;
     padding-bottom: 1em;
