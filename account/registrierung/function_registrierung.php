@@ -30,47 +30,47 @@
 
             //Überprüft ob ein Vorname eingegeben wurde
             if(strlen($this->vorname) == 0) {
-                $error = false;
+                $error = true;
             }
 
             //Überprüft ob ein Nachname eingegeben wurde
             if(strlen($this->nachname) == 0) {
-                $error = false;
+                $error = true;
             }
             
             //Überprüft ob eine Plz eingegeben wurde
             if($this->plz == null) {
-                $error = false;
+                $error = true;
             }
 
             //Überprüft ob ein Ort eingegeben wurde
             if(strlen($this->ort == 0)) {
-                $error = false;
+                $error = true;
             }    
 
             //Überprüft ob eine Adresse eingegeben wurde
             if(strlen($this->adresse) == 0) {
-                $error = false;
+                $error = true;
             }
 
             //Überprüft ob eine Telefonnummer eingegeben wurde
             if(strlen($this->telefonnummer) == 0) {
-                $error = false;
+                $error = true;
             }
 
             //Überprüft ob ein Geburtsdatum eingegeben wurde
-            if(strlen($this->geburtstag) == 0) {
-                $error = false;
+            if($this->geburtstag == null) {
+                $error = true;
             }
 
             //Überprüft ob eine korrekte Email eingegeben wurde
             if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-                $error = false;
+                $error = true;
             }
 
             //Überprüft ob ein Passwort eingegeben wurde
             if($this->passwort == null) {
-                $error = false;
+                $error = true;
             }
 
             //Meldet zurück on die Benutzereingabe Fehlerfrei war
