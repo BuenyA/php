@@ -46,7 +46,7 @@
         if (!$error) {
             $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-            $statement = $db->prepare("INSERT INTO accounts (account_ID, vorname, nachname, plz, ort, adresse, email, passwort) VALUES (4, 'Bünyamin', 'Aydemir', 74321, 'Bietigheim-Bissingen', 'Maria-...', :email, :passwort)");
+            $statement = $db->prepare("INSERT INTO Accounts (account_ID, vorname, nachname, plz, ort, adresse, email, passwort) VALUES (4, 'Bünyamin', 'Aydemir', 74321, 'Bietigheim-Bissingen', 'Maria-...', :email, :passwort)");
             $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash));
 
             if ($result) {
