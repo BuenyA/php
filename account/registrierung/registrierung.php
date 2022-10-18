@@ -26,9 +26,9 @@ if(isset($_GET['registrieren__submit'])){
     $_GET['input__adresse'], $_GET['input__telefonnummer'], $_GET['input__geburtstag'], $_GET['input__email'], $_GET['input__passwort']);
     $fehler->input__test();
     if(!$fehler) {
-        echo 'Fehler';
-    } else {
         echo 'Kein Fehler';
+    } else {
+        echo 'Fehler';
     }
 
 }
