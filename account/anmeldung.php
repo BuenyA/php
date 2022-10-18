@@ -25,15 +25,16 @@
             echo "<script>reloadWindow();</script>";
         }
         if (isset($_GET['anmelden']) && sizeof($_POST) !== 0) {
-            echo $_POST['input__passwort'];
-            echo password_hash($_POST['input__passwort'], PASSWORD_DEFAULT);
-            echo var_dump(password_hash($_POST['input__passwort'], PASSWORD_DEFAULT));
-            $queryInserat = "SELECT * FROM Accounts WHERE email = '" . $_POST['input__email'] . "'" . " AND passwort = '" . $_POST['input__passwort'] . "'";
-            $res = $db->query($queryInserat);
-            if ($res !== false && $res->rowCount() > 0) {
-                $_SESSION['user'] = $_POST['input__email'];
-            } else {
-                echo "<script>showPasswordError();</script>";
+            $query = "SELECT * FROM Accounts WHERE email = '" . $_POST['input__email'] . "'";
+            $res = $db->query($query);
+            foreach($res as $row) {
+                if (password_verify($_POST['input__passwort'], $row['passwort']) == 1) {
+                    if ($res !== false && $res->rowCount() > 0) {
+                        $_SESSION['user'] = $_POST['input__email'];
+                    } else {
+                        echo "<script>showPasswordError();</script>";
+                    }
+                }
             }
         }
         if (empty($_SESSION['user'])) {
