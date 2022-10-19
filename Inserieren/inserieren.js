@@ -7,3 +7,7 @@ preisregler.addEventListener('change',()=>{
 preisanzeige.addEventListener('change',()=>{
     preisregler.value = preisanzeige.value
 })
+
+function linkToAnmeldung() {
+    window.location = "../index.php";
+}

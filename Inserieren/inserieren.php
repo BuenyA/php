@@ -7,14 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserat aufgeben</title>
     <link rel="stylesheet" href="inserieren.css">
-    <!-- <script language="javascript" type="module" src="inserieren.js"></script> -->
+    <script language="javascript" type="module" src="inserieren.js"></script>
 </head>
 
 <body>
     <?php
-    require_once '../db.php';
 
-    $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
+    session_start();
+    if (empty($_SESSION['user'])) {
+        echo '<script>linkToAnmeldung();</script>';
+    }
+
+    require_once '../db.php';
 
     if (isset($_GET['inserieren'])) {
         $error = false;
@@ -67,7 +71,7 @@
     <section class="eingaben">
         <form action="?inserieren=1" method="post">
             Marke<br>
-            <input type="text" size="40" maxlength="250" name="modell"><br>
+            <input type="text" size="40" maxlength="250" name="marke"><br>
             Preis1 <br>
             <input type="number" size="10" name="preis1" value="100000" id="preisanzeige" class="preisanzeige" max="200000" min="0" step="100"> <br>
             <input type="range" min="0" max="200000" step="100" id="regler"> <br>

@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <?php
+        session_start();
+    ?>
     <section>
         <div class="backgroundImageFilter">
             <div class="navigationMenu">
@@ -25,15 +28,22 @@
                     <li><a href="Inserieren/inserieren.php">Verkaufen</a></li>
                 </ul>
                 <div class="navigationMenuButton">
-                    <div class="navigationMenuButtonAnmelden">
-                        <button onclick="window.location.href = 'account/anmeldung.php';"><b>Anmelden</b></button>
-                    </div>
-                    <div class="navigationMenuButtonRegistrieren">
-                        <button onclick="window.location.href = 'account/registrierung/registrierung.php';"><b>Registrieren</b></button>
-                    </div>
-                    <div class="navigationMenuButtonMeinAccount">
-                        <button onclick="window.location.href = 'account/registrierung/registrierung.php';"><img src="image/nutzer.png" width="15" height="15"><b>Mein Account</b></button>
-                    </div>
+                    <?php
+                        if (empty($_SESSION['user'])) {
+                            echo '
+                            <div class="navigationMenuButtonAnmelden">
+                            <button onclick="window.location.href = \'account/anmeldung.php\'"><b>Anmelden</b></button>
+                            </div>
+                            <div class="navigationMenuButtonRegistrieren">
+                                <button onclick="window.location.href = \'account/registrierung.php\'"><b>Registrieren</b></button>
+                            </div>';
+                        } else {
+                            echo '
+                            <div class="navigationMenuButtonMeinAccount">
+                                <button onclick="window.location.href = \'account/meinAccount.php\'"><img src="image/nutzer.png" width="15" height="15"><b>Mein Account</b></button>
+                            </div>';
+                        }
+                    ?>
                 </div>
             </div>
             <div class="searchBarFilterBox">

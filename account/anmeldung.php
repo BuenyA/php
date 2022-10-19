@@ -98,10 +98,7 @@
             </div>
         </div>';
         } else {
-            echo '
-            <form class="login" action="?abmelden=1" method="post">
-                <button class="button login__submit" id="submit" name="btn__submit">Log Out</button>
-            </form>';
+            echo "<script>reloadWindow();</script>";
         }
         ?>
     </div>
