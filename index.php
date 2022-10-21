@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autostar - Deine Auktionsseite für Automobile</title>
+    <title>Autostar - Deine Auktionsseite für Automobile!</title>
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="stylesheet.css">
     <script language="javascript" type="text/javascript" src="javascript.js"></script>
 </head>
 
 <body>
+    <?php
+        session_start();
+    ?>
     <section>
         <div class="backgroundImageFilter">
             <div class="navigationMenu">
@@ -25,15 +28,22 @@
                     <li><a href="Inserieren/inserieren.php">Verkaufen</a></li>
                 </ul>
                 <div class="navigationMenuButton">
-                    <div class="navigationMenuButtonAnmelden">
-                        <button onclick="window.location.href = 'account/anmeldung.php';"><b>Anmelden</b></button>
-                    </div>
-                    <div class="navigationMenuButtonRegistrieren">
-                        <button onclick="window.location.href = 'account/registrierung/registrierung.php';"><b>Registrieren</b></button>
-                    </div>
-                    <div class="navigationMenuButtonMeinAccount">
-                        <button onclick="window.location.href = 'account/registrierung/registrierung.php';"><img src="image/nutzer.png" width="15" height="15"><b>Mein Account</b></button>
-                    </div>
+                    <?php
+                        if (empty($_SESSION['user'])) {
+                            echo '
+                            <div class="navigationMenuButtonAnmelden">
+                            <button onclick="window.location.href = \'account/anmeldung.php\'"><b>Anmelden</b></button>
+                            </div>
+                            <div class="navigationMenuButtonRegistrieren">
+                                <button onclick="window.location.href = \'account/registrierung.php\'"><b>Registrieren</b></button>
+                            </div>';
+                        } else {
+                            echo '
+                            <div class="navigationMenuButtonMeinAccount">
+                                <button onclick="window.location.href = \'account/meinAccount.php\'"><img src="image/nutzer.png" width="15" height="15"><b>Mein Account</b></button>
+                            </div>';
+                        }
+                    ?>
                 </div>
             </div>
             <div class="searchBarFilterBox">
@@ -47,17 +57,6 @@
                 </div>
                 <div class="filterBoxSection">
                     <div class="filterBox">
-                        <div class="filterBoxLeft">
-                            <div class="PKW" id="PKW" onclick="colorSwitchPKW()">
-                                <img class="filterBoxLeftPKWImg" id="filterBoxLeftPKWImg" src="image/car.png" alt="PKW" width="50" height="50">
-                            </div>
-                            <div class="MOPED" id="MOPED" onclick="colorSwitchMOPED()">
-                                <img class="filterBoxLeftMOPEDImg" id="filterBoxLeftMOPEDImg" src="image/motorbike(2).png" alt="MOPED" width="50" height="50">
-                            </div>
-                            <div class="LKW" id="LKW" onclick="colorSwitchLKW()">
-                                <img class="filterBoxLeftLKWImg" id="filterBoxLeftLKWImg" src="image/truck.png" alt="LKW" width="45" height="45">
-                            </div>
-                        </div>
                         <div class="filterBoxRight">
                             <div class="PKWRight">
                                 <div class="filterBoxRightAttribute">

@@ -12,35 +12,37 @@
 
 <body>
 
-<?php
+    <?php
 
-//Warten bis Benutzer einen Registrier Versuch startet
-if(isset($_GET['registrieren__submit'])){
+    //Warten bis Benutzer einen Registrier Versuch startet
+    if (isset($_GET['registrieren__submit'])) {
 
-    //Datenbank import
-    require('../../db.php');
-    require('function_registrierung.php');
+        //Datenbank import
+        require('../../db.php');
+        require('function_registrierung.php');
 
-    //Überprüfung ob die Eingabe korrekt war
-    $fehler = new function_registrierung ($_GET['input__vorname'], $_GET['input__nachname'], $_GET['input__plz'], $_GET['input__ort'], 
-    $_GET['input__adresse'], $_GET['input__telefonnummer'], $_GET['input__geburtstag'], $_GET['input__email'], $_GET['input__passwort']);
-    $fehler->input__test();
-    if(!$fehler) {
-        echo 'Fehler';
-    } else {
-        echo 'Kein Fehler';
+        //Überprüfung ob die Eingabe korrekt war
+        $fehler = new function_registrierung(
+            $_GET['input__vorname'],
+            $_GET['input__nachname'],
+            $_GET['input__plz'],
+            $_GET['input__ort'],
+            $_GET['input__adresse'],
+            $_GET['input__telefonnummer'],
+            $_GET['input__geburtstag'],
+            $_GET['input__email'],
+            $_GET['input__passwort']
+        );
+        $fehler->input__test();
+        if (!$fehler) {
+            echo 'Kein Fehler';
+        } else {
+            echo 'Fehler';
+        }
     }
-
-}
-
-
-
-
-
-?>
-
+    ?>
     <div class="navigationMenuLogo">
-        <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = '../../index.php';">
+        <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = '../index.php';">
     </div>
     <div class="container">
         <div class="screen">
@@ -114,4 +116,5 @@ if(isset($_GET['registrieren__submit'])){
         </div>
     </div>
 </body>
+
 </html>
