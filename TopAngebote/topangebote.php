@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <?php
+        session_start();
+    ?>
     <div class="backgroundImageFilter">
         <div class="navigationMenu">
             <div class="navigationMenuLogo">
@@ -24,12 +27,22 @@
                 <li><a href="../inserieren/inserieren.php">Verkaufen</a></li>
             </ul>
             <div class="navigationMenuButton">
-                <div class="navigationMenuButtonAnmelden">
-                    <button onclick="window.location.href = '../account/anmeldung.php'"><b>Anmelden</b></button>
-                </div>
-                <div class="navigationMenuButtonRegistrieren">
-                    <button onclick="window.location.href = '../account/registrierung/registrierung.php'"><b>Registrieren</b></button>
-                </div>
+                <?php
+                if (empty($_SESSION['user'])) {
+                    echo '
+                            <div class="navigationMenuButtonAnmelden">
+                            <button onclick="window.location.href = \'../account/anmeldung.php\'"><b>Anmelden</b></button>
+                            </div>
+                            <div class="navigationMenuButtonRegistrieren">
+                                <button onclick="window.location.href = \'../account/registrierung.php\'"><b>Registrieren</b></button>
+                            </div>';
+                } else {
+                    echo '
+                            <div class="navigationMenuButtonMeinAccount">
+                                <button onclick="window.location.href = \'../account/meinAccount.php\'"><img src="../image/nutzer.png" width="15" height="15"><b>Mein Account</b></button>
+                            </div>';
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -42,7 +55,7 @@
         $showMax = 6;
         $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
         $resInserat = $db->query($queryInserat);
-        
+
         if ($resInserat !== false && $resInserat->rowCount() > 0) {
             foreach ($resInserat as $row) {
                 if ($counter == $showMax) {
@@ -56,10 +69,10 @@
                                 <div class="topOffersRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                        <p class="auktionspreis"><b>' . number_format($row['Preis'], 0, '.', '.') . ' €</b></p>
                                     </div>
                                     <p>
-                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                        ' . number_format($row['Kilometerstand'], 0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                     </p>
                                     <p>
                                         ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
@@ -80,10 +93,10 @@
                                 <div class="topOffersRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
+                                        <p class="auktionspreis"><b>' . number_format($row['Preis'], 0, ',', '.') . ' €</b></p>
                                     </div>
                                     <p>
-                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                        ' . number_format($row['Kilometerstand'], 0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                     </p>
                                     <p>
                                         ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>

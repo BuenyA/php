@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserat aufgeben</title>
     <link rel="stylesheet" href="inserieren.css">
-    <script language="javascript" type="module" src="inserieren.js"></script>
+    <script language="javascript" type="text/javascript" src="inserieren.js"></script>
 </head>
 
 <body>
     <?php
-
     session_start();
+
     if (empty($_SESSION['user'])) {
         echo '<script>linkToAnmeldung();</script>';
     }
@@ -60,12 +60,22 @@
             <li><a href="../Inserieren/inserieren.php">Verkaufen</a></li>
         </ul>
         <div class="navigationMenuButton">
-            <div class="navigationMenuButtonAnmelden">
-                <button onclick="window.location.href = '../account/anmeldung.php'"><b>Anmelden</b></button>
-            </div>
-            <div class="navigationMenuButtonRegistrieren">
-                <button onclick="window.location.href = '../account/registrierung/registrierung.php'"><b>Registrieren</b></button>
-            </div>
+            <?php
+            if (empty($_SESSION['user'])) {
+                echo '
+                            <div class="navigationMenuButtonAnmelden">
+                            <button onclick="window.location.href = \'../account/anmeldung.php\'"><b>Anmelden</b></button>
+                            </div>
+                            <div class="navigationMenuButtonRegistrieren">
+                                <button onclick="window.location.href = \'../account/registrierung.php\'"><b>Registrieren</b></button>
+                            </div>';
+            } else {
+                echo '
+                            <div class="navigationMenuButtonMeinAccount">
+                                <button onclick="window.location.href = \'../account/meinAccount.php\'"><img src="../image/nutzer.png" width="15" height="15"><b>Mein Account</b></button>
+                            </div>';
+            }
+            ?>
         </div>
     </div>
     <section class="eingaben">
@@ -99,13 +109,13 @@
             <input type="date" size="40" maxlength="250" name="auktionsendeDatum"><br>
             Uhrzeit<br>
             <input type="time" size="40" maxlength="250" name="auktionsendeUhrzeit"><br>
-            
+
             <input type="submit" value="Abschicken">
         </form>
     </section>
-    <script src="./inserieren.js"> 
+    <script src="./inserieren.js">
 
-    </script> 
+    </script>
 </body>
 
 </html>

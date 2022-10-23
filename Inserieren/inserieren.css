@@ -109,3 +109,15 @@ body {
   color: white;
   background-color: rgb(255, 109, 46);
 }
+
+.navigationMenuButtonMeinAccount button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 10em;
+}
+
+.navigationMenuButtonMeinAccount button:hover {
+  color: rgb(255, 109, 46);
+  cursor: pointer;
+}

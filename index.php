@@ -47,14 +47,14 @@
                 </div>
             </div>
             <div class="searchBarFilterBox">
-                <div class="searchBarSection">
+                <!-- <div class="searchBarSection">
                     <div class="searchBar">
                         <div class="searchBarBox">
                             <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
                             <input type="search" text="Suchen...">
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="filterBoxSection">
                     <div class="filterBox">
                         <div class="filterBoxRight">
@@ -304,7 +304,7 @@
                 </div>
                 <div class="angebotMachenBoxTextRechts">
                     <p><b>Inseriere auf Deutschlands größtem Fahrzeugauktionsmarkt</b></br></br>
-                    Dann kannst Du Dein gebrauchtes Auto hier kostenlos verkaufen. Einfach und bequem. Zum maximalen Preis per Inserat oder schnell per Expressverkauf an einer mobile.de</p>
+                    Dann kannst Du Dein gebrauchtes Auto hier kostenlos verkaufen. Einfach und bequem. Zum maximalen Preis per Inserat oder schnell per Expressverkauf</p>
                 </div>
             </div>
             <button class="btnJetztInserieren" onclick="window.location.href = 'Inserieren/inserieren.php';">Jetzt inserieren</button>
