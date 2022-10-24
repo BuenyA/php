@@ -30,6 +30,9 @@
                 if (password_verify($_POST['input__passwort'], $row['passwort']) == 1) {
                     if ($res !== false && $res->rowCount() > 0) {
                         $_SESSION['user'] = $_POST['input__email'];
+                        $_SESSION['id'] = $row['account_ID'];
+                        $_SESSION['vorname'] = $row['vorname'];
+                        $_SESSION['nachname'] = $row['nachname'];
                     } else {
                         echo "<script>showPasswordError();</script>";
                     }

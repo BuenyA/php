@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 * {
   padding: 0;
@@ -142,7 +143,10 @@ body {
 
 .searchBarFilterBox h1 {
   color: white;
-  font-size: 3em;
+  text-align: center;
+  font-size: 3.5em;
+  font-weight: 300;
+  font-family: 'Pacifico', cursive;
 }
 
 .searchBarFilterBox p {
@@ -190,7 +194,8 @@ body {
 }
 
 .backgroundImageFilter {
-  background-image: /* linear-gradient(rgba(0,0,0,0.2), rgb(255, 77, 0, 0.1)), */ url("image/sports-car-4815234.jpg");
+  /* background-image: url("image/sports-car-4815234.jpg"); */
+  background-image: url("image/auto_hintergrund.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

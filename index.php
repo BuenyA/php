@@ -47,6 +47,7 @@
                 </div>
             </div>
             <div class="searchBarFilterBox">
+                <h1>Finde dein Traumauto!</h1>
                 <!-- <div class="searchBarSection">
                     <div class="searchBar">
                         <div class="searchBarBox">
