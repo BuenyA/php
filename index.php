@@ -48,14 +48,6 @@
             </div>
             <div class="searchBarFilterBox">
                 <h1>Finde dein Traumauto!</h1>
-                <!-- <div class="searchBarSection">
-                    <div class="searchBar">
-                        <div class="searchBarBox">
-                            <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
-                            <input type="search" text="Suchen...">
-                        </div>
-                    </div>
-                </div> -->
                 <div class="filterBoxSection">
                     <div class="filterBox">
                         <div class="filterBoxRight">

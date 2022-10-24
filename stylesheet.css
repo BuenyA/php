@@ -149,50 +149,6 @@ body {
   font-family: 'Pacifico', cursive;
 }
 
-.searchBarFilterBox p {
-  color: white;
-}
-
-.searchBar {
-  display: grid;
-  align-items: center;
-  min-height: 55px;
-}
-
-.searchBarBox {
-  color: white;
-  background-color: #202124;
-  width: 45em;
-  border-radius: 6vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.searchBarBox:active,
-.searchBarBox:focus,
-.searchBarBox:hover {
-  background-color: #373a3f;
-}
-
-.searchBarBox input {
-  color: white;
-  outline: none;
-  background-color: transparent;
-  width: 55em;
-  min-height: 40px;
-  border: 0;
-  padding-left: 15px;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.searchBarBox img {
-  margin-left: 12px;
-  -webkit-filter: invert(100%);
-}
-
 .backgroundImageFilter {
   /* background-image: url("image/sports-car-4815234.jpg"); */
   background-image: url("image/auto_hintergrund.jpg");
@@ -211,36 +167,6 @@ body {
   display: flex;
   justify-content: center;
  }
-
-.filterBoxLeft {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-}
-
-.PKW, .MOPED, .LKW {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 3.7em;
-  min-width: 3.7em;
-  border-radius: 15px;
-  box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.05);
-  background-color: white;
-  transition: 0.1s;
-}
-
-.PKW {
-  background-color: rgb(255, 77, 0);
-}
-
-.filterBoxLeftPKWImg {
-  -webkit-filter: invert(100%);
-}
-
-.PKW:hover, .MOPED:hover, .LKW:hover {
-  cursor: pointer;
-}
 
 .filterBoxRight {
   min-width: 750px;
@@ -318,6 +244,7 @@ body {
 
 .btnAngebotSuchen {
   background-color: rgb(255, 77, 0);
+  /* background-color: #f63e02; */
   display: flex;
   justify-content: space-between;
   align-items: center;
