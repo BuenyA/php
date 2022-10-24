@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
 
 * {
   padding: 0;
@@ -7,7 +8,6 @@
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -23,6 +23,7 @@ body {
   min-height: 12vh;
   width: 88vw;
   align-self: flex-start;
+  font-family: 'El Messiri', sans-serif;
 }
 
 .navigationMenuLogo {
@@ -49,6 +50,7 @@ body {
 
 .navigationElements a {
   text-decoration: none;
+  font-size: 1.1em;
   display: inline-block;
   padding: 15px 20px;
   position: relative;
@@ -306,12 +308,13 @@ body {
   object-position: 40%;
 }
 
-.topOffer h1 {
+.topOffer h1, .baldAblaufend h1 {
   padding: 50px;
   font-size: 2em;
   font-weight: 400;
   padding-bottom: 0;
   text-align: center;
+  font-family: 'El Messiri', sans-serif;
 }
 
 .topOffersRight {
@@ -379,14 +382,6 @@ body {
   align-items: center;
 }
 
-.baldAblaufend h1 {
-  padding: 50px;
-  font-size: 2em;
-  font-weight: 400;
-  padding-bottom: 0;
-  text-align: center;
-}
-
 .AutostarApp {
   background-color: #ff4d00;
   display: flex;
@@ -417,6 +412,7 @@ body {
   font-size: 3em;
   font-weight: 400;
   margin-bottom: 0.2em;
+  font-family: 'El Messiri', sans-serif;
 }
 
 .AutostarAppText p {
@@ -485,6 +481,7 @@ body {
 .angebotMachenBox h1 {
   text-align: center;
   margin-top: 1em;
+  font-family: 'El Messiri', sans-serif;
 }
 
 .angebotMachenBoxText {
