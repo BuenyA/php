@@ -1,6 +1,5 @@
 <?php
     class phpFunctions {
-
         public static function showOffer($showMax, $resInserat) {
             $counter = 0;
             // $showMax = 4; Parameter

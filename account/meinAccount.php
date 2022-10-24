@@ -50,9 +50,13 @@
             </div>
         </div>
     </div>
-    <form class="login" action="?abmelden=1" method="post">
-        <button class="button login__submit" id="submit" name="btn__submit">Log Out</button>
-    </form>
+    <section class="accountManagement">
+        <div class="accountManagementBox">
+            <form class="login" action="?abmelden=1" method="post">
+                <button class="button login__submit" id="submit" name="btn__submit">Log Out</button>
+            </form>
+        </div>
+    </section>
     <section class="footer">
         <div class="footerArea">
             <div class="footerRegion">

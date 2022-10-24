@@ -111,6 +111,21 @@ body {
   color: white;
 }
 
+.accountManagement {
+  background-color: #ff4d00;
+  height: 35em;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.accountManagementBox {
+  height: 30em;
+  width: 60em;
+  background-color: white;
+  border-radius: 10px;
+}
+
 .footer {
   min-height: 30em;
   background-color: #191f22;
