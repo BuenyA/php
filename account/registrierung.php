@@ -11,10 +11,7 @@
 </head>
 
 <body>
-
     <?php
-
-    //Warten bis Benutzer einen Registrier Versuch startet
     if (isset($_GET['registrieren__submit'])) {
 
         //Datenbank import

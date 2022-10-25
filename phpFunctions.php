@@ -19,6 +19,7 @@
                                             <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
                                             <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
                                         </div>
+                                        <h2>Test</h2>
                                         <p>
                                             ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                         </p>

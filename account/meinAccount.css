@@ -79,11 +79,15 @@
 .accountManagementElements {
   display: grid;
   justify-content: center;
-  align-items: center;
-  height: 35em;
+  align-items: flex-start;
+  min-height: 35em;
+  /* background-color: #ff4d00; */
 }
 
 .accountManagementBox {
+  display: grid;
+  align-items: center;
+  justify-content: center;
   align-self: flex-start;
   height: 25em;
   width: 60em;
@@ -139,9 +143,15 @@
 }
 
 .accountManagementSpace {
-  background-color: #ff4d00;
+  /* background-color: #ff4d00; */
   width: 15em;
   height: 10em;
+}
+
+@media only screen and (max-width: 1500px) {
+  .accountManagementBox, .accountAusloggenBox {
+    width: 40em;
+  }
 }
 
 /* Meine Inserate */

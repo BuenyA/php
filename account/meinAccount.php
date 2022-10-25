@@ -14,19 +14,19 @@
 
 <body>
     <?php
-    require_once '../db.php';
-    require_once '../phpFunctions.php';
-    session_start();
-    if (isset($_GET['abmelden'])) {
-        session_destroy();
-        echo "<script>reloadWindow();</script>";
-    } elseif (!isset($_GET['page'])) {
-        echo '<script>reloadWindowMeinAccount();</script>';
-    }
-    if (empty($_SESSION['user'])) {
-        echo '<script>linkToAnmeldung();</script>';
-    }
-    phpFunctions::printNavigationBar();
+        require_once '../db.php';
+        require_once '../phpFunctions.php';
+        session_start();
+        if (isset($_GET['abmelden'])) {
+            session_destroy();
+            echo "<script>reloadWindow();</script>";
+        } elseif (!isset($_GET['page'])) {
+            echo '<script>reloadWindowMeinAccount();</script>';
+        }
+        if (empty($_SESSION['user'])) {
+            echo '<script>linkToAnmeldung();</script>';
+        }
+        phpFunctions::printNavigationBar();
     ?>
     <section class="accountManagement">
         <?php
@@ -44,6 +44,69 @@
                             <div class="accountManagementElements">
                                 <div class="accountManagementBox">
                                     <h2>Mein Account</h2>
+                                    <div class="screen">
+                                        <div class="screen__content">
+                                            <form class="login">
+                                                <div class="login__field__section">
+                                                    <div class="login__field">
+                                                        <i class="login__icon fas fa-user"></i>
+                                                        <!-- input vorname -->
+                                                        <input type="text" class="login__input" placeholder="Vorname" name="input__vorname">
+                                                    </div>
+                                                    <div class="login__field">
+                                                        <i class="login__icon fas fa-lock"></i>
+                                                        <!-- input nachname -->
+                                                        <input type="text" class="login__input" placeholder="Nachname" name="input__nachname">
+                                                    </div>
+                                                </div>
+                                                <div class="login__field__section">
+                                                    <div class="login__field login__field__plz">
+                                                        <i class="login__icon fas fa-user"></i>
+                                                        <!-- input plz -->
+                                                        <input type="text" class="login__input login__input__plz" placeholder="PLZ" maxlength="5" name="input__plz">
+                                                    </div>
+                                                    <div class="login__field">
+                                                        <i class="login__icon fas fa-lock"></i>
+                                                        <!-- input ort -->
+                                                        <input type="text" class="login__input" placeholder="Ort" name="input__ort">
+                                                    </div>
+                                                    <div class="login__field">
+                                                        <i class="login__icon fas fa-lock"></i>
+                                                        <!-- input adresse -->
+                                                        <input type="text" class="login__input" placeholder="Straße und Hausnummer" name="input__adresse">
+                                                    </div>
+                                                </div>
+                                                <div class="login__field__section">
+                                                    <div class="login__field">
+                                                        <i class="login__icon fas fa-user"></i>
+                                                        <!-- input telefonnummer -->
+                                                        <input type="text" class="login__input" placeholder="Telefonnummer" name="input__telefonnummer">
+                                                    </div>
+                                                    <div class="login__field">
+                                                        <i class="login__icon fas fa-lock"></i>
+                                                        <!-- input geburtstag -->
+                                                        <input type="date" class="login__input" placeholder="Geburtsdatum" name="input__geburtstag">
+                                                    </div>
+                                                </div>
+                                                <div class="login__field__section">
+                                                    <div class="login__field">
+                                                        <i class="login__icon fas fa-user"></i>
+                                                        <!-- input email -->
+                                                        <input type="text" class="login__input" placeholder="E-Mail" name="input__email">
+                                                    </div>
+                                                    <div class="login__field">
+                                                        <i class="login__icon fas fa-lock"></i>
+                                                        <!-- input passwort -->
+                                                        <input type="password" class="login__input" placeholder="Passwort" name="input__passwort">
+                                                    </div>
+                                                </div>
+                                                <button class="button login__submit" name="registrieren__submit">
+                                                    <span class="button__text">Ändern</span>
+                                                    <i class="button__icon fas fa-chevron-right"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="accountAusloggenBox">
                                     <div class="accountAusloggenBoxLeft">
@@ -51,8 +114,8 @@
                                         <p>Möchten Sie sich ausloggen? <br />Dann betätigen Sie die folgende Schaltfläche.</p>
                                     </div>
                                     <div class="accountAusloggenBoxRight">
-                                        <form class="login" action="?abmelden=1" method="post">
-                                            <button class="button login__submit" id="submit" name="btn__submit"><b>Log Out</b></button>
+                                        <form class="" action="?abmelden=1" method="post">
+                                            <button class="button" id="submit" name="btn__submit"><b>Log Out</b></button>
                                         </form>
                                     </div>
                                 </div>
@@ -97,9 +160,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    ';
+                        ';
                     }
+                    echo '
+                        </div>
+                    ';
                 }
             } elseif ($_GET['page'] == 'MeineGebote'){
                 echo '<h1>Meine Gebote</h1>
@@ -140,10 +205,11 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    ';
+                        </div>';
                     }
+                    echo '
+                        </div>
+                    ';
                 }
             } elseif ($_GET['page'] == 'MeineFavoriten'){
                 echo '<h1>Meine Favoriten</h1>
@@ -184,10 +250,11 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    ';
+                        </div>';
                     }
+                    echo '
+                        </div>
+                    ';
                 }
             }
         ?>
