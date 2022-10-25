@@ -121,7 +121,6 @@
             $resInserat = $db->query($queryInserat);
 
             phpFunctions::showOffer(4, $resInserat);
-        
         ?>
         <button class="btnMehrAnzeigen">
             Mehr Anzeigen
@@ -135,7 +134,6 @@
             $resInserat = $db->query($queryInserat);
             
             phpFunctions::showOffer(4, $resInserat);
-            
             unset($db);
         ?>
         <button class="btnMehrAnzeigen">
