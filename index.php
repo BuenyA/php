@@ -7,13 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autostar - Deine Auktionsseite für Automobile!</title>
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="indexSheet.css">
     <script language="javascript" type="text/javascript" src="javascript.js"></script>
 </head>
 
 <body>
     <?php
         session_start();
+        require_once './db.php';
+        require_once './phpFunctions.php';
     ?>
     <section>
         <div class="backgroundImageFilter">
@@ -114,9 +116,6 @@
     <section class="topOffer">
         <h1>Top-Angebote</h1>
         <?php
-            require_once './db.php';
-            require_once './phpFunctions.php';
-
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
             $resInserat = $db->query($queryInserat);
 
@@ -183,49 +182,8 @@
             <img src="image/AutostarProductsBig.png" width="1000" height="500">
         </div>
     </section>
-    <section class="footer">
-        <div class="footerArea">
-            <div class="footerRegion">
-                <h1><b>Unternehmen</b></h1>
-                <p>Über Uns</p>
-                <p>Kontakt</p>
-                <p>Hilfe</p>
-            </div>
-            <div class="footerRegion">
-                <h1><b>Verkaufen</b></h1>
-                <p>Verkäuferportal</p>
-                <p>Anleitung zum Verkaufen</p>
-                <p>News für gewerbliche Verkäufer</p>
-                <p>Gebühren</p>
-                <p>eBay Shop eröffnen</p>
-                <p>Grundsätze für Verkäufer: Übersicht</p>
-                <p>Verkäufer-Tools</p>
-                <p>Versand</p>
-                <p>International verkaufen</p>
-                <p>Rechtsportal</p>
-                <p>Verkäuferschutz</p>
-                <p>Elektronik-Ankauf</p>
-            </div>
-            <div class="footerRegion">
-                <h1><b>Handel</b></h1>
-                <p>Anmelden</p>
-                <p>Registrieren</p>
-                <p>Verkaufen</p>
-                <p>Händler AGBs</p>
-            </div>
-            <div class="footerRegion">
-                <h1><b>Hilfe</b></h1>
-                <p>Barrierefreiheit</p>
-                <p>Sicherheitsportal</p>
-                <p>Rechtsportal</p>
-                <p>Fragen und Antworten</p>
-            </div>
-        </div>
-        <div class="footerBelow">
-            <img src="image/AutostarLogo.png" width="200" height="40">
-            <p class="footerFooter">Unsere AGBs - Datenschutzerklärung - Impressum - Hinweise zu Cookies - Hinweise zu interessenbasierter Werbung </br>
-            ©1996-2022 Autostar AG und Partner-Unternehmen</p>
-        </div>
-    </section>
+    <?php
+        phpFunctions::printFooter();
+    ?>
 </body>
 </html>

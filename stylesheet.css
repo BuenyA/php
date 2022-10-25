@@ -16,19 +16,48 @@ body {
   display: grid;
 }
 
+h1, h2 {
+  font-family: 'El Messiri', sans-serif;
+}
+
+h1 {
+  /* font-size: 1.7em;
+  text-align: center; */
+  letter-spacing: 1px;
+  font-size: 2em;
+  font-weight: 400;
+  text-align: center;
+  font-family: 'El Messiri', sans-serif;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+h3 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  font-weight: 400;
+  border-bottom: 2px solid white;
+}
+
+h4 {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
 .navigationMenu {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   min-height: 12vh;
-  width: 88vw;
   align-self: flex-start;
   font-family: 'El Messiri', sans-serif;
 }
 
 .navigationMenuLogo {
   min-width: 200px;
-  filter: invert(100%);
 }
 
 .navigationMenuLogo {
@@ -54,7 +83,7 @@ body {
   display: inline-block;
   padding: 15px 20px;
   position: relative;
-  color: white;
+  color: black;
   list-style: none; 
   text-align: center;
   transition: 0.1s;
@@ -95,7 +124,7 @@ body {
   background-color: transparent;
   padding: 5px;
   width: 8em;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 12px;
   transition: 0.5s;
 }
@@ -121,158 +150,9 @@ body {
   width: 10em;
 }
 
-.navigationMenuButtonMeinAccount img {
-  -webkit-filter: invert(100%);
-}
-
 .navigationMenuButtonMeinAccount button:hover {
   color: rgb(255, 109, 46);
   cursor: pointer;
-}
-
-.searchBarFilterBox {
-  min-height: 20em;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-}
-
-.searchBarSection {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.searchBarFilterBox h1 {
-  color: white;
-  text-align: center;
-  font-size: 3.5em;
-  font-weight: 300;
-  font-family: 'Pacifico', cursive;
-}
-
-.backgroundImageFilter {
-  /* background-image: url("image/sports-car-4815234.jpg"); */
-  background-image: url("image/auto_hintergrund.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: grid;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-}
-
-.filterBoxSection {}
-
-.filterBox {
-  display: flex;
-  justify-content: center;
- }
-
-.filterBoxRight {
-  min-width: 750px;
-  border-radius: 15px;
-  box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.05);
-  background-color: white;
-}
-
-.filterBoxRightAttribute {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 180px;
-}
-
-.filterBoxRight input, .filterBoxRight select {
-  border: 1px solid rgb(177, 177, 177);
-  border-radius: 8px;
-}
-
-.Marke, .Modell, .Preis, .KilometerBis, .Erstzulassung, .btnAngebotSuchenDiv {
-  width: 200px;
-  height: 70px;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-}
-
-.filterBoxRightAttribute h2 {
-  font-size: 16px;
-}
-
-.Marke select {
-  width: 150px;
-  height: 30px;
-  padding-left: 5px;
-  transition: 0.3s;
-}
-
-.KilometerBis input {
-  height: 30px;
-  padding-left: 7px;
-}
-
-.Modell select {
-  width: 150px;
-  height: 30px;
-  padding-left: 5px;
-  transition: 0.3s;
-}
-
-.Erstzulassung input {
-  height: 30px;
-  padding-left: 7px;
-}
-
-.Preis input {
-  width: 70px;
-  height: 30px;
-  padding-left: 7px;
-}
-
-.Preis {
-  display: grid;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.preisAngabe {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 150px;
-}
-
-.btnAngebotSuchen {
-  background-color: rgb(255, 77, 0);
-  /* background-color: #f63e02; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  padding: 7px;
-  padding-left: 0.6em;
-  padding-right: 0.6em;
-  border: 0;
-  border-radius: 8px;
-  font-weight: 400;
-  transition: 0.3s;
-}
-
-.btnAngebotSuchen:hover {
-  background-color: rgb(255, 109, 46);
-  cursor: pointer;
-}
-
-.btnAngebotSuchen img {
-  -webkit-filter: invert(100%);
-  padding-right: 10px;
-}
-
-.topOffer {
-  display: grid;
-  align-items: center;
 }
 
 .topOfferPlace {
@@ -306,7 +186,7 @@ body {
   object-position: 40%;
 }
 
-.topOffer h1, .baldAblaufend h1 {
+.topOffer h1 {
   padding: 50px;
   font-size: 2em;
   font-weight: 400;
@@ -373,161 +253,6 @@ body {
   background-color: #00b2ff;
   border: 1px solid #00b2ff;
   cursor: pointer;
-}
-
-.baldAblaufend {
-  display: grid;
-  align-items: center;
-}
-
-.AutostarApp {
-  background-color: #ff4d00;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 35em;
-}
-
-.AutostarAppText {
-  color: white;
-  margin-left: 4em;
-}
-
-.AutostarAppUberschrift {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.AutostarAppUberschrift img {
-  filter: invert(100%);
-  padding-bottom: 0.8em;
-  margin-right: -0.7em;
-  margin-left: -0.7em;
-}
-
-.AutostarApp h1 {
-  font-size: 3em;
-  font-weight: 400;
-  margin-bottom: 0.2em;
-  font-family: 'El Messiri', sans-serif;
-}
-
-.AutostarAppText p {
-  font-size: 1.2em;
-}
-
-.stores {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 5em;
-}
-
-.playstore, .appstore {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: white;
-  text-decoration: none;
-  min-width: 11em;
-}
-
-.playstore:hover, .appstore:hover {
-  cursor: pointer;
-}
-
-.AutostarProduct {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 35em;
-}
-
-.AutostarProductBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.angebotMachen {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  min-height: 500px;
-}
-
-.angebotMachenBox {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  width: 800px;
-  min-height: 400px;
-  border-radius: 5px;
-  border: 1px solid rgb(194, 194, 194);
-  transition: 0.3s;
-}
-
-.angebotMachenBox:hover {
-  box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
-  border: 1px solid rgb(255, 255, 255);
-}
-
-.angebotMachenBox p {
-  text-align: center;
-}
-
-.angebotMachenBox h1 {
-  text-align: center;
-  margin-top: 1em;
-  font-family: 'El Messiri', sans-serif;
-}
-
-.angebotMachenBoxText {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  justify-self: center;
-  margin-top: 2em;
-}
-
-.angebotMachenBoxText p {
-  text-align: left;
-}
-
-.angebotMachenBoxTextLinks, .angebotMachenBoxTextRechts {
-  width: 100%;
-}
-
-.angebotMachenBoxTextLinks {
-  margin-left: 5em;
-}
-
-.btnJetztInserieren {
-  justify-self: center;
-  background: #fff;
-  font-size: 14px;
-  margin-top: 30px;
-  padding: 16px 20px;
-  border-radius: 26px;
-  border: 1px solid #D4D3E8;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  width: 20%;
-  color: #ff6600;
-  box-shadow: 0px 2px 2px rgb(255, 77, 0);
-  cursor: pointer;
-  margin-bottom: 2em;
-  transition: .2s;
-}
-
-.btnJetztInserieren:active,
-.btnJetztInserieren:focus,
-.btnJetztInserieren:hover {
-  border-color: #ff6600;
-  outline: none;
 }
 
 .footer {

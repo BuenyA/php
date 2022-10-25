@@ -5,3 +5,7 @@ function linkToAnmeldung() {
 function reloadWindow() {
     window.location = "../index.php";
 }
+
+function reloadWindowMeinAccount() {
+    window.location = "?page=MeinKonto";
+}
