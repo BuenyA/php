@@ -99,8 +99,8 @@
                                                 Ort: ' . $row['ort'] . '
                                             </p>
                                             <form method="get">
-                                                <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'"><br>
-                                                <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'"><br>
+                                                <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
+                                                <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
                                                 <input type="submit" value="Merken" class="merkenButton" />
                                             </form>
                                         </div>
@@ -126,8 +126,8 @@
                                                 Ort: ' . $row['ort'] . '
                                             </p>
                                             <form method="get">
-                                                <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'"><br>
-                                                <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'"><br>
+                                                <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
+                                                <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
                                                 <input type="submit" value="Merken" class="merkenButton" />
                                             </form>
                                         </div>
