@@ -12,11 +12,16 @@ $countdown = round(($event - $today)/86400);
 //D: DISPLAYS COUNTDOWN UNTIL EVENT
 echo "$countdown days until Christmas"; */
 
+$waiting_day = strtotime("2022-11-01 12:00:00+0400");
+$time_left = $waiting_day - time();
 
-$wedding = strtotime("2022-11-01 12:00:00+0400"); // or whenever the wedding is
-$secondsLeft = $wedding - time();
-$days = floor($secondsLeft / (60*60*24)); // here the brackets
-$hours = floor(($secondsLeft - ($days*60*60*24)) / (60*60)); // and here too
-echo "$days days and $hours hours left";
+$days = floor($time_left / (60*60*24));
+$time_left %= (60 * 60 * 24);
+$hours = floor($time_left / (60 * 60));
+$time_left %= (60 * 60);
+$min = floor($time_left / 60);
+$time_left %= 60;
+$sec = $time_left;
 
+echo "Remaing time: $days days and $hours hours and $min min and $sec sec left";
 ?>

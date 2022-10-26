@@ -39,6 +39,7 @@
                                     <li><a href="?page=MeineInserate">Meine Inserate</a></li>
                                     <li><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
+                                    <li><a href="?page=MeineNachrichten">Meine Nachrichten</a></li>
                                 </ul>
                             </div>
                             <div class="accountManagementElements">
@@ -129,6 +130,7 @@
                                     <li class="accountManagementNavigationElementsActive"><a href="?page=MeineInserate">Meine Inserate</a></li>
                                     <li><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
+                                    <li><a href="?page=MeineNachrichten">Meine Nachrichten</a></li>
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
@@ -175,6 +177,7 @@
                                     <li><a href="?page=MeineInserate">Meine Inserate</a></li>
                                     <li class="accountManagementNavigationElementsActive"><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
+                                    <li><a href="?page=MeineNachrichten">Meine Nachrichten</a></li>
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
@@ -220,6 +223,7 @@
                                     <li><a href="?page=MeineInserate">Meine Inserate</a></li>
                                     <li><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li class="accountManagementNavigationElementsActive"><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
+                                    <li><a href="?page=MeineNachrichten">Meine Nachrichten</a></li>
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
@@ -256,6 +260,24 @@
                         </div>
                     ';
                 }
+            } elseif ($_GET['page'] == 'MeineNachrichten'){
+                echo '<h1>Meine Nachrichten</h1>
+                        <div class="accountManagementBody">
+                            <div class="accountManagementNavigation">
+                                <ul class="accountManagementNavigationElements">
+                                    <li><a href="?page=MeinKonto">Mein Konto</a></li>
+                                    <li><a href="?page=MeineInserate">Meine Inserate</a></li>
+                                    <li><a href="?page=MeineGebote">Meine Gebote</a></li>
+                                    <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
+                                    <li class="accountManagementNavigationElementsActive"><a href="?page=MeineNachrichten">Meine Nachrichten</a></li>
+                                </ul>
+                            </div>
+                            <div class="accountManagementElements">';
+                $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
+                $resInserat = $db->query($queryInserat);
+                echo '
+                    </div>
+                    ';
             }
         ?>
             <div class="accountManagementSpace">

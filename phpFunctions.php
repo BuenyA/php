@@ -9,6 +9,16 @@
                     if ($counter == $showMax) {
                         break;
                     }
+                    // $waiting_day = strtotime("2022-10-30 12:00:00+0200");
+                    $waiting_day = strtotime($row['Auktionsende'].' '.$row['Auktionsende_Uhrzeit']);
+                    $time_left = $waiting_day - time();
+                    $days = floor($time_left / (60*60*24));
+                    $time_left %= (60 * 60 * 24);
+                    $hours = floor($time_left / (60 * 60));
+                    $time_left %= (60 * 60);
+                    $min = floor($time_left / 60);
+                    $time_left %= 60;
+                    $sec = $time_left;
                     if (($counter % 2) == 0) {
                         echo '
                             <div class="topOfferPlace">
@@ -19,7 +29,7 @@
                                             <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
                                             <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
                                         </div>
-                                        <h2>Test</h2>
+                                        <h5>'.$days.'d '.$hours.'h '.$min.'m '.$sec.'s</h5>
                                         <p>
                                             ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                         </p>
@@ -44,6 +54,7 @@
                                             <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
                                             <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
                                         </div>
+                                        <h5>'.$days.'d '.$hours.'h '.$min.'m '.$sec.'s</h5>
                                         <p>
                                             ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                         </p>
