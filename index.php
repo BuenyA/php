@@ -16,6 +16,9 @@
         session_start();
         require_once './db.php';
         require_once './phpFunctions.php';
+        if (isset($_GET['anmelden'])) {
+            echo '<script>window.location = "./account/anmeldung.php";</script>';
+        }
     ?>
     <section>
         <div class="backgroundImageFilter">

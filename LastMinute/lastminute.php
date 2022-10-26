@@ -17,6 +17,9 @@
         session_start();
         require_once '../db.php';
         require_once '../phpFunctions.php';
+        if (isset($_GET['anmelden'])) {
+            echo '<script>linkToAnmeldung();</script>';
+        }
         phpFunctions::printNavigationBar();
     ?>
     <section class="baldAblaufend">

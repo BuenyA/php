@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="../stylesheet.css">
     <link rel="stylesheet" href="suchen.css">
-    <!-- <script language="javascript" type="text/javascript" src="javascript.js"></script> -->
+    <script language="javascript" type="text/javascript" src="index.js"></script>
 </head>
 
 <body>
@@ -17,6 +17,9 @@
         session_start();
         require_once '../db.php';
         require_once '../phpFunctions.php';
+        if (isset($_GET['anmelden'])) {
+            echo '<script>linkToAnmeldung()";</script>';
+        }
         phpFunctions::printNavigationBar();
     ?>
     <section class="suchergebnisse">

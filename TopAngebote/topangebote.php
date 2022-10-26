@@ -16,7 +16,10 @@
     <?php
         session_start();
         require_once '../db.php';
-        require_once '../phpFunctions.php';
+        require_once '../phpFunctions.php';#
+        if (isset($_GET['anmelden'])) {
+            echo '<script>linkToAnmeldung();</script>';
+        }
         phpFunctions::printNavigationBar();
     ?>
     <section class="topAngebote">
@@ -33,7 +36,6 @@
             <img src="image/down-arrow.png" width="20" height="20">
         </button>
     </section>
-    
     <?php
         phpFunctions::printFooter();
     ?>

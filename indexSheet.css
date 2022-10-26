@@ -315,6 +315,10 @@ h5 {
   object-position: 40%;
 }
 
+.displayNone {
+  display: none;
+}
+
 .topOffer h1, .baldAblaufend h1 {
   padding: 50px;
   font-size: 2em;
@@ -361,7 +365,7 @@ h5 {
   transition: 0.5s;
 }
 
-.topOffersRight button {
+.merkenButton {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -375,9 +379,12 @@ h5 {
   font-size: 12px;
   font-weight: 500;
   border: 1px solid rgb(205, 205, 205);
+  background: url("./image/herz.png") no-repeat left;
+  background-size: 15px;
+  padding-left: 20px;
 }
 
-.topOffersRight button:hover {
+.merkenButton:hover {
   filter: invert(100%);
   background-color: #00b2ff;
   border: 1px solid #00b2ff;
