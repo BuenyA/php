@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="../stylesheet.css">
     <link rel="stylesheet" href="topangebote.css">
-    <!-- <script language="javascript" type="text/javascript" src="javascript.js"></script> -->
+    <script language="javascript" type="text/javascript" src="../index.js"></script>
 </head>
 
 <body>
@@ -33,6 +33,7 @@
             <img src="image/down-arrow.png" width="20" height="20">
         </button>
     </section>
+    
     <?php
         phpFunctions::printFooter();
     ?>

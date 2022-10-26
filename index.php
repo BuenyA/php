@@ -8,7 +8,7 @@
     <title>Autostar - Deine Auktionsseite für Automobile!</title>
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="indexSheet.css">
-    <script language="javascript" type="text/javascript" src="javascript.js"></script>
+    <script language="javascript" type="text/javascript" src="index.js"></script>
 </head>
 
 <body>
@@ -132,7 +132,7 @@
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
             $resInserat = $db->query($queryInserat);
             
-            phpFunctions::showOffer(4, $resInserat);
+            phpFunctions::showOffer(7, $resInserat, 4);
             unset($db);
         ?>
         <button class="btnMehrAnzeigen">

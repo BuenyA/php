@@ -1,7 +1,7 @@
 <?php
     class phpFunctions {
-        public static function showOffer($showMax, $resInserat) {
-            $counter = 0;
+
+        public static function showOffer($showMax, $resInserat, $counter = 0) {
             // $showMax = 4; Parameter
             // $resInserat Parameter
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
@@ -9,16 +9,9 @@
                     if ($counter == $showMax) {
                         break;
                     }
-                    // $waiting_day = strtotime("2022-10-30 12:00:00+0200");
+                    // $waiting_day = strtotime("2022-10-30 12:00:00+0200"); // Test Deklaration
                     $waiting_day = strtotime($row['Auktionsende'].' '.$row['Auktionsende_Uhrzeit']);
-                    $time_left = $waiting_day - time();
-                    $days = floor($time_left / (60*60*24));
-                    $time_left %= (60 * 60 * 24);
-                    $hours = floor($time_left / (60 * 60));
-                    $time_left %= (60 * 60);
-                    $min = floor($time_left / 60);
-                    $time_left %= 60;
-                    $sec = $time_left;
+                    $getDateTime = date("F d, Y H:i:s", $waiting_day); // JavaScript Variable
                     if (($counter % 2) == 0) {
                         echo '
                             <div class="topOfferPlace">
@@ -29,7 +22,8 @@
                                             <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
                                             <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
                                         </div>
-                                        <h5>'.$days.'d '.$hours.'h '.$min.'m '.$sec.'s</h5>
+                                        <h5 id="counter'.$counter.'"></h5>
+                                        <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
                                         <p>
                                             ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                         </p>
@@ -54,7 +48,8 @@
                                             <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
                                             <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
                                         </div>
-                                        <h5>'.$days.'d '.$hours.'h '.$min.'m '.$sec.'s</h5>
+                                        <h5 id="counter'.$counter.'"></h5>
+                                        <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
                                         <p>
                                             ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                         </p>

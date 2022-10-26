@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="../stylesheet.css">
     <link rel="stylesheet" href="lastminute.css">
-    <!-- <script language="javascript" type="text/javascript" src="javascript.js"></script> -->
+    <script language="javascript" type="text/javascript" src="../index.js"></script>
 </head>
 
 <body>
