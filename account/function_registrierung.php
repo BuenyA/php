@@ -7,18 +7,16 @@
         public $ort;
         public $adresse;
         public $telefonnummer;
-        public $geburtstag;
         public $email;
         public $passwort;
 
-        public function __construct($vorname, $nachname, $plz, $ort, $adresse, $telefonnummer, $geburtstag, $email, $passwort) {
+        public function __construct($vorname, $nachname, $plz, $ort, $adresse, $telefonnummer, $email, $passwort) {
             $this->vorname=$vorname;
             $this->nachname=$nachname;
             $this->plz=$plz;
             $this->ort=$ort;
             $this->adresse=$adresse;
             $this->telefonnummer=$telefonnummer;
-            $this->geburtstag=$geburtstag;
             $this->email=$email;
             $this->passwort=$passwort;
         }
@@ -55,11 +53,6 @@
 
             //Überprüft ob eine Telefonnummer eingegeben wurde
             if(strlen($this->telefonnummer) == 0) {
-                $error = true;
-            }
-
-            //Überprüft ob ein Geburtsdatum eingegeben wurde
-            if($this->geburtstag == null) {
                 $error = true;
             }
 

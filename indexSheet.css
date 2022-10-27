@@ -390,6 +390,31 @@ h5 {
   cursor: pointer;
 }
 
+.merkenButtonPressed {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 210px;
+  border-radius: 5px;
+  padding: 5px;
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  background: url("./image/herz.png") no-repeat left;
+  background-size: 15px;
+  filter: invert(100%);
+  background-color: #00b2ff;
+  border: 1px solid #00b2ff;
+  background-origin: content-box;
+}
+
+.merkenButtonPressed:hover {
+  filter: invert(0%);
+  background-color: white;
+  border: 1px solid rgb(205, 205, 205);
+  cursor: pointer;
+}
+
 .baldAblaufend {
   display: grid;
   align-items: center;

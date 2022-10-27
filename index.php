@@ -19,6 +19,19 @@
         if (isset($_GET['anmelden'])) {
             echo '<script>window.location = "./account/anmeldung.php";</script>';
         }
+        if (isset($_GET['insertMerken'])) {
+            $InseratNrPost = $_POST['InseratNr'];
+            $AccIDPost = $_POST['AccID'];
+            $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
+            $resMerken = $db->query($queryMerken);
+            if ($resMerken !== false && $resMerken->rowCount() > 0) {
+                $queryMerkenDelete = "DELETE FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
+                $resMerkenDelete = $db->query($queryMerkenDelete);
+            } else {
+                $queryMerkenInsert = "INSERT INTO Merken(InseratNr, AccountNr) VALUES ('$InseratNrPost','$AccIDPost')";
+                $resMerkenInsert = $db->query($queryMerkenInsert);
+            }
+        }
     ?>
     <section>
         <div class="backgroundImageFilter">
@@ -122,7 +135,11 @@
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
             $resInserat = $db->query($queryInserat);
 
-            phpFunctions::showOffer(4, $resInserat);
+            if (empty($_SESSION['user'])) {
+                phpFunctions::showOffer(4, $resInserat);
+            } else {
+                phpFunctions::showOffer(4, $resInserat, $_SESSION['id']);
+            }
         ?>
         <button class="btnMehrAnzeigen">
             Mehr Anzeigen
@@ -134,8 +151,11 @@
         <?php
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
             $resInserat = $db->query($queryInserat);
-            
-            phpFunctions::showOffer(7, $resInserat, 4);
+            if (empty($_SESSION['user'])) {
+                phpFunctions::showOffer(7, $resInserat, 0, 4);
+            } else {
+                phpFunctions::showOffer(7, $resInserat, $_SESSION['id'], 4);
+            }
             unset($db);
         ?>
         <button class="btnMehrAnzeigen">
