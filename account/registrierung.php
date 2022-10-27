@@ -15,7 +15,7 @@
     if (isset($_GET['registrieren__submit'])) {
 
         //Datenbank import
-        require('../../db.php');
+        require('../db.php');
         require('function_registrierung.php');
 
         //Überprüfung ob die Eingabe korrekt war
