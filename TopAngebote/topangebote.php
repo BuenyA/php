@@ -16,7 +16,7 @@
     <?php
         session_start();
         require_once '../db.php';
-        require_once '../phpFunctions.php';#
+        require_once '../phpFunctions.php';
         if (isset($_GET['anmelden'])) {
             echo '<script>linkToAnmeldung();</script>';
         }
@@ -25,10 +25,15 @@
     <section class="topAngebote">
         <h1>Top-Angebote</h1>
         <?php
-        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
+        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID";
         $resInserat = $db->query($queryInserat);
         
-        phpFunctions::showOffer(6, $resInserat);
+        if (empty($_SESSION['user'])) {
+            phpFunctions::showOffer(6, $resInserat);
+        } else {
+            phpFunctions::showOffer(6, $resInserat, $_SESSION['id']);
+        }
+
         unset($db);
         ?>
         <button class="btnMehrAnzeigen">

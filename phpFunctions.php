@@ -1,6 +1,6 @@
 <?php
     class phpFunctions {
-        public static function showOffer($showMax, $resInserat, $counter = 0) {
+        public static function showOffer($showMax, $resInserat, $AccNr = 0, $counter = 0) {
             if (empty($_SESSION['user'])) {
                 if ($resInserat !== false && $resInserat->rowCount() > 0) {
                     foreach ($resInserat as $row) {
@@ -71,9 +71,24 @@
                 }
             } else {
                 if ($resInserat !== false && $resInserat->rowCount() > 0) {
+                    // Komischeweise funtioniert das require von dp.php nicht. Deswegen nochmal ein eigener Verbindungsaufbau.
+                    $dsn = 'mysql:dbname=Autostar;host=db;port=3306';
+                    try {
+                        $db = new PDO( $dsn, 'root', '' );
+                    } catch (PDOException $e){
+                        exit( 'Connection failed: ' . $e->getMessage());
+                    }
                     foreach ($resInserat as $row) {
                         if ($counter == $showMax) {
                             break;
+                        }
+                        $InsNr = $row['Inserat_Nr'];
+                        $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InsNr AND AccountNr = $AccNr";
+                        $resMerken = $db->query($queryMerken);
+                        if ($resMerken !== false && $resMerken->rowCount() > 0) {
+                            $cssClassVariable = 'merkenButtonPressed';
+                        } else {
+                            $cssClassVariable = 'merkenButton';
                         }
                         // $waiting_day = strtotime("2022-10-30 12:00:00+0200"); // Test Deklaration
                         $waiting_day = strtotime($row['Auktionsende'].' '.$row['Auktionsende_Uhrzeit']);
@@ -98,10 +113,10 @@
                                                 Tel.: +49 123 456789</br>
                                                 Ort: ' . $row['ort'] . '
                                             </p>
-                                            <form method="get">
+                                            <form action="?insertMerken=1" method="post">
                                                 <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
                                                 <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
-                                                <input type="submit" value="Merken" class="merkenButton" />
+                                                <input type="submit" value="      Merken" class="'.$cssClassVariable.'" />
                                             </form>
                                         </div>
                                     </div>
@@ -125,10 +140,10 @@
                                                 Tel.: +49 123 456789</br>
                                                 Ort: ' . $row['ort'] . '
                                             </p>
-                                            <form method="get">
+                                            <form action="?insertMerken=1" method="post">
                                                 <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
                                                 <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
-                                                <input type="submit" value="Merken" class="merkenButton" />
+                                                <input type="submit" value="      Merken" class="'.$cssClassVariable.'" />
                                             </form>
                                         </div>
                                     </div>

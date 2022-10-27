@@ -20,6 +20,19 @@
         if (isset($_GET['anmelden'])) {
             echo '<script>linkToAnmeldung();</script>';
         }
+        if (isset($_GET['insertMerken'])) {
+            $InseratNrPost = $_POST['InseratNr'];
+            $AccIDPost = $_POST['AccID'];
+            $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
+            $resMerken = $db->query($queryMerken);
+            if ($resMerken !== false && $resMerken->rowCount() > 0) {
+                $queryMerkenDelete = "DELETE FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
+                $resMerkenDelete = $db->query($queryMerkenDelete);
+            } else {
+                $queryMerkenInsert = "INSERT INTO Merken(InseratNr, AccountNr) VALUES ('$InseratNrPost','$AccIDPost')";
+                $resMerkenInsert = $db->query($queryMerkenInsert);
+            }
+        }
         phpFunctions::printNavigationBar();
     ?>
     <section class="baldAblaufend">
@@ -28,7 +41,11 @@
         $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
         $resInserat = $db->query($queryInserat);
         
-        phpFunctions::showOffer(6, $resInserat);
+        if (empty($_SESSION['user'])) {
+            phpFunctions::showOffer(6, $resInserat);
+        } else {
+            phpFunctions::showOffer(6, $resInserat, $_SESSION['id']);
+        }
         unset($db);
         ?>
         <button class="btnMehrAnzeigen">

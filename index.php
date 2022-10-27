@@ -122,7 +122,11 @@
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
             $resInserat = $db->query($queryInserat);
 
-            phpFunctions::showOffer(4, $resInserat);
+            if (empty($_SESSION['user'])) {
+                phpFunctions::showOffer(4, $resInserat);
+            } else {
+                phpFunctions::showOffer(4, $resInserat, $_SESSION['id']);
+            }
         ?>
         <button class="btnMehrAnzeigen">
             Mehr Anzeigen
@@ -134,8 +138,11 @@
         <?php
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
             $resInserat = $db->query($queryInserat);
-            
-            phpFunctions::showOffer(7, $resInserat, 4);
+            if (empty($_SESSION['user'])) {
+                phpFunctions::showOffer(7, $resInserat, 0, 4);
+            } else {
+                phpFunctions::showOffer(7, $resInserat, $_SESSION['id'], 4);
+            }
             unset($db);
         ?>
         <button class="btnMehrAnzeigen">
