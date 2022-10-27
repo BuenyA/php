@@ -14,32 +14,45 @@
 
     <?php
 
-    //Warten bis Benutzer einen Registrier Versuch startet
-    if (isset($_GET['registrieren__submit'])) {
 
         //Datenbank import
-        require('../../db.php');
+        require('../db.php');
         require('function_registrierung.php');
 
-        //Überprüfung ob die Eingabe korrekt war
-        $fehler = new function_registrierung(
-            $_GET['input__vorname'],
-            $_GET['input__nachname'],
-            $_GET['input__plz'],
-            $_GET['input__ort'],
-            $_GET['input__adresse'],
-            $_GET['input__telefonnummer'],
-            $_GET['input__geburtstag'],
-            $_GET['input__email'],
-            $_GET['input__passwort']
-        );
-        $fehler->input__test();
-        if (!$fehler) {
-            echo 'Kein Fehler';
-        } else {
-            echo 'Fehler';
+
+        //Warten bis der Benutzer eine Aktion ausführt
+        if(isset($_GET['registieren'])) {
+
+            echo 'HALLO';
+                
+            //Variablen die der Benutzer eingegeben hat aus dem Formular in Variabeln speichern
+            $vorname = $_POST['vorname'];
+            $nachname = $_POST['nachname'];
+            $plz = $_POST['plz'];
+            $ort = $_POST['ort'];
+            $adresse = $_POST['adresse'];
+            $telefonnummer = $_POST['telefonnummer'];
+            $email = $_POST['email'];
+            $passwort = $_POST['passwort'];
+
+
+            //Schauen ob die Eingabe einen Fehler hat
+            $error = new function_registrierung ($vorname, $nachname, 
+                $plz, $ort, $adresse, $telefonnummer, $email, $passwort);
+            $error -> input__test();
+
+            if($error) {
+                //Die Eingabe war korrekt
+                echo 'Eingabe war korrekt - Account wurde angelegt!';
+
+            } else {
+                //Die Eingabe war fehlerhaft
+                echo 'Eingabe war Falsch - Bitte Wiederholen!';
+            }
+
+
         }
-    }
+
     ?>
     <div class="navigationMenuLogo">
         <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = '../index.php';">
@@ -48,7 +61,7 @@
         <div class="screen">
             <div class="screen__content">
                 <h1>Registrieren</h1>
-                <form class="login">
+                <form action= "registieren" class="login">
                     <div class="login__field__section">
                         <div class="login__field">
                             <i class="login__icon fas fa-user"></i>
