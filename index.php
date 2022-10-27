@@ -19,6 +19,19 @@
         if (isset($_GET['anmelden'])) {
             echo '<script>window.location = "./account/anmeldung.php";</script>';
         }
+        if (isset($_GET['insertMerken'])) {
+            $InseratNrPost = $_POST['InseratNr'];
+            $AccIDPost = $_POST['AccID'];
+            $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
+            $resMerken = $db->query($queryMerken);
+            if ($resMerken !== false && $resMerken->rowCount() > 0) {
+                $queryMerkenDelete = "DELETE FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
+                $resMerkenDelete = $db->query($queryMerkenDelete);
+            } else {
+                $queryMerkenInsert = "INSERT INTO Merken(InseratNr, AccountNr) VALUES ('$InseratNrPost','$AccIDPost')";
+                $resMerkenInsert = $db->query($queryMerkenInsert);
+            }
+        }
     ?>
     <section>
         <div class="backgroundImageFilter">
