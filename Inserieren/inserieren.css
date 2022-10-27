@@ -1,28 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
+
+
+
+
+.Überschrift-text{
+  background-image: url("image/auto_hintergrund.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 3.5em;
+  font-weight: 300;
+  font-family: 'Pacifico', cursive;
+}
+
+
+
+.eingaben{
+  font-size: 20px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+}
+
+
+
 .big-box{
-  background-color: aqua;
+  background-color: rgb(255, 255, 255);
   width: 800px;
   align-items: center;
   justify-content: space-around;
+  margin-top: -300px;
+  margin-bottom: 50px;
+  border-width: 10px;
+  border-color: black;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0px 0px 2px 2px rgb(207, 207, 207);
+}
+
+.big-box:hover{
+  box-shadow: 0px 0px 3px 3px rgb(207, 207, 207);
 }
 
 .Marke{
-  background-color: bisque;
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
   width: 80%;
   text-align: center;
   margin: 20px;
   box-sizing: border-box;
+  margin-right: 1px;
 }
 
 .Marke-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
   width: 250px;
+  margin-bottom: 15px;
 }
 
 .Marke-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 .Marke-Modell{
   display: flex;
-  background-color: blueviolet;
   align-items: center;
   width: 100%;
   height: auto;
@@ -31,7 +86,8 @@
 }
 
 .Modell{
-  background-color: bisque;
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
   width: 80%;
   text-align: center;
   margin: 20px;
@@ -39,13 +95,21 @@
 }
 
 .Modell-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
   width: 250px;
-  
+  margin-bottom: 15px;
+}
+
+.Modell-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 .Preis-Beschreibung{
   display: flex;
-  background-color: blueviolet;
   align-items: center;
   width: 100%;
   height: auto;
@@ -54,24 +118,54 @@
 }
 
 .Preis{
-  background-color: bisque;
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  margin-right: 1px;
+  box-sizing: border-box;
+}
+
+.Preis-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.Preis-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.Beschreibung{
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
   width: 80%;
   text-align: center;
   margin: 20px;
   box-sizing: border-box;
 }
 
-.Beschreibung{
-  background-color: bisque;
-  width: 80%;
-  text-align: center;
-  margin: 20px;
-  box-sizing: border-box;
+.Beschreibung-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.Beschreibung-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 .Kilometerstand-PS{
   display: flex;
-  background-color: blueviolet;
   align-items: center;
   width: 100%;
   height: auto;
@@ -80,17 +174,235 @@
 }
 
 .Kilometerstand{
-  background-color: bisque;
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  margin-right: 1px;
+  box-sizing: border-box;
+}
+
+.Kilometerstand-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.Kilometerstand-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.PS{
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
   width: 80%;
   text-align: center;
   margin: 20px;
   box-sizing: border-box;
 }
 
-.PS{
-  background-color: bisque;
+.PS-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.PS-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.Kraftstoffart-Getriebeart{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Kraftstoffart{
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  margin-right: 1px;
+  box-sizing: border-box;
+}
+
+.Kraftstoffart-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.Kraftstoffart-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.Getriebeart{
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
   width: 80%;
   text-align: center;
   margin: 20px;
   box-sizing: border-box;
+}
+
+.Getriebeart-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.Getriebeart-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.Erstzulassung-Auktionsbeginn{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Erstzulassung{
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  margin-right: 1px;
+  box-sizing: border-box;
+}
+
+.Erstzulassung-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.Erstzulassung-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.Auktionsbeginn{
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.Auktionsbeginn-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.Auktionsbeginn-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.Uhrzeit-Auktionsende{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Uhrzeit{
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  margin-right: 1px;
+  box-sizing: border-box;
+}
+
+.Uhrzeit-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.Uhrzeit-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+
+.Auktionsende{
+  border-radius: 10px;
+  background-color: rgb(241, 237, 237);
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.Auktionsende-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.Auktionsende-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.Abschicken-button{
+  font-size: 20px;
+  border-radius: 10px;
+  height: 40px;
+  width: 250px;
+  background-color: rgb(255, 166, 0);
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  margin: 30px;
+  margin-left: 275px; 
+}
+
+.Abschicken-button:hover{
+  opacity: 0.7;
+  transition: opacity 0.3s;
 }

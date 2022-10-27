@@ -59,6 +59,10 @@
     }
     phpFunctions::printNavigationBar();
     ?>
+    <div class="Überschrift">
+        <h1 class="Überschrift-text">Jetzt Kostenlos Versteigern!</h1>
+    </div>
+    <section class="Foto-oben"></section>
     <section class="eingaben">
         <form action="?inserieren=1" method="post">
             <div class="big-box">
@@ -67,13 +71,13 @@
                         <p class="Marke-text">
                             Marke
                         </p>
-                        <input class="Marke-eingabe" type="text" size="40" maxlength="250" name="marke">
+                        <input class="Marke-eingabe" type="text" size="40" maxlength="250" name="marke" placeholder="    Z.B. Mercedes">
                     </div>
                     <div class="Modell">
                         <p class="Modell-text">
                             Modell
                         </p>
-                        <input class="Modell-eingabe" type="text" size="40" maxlength="250" name="modell">
+                        <input class="Modell-eingabe" type="text" size="40" maxlength="250" name="modell" placeholder="    Z.B. A-Klasse">
                     </div>
                 </div>
                 <div class="Preis-Beschreibung">
@@ -81,27 +85,27 @@
                         <p class="Preis-text">
                             Preis
                         </p>
-                        <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis">
+                        <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis" placeholder="    Z.B. 10000">
                     </div>
                     <div class="Beschreibung">
                         <p class="Beschreibung-text">
                             Beschreibung
                         </p>
-                        <input class= "Beschreibung-eingabe" type="text" size="40" maxlength="250" name="beschreibung">
+                        <input class= "Beschreibung-eingabe" type="text" size="40" maxlength="250" name="beschreibung" placeholder="    Erzähle uns etwas über dein Auto">
                     </div>
                 </div>
                 <div class="Kilometerstand-PS">
                     <div class="Kilometerstand">
-                        <p class="Kilometerstrand-text">
+                        <p class="Kilometerstand-text">
                             Kilometerstand
                         </p>
-                        <input class= "Kilometerstand-eingabe" type="number" size="40" maxlength="250" name="kilometerstand">
+                        <input class= "Kilometerstand-eingabe" type="number" size="40" maxlength="250" name="kilometerstand" placeholder="    Z.B. 150000">
                     </div>
                     <div class="PS">
                         <p class="PS-text">
                             PS
                         </p>
-                        <input class="PS-eingabe" type="number" size="40" maxlength="250" name="ps">
+                        <input class="PS-eingabe" type="number" size="40" maxlength="250" name="ps" placeholder="    Z.B. 200">
                     </div>
                 </div>
                 <div class="Kraftstoffart-Getriebeart">
@@ -109,16 +113,16 @@
                         <p class="Kraftstoffart-text">
                             Kraftstoffart
                         </p>
-                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="250" name="kraftstoffart">
+                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="250" name="kraftstoffart" placeholder="    Z.B. Benzin">
                     </div>
                     <div class="Getriebeart">
                         <p class="Getriebeart-text">
                             Getriebeart
                         </p>
-                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart">
+                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart" placeholder="    Z.B. Automatikgetriebe">
                     </div>
                 </div>
-                </div class="Erstzulassung-Auktionsbeginn">
+                <div class="Erstzulassung-Auktionsbeginn">
                     <div class="Erstzulassung">
                         <p class="Erstzulassung-text">
                             Erstzulassung
@@ -126,7 +130,7 @@
                         <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
                     </div>
                     <div class="Auktionsbeginn">
-                        <p class="Auktionsgewinn-text">
+                        <p class="Auktionsbeginn-text">
                             Auktionsbeginn
                         </p>
                         <input class="Auktionsbeginn-eingabe" type="date" size="40" maxlength="250" name="auktionsbeginnDatum">
