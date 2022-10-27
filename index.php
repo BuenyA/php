@@ -6,14 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autostar - Deine Auktionsseite für Automobile!</title>
-    <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
-    <link rel="stylesheet" href="stylesheet.css">
-    <script language="javascript" type="text/javascript" src="javascript.js"></script>
+    <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png">
+    <link rel="stylesheet" href="indexSheet.css">
+    <script language="javascript" type="text/javascript" src="index.js"></script>
 </head>
 
 <body>
     <?php
         session_start();
+        require_once './db.php';
+        require_once './phpFunctions.php';
+        if (isset($_GET['anmelden'])) {
+            echo '<script>window.location = "./account/anmeldung.php";</script>';
+        }
+        if (isset($_GET['insertMerken'])) {
+            $InseratNrPost = $_POST['InseratNr'];
+            $AccIDPost = $_POST['AccID'];
+            $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
+            $resMerken = $db->query($queryMerken);
+            if ($resMerken !== false && $resMerken->rowCount() > 0) {
+                $queryMerkenDelete = "DELETE FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
+                $resMerkenDelete = $db->query($queryMerkenDelete);
+            } else {
+                $queryMerkenInsert = "INSERT INTO Merken(InseratNr, AccountNr) VALUES ('$InseratNrPost','$AccIDPost')";
+                $resMerkenInsert = $db->query($queryMerkenInsert);
+            }
+        }
     ?>
     <section>
         <div class="backgroundImageFilter">
@@ -47,14 +65,7 @@
                 </div>
             </div>
             <div class="searchBarFilterBox">
-                <div class="searchBarSection">
-                    <div class="searchBar">
-                        <div class="searchBarBox">
-                            <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
-                            <input type="search" text="Suchen...">
-                        </div>
-                    </div>
-                </div>
+                <h1>Finde dein Traumauto!</h1>
                 <div class="filterBoxSection">
                     <div class="filterBox">
                         <div class="filterBoxRight">
@@ -121,75 +132,14 @@
     <section class="topOffer">
         <h1>Top-Angebote</h1>
         <?php
-        require_once './db.php';
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
+            $resInserat = $db->query($queryInserat);
 
-        $counter = 0;
-        $showMax = 4;
-        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
-        $resInserat = $db->query($queryInserat);
-        
-        if ($resInserat !== false && $resInserat->rowCount() > 0) {
-            foreach ($resInserat as $row) {
-                if ($counter == $showMax) {
-                    break;
-                }
-                if (($counter % 2) == 0) {
-                    echo '
-                        <div class="topOfferPlace">
-                            <div class="topOffers">
-                                <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                                <div class="topOffersRight">
-                                    <div class="topOffersRightTop">
-                                        <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
-                                    </div>
-                                    <p>
-                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
-                                    </p>
-                                    <p>
-                                        ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
-                                        Tel.: +49 123 456789</br>
-                                        Ort: ' . $row['ort'] . '
-                                    </p>
-                                    <button>
-                                        <img src="image/herz.png" width="13" height="13">
-                                        Merken
-                                    </button>
-                                </div>
-                            </div>
-                        ';
-                } else {
-                    echo '
-                            <div class="topOffers">
-                                <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                                <div class="topOffersRight">
-                                    <div class="topOffersRightTop">
-                                        <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
-                                    </div>
-                                    <p>
-                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
-                                    </p>
-                                    <p>
-                                        ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
-                                        Tel.: +49 123 456789</br>
-                                        Ort: ' . $row['ort'] . '
-                                    </p>
-                                    <button>
-                                        <img src="image/herz.png" width="13" height="13">
-                                        Merken
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        ';
-                }
-                $counter++;
+            if (empty($_SESSION['user'])) {
+                phpFunctions::showOffer(4, $resInserat);
+            } else {
+                phpFunctions::showOffer(4, $resInserat, $_SESSION['id']);
             }
-            if (($counter % 2) != 0) {
-                echo '</div>';
-            }
-        }
         ?>
         <button class="btnMehrAnzeigen">
             Mehr Anzeigen
@@ -199,74 +149,14 @@
     <section class="baldAblaufend">
         <h1>Last-Minute-Angebote...</h1>
         <?php
-        $counter = 0;
-        $showMax = 4;
-        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
-        $resInserat = $db->query($queryInserat);
-        
-        if ($resInserat !== false && $resInserat->rowCount() > 0) {
-            foreach ($resInserat as $row) {
-                if ($counter == $showMax) {
-                    break;
-                }
-                if (($counter % 2) == 0) {
-                    echo '
-                        <div class="topOfferPlace">
-                            <div class="topOffers">
-                                <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                                <div class="topOffersRight">
-                                    <div class="topOffersRightTop">
-                                        <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
-                                    </div>
-                                    <p>
-                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
-                                    </p>
-                                    <p>
-                                        ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
-                                        Tel.: +49 123 456789</br>
-                                        Ort: ' . $row['ort'] . '
-                                    </p>
-                                    <button>
-                                        <img src="image/herz.png" width="13" height="13">
-                                        Merken
-                                    </button>
-                                </div>
-                            </div>
-                        ';
-                } else {
-                    echo '
-                            <div class="topOffers">
-                                <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                                <div class="topOffersRight">
-                                    <div class="topOffersRightTop">
-                                        <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
-                                    </div>
-                                    <p>
-                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
-                                    </p>
-                                    <p>
-                                        ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
-                                        Tel.: +49 123 456789</br>
-                                        Ort: ' . $row['ort'] . '
-                                    </p>
-                                    <button>
-                                        <img src="image/herz.png" width="13" height="13">
-                                        Merken
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        ';
-                }
-                $counter++;
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
+            $resInserat = $db->query($queryInserat);
+            if (empty($_SESSION['user'])) {
+                phpFunctions::showOffer(7, $resInserat, 0, 4);
+            } else {
+                phpFunctions::showOffer(7, $resInserat, $_SESSION['id'], 4);
             }
-            if (($counter % 2) != 0) {
-                echo '</div>';
-            }
-        }
-        unset($db);
+            unset($db);
         ?>
         <button class="btnMehrAnzeigen">
             Mehr Anzeigen
@@ -304,7 +194,7 @@
                 </div>
                 <div class="angebotMachenBoxTextRechts">
                     <p><b>Inseriere auf Deutschlands größtem Fahrzeugauktionsmarkt</b></br></br>
-                    Dann kannst Du Dein gebrauchtes Auto hier kostenlos verkaufen. Einfach und bequem. Zum maximalen Preis per Inserat oder schnell per Expressverkauf an einer mobile.de</p>
+                    Dann kannst Du Dein gebrauchtes Auto hier kostenlos verkaufen. Einfach und bequem. Zum maximalen Preis per Inserat oder schnell per Expressverkauf</p>
                 </div>
             </div>
             <button class="btnJetztInserieren" onclick="window.location.href = 'Inserieren/inserieren.php';">Jetzt inserieren</button>
@@ -315,49 +205,8 @@
             <img src="image/AutostarProductsBig.png" width="1000" height="500">
         </div>
     </section>
-    <section class="footer">
-        <div class="footerArea">
-            <div class="footerRegion">
-                <h1><b>Unternehmen</b></h1>
-                <p>Über Uns</p>
-                <p>Kontakt</p>
-                <p>Hilfe</p>
-            </div>
-            <div class="footerRegion">
-                <h1><b>Verkaufen</b></h1>
-                <p>Verkäuferportal</p>
-                <p>Anleitung zum Verkaufen</p>
-                <p>News für gewerbliche Verkäufer</p>
-                <p>Gebühren</p>
-                <p>eBay Shop eröffnen</p>
-                <p>Grundsätze für Verkäufer: Übersicht</p>
-                <p>Verkäufer-Tools</p>
-                <p>Versand</p>
-                <p>International verkaufen</p>
-                <p>Rechtsportal</p>
-                <p>Verkäuferschutz</p>
-                <p>Elektronik-Ankauf</p>
-            </div>
-            <div class="footerRegion">
-                <h1><b>Handel</b></h1>
-                <p>Anmelden</p>
-                <p>Registrieren</p>
-                <p>Verkaufen</p>
-                <p>Händler AGBs</p>
-            </div>
-            <div class="footerRegion">
-                <h1><b>Hilfe</b></h1>
-                <p>Barrierefreiheit</p>
-                <p>Sicherheitsportal</p>
-                <p>Rechtsportal</p>
-                <p>Fragen und Antworten</p>
-            </div>
-        </div>
-        <div class="footerBelow">
-            <img src="image/AutostarLogo.png" width="200" height="40">
-            <p class="footerFooter">Unsere AGBs - Datenschutzerklärung - Impressum - Hinweise zu Cookies - Hinweise zu interessenbasierter Werbung </br>
-            ©1996-2022 Autostar AG und Partner-Unternehmen</p>
-        </div>
-    </section>
+    <?php
+        phpFunctions::printFooter();
+    ?>
 </body>
 </html>

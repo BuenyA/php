@@ -1,160 +1,157 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
-
-* {
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  font-family: 'Roboto', sans-serif;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
+.accountManagement {
+  min-height: 40em;
   display: grid;
-}
-
-.navigationMenu {
-  display: flex;
   justify-content: space-around;
   align-items: center;
-  min-height: 12vh;
-  align-self: flex-start;
 }
 
-.navigationMenuLogo {
-  min-width: 200px;
-}
-
-.navigationMenuLogo {
-  cursor: pointer;
-}
-
-.navigationElements {
-  min-width: 400px;
+.accountManagementBody {
+  min-width: 90vw;
   display: flex;
+  justify-content: space-between;
+}
+
+.accountManagementNavigation {
+  min-width: 15em;
+  min-height: 10em;
+}
+
+.accountManagementNavigationElements {
+  min-width: 15em;
+  display: grid;
   align-items: center;
   justify-content: space-between;
   list-style: none;
 }
 
-.navigationElements li {
+.accountManagementNavigationElements li {
   display: table-cell; 
   position: relative; 
-  padding: 15px 0;
+  padding: 0px 0;
 }
 
-.navigationElements a {
+.accountManagementNavigationElements a {
   text-decoration: none;
+  min-width: 10em;
   display: inline-block;
   padding: 15px 20px;
   position: relative;
   color: black;
   list-style: none; 
-  text-align: center;
   transition: 0.1s;
 }
 
-.navigationElements a:after {
+.accountManagementNavigationElements a:after {
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
   content: "";
   display: block;
   height: 2px;
-  left: 50%;
   position: absolute;
   background: #ff4d00;
+  left: 0;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
 
-.navigationElements a:hover {
+.accountManagementNavigationElements a:hover {
   color: rgb(255, 77, 0);
 }
 
-.navigationElements a:hover:after { 
+.accountManagementNavigationElements a:hover:after { 
   width: 100%; 
   left: 0;
 }
 
-.navigationMenuButton {
-  min-width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.accountManagementNavigationElementsActive a {
+  color: rgb(255, 77, 0);
 }
 
-.navigationMenuButton button {
-  border: none;
-  border-radius: 5px;
-  background-color: transparent;
-  padding: 5px;
-  width: 8em;
-  color: black;
-  font-size: 12px;
-  transition: 0.5s;
+.accountManagementNavigationElementsActive a:after { 
+  width: 100%; 
+  left: 0;
 }
 
-.navigationMenuButtonAnmelden button:hover {
-  color: rgb(255, 109, 46);
-  cursor: pointer;
+.accountManagementNavigationMeinKonto h3{
+  border-bottom: 2px solid #ff4d00;
 }
 
-.navigationMenuButtonRegistrieren button {
-  border: 1.5px solid rgb(255, 109, 46);
-}
-
-.navigationMenuButtonRegistrieren button:hover {
-  cursor: pointer;
-  background-color: rgb(255, 109, 46);
-  color: white;
-}
-
-.footer {
-  min-height: 30em;
-  background-color: #191f22;
+.accountManagementElements {
   display: grid;
   justify-content: center;
+  align-items: flex-start;
+  min-height: 35em;
+  /* background-color: #ff4d00; */
+}
+
+.accountManagementBox {
+  display: grid;
   align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  height: 25em;
+  width: 60em;
+  background-color: white;
+  box-shadow: 0px 0px 5px 2px rgb(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: 0.2s;
 }
 
-.footerArea {
-  margin-top: 1.5em;
+.accountAusloggenBox {
+  height: 7em;
+  width: 60em;
+  background-color: white;
   display: flex;
-  justify-content: space-around;
-  width: 70em;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 0px 5px 2px rgb(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: 0.2s;
 }
 
-.footerRegion {
-  color: rgb(195, 195, 195);
+.accountAusloggenBoxLeft {
+  margin-left: 2em;
+}
+
+.accountAusloggenBoxLeft h2 {
+  margin-bottom: 0.6em;
+}
+
+.accountAusloggenBoxLeft p {
   font-size: 0.8em;
 }
 
-.footerRegion p {
-  margin-bottom: 0.7em;
+.accountAusloggenBoxRight {
+  margin-right: 2em;
 }
 
-.footerRegion h1 {
-  margin-bottom: 0.5em;
-  font-size: 1.2em;
+.accountAusloggenBoxRight button {
+  border: 2px solid #ff4d00;
+  background-color: white;
+  padding: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 50px;
+  color: black;
+  transition: 0.2s;
 }
 
-.footerBelow {
-  display: grid;
-  justify-content: center;
-  align-items: center;
+.accountAusloggenBoxRight button:hover {
+  background-color: #ff4d00;
+  color: white;
+  cursor: pointer;
 }
 
-.footerFooter {
-  color: rgb(195, 195, 195);
-  font-size: 10px;
-  text-align: center;
+.accountManagementSpace {
+  /* background-color: #ff4d00; */
+  width: 15em;
+  height: 10em;
 }
 
-.footer img {
-  justify-self: center;
-  filter: invert(100%);
-  margin-bottom: 1em;
-  opacity: 80%;
+@media only screen and (max-width: 1500px) {
+  .accountManagementBox, .accountAusloggenBox {
+    width: 40em;
+  }
 }
+
+/* Meine Inserate */

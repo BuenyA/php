@@ -11,9 +11,7 @@
 </head>
 
 <body>
-
     <?php
-
 
         //Datenbank import
         require('../db.php');

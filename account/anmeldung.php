@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anmelden</title>
     <link rel="stylesheet" href="anmeldung.css">
-    <script language="javascript" type="text/javascript" src="anmeldung.js"></script>
+    <script language="javascript" type="text/javascript" src="../index.js"></script>
 </head>
 
 <body>
@@ -17,12 +17,7 @@
     <div class="container">
         <?php
         require('../db.php');
-
         session_start();
-        if (isset($_GET['abmelden'])) {
-            session_destroy();
-            echo "<script>reloadWindow();</script>";
-        }
         if (isset($_GET['anmelden']) && sizeof($_POST) !== 0) {
             $query = "SELECT * FROM Accounts WHERE email = '" . $_POST['input__email'] . "'";
             $res = $db->query($query);
@@ -30,8 +25,9 @@
                 if (password_verify($_POST['input__passwort'], $row['passwort']) == 1) {
                     if ($res !== false && $res->rowCount() > 0) {
                         $_SESSION['user'] = $_POST['input__email'];
-                    } else {
-                        echo "<script>showPasswordError();</script>";
+                        $_SESSION['id'] = $row['account_ID'];
+                        $_SESSION['vorname'] = $row['vorname'];
+                        $_SESSION['nachname'] = $row['nachname'];
                     }
                 }
             }

@@ -9,5 +9,5 @@ preisanzeige.addEventListener('change',()=>{
 })
 
 function linkToAnmeldung() {
-    window.location = "../index.php";
+    window.location = "../account/anmeldung.php";
 }
