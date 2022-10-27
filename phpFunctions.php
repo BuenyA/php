@@ -71,7 +71,7 @@
                 }
             } else {
                 if ($resInserat !== false && $resInserat->rowCount() > 0) {
-                    // Komischeweise funtioniert das require von dp.php nicht. Deswegen nochmal ein eigener Verbindungsaufbau.
+                    // Komischerweise funtioniert das require von dp.php nicht. Deshalb nochmal ein eigener Verbindungsaufbau.
                     $dsn = 'mysql:dbname=Autostar;host=db;port=3306';
                     try {
                         $db = new PDO( $dsn, 'root', '' );
