@@ -31,7 +31,7 @@
                                                 Ort: ' . $row['ort'] . '
                                             </p>
                                             <form action="?anmelden=1" method="post">
-                                                <input type="submit" value="Merken" class="merkenButton" />
+                                                <input type="submit" value="      Merken" class="merkenButton" />
                                             </form>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                                                 Ort: ' . $row['ort'] . '
                                             </p>
                                             <form action="?anmelden=1" method="post">
-                                                <input type="submit" value="Merken" class="merkenButton" />
+                                                <input type="submit" value="      Merken" class="merkenButton" />
                                             </form>
                                         </div>
                                     </div>
