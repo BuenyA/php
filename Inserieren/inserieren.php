@@ -61,34 +61,93 @@
     ?>
     <section class="eingaben">
         <form action="?inserieren=1" method="post">
-            Marke<br>
-            <input type="text" size="40" maxlength="250" name="marke"><br>
-            Modell<br>
-            <input type="text" size="40" maxlength="250" name="modell"><br>
-            Preis<br>
-            <input type="number" size="40" maxlength="250" name="preis"><br>
-            Beschreibung<br>
-            <input type="text" size="40" maxlength="250" name="beschreibung"><br>
-            Kilometerstand<br>
-            <input type="number" size="40" maxlength="250" name="kilometerstand"><br>
-            PS<br>
-            <input type="number" size="40" maxlength="250" name="ps"><br>
-            Kraftstoffart<br>
-            <input type="text" size="40" maxlength="250" name="kraftstoffart"><br>
-            Getriebeart<br>
-            <input type="text" size="40" maxlength="250" name="getriebeart"><br>
-            Erstzulassung<br>
-            <input type="date" size="40" maxlength="250" name="erstzulassung"><br>
-            Auktionsbeginn<br>
-            <input type="date" size="40" maxlength="250" name="auktionsbeginnDatum"><br>
-            Uhrzeit<br>
-            <input type="time" size="40" maxlength="250" name="auktionsbeginnUhrzeit"><br>
-            Auktionsende<br>
-            <input type="date" size="40" maxlength="250" name="auktionsendeDatum"><br>
-            Uhrzeit<br>
-            <input type="time" size="40" maxlength="250" name="auktionsendeUhrzeit"><br>
-
-            <input type="submit" value="Abschicken">
+            <div class="big-box">
+                <div class="Marke-Modell">
+                    <div class="Marke">
+                        <p class="Marke-text">
+                            Marke
+                        </p>
+                        <input class="Marke-eingabe" type="text" size="40" maxlength="250" name="marke">
+                    </div>
+                    <div class="Modell">
+                        <p class="Modell-text">
+                            Modell
+                        </p>
+                        <input class="Modell-eingabe" type="text" size="40" maxlength="250" name="modell">
+                    </div>
+                </div>
+                <div class="Preis-Beschreibung">
+                    <div class="Preis">
+                        <p class="Preis-text">
+                            Preis
+                        </p>
+                        <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis">
+                    </div>
+                    <div class="Beschreibung">
+                        <p class="Beschreibung-text">
+                            Beschreibung
+                        </p>
+                        <input class= "Beschreibung-eingabe" type="text" size="40" maxlength="250" name="beschreibung">
+                    </div>
+                </div>
+                <div class="Kilometerstand-PS">
+                    <div class="Kilometerstand">
+                        <p class="Kilometerstrand-text">
+                            Kilometerstand
+                        </p>
+                        <input class= "Kilometerstand-eingabe" type="number" size="40" maxlength="250" name="kilometerstand">
+                    </div>
+                    <div class="PS">
+                        <p class="PS-text">
+                            PS
+                        </p>
+                        <input class="PS-eingabe" type="number" size="40" maxlength="250" name="ps">
+                    </div>
+                </div>
+                <div class="Kraftstoffart-Getriebeart">
+                    <div class="Kraftstoffart">
+                        <p class="Kraftstoffart-text">
+                            Kraftstoffart
+                        </p>
+                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="250" name="kraftstoffart">
+                    </div>
+                    <div class="Getriebeart">
+                        <p class="Getriebeart-text">
+                            Getriebeart
+                        </p>
+                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart">
+                    </div>
+                </div>
+                </div class="Erstzulassung-Auktionsbeginn">
+                    <div class="Erstzulassung">
+                        <p class="Erstzulassung-text">
+                            Erstzulassung
+                        </p>
+                        <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
+                    </div>
+                    <div class="Auktionsbeginn">
+                        <p class="Auktionsgewinn-text">
+                            Auktionsbeginn
+                        </p>
+                        <input class="Auktionsbeginn-eingabe" type="date" size="40" maxlength="250" name="auktionsbeginnDatum">
+                    </div>
+                </div>
+                <div class= "Uhrzeit-Auktionsende">
+                    <div class="Uhrzeit">
+                        <p class="Uhrzeit-text">
+                            Uhrzeit
+                        </p>
+                        <input class="Uhrzeit-eingabe" type="time" size="40" maxlength="250" name="auktionsbeginnUhrzeit">
+                    </div>
+                    <div class="Auktionsende">
+                        <p class="Auktionsende-text">
+                            Auktionsende
+                        </p>
+                        <input class="Auktionsende-eingabe" type="date" size="40" maxlength="250" name="auktionsendeDatum">
+                    </div>
+                </div>
+                    <input class="Abschicken-button" type="submit" value="Abschicken">
+            </div>
         </form>
     </section>
     <script src="./inserieren.js">

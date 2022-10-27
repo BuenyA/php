@@ -1,0 +1,96 @@
+.big-box{
+  background-color: aqua;
+  width: 800px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Marke{
+  background-color: bisque;
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.Marke-eingabe{
+  width: 250px;
+}
+
+.Marke-text{
+}
+
+.Marke-Modell{
+  display: flex;
+  background-color: blueviolet;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Modell{
+  background-color: bisque;
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.Modell-eingabe{
+  width: 250px;
+  
+}
+
+.Preis-Beschreibung{
+  display: flex;
+  background-color: blueviolet;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Preis{
+  background-color: bisque;
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.Beschreibung{
+  background-color: bisque;
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.Kilometerstand-PS{
+  display: flex;
+  background-color: blueviolet;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Kilometerstand{
+  background-color: bisque;
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.PS{
+  background-color: bisque;
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+}
