@@ -154,6 +154,34 @@
             </div>
         </form>
     </section>
+
+    <section class="Text-boxes">
+        <div class="Text-left">
+            <h1 class="Text-left-überschrift">
+                Sicher
+            </h1>
+            <p class="Text-left-text">
+                Die Sicherheit unserer Kunden liegt in erster Linie, somit prüfen wir jedes Inserat sorgfältig.
+            </p>
+        </div>
+        <div class="Text-middle">
+            <h1 class="Text-middle-überschrift">
+                Benuzerfreundlich
+            </h1>
+            <p class="Text-middle-text">
+                Einfach Bilder hochladen, Daten eintragen und los geht's.
+            </p>
+        </div>
+        <div class="Text-right">
+            <h1 class="Text-right-überschrift">
+                Kostenlos
+            </h1>
+            <p class="Text-right-text">
+                Inseriere beliebig viele Inserate und zahle keinen Cent!
+            </p>
+        </div>
+    </section>
+
     <script src="./inserieren.js">
 
     </script>
