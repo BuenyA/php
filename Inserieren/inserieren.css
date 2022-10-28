@@ -49,12 +49,8 @@
   border-color: black;
   border-radius: 20px;
   position: relative;
-  box-shadow: 0px 0px 2px 2px rgb(207, 207, 207);
-  
-}
-
-.big-box:hover{
-  box-shadow: 0px 0px 4px 4px rgb(207, 207, 207);
+  border: 1px solid rgb(196, 196, 196);
+  transition: 0.2s;
 }
 
 .Marke{
@@ -422,7 +418,15 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 100px;
-  
+}
+
+.textBox {
+  box-shadow: 0px 0px 3px 3px rgb(233, 233, 233);
+  transition: 0.2s;
+}
+
+.textBox:hover {
+  box-shadow: 0px 0px 3px 3px rgb(207, 207, 207);big-box
 }
 
 .Text-left{
@@ -433,11 +437,6 @@
   margin: 20px;
   box-sizing: border-box;
   margin-right: 1px;
-  box-shadow: 0px 0px 2px 2px rgb(207, 207, 207);
-}
-
-.Text-left:hover{
-  box-shadow: 0px 0px 3px 3px rgb(207, 207, 207);
 }
 
 .Text-middle{
@@ -448,13 +447,7 @@
   margin: 20px;
   box-sizing: border-box;
   margin-right: 1px;
-  box-shadow: 0px 0px 2px 2px rgb(207, 207, 207);
 }
-
-.Text-middle:hover{
-  box-shadow: 0px 0px 3px 3px rgb(207, 207, 207);
-}
-
 .Text-right{
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
@@ -462,11 +455,6 @@
   text-align: center;
   margin: 20px;
   box-sizing: border-box;
-  box-shadow: 0px 0px 2px 2px rgb(207, 207, 207);
-}
-
-.Text-right:hover{
-  box-shadow: 0px 0px 3px 3px rgb(207, 207, 207);
 }
 
 .Text-left-überschrift{

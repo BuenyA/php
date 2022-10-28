@@ -71,13 +71,13 @@
                         <p class="Marke-text">
                             Marke
                         </p>
-                        <input class="Marke-eingabe" type="text" size="40" maxlength="250" name="marke" placeholder="    Z.B. Mercedes">
+                        <input class="Marke-eingabe" type="text" size="40" maxlength="250" name="marke" placeholder="    z.B. Mercedes">
                     </div>
                     <div class="Modell">
                         <p class="Modell-text">
                             Modell
                         </p>
-                        <input class="Modell-eingabe" type="text" size="40" maxlength="250" name="modell" placeholder="    Z.B. A-Klasse">
+                        <input class="Modell-eingabe" type="text" size="40" maxlength="250" name="modell" placeholder="    z.B. A-Klasse">
                     </div>
                 </div>
                 <div class="Preis-Beschreibung">
@@ -85,7 +85,7 @@
                         <p class="Preis-text">
                             Preis
                         </p>
-                        <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis" placeholder="    Z.B. 10000">
+                        <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis" placeholder="    z.B. 10000">
                     </div>
                     <div class="Beschreibung">
                         <p class="Beschreibung-text">
@@ -99,13 +99,13 @@
                         <p class="Kilometerstand-text">
                             Kilometerstand
                         </p>
-                        <input class= "Kilometerstand-eingabe" type="number" size="40" maxlength="250" name="kilometerstand" placeholder="    Z.B. 150000">
+                        <input class= "Kilometerstand-eingabe" type="number" size="40" maxlength="250" name="kilometerstand" placeholder="    z.B. 150000">
                     </div>
                     <div class="PS">
                         <p class="PS-text">
                             PS
                         </p>
-                        <input class="PS-eingabe" type="number" size="40" maxlength="250" name="ps" placeholder="    Z.B. 200">
+                        <input class="PS-eingabe" type="number" size="40" maxlength="250" name="ps" placeholder="    z.B. 200">
                     </div>
                 </div>
                 <div class="Kraftstoffart-Getriebeart">
@@ -113,13 +113,13 @@
                         <p class="Kraftstoffart-text">
                             Kraftstoffart
                         </p>
-                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="250" name="kraftstoffart" placeholder="    Z.B. Benzin">
+                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="250" name="kraftstoffart" placeholder="    z.B. Benzin">
                     </div>
                     <div class="Getriebeart">
                         <p class="Getriebeart-text">
                             Getriebeart
                         </p>
-                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart" placeholder="    Z.B. Automatikgetriebe">
+                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart" placeholder="    z.B. Automatikgetriebe">
                     </div>
                 </div>
                 <div class="Erstzulassung-Auktionsbeginn">
@@ -156,7 +156,7 @@
     </section>
 
     <section class="Text-boxes">
-        <div class="Text-left">
+        <div class="Text-left textBox">
             <h1 class="Text-left-überschrift">
                 Sicher
             </h1>
@@ -164,7 +164,7 @@
                 Die Sicherheit unserer Kunden liegt in erster Linie, somit prüfen wir jedes Inserat sorgfältig.
             </p>
         </div>
-        <div class="Text-middle">
+        <div class="Text-middle textBox">
             <h1 class="Text-middle-überschrift">
                 Benuzerfreundlich
             </h1>
@@ -172,7 +172,7 @@
                 Einfach Bilder hochladen, Daten eintragen und los geht's.
             </p>
         </div>
-        <div class="Text-right">
+        <div class="Text-right textBox">
             <h1 class="Text-right-überschrift">
                 Kostenlos
             </h1>
