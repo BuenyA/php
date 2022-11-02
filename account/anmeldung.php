@@ -50,8 +50,8 @@
                     <div class="falschesPasswort" id="falschesPasswort">
                         <p>Falsche Angaben! Bitte erneut versuchen.</p>
                     </div>
-                    <a href="../account/registrierung/registrierung.php">Noch keinen Account?</a><br />
-                    <a href="../account/passwordReset.php">Passwort vergessen?</a>
+                    <a href="registrierung.php">Noch keinen Account?</a><br />
+                    <a href="passwordReset.php">Passwort vergessen?</a>
                     <!-- sumbit button -->
                     <button class="button login__submit" id="submit" name="btn__submit">
                         <span class="button__text">Anmelden</span>
@@ -79,8 +79,8 @@
                         <!-- input passwort -->
                         <input type="password" name="input__passwort" class="login__input login__input__passwort" placeholder="Passwort">
                     </div>
-                    <a href="../account/registrierung/registrierung.php">Noch keinen Account?</a><br />
-                    <a href="../account/passwordReset.php">Passwort vergessen?</a>
+                    <a href="registrierung.php">Noch keinen Account?</a><br />
+                    <a href="passwordReset.php">Passwort vergessen?</a>
                     <!-- sumbit button -->
                     <button class="button login__submit" id="submit" name="btn__submit">
                         <span class="button__text">Anmelden</span>

@@ -66,6 +66,15 @@
                 $error = true;
             }
 
+            if (strlen($passwort) == 0) {
+                echo 'Bitte ein Passwort angeben<br>';
+                $error = true;
+            }
+            if ($passwort != $passwort2) {
+                echo 'Die Passwörter müssen übereinstimmen<br>';
+                $error = true;
+            }
+
             //Meldet zurück on die Benutzereingabe Fehlerfrei war
             //true = Fehler gefunden
             //false = kein Fehler gefunden

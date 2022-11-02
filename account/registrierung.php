@@ -19,36 +19,34 @@
 
 
         //Warten bis der Benutzer eine Aktion ausführt
-        if(isset($_GET['registieren'])) {
-
-            echo 'HALLO';
-                
+        if(isset($_GET['registieren'])) {                
             //Variablen die der Benutzer eingegeben hat aus dem Formular in Variabeln speichern
-            $vorname = $_POST['vorname'];
-            $nachname = $_POST['nachname'];
-            $plz = $_POST['plz'];
-            $ort = $_POST['ort'];
-            $adresse = $_POST['adresse'];
-            $telefonnummer = $_POST['telefonnummer'];
-            $email = $_POST['email'];
-            $passwort = $_POST['passwort'];
+            $vorname = $_POST['input__vorname'];
+            $nachname = $_POST['input__nachname'];
+            $plz = $_POST['input__plz'];
+            $ort = $_POST['input__ort'];
+            $adresse = $_POST['input__adresse'];
+            $telefonnummer = $_POST['input__telefonnummer'];
+            $email = $_POST['input__email'];
+            $passwort1 = $_POST['input__passwort1'];
+            $passwort2 = $_POST['input__passwort2'];
+            
+            $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
 
+            $query = "INSERT INTO Accounts(vorname, nachname, plz, ort, adresse, email, passwort) VALUES ('$vorname','$nachname','$plz','$ort','$adresse','$email','$passwortHash')";
 
             //Schauen ob die Eingabe einen Fehler hat
             $error = new function_registrierung ($vorname, $nachname, 
                 $plz, $ort, $adresse, $telefonnummer, $email, $passwort);
             $error -> input__test();
 
-            if($error) {
+            if(!$error) {
                 //Die Eingabe war korrekt
                 echo 'Eingabe war korrekt - Account wurde angelegt!';
-
             } else {
                 //Die Eingabe war fehlerhaft
                 echo 'Eingabe war Falsch - Bitte Wiederholen!';
             }
-
-
         }
 
     ?>
@@ -59,7 +57,7 @@
         <div class="screen">
             <div class="screen__content">
                 <h1>Registrieren</h1>
-                <form action= "registieren" class="login">
+                <form action="?registieren=1" method="post" class="login">
                     <div class="login__field__section">
                         <div class="login__field">
                             <i class="login__icon fas fa-user"></i>
@@ -97,23 +95,23 @@
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
-                            <!-- input geburtstag -->
-                            <input type="date" class="login__input" placeholder="Geburtsdatum" name="input__geburtstag">
+                            <!-- input email -->
+                            <input type="text" class="login__input" placeholder="E-Mail" name="input__email">
                         </div>
                     </div>
                     <div class="login__field__section">
                         <div class="login__field">
-                            <i class="login__icon fas fa-user"></i>
-                            <!-- input email -->
-                            <input type="text" class="login__input" placeholder="E-Mail" name="input__email">
+                            <i class="login__icon fas fa-lock"></i>
+                            <!-- input passwort 1 -->
+                            <input type="password" class="login__input" placeholder="Passwort" name="input__passwort1">
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
-                            <!-- input passwort -->
-                            <input type="password" class="login__input" placeholder="Passwort" name="input__passwort">
+                            <!-- input passwort 2 -->
+                            <input type="password" class="login__input" placeholder="Passwort wiederholen" name="input__passwort2">
                         </div>
                     </div>
-                    <a href="../../account/anmeldung.php">Bereits Registriert?</a><br />
+                    <a href="anmeldung.php">Bereits Registriert?</a><br />
                     <!-- sumbit button -->
                     <button class="button login__submit" name="registrieren__submit">
                         <span class="button__text">Registrieren</span>
