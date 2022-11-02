@@ -1,0 +1,149 @@
+h6 {
+    font-size: 1em;
+}
+
+.produkt {
+    min-height: 80em;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.produktArea {
+    height: 25em;
+    width: 55em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.produktAreaLeft {}
+
+.produktAreaLeft img {
+    object-fit: cover;
+    object-position: 40%;
+}
+
+.produktAreaLeft textarea:hover,
+.produktAreaLeft textarea:focus,
+.produktAreaLeft textarea:active {
+    background-color: #ff6600;
+}
+
+.produktAreaRight {}
+
+.produktShortView {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8em;
+    width: 40em;
+    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.produktShortViewArea {
+    width: 13em;
+    height: 6em;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.produktShortViewField p {
+    font-size: 0.7em;
+    color: rgb(84, 84, 84);
+}
+
+.produktBeschreibung {
+    justify-self: center;
+    display: grid;
+    justify-content: center;
+    min-height: 8em;
+    width: 40em;
+    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.produktBeschreibung h7 {
+    width: 38em;
+    margin-top: 0.7em;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    margin-bottom: 7px;
+}
+
+.produktBeschreibung p {
+    width: 38em;
+    height: 5em;
+}
+
+.angebotAufgeben {
+    height: 25em;
+    width: 55em;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.angebotUberschrift {
+    border-bottom: 1px solid rgb(206, 206, 206);
+    padding-bottom: 5px;
+}
+
+.angebotAufgebenBody {
+    width: 50em;
+}
+
+.angebotAufgebenBody form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.angebotAufgebenRight {
+    display: grid;
+}
+
+.angebotAufgebenRight h7 {
+    font-size: 13px;
+}
+
+.angebotAufgebenRight input {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.angebotAufgebenRight p {
+    font-size: 10px;
+    color: rgb(151, 151, 151);
+}
+
+.absendenButton {
+    background: #fff;
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 16px 20px;
+    border-radius: 26px;
+    border: 1px solid #D4D3E8;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #ff6600;
+    box-shadow: 0px 2px 2px rgb(255, 77, 0);;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.absendenButton:active,
+.absendenButton:focus,
+.absendenButton:hover {
+    border-color: #ff6600;
+    outline: none;
+}
