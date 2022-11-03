@@ -412,7 +412,6 @@
 
 .Text-boxes{
   height: 200px;
-  width: 1500px;
   display: flex;
   justify-content:center ;
   margin-left: auto;
@@ -423,6 +422,7 @@
 .textBox {
   box-shadow: 0px 0px 3px 3px rgb(233, 233, 233);
   transition: 0.2s;
+  width: 23em;
 }
 
 .textBox:hover {
@@ -432,7 +432,6 @@
 .Text-left{
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
-  width: 33%;
   text-align: center;
   margin: 20px;
   box-sizing: border-box;
@@ -442,7 +441,6 @@
 .Text-middle{
   border-radius: 10px;
   background-color: rgb(255, 253, 253);
-  width: 33%;
   text-align: center;
   margin: 20px;
   box-sizing: border-box;
@@ -451,7 +449,6 @@
 .Text-right{
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
-  width: 33%;
   text-align: center;
   margin: 20px;
   box-sizing: border-box;

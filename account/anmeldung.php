@@ -22,12 +22,14 @@
             $query = "SELECT * FROM Accounts WHERE email = '" . $_POST['input__email'] . "'";
             $res = $db->query($query);
             $rowLog = $res->fetch();
-            if (password_verify($_POST['input__passwort'], $rowLog['passwort']) == 1) {
-                if ($res !== false && $res->rowCount() > 0) {
-                    $_SESSION['user'] = $_POST['input__email'];
-                    $_SESSION['id'] = $rowLog['account_ID'];
-                    $_SESSION['vorname'] = $rowLog['vorname'];
-                    $_SESSION['nachname'] = $rowLog['nachname'];
+            if ($_POST['input__passwort'] !== '' and $res->rowCount() > 0) {
+                if (password_verify($_POST['input__passwort'], $rowLog['passwort'])) {
+                    if ($res !== false && $res->rowCount() > 0) {
+                        $_SESSION['user'] = $_POST['input__email'];
+                        $_SESSION['id'] = $rowLog['account_ID'];
+                        $_SESSION['vorname'] = $rowLog['vorname'];
+                        $_SESSION['nachname'] = $rowLog['nachname'];
+                    }
                 }
             }
         }

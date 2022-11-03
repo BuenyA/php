@@ -154,7 +154,6 @@
             </div>
         </form>
     </section>
-
     <section class="Text-boxes">
         <div class="Text-left textBox">
             <h1 class="Text-left-überschrift">
@@ -181,10 +180,6 @@
             </p>
         </div>
     </section>
-
-    <script src="./inserieren.js">
-
-    </script>
     <?php
         phpFunctions::printFooter();
     ?>
