@@ -7,7 +7,7 @@
 
 <body>
     <?php
-    require('db.php');
+    require('../db.php');
 
     $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 

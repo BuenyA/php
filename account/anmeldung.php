@@ -21,13 +21,14 @@
         if (isset($_GET['anmelden']) && sizeof($_POST) !== 0) {
             $query = "SELECT * FROM Accounts WHERE email = '" . $_POST['input__email'] . "'";
             $res = $db->query($query);
-            foreach ($res as $row) {
-                if (password_verify($_POST['input__passwort'], $row['passwort']) == 1) {
+            $rowLog = $res->fetch();
+            if ($_POST['input__passwort'] !== '' and $res->rowCount() > 0) {
+                if (password_verify($_POST['input__passwort'], $rowLog['passwort'])) {
                     if ($res !== false && $res->rowCount() > 0) {
                         $_SESSION['user'] = $_POST['input__email'];
-                        $_SESSION['id'] = $row['account_ID'];
-                        $_SESSION['vorname'] = $row['vorname'];
-                        $_SESSION['nachname'] = $row['nachname'];
+                        $_SESSION['id'] = $rowLog['account_ID'];
+                        $_SESSION['vorname'] = $rowLog['vorname'];
+                        $_SESSION['nachname'] = $rowLog['nachname'];
                     }
                 }
             }
