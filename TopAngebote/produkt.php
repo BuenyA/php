@@ -63,32 +63,62 @@
                 <div class="produktShortView">
                     <div class="produktShortViewArea">
                         <div class="produktShortViewField">
-                            <p>Kilometerstand</p>
-                            <h6>'.number_format($rowIns['Kilometerstand'] ,0, ',', '.').' km</h6>
+                            <div>
+                                <img src="../image/speedometer.png" alt="Bild konnte nicht geladen werden..." width="30" height="30">
+                            </div>
+                            <div>
+                                <p>Kilometerstand</p>
+                                <h6>'.number_format($rowIns['Kilometerstand'] ,0, ',', '.').' km</h6>
+                            </div>
                         </div>
                         <div class="produktShortViewField">
-                            <p>Getriebeart</p>
-                            <h6>'.$rowIns['Getriebeart'].'</h6>
+                            <div>
+                                <img src="../image/getriebe.png" alt="Bild konnte nicht geladen werden..." width="30" height="30">
+                            </div>
+                            <div>
+                                <p>Getriebeart</p>
+                                <h6>'.$rowIns['Getriebeart'].'</h6>
+                            </div>
                         </div>
                     </div>
                     <div class="produktShortViewArea">
                         <div class="produktShortViewField">
-                            <p>Erstzulassung</p>
-                            <h6>'.$rowIns['Erstzulassung'].'</h6>
+                            <div>
+                                <img src="../image/kalender.png" alt="Bild konnte nicht geladen werden..." width="30" height="30">
+                            </div>
+                            <div>
+                                <p>Erstzulassung</p>
+                                <h6>'.$rowIns['Erstzulassung'].'</h6>
+                            </div>
                         </div>
                         <div class="produktShortViewField">
-                            <p>Fahrzeughalter</p>
-                            <h6>'.$rowIns['vorname'].' '.$rowIns['nachname'].'</h6>
+                            <div>
+                                <img src="../image/benutzer.png" alt="Bild konnte nicht geladen werden..." width="30" height="30">
+                            </div>
+                            <div>
+                                <p>Fahrzeughalter</p>
+                                <h6>'.$rowIns['vorname'].' '.$rowIns['nachname'].'</h6>
+                            </div>
                         </div>
                     </div>
                     <div class="produktShortViewArea">
                         <div class="produktShortViewField">
-                            <p>Leistung</p>
-                            <h6>'. ceil($rowIns['PS'] / 1.35962).' kW (' . $rowIns['PS'] . ' PS)</h6>
+                            <div>
+                                <img src="../image/strom.png" alt="Bild konnte nicht geladen werden..." width="30" height="30">
+                            </div>
+                            <div>
+                                <p>Leistung</p>
+                                <h6>'. ceil($rowIns['PS'] / 1.35962).' kW (' . $rowIns['PS'] . ' PS)</h6>
+                            </div>
                         </div>
                         <div class="produktShortViewField">
-                            <p>Kraftstoffart</p>
-                            <h6>'.$rowIns['Kraftstoffart'].'</h6>
+                            <div>
+                                <img src="../image/tankstelle.png" alt="Bild konnte nicht geladen werden..." width="30" height="30">
+                            </div>
+                            <div>
+                                <p>Kraftstoffart</p>
+                                <h6>'.$rowIns['Kraftstoffart'].'</h6>
+                            </div>
                         </div>
                     </div>
                 </div>
