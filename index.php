@@ -41,8 +41,8 @@
                 </div>
                 <ul class="navigationElements">
                     <li><a href="">Home</a></li>
-                    <li><a href="TopAngebote/topangebote.php">Top Angebote</a></li>
-                    <li><a href="LastMinute/lastminute.php">Last-Minute</a></li>
+                    <li><a href="Angebote/topangebote.php">Top Angebote</a></li>
+                    <li><a href="Angebote/lastminute.php">Last-Minute</a></li>
                     <li><a href="Inserieren/inserieren.php">Verkaufen</a></li>
                 </ul>
                 <div class="navigationMenuButton">
@@ -141,12 +141,12 @@
                 phpFunctions::showOffer(4, $resInserat, $_SESSION['id']);
             }
         ?>
-        <button class="btnMehrAnzeigen">
+        <a href="./Angebote/topangebote.php" class="btnMehrAnzeigen">
             Mehr Anzeigen
             <img src="image/right-arrows.png" width="20" height="20">
-        </button>
+        </a>
     </section>
-    <section class="baldAblaufend">
+    <section class="topOffer">
         <h1>Last-Minute-Angebote...</h1>
         <?php
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
@@ -158,10 +158,10 @@
             }
             unset($db);
         ?>
-        <button class="btnMehrAnzeigen">
+        <a href="./lastminute/lastminute.php" class="btnMehrAnzeigen">
             Mehr Anzeigen
             <img src="image/right-arrows.png" width="20" height="20">
-        </button>
+        </a>
     </section>
     <section class="AutostarApp">
         <img src="image/AutostarApp.png" width="350" height="500">
