@@ -15,7 +15,6 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
@@ -32,7 +31,11 @@ h6 {
     background-color: #ff6600;
 }
 
-.produktAreaRight {}
+.produktAreaRight {
+    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    width: 20em;
+    height: 25em;
+}
 
 .produktShortView {
     justify-self: center;
@@ -97,6 +100,7 @@ h6 {
     display: grid;
     align-items: center;
     justify-content: center;
+    justify-self: center;
     align-self: center;
     box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
     border-radius: 10px;
