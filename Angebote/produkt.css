@@ -60,7 +60,7 @@ h6 {
 
 .produktAreaRight h5 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-size: 25px;
     color: black;
 }
@@ -76,7 +76,7 @@ h6 {
     display: grid;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 75px;
 }
 
 .produktAreaRightElementsButton form {
@@ -155,7 +155,8 @@ h6 {
     justify-content: center;
     height: 8em;
     width: 40em;
-    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    /* box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1); */
+    border: 1px solid rgb(202, 202, 202);
     border-radius: 10px;
 }
 
@@ -189,7 +190,8 @@ h6 {
     justify-content: center;
     min-height: 8em;
     width: 40em;
-    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    /* box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1); */
+    border: 1px solid rgb(202, 202, 202);
     border-radius: 10px;
 }
 
@@ -213,8 +215,16 @@ h6 {
     justify-content: center;
     justify-self: center;
     align-self: center;
-    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    border: 1px solid rgb(202, 202, 202);
     border-radius: 10px;
+    transition: 0.2s;
+}
+
+.angebotAufgeben:hover,
+.angebotAufgeben:active,
+.angebotAufgeben:focus {
+    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    border: 1px solid rgb(255, 255, 255);
 }
 
 .angebotUberschrift {

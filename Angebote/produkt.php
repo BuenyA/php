@@ -68,9 +68,6 @@
                             <p>'.$rowIns['plz'].' '.$rowIns['ort'].'</p>
                             <div class="produktAreaRightElementsButton">
                                 <a href="#angebotAufgeben" type="submit" class="angebotAufgebenButton">Angebot aufgeben</a>
-                                <form action="?anmelden=1" method="post">
-                                    <input type="submit" value="Merken" class="merkenGroßButton" />
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -146,10 +143,9 @@
                         <h7><b>Dein Angebot an '.$rowIns['vorname'].' '.$rowIns['nachname'].'</b></h7>
                     </div>
                     <div class="angebotAufgebenBody">
-                        <form action="/action_page.php">
+                        <form action="./vielenDankAngebot.php" method="post">
                             <div class="angebotAufgebenLeft">
-                                <textarea id="w3review" name="w3review" rows="20" cols="70">Guten Tag '.$rowIns['vorname'].',</textarea>
-                                </br>
+                                <textarea name="textarea" rows="20" cols="70">Guten Tag '.$rowIns['vorname'].',</textarea>
                             </div>
                             <div class="angebotAufgebenRight">
                                 <h7><b>Dein Name:</b></h7>
