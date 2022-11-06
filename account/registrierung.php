@@ -20,6 +20,8 @@
 
         //Warten bis der Benutzer eine Aktion ausführt
         if(isset($_GET['registieren'])) {                
+
+                
             //Variablen die der Benutzer eingegeben hat aus dem Formular in Variabeln speichern
             $vorname = $_POST['input__vorname'];
             $nachname = $_POST['input__nachname'];
@@ -30,23 +32,27 @@
             $email = $_POST['input__email'];
             $passwort1 = $_POST['input__passwort1'];
             $passwort2 = $_POST['input__passwort2'];
-            
+
             $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
 
             $query = "INSERT INTO Accounts(vorname, nachname, plz, ort, adresse, email, passwort) VALUES ('$vorname','$nachname','$plz','$ort','$adresse','$email','$passwortHash')";
 
+
             //Schauen ob die Eingabe einen Fehler hat
             $error = new function_registrierung ($vorname, $nachname, 
-                $plz, $ort, $adresse, $telefonnummer, $email, $passwort);
+                $plz, $ort, $adresse, $telefonnummer, $email, $passwort1, $passwort2);
             $error -> input__test();
 
             if(!$error) {
                 //Die Eingabe war korrekt
                 echo 'Eingabe war korrekt - Account wurde angelegt!';
+
             } else {
                 //Die Eingabe war fehlerhaft
                 echo 'Eingabe war Falsch - Bitte Wiederholen!';
             }
+
+
         }
 
     ?>
@@ -57,7 +63,7 @@
         <div class="screen">
             <div class="screen__content">
                 <h1>Registrieren</h1>
-                <form action="?registieren=1" method="post" class="login">
+                <form action= "?registieren=1" method="post" class="login">
                     <div class="login__field__section">
                         <div class="login__field">
                             <i class="login__icon fas fa-user"></i>

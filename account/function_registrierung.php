@@ -8,9 +8,10 @@
         public $adresse;
         public $telefonnummer;
         public $email;
-        public $passwort;
+        public $passwort1;
+        public $passwort2;
 
-        public function __construct($vorname, $nachname, $plz, $ort, $adresse, $telefonnummer, $email, $passwort) {
+        public function __construct($vorname, $nachname, $plz, $ort, $adresse, $telefonnummer, $email, $passwort1, $passwort2) {
             $this->vorname=$vorname;
             $this->nachname=$nachname;
             $this->plz=$plz;
@@ -18,7 +19,8 @@
             $this->adresse=$adresse;
             $this->telefonnummer=$telefonnummer;
             $this->email=$email;
-            $this->passwort=$passwort;
+            $this->passwort1=$passwort1;
+            $this->passwort2=$passwort2;
         }
 
         //Überprüft ob die Benutzereingabe korrekt war
@@ -61,19 +63,18 @@
                 $error = true;
             }
 
-            //Überprüft ob ein Passwort eingegeben wurde
-            if($this->passwort == null) {
-                $error = true;
-            }
+            // //Überprüft ob ein Passwort eingegeben wurde
+            // if($this->passwort1.hash_equals($passwort2)) {
+            //     $error = true;
+            // }
 
-            if (strlen($passwort) == 0) {
-                echo 'Bitte ein Passwort angeben<br>';
-                $error = true;
-            }
-            if ($passwort != $passwort2) {
-                echo 'Die Passwörter müssen übereinstimmen<br>';
-                $error = true;
-            }
+            // if (strlen($passwort1) == 0) {
+            //     $error = true;
+            // }
+            // if ($passwort1 != $passwort2) {
+            //     $error = true;
+            // }
+
 
             //Meldet zurück on die Benutzereingabe Fehlerfrei war
             //true = Fehler gefunden
