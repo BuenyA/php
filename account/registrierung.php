@@ -15,8 +15,6 @@
 
         //Datenbank import
         require('../db.php');
-        require('function_registrierung.php');
-
 
         //Warten bis der Benutzer eine Aktion ausführt
         if(isset($_GET['registieren'])) {                
@@ -32,27 +30,70 @@
             $email = $_POST['input__email'];
             $passwort1 = $_POST['input__passwort1'];
             $passwort2 = $_POST['input__passwort2'];
-
             $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
 
-            $query = "INSERT INTO Accounts(vorname, nachname, plz, ort, adresse, email, passwort) VALUES ('$vorname','$nachname','$plz','$ort','$adresse','$email','$passwortHash')";
-
-
-            //Schauen ob die Eingabe einen Fehler hat
-            $error = new function_registrierung ($vorname, $nachname, 
-                $plz, $ort, $adresse, $telefonnummer, $email, $passwort1, $passwort2);
-            $error -> input__test();
-
-            if(!$error) {
-                //Die Eingabe war korrekt
-                echo 'Eingabe war korrekt - Account wurde angelegt!';
-
-            } else {
-                //Die Eingabe war fehlerhaft
-                echo 'Eingabe war Falsch - Bitte Wiederholen!';
+            //Überprüfung der Eingabe auf Korrektheit
+            $error = false;
+            //Überprüft ob ein Vorname eingegeben wurde
+            if(strlen($vorname) == 0){
+                echo 'Vorname fehlt ';
+                $error = true;
+            }
+            //Überprüft ob ein Nachname eingegeben wurde            
+            if(strlen($nachname) == 0){
+                echo 'Nachname fehlt ';
+                $error = true;
+            }
+            //Überprüft ob eine plz eingegeben wurde
+            if(strlen($plz) == 0){
+                echo 'Postleihzahl fehlt ';
+                $error = true;
+            }
+            //Überprüft ob ein Ort eingegeben wurde
+            if(strlen($ort) == 0){
+                echo 'Ort fehlt ';
+                $error = true;
+            }
+            //Überprüft ob eine Adresse eingegeben wurde
+            if(strlen($adresse) == 0){
+                echo 'Adresse fehlt ';
+                $error = true;
+            }
+            //Überprüft ob eine Telefonnummer eingegeben wurde
+            if(strlen($telefonnummer) == 0){
+                echo 'Telefonnummer fehlt ';
+                $error = true;
+            }
+            //Überprüft ob eine Email eingegeben wurde
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo 'Email ungültig ';
+                $error = true;
+            }
+            //Überprüft ob ein Passwort eingegeben wurde
+            if (strlen($passwort1) == 0) {
+                echo 'Passwort fehlt ';
+                $error = true;
+            }
+            //Überprüft ob das Passwort wiederholt wurde 
+            if (strlen($passwort2) == 0) {
+                echo 'Passwort wiederholen ';
+                $error = true;
+            }
+            //Überprüft ob beide Passwöter übereinstimmen
+            if ($passwort1 != $passwort2) {
+                echo 'Passwörter stimmen nicht überein ';
+                $error = true;
             }
 
-
+            //Die Eingabe war korrekt
+            if(!$error) {
+                //Qeury erstellen und ausführen
+                $query = "INSERT INTO Accounts(vorname, nachname, plz, ort, adresse, email, passwort) VALUES ('$vorname','$nachname','$plz','$ort','$adresse','$email','$passwortHash')";
+                $db->query($query);
+            } 
+            
+            //Datenbank schließen
+            unset($db);
         }
 
     ?>
