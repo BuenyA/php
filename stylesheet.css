@@ -145,6 +145,7 @@ h5 {
 .navigationMenuButtonRegistrieren button:hover {
   cursor: pointer;
   background-color: rgb(255, 109, 46);
+  color: white;
 }
 
 .navigationMenuButtonMeinAccount button {

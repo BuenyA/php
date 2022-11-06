@@ -74,7 +74,7 @@
                                     <div>
                                         <div class="Marke">
                                             <h2>Marke</h2>
-                                            <select>
+                                            <select name="Marke">
                                                 <option>Audi</option>
                                                 <option>Audi</option>
                                                 <option>Audi</option>
@@ -84,7 +84,7 @@
                                         </div>
                                         <div class="Modell">
                                             <h2>Modell</h2>
-                                            <select>
+                                            <select name="Modell">
                                                 <option>RS6</option>
                                                 <option>RS6</option>
                                                 <option>RS6</option>
@@ -96,19 +96,19 @@
                                     <div>
                                         <div class="KilometerBis">
                                             <h2>Kilometer</h2>
-                                            <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number">
+                                            <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number" name="KM">
                                         </div>
                                         <div class="Erstzulassung">
                                             <h2>Erstzulassung</h2>
-                                            <input type="search" placeholder="Jahr" autocomplete="off" maxlength="10" type="number">
+                                            <input type="search" placeholder="Jahr" autocomplete="off" maxlength="10" type="number" name="Erstzulassung">
                                         </div>
                                     </div>
                                     <div>
                                         <div class="Preis">
                                             <h2>Preis</h2>
                                             <div class="preisAngabe">
-                                                <input type="search" placeholder="Von..." autocomplete="off" maxlength="10" type="number">
-                                                <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number">
+                                                <input type="search" placeholder="Von..." autocomplete="off" maxlength="10" type="number" name="preisVon">
+                                                <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number" name="preisBis">
                                             </div>
                                         </div>
                                         <div class="btnAngebotSuchenDiv">
@@ -132,7 +132,7 @@
     <section class="topOffer">
         <h1>Top-Angebote</h1>
         <?php
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP ORDER BY Preis ASC";
             $resInserat = $db->query($queryInserat);
 
             if (empty($_SESSION['user'])) {
@@ -149,7 +149,7 @@
     <section class="topOffer">
         <h1>Last-Minute-Angebote...</h1>
         <?php
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP ORDER BY Auktionsende ASC";
             $resInserat = $db->query($queryInserat);
             if (empty($_SESSION['user'])) {
                 phpFunctions::showOffer(7, $resInserat, 0, 4);
