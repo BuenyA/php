@@ -158,7 +158,7 @@
             }
             unset($db);
         ?>
-        <a href="./lastminute/lastminute.php" class="btnMehrAnzeigen">
+        <a href="./Angebote/lastminute.php" class="btnMehrAnzeigen">
             Mehr Anzeigen
             <img src="image/right-arrows.png" width="20" height="20">
         </a>

@@ -18,7 +18,12 @@ h6 {
     border-radius: 10px;
 }
 
-.produktAreaLeft {}
+.produktAreaLeft {
+    height: 25em;
+    width: 40em;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
 .produktAreaLeft img {
     object-fit: cover;
@@ -32,9 +37,115 @@ h6 {
 }
 
 .produktAreaRight {
-    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 10px;
     width: 20em;
     height: 25em;
+}
+
+.produktAreaRightElements {
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.produktAreaRight h6 {
+    font-size: 20px;
+}
+
+.produktAreaRight h7 {
+    font-size: 12px;
+    color: gray;
+}
+
+.produktAreaRight h5 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: black;
+}
+
+.separator {
+    height: 0.7px;
+    background-color: rgb(215, 215, 215);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.produktAreaRightElementsButton {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.produktAreaRightElementsButton form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.angebotAufgebenButton {
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    width: 20em;
+    color: black;
+    font-size: 12px;
+    border: 1.5px solid #ff6600;
+    background-size: 15px;
+    margin-bottom: 5px;
+    transition: 0.2s;
+}
+
+.angebotAufgebenButton:hover {
+    color: white;
+    background-color: #ff6600;
+    cursor: pointer;
+}
+
+.angebotAufgebenButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    width: 19em;
+    color: black;
+    font-size: 12px;
+    border: 1.5px solid #ff6600;
+    background-size: 15px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.angebotAufgebenButton:hover {
+    color: white;
+    background-color: #ff6600;
+    cursor: pointer;
+}
+
+.merkenGroßButton {
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    width: 20em;
+    color: black;
+    font-size: 12px;
+    border: 1.5px solid #ff6600;
+    background-size: 15px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.merkenGroßButton:hover {
+    color: white;
+    background-color: #ff6600;
+    cursor: pointer;
 }
 
 .produktShortView {

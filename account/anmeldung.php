@@ -12,7 +12,7 @@
 
 <body>
     <div class="navigationMenuLogo">
-        <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = '../index.php';">
+        <img src="image/AutostarLogo.png" width="200" height="40" onclick="reloadWindow()">
     </div>
     <div class="container">
         <?php
