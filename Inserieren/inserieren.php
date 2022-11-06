@@ -71,13 +71,13 @@
                         <p class="Marke-text">
                             Marke
                         </p>
-                        <input class="Marke-eingabe" type="text" size="40" maxlength="250" name="marke" placeholder="    z.B. Mercedes">
+                        <input class="Marke-eingabe" type="text" size="40" maxlength="250" name="marke" placeholder="    z.B. Mercedes" required>
                     </div>
                     <div class="Modell">
                         <p class="Modell-text">
                             Modell
                         </p>
-                        <input class="Modell-eingabe" type="text" size="40" maxlength="250" name="modell" placeholder="    z.B. A-Klasse">
+                        <input class="Modell-eingabe" type="text" size="40" maxlength="250" name="modell" placeholder="    z.B. A-Klasse" required>
                     </div>
                 </div>
                 <div class="Preis-Beschreibung">
@@ -85,13 +85,13 @@
                         <p class="Preis-text">
                             Preis
                         </p>
-                        <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis" placeholder="    z.B. 10000">
+                        <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis" placeholder="    z.B. 10000" required>
                     </div>
                     <div class="Beschreibung">
                         <p class="Beschreibung-text">
                             Beschreibung
                         </p>
-                        <input class= "Beschreibung-eingabe" type="text" size="40" maxlength="250" name="beschreibung" placeholder="    Erzähle uns etwas über dein Auto">
+                        <input class= "Beschreibung-eingabe" type="text" size="40" maxlength="250" name="beschreibung" placeholder="    Erzähle uns etwas über dein Auto" required>
                     </div>
                 </div>
                 <div class="Kilometerstand-PS">
@@ -99,13 +99,13 @@
                         <p class="Kilometerstand-text">
                             Kilometerstand
                         </p>
-                        <input class= "Kilometerstand-eingabe" type="number" size="40" maxlength="250" name="kilometerstand" placeholder="    z.B. 150000">
+                        <input class= "Kilometerstand-eingabe" type="number" size="40" maxlength="250" name="kilometerstand" placeholder="    z.B. 150000" required>
                     </div>
                     <div class="PS">
                         <p class="PS-text">
                             PS
                         </p>
-                        <input class="PS-eingabe" type="number" size="40" maxlength="250" name="ps" placeholder="    z.B. 200">
+                        <input class="PS-eingabe" type="number" size="40" maxlength="250" name="ps" placeholder="    z.B. 200" required>
                     </div>
                 </div>
                 <div class="Kraftstoffart-Getriebeart">
@@ -113,13 +113,13 @@
                         <p class="Kraftstoffart-text">
                             Kraftstoffart
                         </p>
-                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="250" name="kraftstoffart" placeholder="    z.B. Benzin">
+                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="250" name="kraftstoffart" placeholder="    z.B. Benzin" required>
                     </div>
                     <div class="Getriebeart">
                         <p class="Getriebeart-text">
                             Getriebeart
                         </p>
-                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart" placeholder="    z.B. Automatikgetriebe">
+                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart" placeholder="    z.B. Automatikgetriebe"required>
                     </div>
                 </div>
                 <div class="Erstzulassung-Auktionsbeginn">
@@ -127,13 +127,13 @@
                         <p class="Erstzulassung-text">
                             Erstzulassung
                         </p>
-                        <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
+                        <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung" required>
                     </div>
                     <div class="Auktionsbeginn">
                         <p class="Auktionsbeginn-text">
                             Auktionsbeginn
                         </p>
-                        <input class="Auktionsbeginn-eingabe" type="date" size="40" maxlength="250" name="auktionsbeginnDatum">
+                        <input class="Auktionsbeginn-eingabe" type="date" size="40" maxlength="250" name="auktionsbeginnDatum" required>
                     </div>
                 </div>
                 <div class= "Uhrzeit-Auktionsende">
@@ -141,13 +141,13 @@
                         <p class="Uhrzeit-text">
                             Uhrzeit
                         </p>
-                        <input class="Uhrzeit-eingabe" type="time" size="40" maxlength="250" name="auktionsbeginnUhrzeit">
+                        <input class="Uhrzeit-eingabe" type="time" size="40" maxlength="250" name="auktionsbeginnUhrzeit" required>
                     </div>
                     <div class="Auktionsende">
                         <p class="Auktionsende-text">
                             Auktionsende
                         </p>
-                        <input class="Auktionsende-eingabe" type="date" size="40" maxlength="250" name="auktionsendeDatum">
+                        <input class="Auktionsende-eingabe" type="date" size="40" maxlength="250" name="auktionsendeDatum" required>
                     </div>
                 </div>
                 <div class= "Uhrzeit-Auktionsende">
@@ -155,7 +155,7 @@
                         <p class="Uhrzeit-text">
                             Bilder
                         </p>
-                        <input class="Uhrzeit-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit">
+                        <input class="Uhrzeit-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit" required>
                     </div>
                 </div>
                 <input class="Abschicken-button" type="submit" value="Abschicken">
