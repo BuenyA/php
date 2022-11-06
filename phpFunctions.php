@@ -20,7 +20,8 @@
                         if ($counter == $showMax) {
                             break;
                         }
-                        $waiting_day = strtotime($row['Auktionsende'].' '.$row['Auktionsende_Uhrzeit']);
+                        // $waiting_day = strtotime($row['Auktionsende'].' '.$row['Auktionsende_Uhrzeit']);
+                        $waiting_day = strtotime($row['Auktionsende']);
                         $getDateTime = date("F d, Y H:i:s", $waiting_day); // JavaScript Variable
                         if (($counter % 2) == 0) {
                             echo '
