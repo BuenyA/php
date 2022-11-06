@@ -12,14 +12,10 @@
 
 <body>
     <?php
-
         //Datenbank import
         require('../db.php');
-
         //Warten bis der Benutzer eine Aktion ausführt
         if(isset($_GET['registieren'])) {                
-
-                
             //Variablen die der Benutzer eingegeben hat aus dem Formular in Variabeln speichern
             $vorname = $_POST['input__vorname'];
             $nachname = $_POST['input__nachname'];
@@ -37,6 +33,7 @@
                 //Qeury erstellen und ausführen
                 $query = "INSERT INTO Accounts(vorname, nachname, plz, ort, adresse, email, passwort) VALUES ('$vorname','$nachname','$plz','$ort','$adresse','$email','$passwortHash')";
                 $db->query($query);
+                echo '<script>showPopup();</script>';
             } else {
                 //Überprüft ob eine gültige Email eingegeben wurde
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -53,6 +50,9 @@
         }
 
     ?>
+    <div class="popup" id="popupid">
+        <h1>Account angelegt</h1>
+    </div>
     <div class="navigationMenuLogo">
         <img src="image/AutostarLogo.png" width="200" height="40" onclick="reloadWindow()">
     </div>

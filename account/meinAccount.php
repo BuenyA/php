@@ -31,6 +31,7 @@
     <section class="accountManagement">
         <?php
             if($_GET['page'] == 'MeinKonto') {
+<<<<<<< HEAD
 
                 //aktuelle Daten des Session Users aus der Datenbank laden
                 $session_ID = $_SESSION['id'];
@@ -39,6 +40,9 @@
                 $row = $resAcc->fetch();
                 
                 //HTML page ausgeben
+=======
+                
+>>>>>>> ca80d91aa48c54f7e1743a95a21d86e005006d73
                 echo '<h1>Guten Tag ' . $_SESSION['vorname'] . '</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
@@ -60,7 +64,11 @@
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input vorname -->
+<<<<<<< HEAD
                                                         <input type="text" class="login__input" placeholder="'.$row['vorname'].'" name="input__vorname">
+=======
+                                                        <input type="text" class="login__input" placeholder="" name="input__vorname">
+>>>>>>> ca80d91aa48c54f7e1743a95a21d86e005006d73
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
