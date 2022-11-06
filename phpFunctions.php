@@ -1,65 +1,81 @@
 <?php
     class phpFunctions {
         public static function showOffer($showMax, $resInserat, $AccNr = 0, $counter = 0) {
+            if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+                $url = "https://";
+            else
+                $url = "http://";
+            $url.= $_SERVER['HTTP_HOST'];
+            $url.= $_SERVER['REQUEST_URI'];
+            if (str_contains($url, 'php/Angebote')) {
+                $url = './produkt.php';
+            } elseif (str_contains($url, 'php/index.php')) {
+                $url = './Angebote/produkt.php';
+            } else {
+                $url = '../Angebote/produkt.php';
+            }
             if (empty($_SESSION['user'])) {
                 if ($resInserat !== false && $resInserat->rowCount() > 0) {
                     foreach ($resInserat as $row) {
                         if ($counter == $showMax) {
                             break;
                         }
-                        // $waiting_day = strtotime("2022-10-30 12:00:00+0200"); // Test Deklaration
                         $waiting_day = strtotime($row['Auktionsende'].' '.$row['Auktionsende_Uhrzeit']);
                         $getDateTime = date("F d, Y H:i:s", $waiting_day); // JavaScript Variable
                         if (($counter % 2) == 0) {
                             echo '
                                 <div class="topOfferPlace">
-                                    <div class="topOffers">
-                                        <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                                        <div class="topOffersRight">
-                                            <div class="topOffersRightTop">
-                                                <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                                <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                    <a class="topOfferLink" href="'.$url.'">
+                                        <div class="topOffers">
+                                            <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                            <div class="topOffersRight">
+                                                <div class="topOffersRightTop">
+                                                    <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
+                                                    <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                                </div>
+                                                <h5 id="counter'.$counter.'"></h5>
+                                                <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
+                                                <p>
+                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                                </p>
+                                                <p>
+                                                    ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
+                                                    Tel.: +49 123 456789</br>
+                                                    Ort: ' . $row['ort'] . '
+                                                </p>
+                                                <form action="?anmelden=1" method="post">
+                                                    <input type="submit" value="      Merken" class="merkenButton" />
+                                                </form>
                                             </div>
-                                            <h5 id="counter'.$counter.'"></h5>
-                                            <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
-                                            <p>
-                                                ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
-                                            </p>
-                                            <p>
-                                                ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
-                                                Tel.: +49 123 456789</br>
-                                                Ort: ' . $row['ort'] . '
-                                            </p>
-                                            <form action="?anmelden=1" method="post">
-                                                <input type="submit" value="      Merken" class="merkenButton" />
-                                            </form>
                                         </div>
-                                    </div>
+                                    </a>
                                 ';
                         } else {
                             echo '
-                                    <div class="topOffers">
-                                        <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                                        <div class="topOffersRight">
-                                            <div class="topOffersRightTop">
-                                                <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                                <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
+                                    <a class="topOfferLink" href="'.$url.'">
+                                        <div class="topOffers">
+                                            <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                            <div class="topOffersRight">
+                                                <div class="topOffersRightTop">
+                                                    <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
+                                                    <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
+                                                </div>
+                                                <h5 id="counter'.$counter.'"></h5>
+                                                <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
+                                                <p>
+                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                                </p>
+                                                <p>
+                                                    ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
+                                                    Tel.: +49 123 456789</br>
+                                                    Ort: ' . $row['ort'] . '
+                                                </p>
+                                                <form action="?anmelden=1" method="post">
+                                                    <input type="submit" value="      Merken" class="merkenButton" />
+                                                </form>
                                             </div>
-                                            <h5 id="counter'.$counter.'"></h5>
-                                            <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
-                                            <p>
-                                                ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
-                                            </p>
-                                            <p>
-                                                ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
-                                                Tel.: +49 123 456789</br>
-                                                Ort: ' . $row['ort'] . '
-                                            </p>
-                                            <form action="?anmelden=1" method="post">
-                                                <input type="submit" value="      Merken" class="merkenButton" />
-                                            </form>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 ';
                         }
@@ -90,63 +106,66 @@
                         } else {
                             $cssClassVariable = 'merkenButton';
                         }
-                        // $waiting_day = strtotime("2022-10-30 12:00:00+0200"); // Test Deklaration
                         $waiting_day = strtotime($row['Auktionsende'].' '.$row['Auktionsende_Uhrzeit']);
                         $getDateTime = date("F d, Y H:i:s", $waiting_day); // JavaScript Variable
                         if (($counter % 2) == 0) {
                             echo '
                                 <div class="topOfferPlace">
-                                    <div class="topOffers">
-                                        <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                                        <div class="topOffersRight">
-                                            <div class="topOffersRightTop">
-                                                <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                                <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                    <a class="topOfferLink" href="'.$url.'">
+                                        <div class="topOffers">
+                                            <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                            <div class="topOffersRight">
+                                                <div class="topOffersRightTop">
+                                                    <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
+                                                    <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                                </div>
+                                                <h5 id="counter'.$counter.'"></h5>
+                                                <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
+                                                <p>
+                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                                </p>
+                                                <p>
+                                                    ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
+                                                    Tel.: +49 123 456789</br>
+                                                    Ort: ' . $row['ort'] . '
+                                                </p>
+                                                <form action="?insertMerken=1" method="post">
+                                                    <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
+                                                    <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
+                                                    <input type="submit" value="      Merken" class="'.$cssClassVariable.'" />
+                                                </form>
                                             </div>
-                                            <h5 id="counter'.$counter.'"></h5>
-                                            <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
-                                            <p>
-                                                ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
-                                            </p>
-                                            <p>
-                                                ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
-                                                Tel.: +49 123 456789</br>
-                                                Ort: ' . $row['ort'] . '
-                                            </p>
-                                            <form action="?insertMerken=1" method="post">
-                                                <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
-                                                <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
-                                                <input type="submit" value="      Merken" class="'.$cssClassVariable.'" />
-                                            </form>
                                         </div>
-                                    </div>
+                                    </a>
                                 ';
                         } else {
                             echo '
-                                    <div class="topOffers">
-                                        <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                                        <div class="topOffersRight">
-                                            <div class="topOffersRightTop">
-                                                <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                                <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
+                                    <a class="topOfferLink" href="'.$url.'">
+                                        <div class="topOffers">
+                                            <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                            <div class="topOffersRight">
+                                                <div class="topOffersRightTop">
+                                                    <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
+                                                    <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
+                                                </div>
+                                                <h5 id="counter'.$counter.'"></h5>
+                                                <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
+                                                <p>
+                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                                </p>
+                                                <p>
+                                                    ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
+                                                    Tel.: +49 123 456789</br>
+                                                    Ort: ' . $row['ort'] . '
+                                                </p>
+                                                <form action="?insertMerken=1" method="post">
+                                                    <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
+                                                    <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
+                                                    <input type="submit" value="      Merken" class="'.$cssClassVariable.'" />
+                                                </form>
                                             </div>
-                                            <h5 id="counter'.$counter.'"></h5>
-                                            <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
-                                            <p>
-                                                ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
-                                            </p>
-                                            <p>
-                                                ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
-                                                Tel.: +49 123 456789</br>
-                                                Ort: ' . $row['ort'] . '
-                                            </p>
-                                            <form action="?insertMerken=1" method="post">
-                                                <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
-                                                <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
-                                                <input type="submit" value="      Merken" class="'.$cssClassVariable.'" />
-                                            </form>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 ';
                         }
@@ -159,7 +178,7 @@
             }
         }
 
-        public static function printNavigationBar() {
+        public static function printNavigationBar() { 
             if (empty($_SESSION['user'])) {
                 echo '
                 <div class="navigationMenu">
@@ -168,8 +187,8 @@
                     </div>
                     <ul class="navigationElements">
                         <li><a href="../index.php">Home</a></li>
-                        <li><a href="../TopAngebote/topangebote.php">Top Angebote</a></li>
-                        <li><a href="../LastMinute/lastminute.php">Last-Minute</a></li>
+                        <li><a href="../Angebote/topangebote.php">Top Angebote</a></li>
+                        <li><a href="../Angebote/lastminute.php">Last-Minute</a></li>
                         <li><a href="../Inserieren/inserieren.php">Verkaufen</a></li>
                     </ul>
                     <div class="navigationMenuButton">
@@ -190,8 +209,8 @@
                     </div>
                     <ul class="navigationElements">
                         <li><a href="../index.php">Home</a></li>
-                        <li><a href="../TopAngebote/topangebote.php">Top Angebote</a></li>
-                        <li><a href="../LastMinute/lastminute.php">Last-Minute</a></li>
+                        <li><a href="../Angebote/topangebote.php">Top Angebote</a></li>
+                        <li><a href="../Angebote/lastminute.php">Last-Minute</a></li>
                         <li><a href="../Inserieren/inserieren.php">Verkaufen</a></li>
                     </ul>
                     <div class="navigationMenuButton">

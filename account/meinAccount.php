@@ -181,7 +181,7 @@
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
-                $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
+                $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.AccountNr = Accounts.account_ID JOIN Inserat ON Inserat.Inserat_Nr = Angebote.InseratNr WHERE AccountNr = ".$_SESSION['id'];
                 $resInserat = $db->query($queryInserat);
                 if ($resInserat !== false && $resInserat->rowCount() > 0) {
                     foreach ($resInserat as $row) {

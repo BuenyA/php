@@ -150,11 +150,18 @@
                         <input class="Auktionsende-eingabe" type="date" size="40" maxlength="250" name="auktionsendeDatum">
                     </div>
                 </div>
-                    <input class="Abschicken-button" type="submit" value="Abschicken">
+                <div class= "Uhrzeit-Auktionsende">
+                    <div class="Uhrzeit">
+                        <p class="Uhrzeit-text">
+                            Bilder
+                        </p>
+                        <input class="Uhrzeit-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit">
+                    </div>
+                </div>
+                <input class="Abschicken-button" type="submit" value="Abschicken">
             </div>
         </form>
     </section>
-
     <section class="Text-boxes">
         <div class="Text-left textBox">
             <h1 class="Text-left-überschrift">
@@ -181,10 +188,6 @@
             </p>
         </div>
     </section>
-
-    <script src="./inserieren.js">
-
-    </script>
     <?php
         phpFunctions::printFooter();
     ?>
