@@ -31,6 +31,14 @@
     <section class="accountManagement">
         <?php
             if($_GET['page'] == 'MeinKonto') {
+
+                //aktuelle Daten des Session Users aus der Datenbank laden
+                $session_ID = $_SESSION['id'];
+                $query = "SELECT * FROM accounts WHERE account_ID = '$session_ID'";
+                $resAcc = $db->query($query);
+                $row = $resAcc->fetch();
+                
+                //HTML page ausgeben
                 echo '<h1>Guten Tag ' . $_SESSION['vorname'] . '</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
@@ -47,58 +55,46 @@
                                     <h2>Mein Account</h2>
                                     <div class="screen">
                                         <div class="screen__content">
-                                            <form class="login">
+                                            <form action= "?aendern=1" class="login">
                                                 <div class="login__field__section">
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input vorname -->
-                                                        <input type="text" class="login__input" placeholder="Vorname" name="input__vorname">
+                                                        <input type="text" class="login__input" placeholder="'.$row['vorname'].'" name="input__vorname">
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input nachname -->
-                                                        <input type="text" class="login__input" placeholder="Nachname" name="input__nachname">
+                                                        <input type="text" class="login__input" placeholder="'.$row['nachname'].'" name="input__nachname">
                                                     </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field login__field__plz">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input plz -->
-                                                        <input type="text" class="login__input login__input__plz" placeholder="PLZ" maxlength="5" name="input__plz">
+                                                        <input type="text" class="login__input login__input__plz" placeholder="'.$row['plz'].'" maxlength="5" name="input__plz">
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input ort -->
-                                                        <input type="text" class="login__input" placeholder="Ort" name="input__ort">
+                                                        <input type="text" class="login__input" placeholder="'.$row['ort'].'" name="input__ort">
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input adresse -->
-                                                        <input type="text" class="login__input" placeholder="Straße und Hausnummer" name="input__adresse">
-                                                    </div>
-                                                </div>
-                                                <div class="login__field__section">
-                                                    <div class="login__field">
-                                                        <i class="login__icon fas fa-user"></i>
-                                                        <!-- input telefonnummer -->
-                                                        <input type="text" class="login__input" placeholder="Telefonnummer" name="input__telefonnummer">
-                                                    </div>
-                                                    <div class="login__field">
-                                                        <i class="login__icon fas fa-lock"></i>
-                                                        <!-- input geburtstag -->
-                                                        <input type="date" class="login__input" placeholder="Geburtsdatum" name="input__geburtstag">
+                                                        <input type="text" class="login__input" placeholder="'.$row['adresse'].'" name="input__adresse">
                                                     </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input email -->
-                                                        <input type="text" class="login__input" placeholder="E-Mail" name="input__email">
+                                                        <input type="text" class="login__input" placeholder="'.$row['email'].'" name="input__email">
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input passwort -->
-                                                        <input type="password" class="login__input" placeholder="Passwort" name="input__passwort">
+                                                        <input type="password" class="login__input" placeholder="**********" name="input__passwort">
                                                     </div>
                                                 </div>
                                                 <button class="button login__submit" name="registrieren__submit">
@@ -121,6 +117,26 @@
                                     </div>
                                 </div>
                             </div>';
+
+                //Falls Änderungen kamen -> in die Datenbank 
+                if(isset($_GET['aendern'])){
+                    //Werte aus der Form entnehmen und in Variablen speichern
+                    $vorname = $_POST['input__vorname'];
+                    $nachname = $_POST['input__nachname'];
+                    $plz = $_POST['input__plz'];
+                    $ort = $_POST['input__ort'];
+                    $adresse = $_POST['input__adresse'];
+                    $telefonnummer = $_POST['input__telefonnummer'];
+                    $email = $_POST['input__email'];
+                    $passwort = $_POST['input__passwort'];
+                    $passwortHash = password_hash($passwort, PASSWORD_DEFAULT);
+
+                    //Query erstellen und die Änderungen in die Datenbank laden
+                    $query = "UPDATE `Accounts` SET `vorname`='$vorname',`nachname`='$nachname',`plz`='$plz',`ort`='$ort',`adresse`='$adresse',`email`='$email',`passwort`='$passwortHash' WHERE account_ID = '$session_ID'";
+                    $db->query($query);
+
+                }
+
             } elseif($_GET['page'] == 'MeineInserate') {
                 echo '<h1>Meine Inserate</h1>
                         <div class="accountManagementBody">
