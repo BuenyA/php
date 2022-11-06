@@ -12,11 +12,10 @@
 <body>
     <div>
         <img class="haken" src="../image/prufen.png" width="100" heigth="100">
-        <h1>Vielen Dank für Ihr Angebot!</h1>
+        <h1>Vielen Dank für Ihr Gebot!</h1>
         <h2>Ihr Angebot wurde an den Inhaber versendet.</h2>
-        <h2>Schauen Sie jetzt nach anderen interessanten Angeboten!</h2>
+        <h2>Schauen Sie jetzt nach anderen interessanten Gebot!</h2>
         <button onclick="reloadWindow()">Zurück zur Webseite</button>
-        <img class="autostar" src="image/AutostarLogo.png" width="200" height="40" onclick="reloadWindow()">
     </div>
 </body>
 </html>

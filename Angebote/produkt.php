@@ -148,8 +148,8 @@
                                 <textarea name="textarea" rows="20" cols="70">Guten Tag '.$rowIns['vorname'].',</textarea>
                             </div>
                             <div class="angebotAufgebenRight">
-                                <h7><b>Dein Name:</b></h7>
-                                <input type="text" name="input_user" class="login__input login__input__email" placeholder="Vorname und Nachname">
+                                <h7><b>Dein Gebot:</b></h7>
+                                <input type="text" name="input_gebot" class="login__input login__input__email" placeholder="... €">
                                 <h7><b>Deine E-Mail-Adresse:</b></h7>
                                 <input type="text" name="input_email" class="login__input login__input__email" placeholder="E-Mail">
                                 <p>Beim Absenden des Angebots binden<br> Sie sich an einen kostenpflichtigen Vertrag.</p>
