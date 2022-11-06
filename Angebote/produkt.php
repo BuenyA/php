@@ -37,27 +37,39 @@
     ?>
     <section class="produkt">
         <?php
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID";
+            if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+                $url = "https://";
+            else
+                $url = "http://";
+                $url.= $_SERVER['HTTP_HOST'];
+                $url.= $_SERVER['REQUEST_URI'];
+            if (str_contains($url, '?produkt=')) {
+                $proID = substr($url, strrpos($url, '=' )+1);
+            } else {
+                echo '<script>reloadWindow();</script>';
+            }
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Inserat.Inserat_Nr = $proID";
             $resInserat = $db->query($queryInserat);
             $rowIns = $resInserat->fetch();
             echo '
                 <div class="produktArea">
                     <div class="produktAreaLeft">
-                        <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="450" height="350">
+                        <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="640" height="400">
                     </div>
                     <div class="produktAreaRight">
-                        <h1>'.$rowIns['Marke'].' '.$rowIns['Modell'].'</h1>
-                        <p>'.number_format($rowIns['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($rowIns['PS'] / 1.35962) . ' kW (' . $rowIns['PS'] . ' PS), ' . $rowIns['Kraftstoffart'] . ', ' . $rowIns['Getriebeart'] . '</p>
-                        <h7>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h7>
-                        <p>'.number_format(($rowIns['Preis'] / 1.19) ,2, ',', '.') .'€ (Netto), 19,00% MwSt.</p>
-                        <p>'.$rowIns['vorname'].' '.$rowIns['nachname'].'</p>
-                        <p>'.$rowIns['plz'].' '.$rowIns['ort'].'</p>
-                        <form action="?anmelden=1" method="post">
-                            <input type="submit" value="      Angebot aufgeben" class="merkenButton" />
-                        </form>
-                        <form action="?anmelden=1" method="post">
-                            <input type="submit" value="      Merken" class="merkenButton" />
-                        </form>
+                        <div class="produktAreaRightElements">
+                            <h5 class="uerberschrift">'.$rowIns['Marke'].' '.$rowIns['Modell'].'</h5>
+                            <h6>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h6>
+                            <h7>'.number_format(($rowIns['Preis'] / 1.19) ,2, ',', '.') .'€ (Netto), 19,00% MwSt.</h7>
+                            <div class="separator"></div>
+                            <p>'.number_format($rowIns['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($rowIns['PS'] / 1.35962) . ' kW (' . $rowIns['PS'] . ' PS), ' . $rowIns['Kraftstoffart'] . ', ' . $rowIns['Getriebeart'] . '</p>
+                            <div class="separator"></div>
+                            <p><b>'.$rowIns['vorname'].' '.$rowIns['nachname'].'</b></p>
+                            <p>'.$rowIns['plz'].' '.$rowIns['ort'].'</p>
+                            <div class="produktAreaRightElementsButton">
+                                <a href="#angebotAufgeben" type="submit" class="angebotAufgebenButton">Angebot aufgeben</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="produktShortView">
@@ -126,15 +138,14 @@
                     <h7><b>Inseratbeschreibung</b></h7>
                     <p>'.$rowIns['Beschreibung'].'</p>
                 </div>
-                <div class="angebotAufgeben">
+                <div class="angebotAufgeben" id="angebotAufgeben">
                     <div class="angebotUberschrift">
                         <h7><b>Dein Angebot an '.$rowIns['vorname'].' '.$rowIns['nachname'].'</b></h7>
                     </div>
                     <div class="angebotAufgebenBody">
-                        <form action="/action_page.php">
+                        <form action="./vielenDankAngebot.php" method="post">
                             <div class="angebotAufgebenLeft">
-                                <textarea id="w3review" name="w3review" rows="20" cols="70">Guten Tag '.$rowIns['vorname'].',</textarea>
-                                </br>
+                                <textarea name="textarea" rows="20" cols="70">Guten Tag '.$rowIns['vorname'].',</textarea>
                             </div>
                             <div class="angebotAufgebenRight">
                                 <h7><b>Dein Name:</b></h7>

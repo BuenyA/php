@@ -246,12 +246,8 @@ h5 {
 }
 
 .merkenButton {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   background-color: white;
   margin-left: 210px;
-  border: none;
   border-radius: 5px;
   padding: 5px;
   color: black;

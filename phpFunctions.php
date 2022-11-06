@@ -25,7 +25,7 @@
                         if (($counter % 2) == 0) {
                             echo '
                                 <div class="topOfferPlace">
-                                    <a class="topOfferLink" href="'.$url.'">
+                                    <a class="topOfferLink" href="'.$url.'?produkt='.$row['Inserat_Nr'].'">
                                         <div class="topOffers">
                                             <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
                                             <div class="topOffersRight">
@@ -52,7 +52,7 @@
                                 ';
                         } else {
                             echo '
-                                    <a class="topOfferLink" href="'.$url.'">
+                                    <a class="topOfferLink" href="'.$url.'?produkt='.$row['Inserat_Nr'].'">
                                         <div class="topOffers">
                                             <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
                                             <div class="topOffersRight">
@@ -111,7 +111,7 @@
                         if (($counter % 2) == 0) {
                             echo '
                                 <div class="topOfferPlace">
-                                    <a class="topOfferLink" href="'.$url.'">
+                                    <a class="topOfferLink" href="'.$url.'?produkt='.$row['Inserat_Nr'].'">
                                         <div class="topOffers">
                                             <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
                                             <div class="topOffersRight">
@@ -140,7 +140,7 @@
                                 ';
                         } else {
                             echo '
-                                    <a class="topOfferLink" href="'.$url.'">
+                                    <a class="topOfferLink" href="'.$url.'?produkt='.$row['Inserat_Nr'].'">
                                         <div class="topOffers">
                                             <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
                                             <div class="topOffersRight">
