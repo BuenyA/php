@@ -7,19 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrieren</title>
     <link rel="stylesheet" href="registrierung.css">
-    <script language="javascript" type="text/javascript" src="index.js"></script>
+    <script language="javascript" type="text/javascript" src="../index.js"></script>
 </head>
 
 <body>
     <?php
-
         //Datenbank import
         require('../db.php');
-
         //Warten bis der Benutzer eine Aktion ausführt
         if(isset($_GET['registieren'])) {                
-
-                
             //Variablen die der Benutzer eingegeben hat aus dem Formular in Variabeln speichern
             $vorname = $_POST['input__vorname'];
             $nachname = $_POST['input__nachname'];
