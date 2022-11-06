@@ -31,6 +31,7 @@
     <section class="accountManagement">
         <?php
             if($_GET['page'] == 'MeinKonto') {
+                
                 echo '<h1>Guten Tag ' . $_SESSION['vorname'] . '</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
@@ -52,7 +53,7 @@
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input vorname -->
-                                                        <input type="text" class="login__input" placeholder="Vorname" name="input__vorname">
+                                                        <input type="text" class="login__input" placeholder="" name="input__vorname">
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>

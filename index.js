@@ -1,3 +1,7 @@
+function showPopup() {
+    document.getElementById("popupid").style.display = "block";
+}
+
 function linkToAnmeldung() {
     window.location = "../account/anmeldung.php";
 }
