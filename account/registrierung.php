@@ -31,9 +31,11 @@
             //Die Eingabe war korrekt
             if((filter_var($email, FILTER_VALIDATE_EMAIL)) && ($passwort1 == $passwort2)) {
                 //Qeury erstellen und ausführen
-                $query = "INSERT INTO Accounts(vorname, nachname, plz, ort, adresse, email, passwort) VALUES ('$vorname','$nachname','$plz','$ort','$adresse','$email','$passwortHash')";
+                $query = "INSERT INTO Accounts(vorname, nachname, plz, ort, adresse, telefon_Nr, email, passwort) VALUES ('$vorname','$nachname','$plz','$ort','$adresse', '$telefonnummer', '$email','$passwortHash')";
                 $db->query($query);
-                echo '<script>showPopup();</script>';
+
+                //Weiterleitung zu Bestätigungsseite
+                
             } else {
                 //Überprüft ob eine gültige Email eingegeben wurde
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -50,9 +52,6 @@
         }
 
     ?>
-    <div class="popup" id="popupid">
-        <h1>Account angelegt</h1>
-    </div>
     <div class="navigationMenuLogo">
         <img src="image/AutostarLogo.png" width="200" height="40" onclick="reloadWindow()">
     </div>

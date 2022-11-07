@@ -37,6 +37,22 @@
                 $query = "SELECT * FROM accounts WHERE account_ID = '$session_ID'";
                 $resAcc = $db->query($query);
                 $row = $resAcc->fetch();
+
+
+                                //Falls Änderungen kamen -> in die Datenbank 
+                                if(isset($_GET['aendern'])){
+                                    //Werte aus der Form entnehmen und in Variablen speichern
+                                    $vorname = $_POST['textarea__vorname'];
+                                    $nachname = $_POST['textarea__nachname'];
+                                    $plz = $_POST['textarea__plz'];
+                                    $ort = $_POST['textarea__ort'];
+                                    $adresse = $_POST['textarea__adresse'];
+                                    $telefonnummer = $_POST['input__telefonnummer'];
+                                    $email = $_POST['textarea__email'];
+                
+                                    echo $vorname;
+                
+                                }
                 
                 //HTML page ausgeben
                 echo '<h1>Guten Tag ' . $_SESSION['vorname'] . '</h1>
@@ -60,41 +76,36 @@
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input vorname -->
-                                                        <input type="text" class="login__input" placeholder="'.$row['vorname'].'" name="input__vorname">
+                                                        <textarea name="textarea__vorname" rows= "1" cols="20">'.$row['vorname'].'</textarea>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input nachname -->
-                                                        <input type="text" class="login__input" placeholder="'.$row['nachname'].'" name="input__nachname">
+                                                        <textarea name="textarea__nachname" rows= "1" cols="20">'.$row['nachname'].'</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field login__field__plz">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input plz -->
-                                                        <input type="text" class="login__input login__input__plz" placeholder="'.$row['plz'].'" maxlength="5" name="input__plz">
+                                                        <textarea name="textarea__plz" rows= "1" cols="20">'.$row['plz'].'</textarea>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input ort -->
-                                                        <input type="text" class="login__input" placeholder="'.$row['ort'].'" name="input__ort">
+                                                        <textarea name="textarea__ort" rows= "1" cols="20">'.$row['ort'].'</textarea>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input adresse -->
-                                                        <input type="text" class="login__input" placeholder="'.$row['adresse'].'" name="input__adresse">
+                                                        <textarea name="textarea__adresse" rows= "1" cols="20">'.$row['adresse'].'</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input email -->
-                                                        <input type="text" class="login__input" placeholder="'.$row['email'].'" name="input__email">
-                                                    </div>
-                                                    <div class="login__field">
-                                                        <i class="login__icon fas fa-lock"></i>
-                                                        <!-- input passwort -->
-                                                        <input type="password" class="login__input" placeholder="**********" name="input__passwort">
+                                                        <textarea name="textarea__email" rows= "1" cols="20">'.$row['email'].'</textarea>
                                                     </div>
                                                 </div>
                                                 <button class="button login__submit" name="registrieren__submit">
@@ -118,24 +129,7 @@
                                 </div>
                             </div>';
 
-                //Falls Änderungen kamen -> in die Datenbank 
-                if(isset($_GET['aendern'])){
-                    //Werte aus der Form entnehmen und in Variablen speichern
-                    $vorname = $_POST['input__vorname'];
-                    $nachname = $_POST['input__nachname'];
-                    $plz = $_POST['input__plz'];
-                    $ort = $_POST['input__ort'];
-                    $adresse = $_POST['input__adresse'];
-                    $telefonnummer = $_POST['input__telefonnummer'];
-                    $email = $_POST['input__email'];
-                    $passwort = $_POST['input__passwort'];
-                    $passwortHash = password_hash($passwort, PASSWORD_DEFAULT);
 
-                    //Query erstellen und die Änderungen in die Datenbank laden
-                    $query = "UPDATE `Accounts` SET `vorname`='$vorname',`nachname`='$nachname',`plz`='$plz',`ort`='$ort',`adresse`='$adresse',`email`='$email',`passwort`='$passwortHash' WHERE account_ID = '$session_ID'";
-                    $db->query($query);
-
-                }
 
             } elseif($_GET['page'] == 'MeineInserate') {
                 echo '<h1>Meine Inserate</h1>
