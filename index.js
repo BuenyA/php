@@ -14,7 +14,7 @@ function reloadWindowMeinAccount() {
     window.location = "?page=MeinKonto";
 }
 
-function calculateTime(getDateTime, counter) {
+function calculateTime(getDateTime, counter = '') {
     var countDownDate = new Date(getDateTime).getTime();
     // Update the count down every 1 second
     var counterID = "counter" + counter;

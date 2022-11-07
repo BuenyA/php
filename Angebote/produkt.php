@@ -17,22 +17,6 @@
         session_start();
         require_once '../db.php';
         require_once '../phpFunctions.php';
-        if (isset($_GET['anmelden'])) {
-            echo '<script>linkToAnmeldung();</script>';
-        }
-        if (isset($_GET['insertMerken'])) {
-            $InseratNrPost = $_POST['InseratNr'];
-            $AccIDPost = $_POST['AccID'];
-            $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
-            $resMerken = $db->query($queryMerken);
-            if ($resMerken !== false && $resMerken->rowCount() > 0) {
-                $queryMerkenDelete = "DELETE FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
-                $resMerkenDelete = $db->query($queryMerkenDelete);
-            } else {
-                $queryMerkenInsert = "INSERT INTO Merken(InseratNr, AccountNr) VALUES ('$InseratNrPost','$AccIDPost')";
-                $resMerkenInsert = $db->query($queryMerkenInsert);
-            }
-        }
         phpFunctions::printNavigationBar();
     ?>
     <section class="produkt">
@@ -51,6 +35,8 @@
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Inserat.Inserat_Nr = $proID";
             $resInserat = $db->query($queryInserat);
             $rowIns = $resInserat->fetch();
+            $waiting_day = strtotime($rowIns['Auktionsende']);
+            $getDateTime = date("F d, Y H:i:s", $waiting_day);
             echo '
                 <div class="produktArea">
                     <div class="produktAreaLeft">
@@ -59,6 +45,9 @@
                     <div class="produktAreaRight">
                         <div class="produktAreaRightElements">
                             <h5 class="uerberschrift">'.$rowIns['Marke'].' '.$rowIns['Modell'].'</h5>
+                            <h4 id="counter1"></h4>
+                            <script>calculateTime("'.$getDateTime.'", "1");</script>
+                            <div class="separator"></div>
                             <h6>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h6>
                             <h7>'.number_format(($rowIns['Preis'] / 1.19) ,2, ',', '.') .'€ (Netto), 19,00% MwSt.</h7>
                             <div class="separator"></div>
@@ -145,13 +134,17 @@
                     <div class="angebotAufgebenBody">
                         <form action="./vielenDankAngebot.php" method="post">
                             <div class="angebotAufgebenLeft">
-                                <textarea name="textarea" rows="20" cols="70">Guten Tag '.$rowIns['vorname'].',</textarea>
+                                <h7>Der aktuelle Preis liegt bei:</h7><br/>
+                                <h7>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h7>
+                                <h7>Das Angebot läuft ab in:</h7>
+                                <h5 id="counter1"></h5>
+                                <script>calculateTime("'.$getDateTime.'", "1");</script>
                             </div>
                             <div class="angebotAufgebenRight">
                                 <h7><b>Dein Gebot:</b></h7>
-                                <input type="text" name="input_gebot" class="login__input login__input__email" placeholder="... €">
+                                <input type="text" name="input_gebot" class="login__input login__input__email" placeholder="... €" required>
                                 <h7><b>Deine E-Mail-Adresse:</b></h7>
-                                <input type="text" name="input_email" class="login__input login__input__email" placeholder="E-Mail">
+                                <input type="text" name="input_email" class="login__input login__input__email" placeholder="E-Mail" required>
                                 <p>Beim Absenden des Angebots binden<br> Sie sich an einen kostenpflichtigen Vertrag.</p>
                                 <input type="submit" value="Absenden" class="absendenButton">
                             </div>
