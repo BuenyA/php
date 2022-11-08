@@ -153,7 +153,7 @@
                                     <h4>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h4>
                                 </div>
                                 <div class="angebotAufgebenLeftCounter">
-                                    <h7>Das Angebot läuft ab in:</h7>
+                                    <h7>Die Auktion läuft ab in:</h7>
                                     <h4 id="counter2"></h4>
                                     <script>calculateTime("'.$getDateTime.'", "2");</script>
                                 </div>
@@ -162,7 +162,7 @@
             if (empty($_SESSION['user'])) {
                 echo '<div class="angebotAufgebenRight">
                             <h7><b>Dein Gebot:</b></h7>
-                            <input type="number" name="input_gebot" placeholder="... €" min="'.$rowIns['Preis'].'" required>
+                            <input type="number" name="input_gebot" placeholder="... €" min="'.($rowIns['Preis'] + 50).'" required>
                             <h7><b>Deine E-Mail-Adresse:</b></h7>
                             <input type="email" name="input_email" placeholder="E-Mail" required>
                             <p>Beim Absenden des Angebots binden<br> Sie sich an einen kostenpflichtigen Vertrag.</p>

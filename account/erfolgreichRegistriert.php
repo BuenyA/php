@@ -15,7 +15,7 @@
         <h1>Vielen Dank für Ihre Registrierung!</h1>
         <h2>Ihr Account wurde angelegt</h2>
         <h2>Melden Sie sich jetzt an um Angebote zu inserieren</h2>
-        <button onClick="window.open(href='anmeldung.php')" >Anmelden</button>
+        <button onClick="window.location = './anmeldung.php'">Anmelden</button>
     </div>
 </body>
 </html>

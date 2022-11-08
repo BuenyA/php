@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrieren</title>
+    <link rel="stylesheet" href="../stylesheet.css">
     <link rel="stylesheet" href="registrierung.css">
     <script language="javascript" type="text/javascript" src="../index.js"></script>
 </head>
@@ -34,6 +35,8 @@
                 $query = "INSERT INTO Accounts(vorname, nachname, plz, ort, adresse, telefon_Nr, email, passwort) VALUES ('$vorname','$nachname','$plz','$ort','$adresse', '$telefonnummer', '$email','$passwortHash')";
                 $db->query($query);
 
+
+                echo '<script>window.location = "./erfolgreichRegistriert.php";</script>';
                 //Weiterleitung zu Bestätigungsseite
                 
             } else {
@@ -76,7 +79,7 @@
                         <div class="login__field login__field__plz">
                             <i class="login__icon fas fa-user"></i>
                             <!-- input plz -->
-                            <input type="text" class="login__input login__input__plz" placeholder="PLZ" maxlength="5" name="input__plz" required>
+                            <input type="number" class="login__input login__input__plz" maxlength="5" placeholder="PLZ" maxlength="5" name="input__plz" required>
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
@@ -93,12 +96,12 @@
                         <div class="login__field">
                             <i class="login__icon fas fa-user"></i>
                             <!-- input telefonnummer -->
-                            <input type="text" class="login__input" placeholder="Telefonnummer" name="input__telefonnummer" required>
+                            <input type="number" class="login__input" maxlength="11" placeholder="Telefonnummer" name="input__telefonnummer" required>
                         </div>
                         <div class="login__field">
                             <i class="login__icon fas fa-lock"></i>
                             <!-- input email -->
-                            <input type="text" class="login__input" placeholder="E-Mail" name="input__email" required>
+                            <input type="email" class="login__input" placeholder="E-Mail" name="input__email" required>
                         </div>
                     </div>
                     <div class="login__field__section">

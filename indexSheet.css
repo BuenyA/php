@@ -22,7 +22,8 @@ h4 {
 }
 
 h5 {
-  color: red;
+  color: rgb(255, 77, 0);
+  font-size: 16px;
 }
 
 .navigationMenu {
@@ -288,6 +289,10 @@ h5 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.topOffersRightTop h2 {
+  margin-top: 5px;
 }
 
 .topOffers {

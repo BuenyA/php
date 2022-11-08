@@ -40,16 +40,17 @@
 
 
             //Falls Änderungen kamen -> in die Datenbank 
-            if (isset($_GET['aendern'])) {
+            if (isset($_POST['aendern__submit'])) {
+                echo 'Funktioniert';
                 //Werte aus der Form entnehmen und in Variablen speichern
-                $vorname = $_GET['textarea__vorname'];
+                $vorname = $_POST['textarea__vorname'];
                 $nachname = $_POST['textarea__nachname'];
                 $plz = $_POST['textarea__plz'];
                 $ort = $_POST['textarea__ort'];
                 $adresse = $_POST['textarea__adresse'];
                 $telefonnummer = $_POST['input__telefonnummer'];
                 $email = $_POST['textarea__email'];
-                $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
+                $passwortHash = password_hash($passwort, PASSWORD_DEFAULT);
 
                 //SQL Statements, falls eine Änderung unternommen wurde
                 //Änderung Vorname
@@ -111,7 +112,7 @@
                                     <h2>Mein Account</h2>
                                     <div class="screen">
                                         <div class="screen__content">
-                                            <form action= "?aendern=1" class="login">
+                                            <form class="login" method="post">
                                                 <div class="login__field__section">
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
@@ -153,7 +154,7 @@
                                                         <textarea name="textarea__email" rows= "1" cols="20"></textarea>
                                                 </div>
                                                 </div>
-                                                <button class="button login__submit" name="registrieren__submit">
+                                                <button class="button login__submit" name="aendern__submit">
                                                     <span class="button__text">Ändern</span>
                                                     <i class="button__icon fas fa-chevron-right"></i>
                                                 </button>
