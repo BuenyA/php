@@ -236,7 +236,7 @@
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
-            $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.AccountNr = Accounts.account_ID JOIN Inserat ON Inserat.Inserat_Nr = Angebote.InseratNr WHERE AccountNr = " . $_SESSION['id'];
+            $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.Account_Nr = Accounts.account_ID JOIN Inserat ON Inserat.Inserat_Nr = Angebote.Inserat_Nr WHERE Account_Nr = " . $_SESSION['id'];
             $resInserat = $db->query($queryInserat);
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
                 foreach ($resInserat as $row) {
