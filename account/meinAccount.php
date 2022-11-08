@@ -14,48 +14,88 @@
 
 <body>
     <?php
-        require_once '../db.php';
-        require_once '../phpFunctions.php';
-        session_start();
-        if (isset($_GET['abmelden'])) {
-            session_destroy();
-            echo "<script>reloadWindow();</script>";
-        } elseif (!isset($_GET['page'])) {
-            echo '<script>reloadWindowMeinAccount();</script>';
-        }
-        if (empty($_SESSION['user'])) {
-            echo '<script>linkToAnmeldung();</script>';
-        }
-        phpFunctions::printNavigationBar();
+    require_once '../db.php';
+    require_once '../phpFunctions.php';
+    session_start();
+    if (isset($_GET['abmelden'])) {
+        session_destroy();
+        echo "<script>reloadWindow();</script>";
+    } elseif (!isset($_GET['page'])) {
+        echo '<script>reloadWindowMeinAccount();</script>';
+    }
+    if (empty($_SESSION['user'])) {
+        echo '<script>linkToAnmeldung();</script>';
+    }
+    phpFunctions::printNavigationBar();
     ?>
     <section class="accountManagement">
         <?php
-            if($_GET['page'] == 'MeinKonto') {
+        if ($_GET['page'] == 'MeinKonto') {
 
-                //aktuelle Daten des Session Users aus der Datenbank laden
-                $session_ID = $_SESSION['id'];
-                $query = "SELECT * FROM accounts WHERE account_ID = '$session_ID'";
-                $resAcc = $db->query($query);
-                $row = $resAcc->fetch();
+            //aktuelle Daten des Session Users aus der Datenbank laden
+            $session_ID = $_SESSION['id'];
+            $query = "SELECT * FROM accounts WHERE account_ID = '$session_ID'";
+            $resAcc = $db->query($query);
+            $row = $resAcc->fetch();
 
 
-                                //Falls Änderungen kamen -> in die Datenbank 
-                                if(isset($_GET['aendern'])){
-                                    //Werte aus der Form entnehmen und in Variablen speichern
-                                    $vorname = $_POST['textarea__vorname'];
-                                    $nachname = $_POST['textarea__nachname'];
-                                    $plz = $_POST['textarea__plz'];
-                                    $ort = $_POST['textarea__ort'];
-                                    $adresse = $_POST['textarea__adresse'];
-                                    $telefonnummer = $_POST['input__telefonnummer'];
-                                    $email = $_POST['textarea__email'];
-                
-                                    echo $vorname;
-                
-                                }
-                
-                //HTML page ausgeben
-                echo '<h1>Guten Tag ' . $_SESSION['vorname'] . '</h1>
+            //Falls Änderungen kamen -> in die Datenbank 
+            if (isset($_GET['aendern'])) {
+                //Werte aus der Form entnehmen und in Variablen speichern
+                $vorname = $_GET['textarea__vorname'];
+                $nachname = $_POST['textarea__nachname'];
+                $plz = $_POST['textarea__plz'];
+                $ort = $_POST['textarea__ort'];
+                $adresse = $_POST['textarea__adresse'];
+                $telefonnummer = $_POST['input__telefonnummer'];
+                $email = $_POST['textarea__email'];
+                $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
+
+                //SQL Statements, falls eine Änderung unternommen wurde
+                //Änderung Vorname
+                if ($vorname == $row['vorname']) {
+                    $query = "UPDATE `Accounts` SET `vorname`='$vorname' WHERE `account_ID`='$session_ID'";
+                    $db->query($query);
+                }
+                //Änderung Nachname
+                if ($nachname == $row['nachname']) {
+                    $query = "UPDATE 'Accounts' SET 'nachname' = '$nachname' WHERE account_ID = '$session_ID'";
+                    $db->query($query);
+                }
+                //Änderung Postleihzahl
+                if ($plz == $row['plz']) {
+                    $query = "UPDATE 'Accounts' SET 'plz' = '$plz' WHERE account_ID = '$session_ID'";
+                    $db->query($query);
+                }
+                //Änderung Ort
+                if ($ort == $row['ort']) {
+                    $query = "UPDATE 'Accounts' SET 'ort' = '$ort' WHERE account_ID = '$session_ID'";
+                    $db->query($query);
+                }
+                //Änderung Adresse
+                if ($adresse == $row['adresse']) {
+                    $query = "UPDATE 'Accounts' SET 'adresse' = '$adresse' WHERE account_ID = '$session_ID'";
+                    $db->query($query);
+                }
+                //Änderung Telefonnummer
+                if ($telefonnummer == $row['telefonnummer']) {
+                    $query = "UPDATE 'Accounts' SET 'telefonnummer' = '$telefonnummer' WHERE account_ID = '$session_ID'";
+                    $db->query($query);
+                }
+                //Änderung Email
+                if ($email == $row['email']) {
+                    $query = "UPDATE 'Accounts' SET 'email' = '$email' WHERE account_ID = '$session_ID'";
+                    $db->query($query);
+                }
+                //Änderung Passwort
+                if ($passwortHash == $row['passwort']) {
+                    $query = "UPDATE 'Accounts' SET 'passwort' = '$passwortHash'";
+                    $db->query($query);
+                }
+            }
+
+            //HTML page ausgeben
+            echo '<h1>Guten Tag ' . $_SESSION['vorname'] . '</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
@@ -76,37 +116,42 @@
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input vorname -->
-                                                        <textarea name="textarea__vorname" rows= "1" cols="20">'.$row['vorname'].'</textarea>
+                                                        <textarea name="textarea__vorname" rows= "1" cols="20">' . $row['vorname'] . '</textarea>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input nachname -->
-                                                        <textarea name="textarea__nachname" rows= "1" cols="20">'.$row['nachname'].'</textarea>
+                                                        <textarea name="textarea__nachname" rows= "1" cols="20">' . $row['nachname'] . '</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field login__field__plz">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input plz -->
-                                                        <textarea name="textarea__plz" rows= "1" cols="20">'.$row['plz'].'</textarea>
+                                                        <textarea name="textarea__plz" rows= "1" cols="20">' . $row['plz'] . '</textarea>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input ort -->
-                                                        <textarea name="textarea__ort" rows= "1" cols="20">'.$row['ort'].'</textarea>
+                                                        <textarea name="textarea__ort" rows= "1" cols="20">' . $row['ort'] . '</textarea>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input adresse -->
-                                                        <textarea name="textarea__adresse" rows= "1" cols="20">'.$row['adresse'].'</textarea>
+                                                        <textarea name="textarea__adresse" rows= "1" cols="20">' . $row['adresse'] . '</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input email -->
-                                                        <textarea name="textarea__email" rows= "1" cols="20">'.$row['email'].'</textarea>
+                                                        <textarea name="textarea__email" rows= "1" cols="20">' . $row['email'] . '</textarea>
                                                     </div>
+                                                    <div class="login__field">
+                                                        <i class="login__icon fas fa-user"></i>
+                                                        <!-- input passwort -->
+                                                        <textarea name="textarea__email" rows= "1" cols="20"></textarea>
+                                                </div>
                                                 </div>
                                                 <button class="button login__submit" name="registrieren__submit">
                                                     <span class="button__text">Ändern</span>
@@ -129,10 +174,9 @@
                                 </div>
                             </div>';
 
-
-
-            } elseif($_GET['page'] == 'MeineInserate') {
-                echo '<h1>Meine Inserate</h1>
+                            
+        } elseif ($_GET['page'] == 'MeineInserate') {
+            echo '<h1>Meine Inserate</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
@@ -144,21 +188,21 @@
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
-                $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE account_ID = ".$_SESSION['id'];
-                $resInserat = $db->query($queryInserat);
-                if ($resInserat !== false && $resInserat->rowCount() > 0) {
-                    foreach ($resInserat as $row) {
-                        echo '
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE account_ID = " . $_SESSION['id'];
+            $resInserat = $db->query($queryInserat);
+            if ($resInserat !== false && $resInserat->rowCount() > 0) {
+                foreach ($resInserat as $row) {
+                    echo '
                         <div class="topOfferPlace">
                             <div class="topOffers">
                                 <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
                                 <div class="topOffersRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                        <p class="auktionspreis"><b>' . number_format($row['Preis'], 0, '.', '.') . ' €</b></p>
                                     </div>
                                     <p>
-                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                        ' . number_format($row['Kilometerstand'], 0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                     </p>
                                     <p>
                                         ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
@@ -173,13 +217,13 @@
                             </div>
                         </div>
                         ';
-                    }
-                    echo '
+                }
+                echo '
                         </div>
                     ';
-                }
-            } elseif ($_GET['page'] == 'MeineGebote'){
-                echo '<h1>Meine Gebote</h1>
+            }
+        } elseif ($_GET['page'] == 'MeineGebote') {
+            echo '<h1>Meine Gebote</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
@@ -191,21 +235,21 @@
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
-                $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.AccountNr = Accounts.account_ID JOIN Inserat ON Inserat.Inserat_Nr = Angebote.InseratNr WHERE AccountNr = ".$_SESSION['id'];
-                $resInserat = $db->query($queryInserat);
-                if ($resInserat !== false && $resInserat->rowCount() > 0) {
-                    foreach ($resInserat as $row) {
-                        echo '
+            $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.AccountNr = Accounts.account_ID JOIN Inserat ON Inserat.Inserat_Nr = Angebote.InseratNr WHERE AccountNr = " . $_SESSION['id'];
+            $resInserat = $db->query($queryInserat);
+            if ($resInserat !== false && $resInserat->rowCount() > 0) {
+                foreach ($resInserat as $row) {
+                    echo '
                         <div class="topOfferPlace">
                             <div class="topOffers">
                                 <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
                                 <div class="topOffersRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                        <p class="auktionspreis"><b>' . number_format($row['Preis'], 0, '.', '.') . ' €</b></p>
                                     </div>
                                     <p>
-                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                        ' . number_format($row['Kilometerstand'], 0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                     </p>
                                     <p>
                                         ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
@@ -219,13 +263,13 @@
                                 </div>
                             </div>
                         </div>';
-                    }
-                    echo '
+                }
+                echo '
                         </div>
                     ';
-                }
-            } elseif ($_GET['page'] == 'MeineFavoriten'){
-                echo '<h1>Meine Favoriten</h1>
+            }
+        } elseif ($_GET['page'] == 'MeineFavoriten') {
+            echo '<h1>Meine Favoriten</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
@@ -237,22 +281,22 @@
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
-                $ID = $_SESSION['id'];
-                $queryInserat = "SELECT * FROM Merken JOIN Inserat ON Merken.InseratNr = Inserat.Inserat_Nr JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE AccountNr = $ID";
-                $resInserat = $db->query($queryInserat);
-                if ($resInserat !== false && $resInserat->rowCount() > 0) {
-                    foreach ($resInserat as $row) {
-                        echo '
+            $ID = $_SESSION['id'];
+            $queryInserat = "SELECT * FROM Merken JOIN Inserat ON Merken.InseratNr = Inserat.Inserat_Nr JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE AccountNr = $ID";
+            $resInserat = $db->query($queryInserat);
+            if ($resInserat !== false && $resInserat->rowCount() > 0) {
+                foreach ($resInserat as $row) {
+                    echo '
                         <div class="topOfferPlace">
                             <div class="topOffers">
                                 <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
                                 <div class="topOffersRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                        <p class="auktionspreis"><b>' . number_format($row['Preis'], 0, '.', '.') . ' €</b></p>
                                     </div>
                                     <p>
-                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                        ' . number_format($row['Kilometerstand'], 0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                     </p>
                                     <p>
                                         ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
@@ -266,13 +310,13 @@
                                 </div>
                             </div>
                         </div>';
-                    }
-                    echo '
+                }
+                echo '
                         </div>
                     ';
-                }
-            } elseif ($_GET['page'] == 'MeineNachrichten'){
-                echo '<h1>Meine Nachrichten</h1>
+            }
+        } elseif ($_GET['page'] == 'MeineNachrichten') {
+            echo '<h1>Meine Nachrichten</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
@@ -284,20 +328,20 @@
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
-                $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
-                $resInserat = $db->query($queryInserat);
-                echo '
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
+            $resInserat = $db->query($queryInserat);
+            echo '
                     </div>
                     ';
-            }
+        }
         ?>
-            <div class="accountManagementSpace">
+        <div class="accountManagementSpace">
 
-            </div>
+        </div>
         </div>
     </section>
     <?php
-        phpFunctions::printFooter();
+    phpFunctions::printFooter();
     ?>
 </body>
 
