@@ -277,7 +277,7 @@
 .Auktionsbeginn-Uhrzeit{
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 80%;
   height: auto;
   flex-direction: row;
   justify-content: space-around;
@@ -383,6 +383,30 @@
 }
 
 .Auktionsende-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.Bilder{
+  border-radius: 10px;
+  background-color: rgb(245, 243, 243);
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.Bilder-Eingabe{
+  background-color: aqua;
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 15px;
+}
+
+.Bilder-Text{
   margin-top: 15px;
   margin-bottom: 5px;
 }
