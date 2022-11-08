@@ -32,7 +32,6 @@
                 echo '<script>reloadWindow();</script>';
             }
             if (sizeof($_POST) !== 0 || isset($_POST['submit'])) {
-                echo 'JAAAAAAAAAAAAAAAAAAa';
                 if(!empty($_SESSION['id'])) {
                     $id = $_SESSION['id'];
                     $email = $_SESSION['user'];
@@ -41,7 +40,14 @@
                     $email = $_POST['input_email'];
                 }
                 $gebot = $_POST['input_gebot'];
-                $query = "INSERT INTO Angebote(InseratNr, Kostenvorschlag, Email, AccountNr) VALUES ($proID,$gebot,'$email',$id);";
+                $query = "INSERT INTO Angebote(Inserat_Nr, Kostenvorschlag, Email, Account_Nr) VALUES ($proID, $gebot, '$email', $id)";
+                $db->query($query);
+                $query = "SELECT * FROM Angebote WHERE Inserat_Nr = $proID AND Kostenvorschlag = $gebot AND Email = '$email' AND Account_Nr = $id";
+                $resInsAng = $db->query($query);
+                $rowInsAng = $resInsAng->fetch();
+                $AngNr = $rowInsAng['Angebot_Nr'];
+                $InsNr = $rowInsAng['Inserat_Nr'];
+                $query = "UPDATE Inserat SET Top_Angebot = $AngNr WHERE Inserat_Nr = $InsNr";
                 $db->query($query);
                 echo '<script>loadDanke();</script>';
             }
@@ -175,7 +181,7 @@
             } else {
                 echo '<div class="angebotAufgebenRight">
                             <h7><b>Dein Gebot:</b></h7>
-                            <input type="number" name="input_gebot" placeholder="... €" min="'.$rowIns['Preis'].'" required>
+                            <input type="number" name="input_gebot" placeholder="... €" min="'.($rowIns['Preis'] + 50).'" required>
                             <h7><b>Deine E-Mail-Adresse:</b></h7>
                             <h8 type="text" name="input_email">'.$_SESSION['user'].'</h8>
                             <p>Beim Absenden des Angebots binden<br> Sie sich an einen kostenpflichtigen Vertrag.</p>
