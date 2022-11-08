@@ -19,7 +19,7 @@
         if (isset($_GET['anmelden'])) {
             echo '<script>window.location = "./account/anmeldung.php";</script>';
         }
-        if (isset($_GET['insertMerken'])) {
+        if (isset($_GET['insertMerken']) && sizeof($_POST) !== 0) {
             $InseratNrPost = $_POST['InseratNr'];
             $AccIDPost = $_POST['AccID'];
             $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";

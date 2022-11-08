@@ -22,7 +22,7 @@
 
     require_once '../db.php';
 
-    if (isset($_GET['inserieren'])) {
+    if (isset($_GET['inserieren']) && sizeof($_POST) !== 0) {
         $error = false;
         $marke = $_POST['marke'];
         $modell = $_POST['modell'];

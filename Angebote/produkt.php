@@ -21,17 +21,31 @@
     ?>
     <section class="produkt">
         <?php
-            if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
-                $url = "https://";
-            else
-                $url = "http://";
-                $url.= $_SERVER['HTTP_HOST'];
-                $url.= $_SERVER['REQUEST_URI'];
+            $url = $_SERVER['REQUEST_URI'];
             if (str_contains($url, '?produkt=')) {
-                $proID = substr($url, strrpos($url, '=' )+1);
+                $proID = substr($url, strrpos($url, 'produkt=' ) + 8);
+                if (str_contains($proID, '?')) {
+                    $proID = substr($proID, 0, strpos($proID, "?"));
+                }
+                $produktURL = substr($url, strrpos($url, '.php' ) + 4);
             } else {
                 echo '<script>reloadWindow();</script>';
             }
+            if (sizeof($_POST) !== 0 || isset($_POST['submit'])) {
+                echo 'JAAAAAAAAAAAAAAAAAAa';
+                if(!empty($_SESSION['id'])) {
+                    $id = $_SESSION['id'];
+                    $email = $_SESSION['user'];
+                } else {
+                    $id = 'Null';
+                    $email = $_POST['input_email'];
+                }
+                $gebot = $_POST['input_gebot'];
+                $query = "INSERT INTO Angebote(InseratNr, Kostenvorschlag, Email, AccountNr) VALUES ($proID,$gebot,'$email',$id);";
+                $db->query($query);
+                echo '<script>loadDanke();</script>';
+            }
+
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Inserat.Inserat_Nr = $proID";
             $resInserat = $db->query($queryInserat);
             $rowIns = $resInserat->fetch();
@@ -49,7 +63,7 @@
                             <script>calculateTime("'.$getDateTime.'", "1");</script>
                             <div class="separator"></div>
                             <h6>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h6>
-                            <h7>'.number_format(($rowIns['Preis'] / 1.19) ,2, ',', '.') .'€ (Netto), 19,00% MwSt.</h7>
+                            <h7>'.number_format(($rowIns['Preis'] / 1.19) ,2, ',', '.') .'€ (Netto), zzgl. 19% MwSt.</h7>
                             <div class="separator"></div>
                             <p>'.number_format($rowIns['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($rowIns['PS'] / 1.35962) . ' kW (' . $rowIns['PS'] . ' PS), ' . $rowIns['Kraftstoffart'] . ', ' . $rowIns['Getriebeart'] . '</p>
                             <div class="separator"></div>
@@ -132,26 +146,46 @@
                         <h7><b>Dein Angebot an '.$rowIns['vorname'].' '.$rowIns['nachname'].'</b></h7>
                     </div>
                     <div class="angebotAufgebenBody">
-                        <form action="./vielenDankAngebot.php" method="post">
+                        <form method="post">
                             <div class="angebotAufgebenLeft">
-                                <h7>Der aktuelle Preis liegt bei:</h7><br/>
-                                <h7>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h7>
-                                <h7>Das Angebot läuft ab in:</h7>
-                                <h5 id="counter1"></h5>
-                                <script>calculateTime("'.$getDateTime.'", "1");</script>
+                                <div class="angebotAufgebenLeftPreis">
+                                    <h7>Der aktuelle Preis:</h7>
+                                    <h4>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h4>
+                                </div>
+                                <div class="angebotAufgebenLeftCounter">
+                                    <h7>Das Angebot läuft ab in:</h7>
+                                    <h4 id="counter2"></h4>
+                                    <script>calculateTime("'.$getDateTime.'", "2");</script>
+                                </div>
                             </div>
-                            <div class="angebotAufgebenRight">
-                                <h7><b>Dein Gebot:</b></h7>
-                                <input type="text" name="input_gebot" class="login__input login__input__email" placeholder="... €" required>
-                                <h7><b>Deine E-Mail-Adresse:</b></h7>
-                                <input type="text" name="input_email" class="login__input login__input__email" placeholder="E-Mail" required>
-                                <p>Beim Absenden des Angebots binden<br> Sie sich an einen kostenpflichtigen Vertrag.</p>
-                                <input type="submit" value="Absenden" class="absendenButton">
-                            </div>
-                        </form>
-                    </div>
+                            ';
+            if (empty($_SESSION['user'])) {
+                echo '<div class="angebotAufgebenRight">
+                            <h7><b>Dein Gebot:</b></h7>
+                            <input type="number" name="input_gebot" placeholder="... €" min="'.$rowIns['Preis'].'" required>
+                            <h7><b>Deine E-Mail-Adresse:</b></h7>
+                            <input type="email" name="input_email" placeholder="E-Mail" required>
+                            <p>Beim Absenden des Angebots binden<br> Sie sich an einen kostenpflichtigen Vertrag.</p>
+                            <input type="submit" value="Absenden" class="absendenButton">
+                        </div>
+                    </form>
                 </div>
+            </div>
             ';
+            } else {
+                echo '<div class="angebotAufgebenRight">
+                            <h7><b>Dein Gebot:</b></h7>
+                            <input type="number" name="input_gebot" placeholder="... €" min="'.$rowIns['Preis'].'" required>
+                            <h7><b>Deine E-Mail-Adresse:</b></h7>
+                            <h8 type="text" name="input_email">'.$_SESSION['user'].'</h8>
+                            <p>Beim Absenden des Angebots binden<br> Sie sich an einen kostenpflichtigen Vertrag.</p>
+                            <input type="submit" value="Absenden" class="absendenButton">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            ';
+            }
             unset($db);
         ?>
     </section>
