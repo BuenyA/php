@@ -123,17 +123,17 @@
                     </div>
                 </div>
                 <div class="Erstzulassung-Auktionsbeginn">
-                    <div class="Erstzulassung">
-                        <p class="Erstzulassung-text">
-                            Erstzulassung
-                        </p>
-                        <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
-                    </div>
                     <div class="Auktionsbeginn">
                         <p class="Auktionsbeginn-text">
                             Auktionsbeginn
                         </p>
                         <input class="Auktionsbeginn-eingabe" type="date" size="40" maxlength="250" name="auktionsbeginnDatum">
+                    </div>
+                    <div class="Erstzulassung">
+                        <p class="Erstzulassung-text">
+                            Erstzulassung
+                        </p>
+                        <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
                     </div>
                 </div>
                 <div class= "Uhrzeit-Auktionsende">
