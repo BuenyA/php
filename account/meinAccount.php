@@ -41,58 +41,63 @@
 
             //Falls Änderungen kamen -> in die Datenbank 
             if (isset($_POST['aendern__submit'])) {
-                echo 'Funktioniert';
+
                 //Werte aus der Form entnehmen und in Variablen speichern
                 $vorname = $_POST['textarea__vorname'];
                 $nachname = $_POST['textarea__nachname'];
                 $plz = $_POST['textarea__plz'];
                 $ort = $_POST['textarea__ort'];
                 $adresse = $_POST['textarea__adresse'];
-                $telefonnummer = $_POST['input__telefonnummer'];
+                $telefonnummer = $_POST['textarea__telefonnummer'];
                 $email = $_POST['textarea__email'];
-                $passwortHash = password_hash($passwort, PASSWORD_DEFAULT);
+                $passwort1 = $_POST['textarea__passwort1'];
+                $passwort2 = $_POST['textarea__passwort2'];
+                $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
 
                 //SQL Statements, falls eine Änderung unternommen wurde
                 //Änderung Vorname
-                if ($vorname == $row['vorname']) {
+                if ($vorname != $row['vorname'] && $vorname != "") {
                     $query = "UPDATE `Accounts` SET `vorname`='$vorname' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
                 }
                 //Änderung Nachname
-                if ($nachname == $row['nachname']) {
-                    $query = "UPDATE 'Accounts' SET 'nachname' = '$nachname' WHERE account_ID = '$session_ID'";
+                if ($nachname != $row['nachname'] && $nachname != "") {
+                    $query = "UPDATE `Accounts` SET `nachname`='$nachname' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
                 }
                 //Änderung Postleihzahl
-                if ($plz == $row['plz']) {
-                    $query = "UPDATE 'Accounts' SET 'plz' = '$plz' WHERE account_ID = '$session_ID'";
+                if ($plz != $row['plz'] && $plz != "" && is_numeric($plz) && strlen($plz) == 5) {
+                    $query = "UPDATE `Accounts` SET `plz`='$plz' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
                 }
                 //Änderung Ort
-                if ($ort == $row['ort']) {
-                    $query = "UPDATE 'Accounts' SET 'ort' = '$ort' WHERE account_ID = '$session_ID'";
+                if ($ort != $row['ort'] && $ort != "") {
+                    $query = "UPDATE `Accounts` SET `ort`='$ort' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
                 }
                 //Änderung Adresse
-                if ($adresse == $row['adresse']) {
-                    $query = "UPDATE 'Accounts' SET 'adresse' = '$adresse' WHERE account_ID = '$session_ID'";
+                if ($adresse != $row['adresse'] && $adresse != "") {
+                    $query = "UPDATE `Accounts` SET `adresse`='$adresse' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
                 }
                 //Änderung Telefonnummer
-                if ($telefonnummer == $row['telefonnummer']) {
-                    $query = "UPDATE 'Accounts' SET 'telefonnummer' = '$telefonnummer' WHERE account_ID = '$session_ID'";
+                if ($telefonnummer != $row['telefon_Nr'] && $telefonnummer != "" && is_numeric($telefonnummer) && strlen($plz) <= 11) {
+                    $query = "UPDATE `Accounts` SET `telefon_Nr`='$telefonnummer' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
                 }
                 //Änderung Email
-                if ($email == $row['email']) {
-                    $query = "UPDATE 'Accounts' SET 'email' = '$email' WHERE account_ID = '$session_ID'";
+                if ($email != $row['email'] && $email != "" && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $query = "UPDATE `Accounts` SET `email`='$email' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
                 }
                 //Änderung Passwort
-                if ($passwortHash == $row['passwort']) {
-                    $query = "UPDATE 'Accounts' SET 'passwort' = '$passwortHash'";
+                if ($passwortHash != null && $passwort != "" && $passwort1 == $passwort2) {
+                    $query = "UPDATE `Accounts` SET `passwort`='$passwortHash' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
                 }
+
+                echo '<script>window.location = "./meinAccount.php";</script>';
+
             }
 
             //HTML page ausgeben
@@ -141,6 +146,11 @@
                                                         <!-- input adresse -->
                                                         <textarea name="textarea__adresse" rows= "1" cols="20">' . $row['adresse'] . '</textarea>
                                                     </div>
+                                                    <div class="login__field">
+                                                        <i class="login__icon fas fa-lock"></i>
+                                                        <!-- input telefonnummer -->
+                                                    <textarea name="textarea__telefonnummer" rows= "1" cols="20">' . $row['telefon_Nr'] . '</textarea>
+                                                </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field">
@@ -151,7 +161,12 @@
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input passwort -->
-                                                        <textarea name="textarea__email" rows= "1" cols="20"></textarea>
+                                                        <textarea name="textarea__passwort1" rows= "1" cols="20"></textarea>
+                                                </div>
+                                                <div class="login__field">
+                                                        <i class="login__icon fas fa-user"></i>
+                                                        <!-- input passwort -->
+                                                        <textarea name="textarea__passwort2" rows= "1" cols="20"></textarea>
                                                 </div>
                                                 </div>
                                                 <button class="button login__submit" name="aendern__submit">
