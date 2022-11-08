@@ -274,7 +274,7 @@
   margin-bottom: 5px;
 }
 
-.Erstzulassung-Auktionsbeginn{
+.Auktionsbeginn-Uhrzeit{
   display: flex;
   align-items: center;
   width: 100%;
@@ -330,7 +330,7 @@
   margin-bottom: 5px;
 }
 
-.Uhrzeit-Auktionsende{
+.Auktionsende-Uhrzeit{
   display: flex;
   align-items: center;
   width: 100%;
