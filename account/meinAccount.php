@@ -14,8 +14,8 @@
 
 <body>
     <?php
-    require_once '../db.php';
-    require_once '../phpFunctions.php';
+    require '../db.php';
+    require '../phpFunctions.php';
     session_start();
     if (isset($_GET['abmelden'])) {
         session_destroy();
