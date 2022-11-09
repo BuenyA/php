@@ -84,7 +84,7 @@
                                             <div class="topOffersRight">
                                                 <div class="topOffersRightTop">
                                                     <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                                    <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
+                                                    <p class="auktionspreis"><b>' . number_format($preis ,0, ',', '.') . ' €</b></p>
                                                 </div>
                                                 <h5 id="counter'.$counter.'"></h5>
                                                 <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>

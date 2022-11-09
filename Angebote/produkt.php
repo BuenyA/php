@@ -185,13 +185,55 @@
                                 <h7>Die letzten Angebote:</h7>
                             ';
 
-            /* //Gibt alle Angebote des Inserates aus
-            if($resAngebot->rowCount() > 1) {
+            //Gibt die letzten 5 Angebote der Auktion aus
+            if($resAngebot->rowCount() > 0) {
+                $maxZaehler = 0;
+                $minZaehler = $resAngebot->rowCount();
+
+                //Damit auch da letzte Angebot geprintet wird, da bereits ein fetch() durchgefürht wurde
+                echo '  <div class="showAngebote">
+                                <div class="showAngeboteTag">
+                                    <h8>'.$minZaehler.'. Angebot</h8>
+                                </div>
+                                <div class="showAngebotePreis">
+                                    <h8>'.number_format($rowAngebot['Angebot'] ,0, ',', '.').' €</h8>
+                                </div>
+                            </div>
+                        ';
+
+                //Print der restlichen 4 Angebote
                 foreach ($resAngebot as $rowAngebot) {
-                    echo '<br/><h7>'.number_format($rowAngebot['Angebot'] ,0, ',', '.').' €</h7>
-                            <h7> '.$rowAngebot['Erstellt_Am'].'</h7>';
+                    if($maxZaehler > 3) {
+                        if ($resAngebot->rowCount() > 4) {
+                            echo '  <div class="showAngebote">
+                                        <h8>...</h8>
+                                    </div>';
+                        }
+                        break;
+                    }
+                    $maxZaehler = $maxZaehler + 1;
+                    $minZaehler = $minZaehler - 1;
+                    echo '  <div class="showAngebote">
+                                <div class="showAngeboteTag">
+                                    <h8>'.$minZaehler.'. Angebot</h8>
+                                </div>
+                                <div class="showAngebotePreis">
+                                    <h8>'.number_format($rowAngebot['Angebot'] ,0, ',', '.').' €</h8>
+                                </div>
+                            </div>
+                        ';
                 }
-            } */
+            }
+            
+            //Gibt Mindestauktionspreis aus
+            echo '  <div class="showAngebote">
+                        <div class="showAngeboteTag">
+                            <h8>Mindestauktion</h8>
+                        </div>
+                        <div class="showAngebotePreis">
+                            <h8>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h8>
+                        </div>
+                    </div>';
 
             //Email als Input-Feld, wenn nicht angemeldet
             if (empty($_SESSION['user'])) {

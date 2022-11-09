@@ -255,7 +255,7 @@ h6 {
 .angebotAufgebenLeft h7 {
     font-size: 15px;
     color: #000000;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .angebotAufgebenLeft h4 {
@@ -265,6 +265,22 @@ h6 {
 
 .angebotAufgebenLeftCounter h4 {
     color: rgb(255, 77, 0);
+}
+
+.showAngebote {
+    display: flex;
+    align-items: center;
+    width: 20em;
+    margin-top: 10px;
+}
+
+.showAngeboteTag {
+    width: 40%;
+}
+
+.showAngebotePreis {
+    text-align: right;
+    width: 40%;
 }
 
 .angebotAufgebenRight {
