@@ -16,8 +16,8 @@
     <?php
         //Start Session + Dateieinbindung + Print Navigationbar
         session_start();
-        require_once '../db.php';
-        require_once '../phpFunctions.php';
+        require '../db.php';
+        require '../phpFunctions.php';
         phpFunctions::printNavigationBar();
     ?>
     <section class="produkt">
@@ -74,7 +74,7 @@
                 $preis = $rowIns['Preis'];
             }
 
-            //Dynamische HTML ausgabe
+            //Dynamische HTML-Ausgabe
             echo '
                 <div class="produktArea">
                     <div class="produktAreaLeft">

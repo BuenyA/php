@@ -33,7 +33,7 @@
                 }
             }
         }
-        if (empty($_SESSION['user']) && isset($_GET['anmelden'])) {
+        if (empty($_SESSION['user'])) {
             echo '
             <div class="screen">
             <div class="screen__content">
@@ -42,58 +42,31 @@
                     <div class="login__field">
                         <i class="login__icon fas fa-user"></i>
                         <!-- Input email -->
-                        <input type="text" name="input__email" class="login__input login__input__email" placeholder="E-Mail">
+                        <input type="email" name="input__email" class="login__input login__input__email" placeholder="E-Mail" required>
                     </div>
                     <div class="login__field">
                         <i class="login__icon fas fa-lock"></i>
                         <!-- input passwort -->
-                        <input type="password" name="input__passwort" class="login__input login__input__passwort" placeholder="Passwort">
-                    </div>
-                    <div class="falschesPasswort" id="falschesPasswort">
-                        <p>Falsche Angaben! Bitte erneut versuchen.</p>
-                    </div>
-                    <a href="registrierung.php">Noch keinen Account?</a><br />
-                    <a href="passwordReset.php">Passwort vergessen?</a>
-                    <!-- sumbit button -->
-                    <button class="button login__submit" id="submit" name="btn__submit">
-                        <span class="button__text">Anmelden</span>
-                        <i class="button__icon fas fa-chevron-right"></i>
-                    </button>
-                </form>
-            </div>
-            <div class="screen__background">
-                <span class="screen__background__shape screen__background__shape1"></span>
-            </div>
-        </div>';
-        } elseif (empty($_SESSION['user'])) {
-            echo '
-            <div class="screen">
-            <div class="screen__content">
-                <h1>Anmelden</h1>
-                <form class="login" action="?anmelden=1" method="post">
-                    <div class="login__field">
-                        <i class="login__icon fas fa-user"></i>
-                        <!-- Input email -->
-                        <input type="text" name="input__email" class="login__input login__input__email" placeholder="E-Mail">
-                    </div>
-                    <div class="login__field">
-                        <i class="login__icon fas fa-lock"></i>
-                        <!-- input passwort -->
-                        <input type="password" name="input__passwort" class="login__input login__input__passwort" placeholder="Passwort">
-                    </div>
-                    <a href="registrierung.php">Noch keinen Account?</a><br />
-                    <a href="passwordReset.php">Passwort vergessen?</a>
-                    <!-- sumbit button -->
-                    <button class="button login__submit" id="submit" name="btn__submit">
-                        <span class="button__text">Anmelden</span>
-                        <i class="button__icon fas fa-chevron-right"></i>
-                    </button>
-                </form>
-            </div>
-            <div class="screen__background">
-                <span class="screen__background__shape screen__background__shape1"></span>
-            </div>
-        </div>';
+                        <input type="password" name="input__passwort" class="login__input login__input__passwort" placeholder="Passwort" required>
+                    </div>';
+            if (isset($_GET['anmelden'])) {
+                echo    '<div class="falschesPasswort" id="falschesPasswort">
+                            <p>Falsche Angaben! Bitte erneut versuchen.</p>
+                        </div>';
+            }
+                echo '  <a href="registrierung.php">Noch keinen Account?</a><br />
+                        <a href="passwordReset.php">Passwort vergessen?</a>
+                        <!-- sumbit button -->
+                        <button class="button login__submit" id="submit" name="btn__submit">
+                            <span class="button__text">Anmelden</span>
+                            <i class="button__icon fas fa-chevron-right"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="screen__background">
+                    <span class="screen__background__shape screen__background__shape1"></span>
+                </div>
+            </div>';
         } else {
             echo "<script>reloadWindow();</script>";
         }
