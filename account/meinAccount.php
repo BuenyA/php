@@ -53,12 +53,15 @@
                 $passwort1 = $_POST['textarea__passwort1'];
                 $passwort2 = $_POST['textarea__passwort2'];
                 $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
+                //Variable die schaut ob eine Änderung durchgeführt wurde
+                $aenderung = false;
 
                 //SQL Statements, falls eine Änderung unternommen wurde
                 //Änderung Vorname
                 if ($vorname != $row['vorname'] && $vorname != "") {
                     $query = "UPDATE `Accounts` SET `vorname`='$vorname' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
+                    $aenderung = true;
                 }
                 //Änderung Nachname
                 if ($nachname != $row['nachname'] && $nachname != "") {
@@ -69,34 +72,46 @@
                 if ($plz != $row['plz'] && $plz != "" && is_numeric($plz) && strlen($plz) == 5) {
                     $query = "UPDATE `Accounts` SET `plz`='$plz' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
+                    $aenderung = true;
                 }
                 //Änderung Ort
                 if ($ort != $row['ort'] && $ort != "") {
                     $query = "UPDATE `Accounts` SET `ort`='$ort' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
+                    $aenderung = true;
                 }
                 //Änderung Adresse
                 if ($adresse != $row['adresse'] && $adresse != "") {
                     $query = "UPDATE `Accounts` SET `adresse`='$adresse' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
+                    $aenderung = true;
                 }
                 //Änderung Telefonnummer
                 if ($telefonnummer != $row['telefon_Nr'] && $telefonnummer != "" && is_numeric($telefonnummer) && strlen($plz) <= 11) {
                     $query = "UPDATE `Accounts` SET `telefon_Nr`='$telefonnummer' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
+                    $aenderung = true;
                 }
                 //Änderung Email
                 if ($email != $row['email'] && $email != "" && filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $query = "UPDATE `Accounts` SET `email`='$email' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
+                    $aenderung = true;
                 }
                 //Änderung Passwort
-                if ($passwortHash != null && $passwort != "" && $passwort1 == $passwort2) {
+                if($passwort1 != null && $passwort2 != null && $passwortHash != null && $passwort1 != "" && $passwort2 != "" && $passwort1 == $passwort2) {
                     $query = "UPDATE `Accounts` SET `passwort`='$passwortHash' WHERE `account_ID`='$session_ID'";
                     $db->query($query);
+                    $aenderung = true;
                 }
 
-                echo '<script>window.location = "./meinAccount.php";</script>';
+                //Falls eine Änderung durchgeführt wurde
+                if ($aenderung) {
+                    //Weiterleitung zu Bestätigungsseite
+                    echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+                }
+
+                // echo '<script>window.location = "./meinAccount.php";</script>';
 
             }
 
