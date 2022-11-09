@@ -1,12 +1,17 @@
 <?php
     class phpFunctions {
         public static function showOffer($showMax, $resInserat, $AccNr = 0, $counter = 0) {
-            if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
-                $url = "https://";
-            else
-                $url = "http://";
-            $url.= $_SERVER['HTTP_HOST'];
-            $url.= $_SERVER['REQUEST_URI'];
+            
+            //Eigene Datenbankverbindung, um keine dynamische Einbindung der Datei: db.php zu machen
+            $dsn = 'mysql:dbname=Autostar;host=db;port=3306';
+            try {
+                $db = new PDO( $dsn, 'root', '' );
+            } catch (PDOException $e){
+                exit( 'Connection failed: ' . $e->getMessage());
+            }
+            
+            //URL zurechtschneiden für die Produktanzeige
+            $url= $_SERVER['REQUEST_URI'];
             if (str_contains($url, 'php/Angebote')) {
                 $url = './produkt.php';
             } elseif (str_contains($url, 'php/index.php')) {
@@ -14,15 +19,33 @@
             } else {
                 $url = '../Angebote/produkt.php';
             }
+
+            //Angebot zeigen bei nicht eigeloggten Usern
             if (empty($_SESSION['user'])) {
                 if ($resInserat !== false && $resInserat->rowCount() > 0) {
                     foreach ($resInserat as $row) {
+
+                        //Anzahl der Anzeigen begrenzen
                         if ($counter == $showMax) {
                             break;
                         }
-                        // $waiting_day = strtotime($row['Auktionsende'].' '.$row['Auktionsende_Uhrzeit']);
+
+                        //Selektierung nach Angeboten
+                        $InsNr = $row['Inserat_Nr'];
+                        $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
+                        $resAngebot = $db->query($queryAngebot);
+                        if($resAngebot->rowCount() > 0) {
+                            $rowAngebot = $resAngebot->fetch();
+                            $preis = $rowAngebot['Angebot'];
+                        } else {
+                            $preis = $row['Preis'];
+                        }
+                        
+                        //Variablendeklaration für dynamische Zeitanzeige
                         $waiting_day = strtotime($row['Auktionsende']);
                         $getDateTime = date("F d, Y H:i:s", $waiting_day); // JavaScript Variable
+                        
+                        //Wenn das Angebot auf der linken Seite ist -> Print dynamic HTML-Code
                         if (($counter % 2) == 0) {
                             echo '
                                 <div class="topOfferPlace">
@@ -32,7 +55,7 @@
                                             <div class="topOffersRight">
                                                 <div class="topOffersRightTop">
                                                     <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                                    <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                                    <p class="auktionspreis"><b>' . number_format($preis ,0, '.', '.') . ' €</b></p>
                                                 </div>
                                                 <h5 id="counter'.$counter.'"></h5>
                                                 <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
@@ -51,6 +74,8 @@
                                         </div>
                                     </a>
                                 ';
+
+                        //Wenn das Angebot auf der rechten Seite ist -> Print dynamic HTML-Code
                         } else {
                             echo '
                                     <a class="topOfferLink" href="'.$url.'?produkt='.$row['Inserat_Nr'].'">
@@ -82,34 +107,50 @@
                         }
                         $counter++;
                     }
+
+                    //Beendet das übergreifende div, wenn die Anzahl der Anzeigen ungerade sind
                     if (($counter % 2) != 0) {
                         echo '</div>';
                     }
                 }
+
+            //Angebot zeigen bei nicht eingeloggten Usern
             } else {
                 if ($resInserat !== false && $resInserat->rowCount() > 0) {
-                    // Komischerweise funtioniert das require von dp.php nicht. Deshalb nochmal ein eigener Verbindungsaufbau.
-                    $dsn = 'mysql:dbname=Autostar;host=db;port=3306';
-                    try {
-                        $db = new PDO( $dsn, 'root', '' );
-                    } catch (PDOException $e){
-                        exit( 'Connection failed: ' . $e->getMessage());
-                    }
                     foreach ($resInserat as $row) {
+
+                        //Anzahl der Anzeigen begrenzen
                         if ($counter == $showMax) {
                             break;
                         }
+
+                        //Selektierung nach Angeboten
                         $InsNr = $row['Inserat_Nr'];
+                        $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
+                        $resAngebot = $db->query($queryAngebot);
+                        if($resAngebot->rowCount() > 0) {
+                            $rowAngebot = $resAngebot->fetch();
+                            $preis = $rowAngebot['Angebot'];
+                        } else {
+                            $preis = $row['Preis'];
+                        }
+
+                        //Selektion, ob der verwendete Account, dass jeweilige Produkt favorisiert hat
                         $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InsNr AND AccountNr = $AccNr";
                         $resMerken = $db->query($queryMerken);
+
+                        //Dynamische Wahl, welche Klasse dem Merken-Button vergeben werden soll 
                         if ($resMerken !== false && $resMerken->rowCount() > 0) {
                             $cssClassVariable = 'merkenButtonPressed';
                         } else {
                             $cssClassVariable = 'merkenButton';
                         }
-                        // $waiting_day = strtotime($row['Auktionsende'].' '.$row['Auktionsende_Uhrzeit']);
+
+                        //Variablendeklaration für dynamische Zeitanzeige
                         $waiting_day = strtotime($row['Auktionsende']);
                         $getDateTime = date("F d, Y H:i:s", $waiting_day); // JavaScript Variable
+
+                        //Wenn das Angebot auf der linken Seite ist -> Print dynamic HTML-Code
                         if (($counter % 2) == 0) {
                             echo '
                                 <div class="topOfferPlace">
@@ -119,7 +160,7 @@
                                             <div class="topOffersRight">
                                                 <div class="topOffersRightTop">
                                                     <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                                    <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, '.', '.') . ' €</b></p>
+                                                    <p class="auktionspreis"><b>' . number_format($preis ,0, '.', '.') . ' €</b></p>
                                                 </div>
                                                 <h5 id="counter'.$counter.'"></h5>
                                                 <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
@@ -140,6 +181,8 @@
                                         </div>
                                     </a>
                                 ';
+
+                        //Wenn das Angebot auf der rechten Seite ist -> Print dynamic HTML-Code
                         } else {
                             echo '
                                     <a class="topOfferLink" href="'.$url.'?produkt='.$row['Inserat_Nr'].'">
@@ -148,7 +191,7 @@
                                             <div class="topOffersRight">
                                                 <div class="topOffersRightTop">
                                                     <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                                    <p class="auktionspreis"><b>' . number_format($row['Preis'] ,0, ',', '.') . ' €</b></p>
+                                                    <p class="auktionspreis"><b>' . number_format($preis ,0, ',', '.') . ' €</b></p>
                                                 </div>
                                                 <h5 id="counter'.$counter.'"></h5>
                                                 <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
@@ -180,7 +223,10 @@
             }
         }
 
-        public static function printNavigationBar() { 
+        //Druckt die Navigationbar
+        public static function printNavigationBar() {
+
+            //Bei keiner Anmeldung -> Mit Button Anmelden und Registrieren
             if (empty($_SESSION['user'])) {
                 echo '
                 <div class="navigationMenu">
@@ -203,6 +249,8 @@
                     </div>
                 </div>
                 ';
+
+            //Bei Anmeldung -> Mit Button Mein Account
             } else {
                 echo '
                 <div class="navigationMenu">
@@ -225,6 +273,7 @@
             }
         }
 
+        //Druckt den Footer
         public static function printFooter() {
             echo '
             <section class="footer">

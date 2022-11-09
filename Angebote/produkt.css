@@ -213,8 +213,9 @@ h6 {
 }
 
 .angebotAufgeben {
-    height: 21em;
+    min-height: 18em;
     width: 45em;
+    padding: 15px 0 10px 0;
     display: grid;
     align-items: center;
     justify-content: center;
@@ -247,6 +248,10 @@ h6 {
     align-items: center;
 }
 
+.angebotAufgebenLeft {
+    margin: 15px 0 15px 0;
+}
+
 .angebotAufgebenLeft h7 {
     font-size: 15px;
     color: #000000;
@@ -264,6 +269,8 @@ h6 {
 
 .angebotAufgebenRight {
     display: grid;
+    margin: 20px 0 15px 0;
+    align-self: flex-start;
 }
 
 .angebotAufgebenRight h7 {
