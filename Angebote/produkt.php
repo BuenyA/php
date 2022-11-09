@@ -14,6 +14,7 @@
 
 <body>
     <?php
+        //Start Session + Dateieinbindung + Print Navigationbar
         session_start();
         require_once '../db.php';
         require_once '../phpFunctions.php';
@@ -21,6 +22,7 @@
     ?>
     <section class="produkt">
         <?php
+            //Produkt Selektierung
             $url = $_SERVER['REQUEST_URI'];
             if (str_contains($url, '?produkt=')) {
                 $proID = substr($url, strrpos($url, 'produkt=' ) + 8);
@@ -31,32 +33,48 @@
             } else {
                 echo '<script>reloadWindow();</script>';
             }
+            
+            //Insert Angebot
             if (sizeof($_POST) !== 0 || isset($_POST['submit'])) {
+                
+                //Wenn angemeldet, dann ID und EMAIL insert 
                 if(!empty($_SESSION['id'])) {
                     $id = $_SESSION['id'];
                     $email = $_SESSION['user'];
+                //Wenn nicht angemeldet, dann nur EMAIL insert 
                 } else {
                     $id = 'Null';
                     $email = $_POST['input_email'];
                 }
+
+                //Insert into Angebote
                 $gebot = $_POST['input_gebot'];
-                $query = "INSERT INTO Angebote(Inserat_Nr, Kostenvorschlag, Email, Account_Nr) VALUES ($proID, $gebot, '$email', $id)";
+                $query = "INSERT INTO Angebote(Inserat_Nr, Angebot, Email, Account_Nr) VALUES ($proID, $gebot, '$email', $id)";
                 $db->query($query);
-                $query = "SELECT * FROM Angebote WHERE Inserat_Nr = $proID AND Kostenvorschlag = $gebot AND Email = '$email' AND Account_Nr = $id";
-                $resInsAng = $db->query($query);
-                $rowInsAng = $resInsAng->fetch();
-                $AngNr = $rowInsAng['Angebot_Nr'];
-                $InsNr = $rowInsAng['Inserat_Nr'];
-                $query = "UPDATE Inserat SET Top_Angebot = $AngNr WHERE Inserat_Nr = $InsNr";
-                $db->query($query);
+
+                //Laden der Dankesseite
                 echo '<script>loadDanke();</script>';
             }
 
+            //Selektierung des Produktes
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Inserat.Inserat_Nr = $proID";
             $resInserat = $db->query($queryInserat);
             $rowIns = $resInserat->fetch();
             $waiting_day = strtotime($rowIns['Auktionsende']);
             $getDateTime = date("F d, Y H:i:s", $waiting_day);
+
+            //Selektierung nach Angeboten
+            $InsNr = $rowIns['Inserat_Nr'];
+            $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
+            $resAngebot = $db->query($queryAngebot);
+            if($resAngebot->rowCount() > 0) {
+                $rowAngebot = $resAngebot->fetch();
+                $preis = $rowAngebot['Angebot'];
+            } else {
+                $preis = $rowIns['Preis'];
+            }
+
+            //Dynamische HTML ausgabe
             echo '
                 <div class="produktArea">
                     <div class="produktAreaLeft">
@@ -68,8 +86,8 @@
                             <h4 id="counter1"></h4>
                             <script>calculateTime("'.$getDateTime.'", "1");</script>
                             <div class="separator"></div>
-                            <h6>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h6>
-                            <h7>'.number_format(($rowIns['Preis'] / 1.19) ,2, ',', '.') .'€ (Netto), zzgl. 19% MwSt.</h7>
+                            <h6>'.number_format($preis ,0, ',', '.').' €</h6>
+                            <h7>'.number_format(($preis / 1.19) ,2, ',', '.') .'€ (Netto), zzgl. 19% MwSt.</h7>
                             <div class="separator"></div>
                             <p>'.number_format($rowIns['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($rowIns['PS'] / 1.35962) . ' kW (' . $rowIns['PS'] . ' PS), ' . $rowIns['Kraftstoffart'] . ', ' . $rowIns['Getriebeart'] . '</p>
                             <div class="separator"></div>
@@ -156,19 +174,31 @@
                             <div class="angebotAufgebenLeft">
                                 <div class="angebotAufgebenLeftPreis">
                                     <h7>Der aktuelle Preis:</h7>
-                                    <h4>'.number_format($rowIns['Preis'] ,0, ',', '.').' €</h4>
+                                    <h4>'.number_format($preis ,0, ',', '.').' €</h4>
                                 </div>
                                 <div class="angebotAufgebenLeftCounter">
                                     <h7>Die Auktion läuft ab in:</h7>
                                     <h4 id="counter2"></h4>
                                     <script>calculateTime("'.$getDateTime.'", "2");</script>
                                 </div>
-                            </div>
+                                <div class="separator"></div>
+                                <h7>Die letzten Angebote:</h7>
                             ';
+
+            /* //Gibt alle Angebote des Inserates aus
+            if($resAngebot->rowCount() > 1) {
+                foreach ($resAngebot as $rowAngebot) {
+                    echo '<br/><h7>'.number_format($rowAngebot['Angebot'] ,0, ',', '.').' €</h7>
+                            <h7> '.$rowAngebot['Erstellt_Am'].'</h7>';
+                }
+            } */
+
+            //Email als Input-Feld, wenn nicht angemeldet
             if (empty($_SESSION['user'])) {
-                echo '<div class="angebotAufgebenRight">
+                echo '</div>
+                        <div class="angebotAufgebenRight">
                             <h7><b>Dein Gebot:</b></h7>
-                            <input type="number" name="input_gebot" placeholder="... €" min="'.($rowIns['Preis'] + 50).'" required>
+                            <input type="number" name="input_gebot" placeholder="€" min="'.($preis + 50).'" required>
                             <h7><b>Deine E-Mail-Adresse:</b></h7>
                             <input type="email" name="input_email" placeholder="E-Mail" required>
                             <p>Beim Absenden des Angebots binden<br> Sie sich an einen kostenpflichtigen Vertrag.</p>
@@ -178,10 +208,13 @@
                 </div>
             </div>
             ';
+
+            //Statisches Email-Feld, wenn angemeldet
             } else {
-                echo '<div class="angebotAufgebenRight">
+                echo '</div>
+                        <div class="angebotAufgebenRight">
                             <h7><b>Dein Gebot:</b></h7>
-                            <input type="number" name="input_gebot" placeholder="... €" min="'.($rowIns['Preis'] + 50).'" required>
+                            <input type="number" name="input_gebot" placeholder="€" min="'.($preis + 50).'" required>
                             <h7><b>Deine E-Mail-Adresse:</b></h7>
                             <h8 type="text" name="input_email">'.$_SESSION['user'].'</h8>
                             <p>Beim Absenden des Angebots binden<br> Sie sich an einen kostenpflichtigen Vertrag.</p>
@@ -196,6 +229,7 @@
         ?>
     </section>
     <?php
+        //Drucke Footer
         phpFunctions::printFooter();
     ?>
 </body>

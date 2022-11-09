@@ -66,61 +66,53 @@
             </div>
             <div class="searchBarFilterBox">
                 <h1>Finde dein Traumauto!</h1>
-                <div class="filterBoxSection">
-                    <div class="filterBox">
-                        <div class="filterBoxRight">
-                            <div class="PKWRight">
-                                <div class="filterBoxRightAttribute">
-                                    <div>
-                                        <div class="Marke">
-                                            <h2>Marke</h2>
-                                            <select name="Marke">
-                                                <option>Audi</option>
-                                                <option>Audi</option>
-                                                <option>Audi</option>
-                                                <option>Audi</option>
-                                                <option>Tesla</option>
-                                            </select>
-                                        </div>
-                                        <div class="Modell">
-                                            <h2>Modell</h2>
-                                            <select name="Modell">
-                                                <option>RS6</option>
-                                                <option>RS6</option>
-                                                <option>RS6</option>
-                                                <option>RS6</option>
-                                                <option>Modell S</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="KilometerBis">
-                                            <h2>Kilometer</h2>
-                                            <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number" name="KM">
-                                        </div>
-                                        <div class="Erstzulassung">
-                                            <h2>Erstzulassung</h2>
-                                            <input type="search" placeholder="Jahr" autocomplete="off" maxlength="10" type="number" name="Erstzulassung">
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="Preis">
-                                            <h2>Preis</h2>
-                                            <div class="preisAngabe">
-                                                <input type="search" placeholder="Von..." autocomplete="off" maxlength="10" type="number" name="preisVon">
-                                                <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number" name="preisBis">
-                                            </div>
-                                        </div>
-                                        <div class="btnAngebotSuchenDiv">
-                                            <h2>Suchen</h2>
-                                            <button class="btnAngebotSuchen">
-                                                <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
-                                                <b>Angebot suchen</b>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="filterBoxRight">
+                    <div>
+                        <div class="Marke">
+                            <h2>Marke</h2>
+                            <select name="Marke">
+                                <option>Audi</option>
+                                <option>Audi</option>
+                                <option>Audi</option>
+                                <option>Audi</option>
+                                <option>Tesla</option>
+                            </select>
+                        </div>
+                        <div class="Modell">
+                            <h2>Modell</h2>
+                            <select name="Modell">
+                                <option>RS6</option>
+                                <option>RS6</option>
+                                <option>RS6</option>
+                                <option>RS6</option>
+                                <option>Modell S</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="KilometerBis">
+                            <h2>Kilometer</h2>
+                            <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number" name="KM">
+                        </div>
+                        <div class="Erstzulassung">
+                            <h2>Erstzulassung</h2>
+                            <input type="search" placeholder="Jahr" autocomplete="off" maxlength="10" type="number" name="Erstzulassung">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="Preis">
+                            <h2>Preis</h2>
+                            <div class="preisAngabe">
+                                <input type="search" placeholder="Von..." autocomplete="off" maxlength="10" type="number" name="preisVon">
+                                <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number" name="preisBis">
                             </div>
+                        </div>
+                        <div class="btnAngebotSuchenDiv">
+                            <h2>Suchen</h2>
+                            <button class="btnAngebotSuchen">
+                                <img src="image/search-interface-symbol.png" alt="" width="17" height="17">
+                                <b>Angebot suchen</b>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -49,6 +49,7 @@ h4 {
 
 h5 {
   color: rgb(255, 77, 0);
+  font-size: 16px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -187,6 +188,7 @@ textarea { resize: none; }
 
 .topOffersRightTop h2 {
   margin-top: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .topOffers {
