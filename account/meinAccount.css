@@ -84,6 +84,13 @@
     /* background-color: #ff4d00; */
 }
 
+.keinFavorit {
+    text-align: center;
+    color: gray;
+    font-weight: 200;
+    font-family: 'Roboto', sans-serif;
+}
+
 .gebotBox {
     display: flex;
     justify-content: space-between;
@@ -91,7 +98,7 @@
     background-color: white;
     margin: 30px;
     width: 550px;
-    height: 200px;
+    height: 150px;
     border-radius: 5px;
     overflow: hidden;
     border: 1px solid rgb(194, 194, 194);
@@ -111,7 +118,22 @@
 
 .topOffersRight {
     width: 80%;
-    background-color: rgb(70, 169, 255);
+}
+
+.geboteRight {
+    width: 50%;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auktionspreisGebot {
+    margin: 1em 1em;
+    color: #ff4d00;
+}
+
+.anfangspreis {
+    color: gray;
 }
 
 .accountManagementBox {

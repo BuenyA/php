@@ -15,7 +15,8 @@
         <h1>Vielen Dank für Ihr Gebot!</h1>
         <h2>Ihr Angebot wurde an den Inhaber versendet.</h2>
         <h2>Schauen Sie jetzt nach anderen interessanten Gebot!</h2>
-        <button onclick="reloadWindow()">Zurück zur Webseite</button>
+        <!-- <button onclick="window.location = 'produkt.php?produkt=17'">Zurück zur Webseite</button> -->
+        <button onclick="window.location = '../index.php'">Zurück zur Webseite</button>
     </div>
 </body>
 </html>
