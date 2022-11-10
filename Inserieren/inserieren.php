@@ -13,51 +13,46 @@
 
 <body>
     <?php
-    session_start();
-    require '../db.php';
-    require '../phpFunctions.php';
+        session_start();
+        require '../db.php';
+        require '../phpFunctions.php';
 
-    if (empty($_SESSION['user'])) {
-        echo '<script>linkToAnmeldung();</script>';
-    }
-
-
-    if (isset($_GET['inserieren']) && sizeof($_POST) !== 0) {
-        $error = false;
-        $marke = $_POST['marke'];
-        $modell = $_POST['modell'];
-        $preis = $_POST['preis'];
-        $beschreibung = $_POST['beschreibung'];
-        $kilometerstand = $_POST['kilometerstand'];
-        $ps = $_POST['ps'];
-        $kraftstoffart = $_POST['kraftstoffart'];
-        $getriebeart = $_POST['getriebeart'];
-        $erstzulassung = $_POST['erstzulassung'];
-        $auktionsbeginnDatum = $_POST['auktionsbeginnDatum'];
-        $auktionsendeDatum = $_POST['auktionsendeDatum'];
-        $auktionsbeginnUhrzeit = $_POST['auktionsbeginnUhrzeit'];
-        $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
-
-        /* if (strlen($marke) == 0 or strlen($modell) == 0 or strlen($preis) == 0 or strlen($beschreibung) == 0 or strlen($kilometerstand) == 0 or strlen($ps) == 0 or strlen($kraftstoffart) == 0 or strlen($getriebeart) == 0 or strlen($erstzulassung) == 0 or strlen($auktionsbeginnDatum) == 0 or strlen($auktionsendeDatum) == 0 or strlen($auktionsbeginnUhrzeit) == 0 or strlen($auktionsendeUhrzeit) == 0) {
-            echo 'Das Feld darf nicht leer sein!';
-            $error = true;
-        } */
-
-        if(!empty($_SESSION['id'])) {
-            $id = $_SESSION['id'];
-        } else {
-            $error = true;
+        if (empty($_SESSION['user'])) {
             echo '<script>linkToAnmeldung();</script>';
         }
 
-        if (!$error) {
-            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsbeginn_Uhrzeit, Auktionsende, Auktionsende_Uhrzeit, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum', '$auktionsbeginnUhrzeit', '$auktionsendeDatum', '$auktionsendeUhrzeit', '$id')";
-            $db->query($query);
-        }
 
-        unset($db);
-    }
-    phpFunctions::printNavigationBar();
+        if (isset($_GET['inserieren']) && sizeof($_POST) !== 0) {
+            $error = false;
+            $marke = $_POST['marke'];
+            $modell = $_POST['modell'];
+            $preis = $_POST['preis'];
+            $beschreibung = $_POST['beschreibung'];
+            $kilometerstand = $_POST['kilometerstand'];
+            $ps = $_POST['ps'];
+            $kraftstoffart = $_POST['kraftstoffart'];
+            $getriebeart = $_POST['getriebeart'];
+            $erstzulassung = $_POST['erstzulassung'];
+            $auktionsbeginnDatum = $_POST['auktionsbeginnDatum'];
+            $auktionsendeDatum = $_POST['auktionsendeDatum'];
+            $auktionsbeginnUhrzeit = $_POST['auktionsbeginnUhrzeit'];
+            $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
+
+            if(!empty($_SESSION['id'])) {
+                $id = $_SESSION['id'];
+            } else {
+                $error = true;
+                echo '<script>linkToAnmeldung();</script>';
+            }
+
+            if (!$error) {
+                $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsbeginn_Uhrzeit, Auktionsende, Auktionsende_Uhrzeit, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum', '$auktionsbeginnUhrzeit', '$auktionsendeDatum', '$auktionsendeUhrzeit', '$id')";
+                $db->query($query);
+            }
+
+            unset($db);
+        }
+        phpFunctions::printNavigationBar();
     ?>
     <div class="Überschrift">
         <h1 class="Überschrift-text">Jetzt Kostenlos Versteigern!</h1>
