@@ -18,62 +18,62 @@
         session_start();
         require '../db.php';
         require '../phpFunctions.php';
+
+        //Produkt Selektierung
+        $url = $_SERVER['REQUEST_URI'];
+        if (str_contains($url, '?produkt=')) {
+            $proID = substr($url, strrpos($url, 'produkt=' ) + 8);
+            if (str_contains($proID, '?')) {
+                $proID = substr($proID, 0, strpos($proID, "?"));
+            }
+            $produktURL = substr($url, strrpos($url, '.php' ) + 4);
+        } else {
+            echo '<script>reloadWindow();</script>';
+        }
+        
+        //Insert Angebote
+        if (sizeof($_POST) !== 0 || isset($_POST['submit'])) {
+            
+            //Wenn angemeldet, dann ID und EMAIL insert 
+            if(!empty($_SESSION['id'])) {
+                $id = $_SESSION['id'];
+                $email = $_SESSION['user'];
+            //Wenn nicht angemeldet, dann nur EMAIL insert 
+            } else {
+                $id = 'Null';
+                $email = $_POST['input_email'];
+            }
+
+            //Insert into Angebote
+            $gebot = $_POST['input_gebot'];
+            $query = "INSERT INTO Angebote(Inserat_Nr, Angebot, Email, Account_Nr) VALUES ($proID, $gebot, '$email', $id)";
+            $db->query($query);
+
+            //Laden der Dankesseite
+            echo '<script>loadDanke();</script>';
+        }
+
+        //Selektierung der Auktion
+        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Inserat.Inserat_Nr = $proID";
+        $resInserat = $db->query($queryInserat);
+        $rowIns = $resInserat->fetch();
+        $waiting_day = strtotime($rowIns['Auktionsende']);
+        $getDateTime = date("F d, Y H:i:s", $waiting_day);
+
+        //Selektierung nach Angeboten
+        $InsNr = $rowIns['Inserat_Nr'];
+        $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
+        $resAngebot = $db->query($queryAngebot);
+        if($resAngebot->rowCount() > 0) {
+            $rowAngebot = $resAngebot->fetch();
+            $preis = $rowAngebot['Angebot'];
+        } else {
+            $preis = $rowIns['Preis'];
+        }
         phpFunctions::printNavigationBar();
     ?>
     <section class="produkt">
         <?php
-            //Produkt Selektierung
-            $url = $_SERVER['REQUEST_URI'];
-            if (str_contains($url, '?produkt=')) {
-                $proID = substr($url, strrpos($url, 'produkt=' ) + 8);
-                if (str_contains($proID, '?')) {
-                    $proID = substr($proID, 0, strpos($proID, "?"));
-                }
-                $produktURL = substr($url, strrpos($url, '.php' ) + 4);
-            } else {
-                echo '<script>reloadWindow();</script>';
-            }
-            
-            //Insert Angebot
-            if (sizeof($_POST) !== 0 || isset($_POST['submit'])) {
-                
-                //Wenn angemeldet, dann ID und EMAIL insert 
-                if(!empty($_SESSION['id'])) {
-                    $id = $_SESSION['id'];
-                    $email = $_SESSION['user'];
-                //Wenn nicht angemeldet, dann nur EMAIL insert 
-                } else {
-                    $id = 'Null';
-                    $email = $_POST['input_email'];
-                }
-
-                //Insert into Angebote
-                $gebot = $_POST['input_gebot'];
-                $query = "INSERT INTO Angebote(Inserat_Nr, Angebot, Email, Account_Nr) VALUES ($proID, $gebot, '$email', $id)";
-                $db->query($query);
-
-                //Laden der Dankesseite
-                echo '<script>loadDanke();</script>';
-            }
-
-            //Selektierung des Produktes
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Inserat.Inserat_Nr = $proID";
-            $resInserat = $db->query($queryInserat);
-            $rowIns = $resInserat->fetch();
-            $waiting_day = strtotime($rowIns['Auktionsende']);
-            $getDateTime = date("F d, Y H:i:s", $waiting_day);
-
-            //Selektierung nach Angeboten
-            $InsNr = $rowIns['Inserat_Nr'];
-            $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
-            $resAngebot = $db->query($queryAngebot);
-            if($resAngebot->rowCount() > 0) {
-                $rowAngebot = $resAngebot->fetch();
-                $preis = $rowAngebot['Angebot'];
-            } else {
-                $preis = $rowIns['Preis'];
-            }
-
             //Dynamische HTML-Ausgabe
             echo '
                 <div class="produktArea">
@@ -185,12 +185,12 @@
                                 <h7>Die letzten Angebote:</h7>
                             ';
 
-            //Gibt die letzten 5 Angebote der Auktion aus
+            //Gibt die letzten 3 Angebote der Auktion ausgeben
             if($resAngebot->rowCount() > 0) {
                 $maxZaehler = 0;
                 $minZaehler = $resAngebot->rowCount();
 
-                //Damit auch da letzte Angebot geprintet wird, da bereits ein fetch() durchgefürht wurde
+                //Damit auch das letzte Angebot geprintet wird, da bereits ein fetch() durchgefürht wurde
                 echo '  <div class="showAngebote">
                                 <div class="showAngeboteTag">
                                     <h8>'.$minZaehler.'. Angebot</h8>
@@ -201,9 +201,9 @@
                             </div>
                         ';
 
-                //Print der restlichen 4 Angebote
+                //Print der restlichen 2 Angebote
                 foreach ($resAngebot as $rowAngebot) {
-                    if($maxZaehler > 3) {
+                    if($maxZaehler == 2) {
                         if ($resAngebot->rowCount() > 4) {
                             echo '  <div class="showAngebote">
                                         <h8>...</h8>
@@ -225,7 +225,7 @@
                 }
             }
             
-            //Gibt Mindestauktionspreis aus
+            //Gibt den Mindestauktionspreis aus
             echo '  <div class="showAngebote">
                         <div class="showAngeboteTag">
                             <h8>Mindestauktion</h8>

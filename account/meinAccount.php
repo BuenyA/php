@@ -115,16 +115,15 @@
 
             }
 
-            //HTML page ausgeben
+            //Meine Account Bearbeitung
             echo '<h1>Guten Tag ' . $_SESSION['vorname'] . '</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
                                     <li class="accountManagementNavigationElementsActive"><a href="?page=MeinKonto">Mein Konto</a></li>
-                                    <li><a href="?page=MeineInserate">Meine Inserate</a></li>
+                                    <li><a href="?page=MeineInserate">Meine Auktionen</a></li>
                                     <li><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
-                                    <li><a href="?page=MeineNachrichten">Meine Nachrichten</a></li>
                                 </ul>
                             </div>
                             <div class="accountManagementElements">
@@ -205,17 +204,16 @@
                                 </div>
                             </div>';
 
-                            
+        //Verwaltung meiner Inserate
         } elseif ($_GET['page'] == 'MeineInserate') {
-            echo '<h1>Meine Inserate</h1>
+            echo '<h1>Meine Auktionen</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
                                     <li><a href="?page=MeinKonto">Mein Konto</a></li>
-                                    <li class="accountManagementNavigationElementsActive"><a href="?page=MeineInserate">Meine Inserate</a></li>
+                                    <li class="accountManagementNavigationElementsActive"><a href="?page=MeineInserate">Meine Auktionen</a></li>
                                     <li><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
-                                    <li><a href="?page=MeineNachrichten">Meine Nachrichten</a></li>
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
@@ -253,117 +251,117 @@
                         </div>
                     ';
             }
+        //Verwaltung meiner Gebote
         } elseif ($_GET['page'] == 'MeineGebote') {
             echo '<h1>Meine Gebote</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
                                     <li><a href="?page=MeinKonto">Mein Konto</a></li>
-                                    <li><a href="?page=MeineInserate">Meine Inserate</a></li>
+                                    <li><a href="?page=MeineInserate">Meine Auktionen</a></li>
                                     <li class="accountManagementNavigationElementsActive"><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
-                                    <li><a href="?page=MeineNachrichten">Meine Nachrichten</a></li>
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
-            $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.Account_Nr = Accounts.account_ID JOIN Inserat ON Inserat.Inserat_Nr = Angebote.Inserat_Nr WHERE Account_Nr = " . $_SESSION['id'];
+
+            //Selektireung auf E-Mail funktioniert noch nicht
+            $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.Account_Nr = Accounts.account_ID JOIN Inserat ON Inserat.Inserat_Nr = Angebote.Inserat_Nr WHERE Angebote.Account_Nr = " . $_SESSION['id'] . " OR Angebote.Email = '" . $_SESSION['user'] . "'";
             $resInserat = $db->query($queryInserat);
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
                 foreach ($resInserat as $row) {
                     echo '
+                    <a class="topOfferLink" href="../?produkt='.$row['Inserat_Nr'].'">
                         <div class="topOfferPlace">
-                            <div class="topOffers">
-                                <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                            <div class="gebotBox">
+                                <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="200" height="200">
                                 <div class="topOffersRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
                                         <p class="auktionspreis"><b>' . number_format($row['Preis'], 0, '.', '.') . ' €</b></p>
                                     </div>
                                     <p>
-                                        ' . number_format($row['Kilometerstand'], 0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
-                                    </p>
-                                    <p>
                                         ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
                                         Tel.: +49 123 456789</br>
                                         Ort: ' . $row['ort'] . '
                                     </p>
-                                    <button>
-                                        <img src="image/herz.png" width="13" height="13">
-                                        Merken
-                                    </button>
                                 </div>
                             </div>
-                        </div>';
+                        </div>
+                    </a>';
                 }
                 echo '
                         </div>
                     ';
             }
+        //Verwaltung meiner favorisierten Auktionen
         } elseif ($_GET['page'] == 'MeineFavoriten') {
             echo '<h1>Meine Favoriten</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
                                     <li><a href="?page=MeinKonto">Mein Konto</a></li>
-                                    <li><a href="?page=MeineInserate">Meine Inserate</a></li>
+                                    <li><a href="?page=MeineInserate">Meine Auktionen</a></li>
                                     <li><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li class="accountManagementNavigationElementsActive"><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
-                                    <li><a href="?page=MeineNachrichten">Meine Nachrichten</a></li>
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
             $ID = $_SESSION['id'];
+
+            //Selektierung der Favoriten
             $queryInserat = "SELECT * FROM Merken JOIN Inserat ON Merken.InseratNr = Inserat.Inserat_Nr JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE AccountNr = $ID";
             $resInserat = $db->query($queryInserat);
+            $rowInserat = $resInserat->fetch();
+
+            //Selektierung nach Angeboten
+            $InsNr = $rowInserat['InseratNr'];
+            echo $rowInserat['InseratNr'];
+            $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
+            $resAngebot = $db->query($queryAngebot);
+            if($resAngebot->rowCount() > 0) {
+                $rowAngebot = $resAngebot->fetch();
+                $preis = $rowAngebot['Angebot'];
+                echo $preis;
+            } else {
+                $preis = $row['Preis'];
+            }
+
+            //Row zurücksetzen
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
                 foreach ($resInserat as $row) {
                     echo '
-                        <div class="topOfferPlace">
+                        <a class="topOfferLink" href="../?produkt='.$row['Inserat_Nr'].'">
                             <div class="topOffers">
                                 <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
                                 <div class="topOffersRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'], 0, '.', '.') . ' €</b></p>
+                                        <p class="auktionspreis"><b>' . number_format($preis ,0, '.', '.') . ' €</b></p>
                                     </div>
+                                    <h5 id="counter'.$counter.'"></h5>
+                                    <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
                                     <p>
-                                        ' . number_format($row['Kilometerstand'], 0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                     </p>
                                     <p>
                                         ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
                                         Tel.: +49 123 456789</br>
                                         Ort: ' . $row['ort'] . '
                                     </p>
-                                    <button>
-                                        <img src="image/herz.png" width="13" height="13">
-                                        Merken
-                                    </button>
+                                    <form action="?insertMerken=1" method="post">
+                                        <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
+                                        <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
+                                        <input type="submit" value="      Merken" class="'.$cssClassVariable.'" />
+                                    </form>
                                 </div>
                             </div>
-                        </div>';
+                        </a>';
                 }
                 echo '
                         </div>
                     ';
             }
-        } elseif ($_GET['page'] == 'MeineNachrichten') {
-            echo '<h1>Meine Nachrichten</h1>
-                        <div class="accountManagementBody">
-                            <div class="accountManagementNavigation">
-                                <ul class="accountManagementNavigationElements">
-                                    <li><a href="?page=MeinKonto">Mein Konto</a></li>
-                                    <li><a href="?page=MeineInserate">Meine Inserate</a></li>
-                                    <li><a href="?page=MeineGebote">Meine Gebote</a></li>
-                                    <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
-                                    <li class="accountManagementNavigationElementsActive"><a href="?page=MeineNachrichten">Meine Nachrichten</a></li>
-                                </ul>
-                            </div>
-                            <div class="accountManagementElements">';
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
-            $resInserat = $db->query($queryInserat);
-            echo '
-                    </div>
-                    ';
         }
         ?>
         <div class="accountManagementSpace">
