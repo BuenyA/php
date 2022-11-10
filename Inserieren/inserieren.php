@@ -13,13 +13,13 @@
 
 <body>
     <?php
-    session_start();
-    require '../db.php';
-    require '../phpFunctions.php';
+        session_start();
+        require '../db.php';
+        require '../phpFunctions.php';
 
-    if (empty($_SESSION['user'])) {
-        echo '<script>linkToAnmeldung();</script>';
-    }
+        if (empty($_SESSION['user'])) {
+            echo '<script>linkToAnmeldung();</script>';
+        }
 
 
     if (isset($_GET['inserieren']) && sizeof($_POST) !== 0) {
@@ -62,17 +62,17 @@
         }
 
 
-        /* if (strlen($marke) == 0 or strlen($modell) == 0 or strlen($preis) == 0 or strlen($beschreibung) == 0 or strlen($kilometerstand) == 0 or strlen($ps) == 0 or strlen($kraftstoffart) == 0 or strlen($getriebeart) == 0 or strlen($erstzulassung) == 0 or strlen($auktionsbeginnDatum) == 0 or strlen($auktionsendeDatum) == 0 or strlen($auktionsbeginnUhrzeit) == 0 or strlen($auktionsendeUhrzeit) == 0) {
-            echo 'Das Feld darf nicht leer sein!';
-            $error = true;
-        } */
+            if(!empty($_SESSION['id'])) {
+                $id = $_SESSION['id'];
+            } else {
+                $error = true;
+                echo '<script>linkToAnmeldung();</script>';
+            }
 
-        if(!empty($_SESSION['id'])) {
-            $id = $_SESSION['id'];
-        } else {
-            $error = true;
-            echo '<script>linkToAnmeldung();</script>';
-        }
+            if (!$error) {
+                $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsbeginn_Uhrzeit, Auktionsende, Auktionsende_Uhrzeit, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum', '$auktionsbeginnUhrzeit', '$auktionsendeDatum', '$auktionsendeUhrzeit', '$id')";
+                $db->query($query);
+            }
 
        /* if (!$error) {
             $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsbeginn_Uhrzeit, Auktionsende, Auktionsende_Uhrzeit, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum', '$auktionsbeginnUhrzeit', '$auktionsendeDatum', '$auktionsendeUhrzeit', '$id')";
