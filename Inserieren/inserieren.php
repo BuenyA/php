@@ -124,16 +124,16 @@
                 </div>
                 <div class="Erstzulassung-Bilder">
                     <div class="Erstzulassung">
-                            <p class="Erstzulassung-text">
-                                Erstzulassung
-                            </p>
+                        <p class="Erstzulassung-text">
+                            Erstzulassung
+                        </p>
                         <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
                     </div>
                     <div class= "Bilder">
-                            <p class="Bilder-text">
-                                Bilder
-                            </p>
-                            <input class="Bilder-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit">
+                        <p class="Bilder-text">
+                            Bilder
+                        </p>
+                        <input class="Bilder-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit">
                     </div>
                 </div>
                 <div class="Auktionsbeginn-Uhrzeit">
