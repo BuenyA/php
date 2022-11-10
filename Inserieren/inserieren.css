@@ -144,15 +144,22 @@
   background-color: rgb(245, 243, 243);
   width: 80%;
   text-align: center;
-  margin: 0 0 0 20px;
+  margin: 20px;
+  height: 300px;
   box-sizing: border-box;
+}
+
+.Beschreibung textarea {
+  width: 40em;
+  height: 15em;
+  border-radius: 0;
 }
 
 .Beschreibung-eingabe{
   border-style: solid;
   border-color: rgb(202, 202, 202);
   border-radius: 10px;
-  height: 30px;
+  height: 100px;
   width: 250px;
   margin-bottom: 15px;
 }
