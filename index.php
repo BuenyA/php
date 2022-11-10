@@ -75,7 +75,7 @@
                                     $query = "SELECT * FROM Inserat GROUP BY Marke";
                                     $resInserat = $db->query($query);
                                     echo "<select name='Marke' onChange='auswaehlen(this)'>";
-                                    echo "<option value='".$row["Marke"]."'>Bitte w&auml;hlen...</option>";
+                                    echo "<option value=''>Bitte wählen...</option>";
                                     foreach ($resInserat as $row) {
                                         if (isset($_GET['Marke']) && $_GET['Marke'] == $row['Marke']) {
                                             echo "<option value='".$row["Marke"]."' selected value>".$row["Marke"]."</option>";
@@ -90,7 +90,7 @@
                                 <h2>Modell</h2>
                                 <select name="Modell">
                                     <?php
-                                        echo "<option value='".$row["Marke"]."'>Bitte w&auml;hlen...</option>";
+                                        echo "<option value=''>Bitte wählen...</option>";
                                         if (isset($_GET['Marke'])) {
                                             $query = "SELECT * FROM Inserat WHERE Marke = '" . $_GET['Marke'] . "'GROUP BY Modell";
                                             $resInserat = $db->query($query);
@@ -156,9 +156,9 @@
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP ORDER BY Auktionsende ASC";
             $resInserat = $db->query($queryInserat);
             if (empty($_SESSION['user'])) {
-                phpFunctions::showOffer(7, $resInserat, 0, 4);
+                phpFunctions::showOffer(8, $resInserat, 0, 4);
             } else {
-                phpFunctions::showOffer(7, $resInserat, $_SESSION['id'], 4);
+                phpFunctions::showOffer(8, $resInserat, $_SESSION['id'], 4);
             }
             unset($db);
         ?>
