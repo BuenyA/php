@@ -35,10 +35,8 @@
                 $query = "INSERT INTO Accounts(vorname, nachname, plz, ort, adresse, telefon_Nr, email, passwort) VALUES ('$vorname','$nachname','$plz','$ort','$adresse', '$telefonnummer', '$email','$passwortHash')";
                 $db->query($query);
 
-
-                echo '<script>window.location = "./erfolgreichRegistriert.php";</script>';
                 //Weiterleitung zu Bestätigungsseite
-                
+                echo '<script>window.location = "./erfolgreichRegistriert.php";</script>';                
             } else {
                 //Überprüft ob eine gültige Email eingegeben wurde
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {

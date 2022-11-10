@@ -213,8 +213,9 @@ h6 {
 }
 
 .angebotAufgeben {
-    height: 21em;
+    min-height: 18em;
     width: 45em;
+    padding: 15px 0 10px 0;
     display: grid;
     align-items: center;
     justify-content: center;
@@ -247,10 +248,14 @@ h6 {
     align-items: center;
 }
 
+.angebotAufgebenLeft {
+    margin: 15px 0 15px 0;
+}
+
 .angebotAufgebenLeft h7 {
     font-size: 15px;
     color: #000000;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .angebotAufgebenLeft h4 {
@@ -262,8 +267,26 @@ h6 {
     color: rgb(255, 77, 0);
 }
 
+.showAngebote {
+    display: flex;
+    align-items: center;
+    width: 20em;
+    margin-top: 10px;
+}
+
+.showAngeboteTag {
+    width: 40%;
+}
+
+.showAngebotePreis {
+    text-align: right;
+    width: 40%;
+}
+
 .angebotAufgebenRight {
     display: grid;
+    margin: 20px 0 15px 0;
+    align-self: flex-start;
 }
 
 .angebotAufgebenRight h7 {

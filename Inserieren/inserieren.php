@@ -14,13 +14,13 @@
 <body>
     <?php
     session_start();
-    require_once '../phpFunctions.php';
+    require '../db.php';
+    require '../phpFunctions.php';
 
     if (empty($_SESSION['user'])) {
         echo '<script>linkToAnmeldung();</script>';
     }
 
-    require_once '../db.php';
 
     if (isset($_GET['inserieren']) && sizeof($_POST) !== 0) {
         $error = false;
