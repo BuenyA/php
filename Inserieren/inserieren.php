@@ -126,8 +126,8 @@
                         <p class="Erstzulassung-text">
                             Erstzulassung
                         </p>
-                        <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
-                    </div>
+                    <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
+                </div>
                 <div class="Auktionsbeginn-Uhrzeit">
                     <div class="Auktionsbeginn">
                         <p class="Auktionsbeginn-text">
