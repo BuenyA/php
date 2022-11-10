@@ -36,7 +36,31 @@
         $auktionsbeginnDatum = $_POST['auktionsbeginnDatum'];
         $auktionsendeDatum = $_POST['auktionsendeDatum'];
         $auktionsbeginnUhrzeit = $_POST['auktionsbeginnUhrzeit'];
-        $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
+       # $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
+       
+        $filecount = count($_FILES['auktionbilder']['name']);
+
+        $filename = $_FILES['auktionbilder']['name'];
+        echo count($filename);
+
+        for($i=0; $i<$filecount; $i++){
+            $filedata = file_get_contents($_FILES['auktionbilder']['tmp_name'][$i]);
+            if (!$error) {
+                $nr = 0;
+                $nr2 = 0;
+                if ($i == 0 ){
+                    $nr2 = 1;
+                }
+
+                $query = "INSERT INTO Inseratbilder (Inserat_Nr, Bild, Hauptbild) VALUES (:Nr ,:Bild ,:HBild )";
+                $stmt = $db->prepare($query);
+                $stmt-> bindParam('Nr', $nr, PDO::PARAM_INT);
+                $stmt-> bindParam('Bild', $filedata, PDO::PARAM_STR);
+                $stmt-> bindParam('HBild', $nr2, PDO::PARAM_INT);
+                $stmt-> execute();
+                 }
+        }
+
 
         /* if (strlen($marke) == 0 or strlen($modell) == 0 or strlen($preis) == 0 or strlen($beschreibung) == 0 or strlen($kilometerstand) == 0 or strlen($ps) == 0 or strlen($kraftstoffart) == 0 or strlen($getriebeart) == 0 or strlen($erstzulassung) == 0 or strlen($auktionsbeginnDatum) == 0 or strlen($auktionsendeDatum) == 0 or strlen($auktionsbeginnUhrzeit) == 0 or strlen($auktionsendeUhrzeit) == 0) {
             echo 'Das Feld darf nicht leer sein!';
@@ -50,10 +74,10 @@
             echo '<script>linkToAnmeldung();</script>';
         }
 
-        if (!$error) {
+       /* if (!$error) {
             $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsbeginn_Uhrzeit, Auktionsende, Auktionsende_Uhrzeit, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum', '$auktionsbeginnUhrzeit', '$auktionsendeDatum', '$auktionsendeUhrzeit', '$id')";
             $db->query($query);
-        }
+        }*/
 
         unset($db);
     }
@@ -64,7 +88,7 @@
     </div>
     <section class="Foto-oben"></section>
     <section class="eingaben">
-        <form action="?inserieren=1" method="post">
+        <form action="?inserieren=1" method="post" enctype="multipart/form-data">
             <div class="big-box">
                 <div class="Marke-Modell">
                     <div class="Marke">
@@ -155,7 +179,7 @@
                         <p class="Bilder-text">
                             Bilder
                         </p>
-                        <input class="Bilder-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit" required>
+                        <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="auktionbilder[]" required>
                     </div>
                 </div>
                 <div class="Erstzulassung-Bilder">
