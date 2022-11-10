@@ -22,21 +22,45 @@
         }
 
 
-        if (isset($_GET['inserieren']) && sizeof($_POST) !== 0) {
-            $error = false;
-            $marke = $_POST['marke'];
-            $modell = $_POST['modell'];
-            $preis = $_POST['preis'];
-            $beschreibung = $_POST['beschreibung'];
-            $kilometerstand = $_POST['kilometerstand'];
-            $ps = $_POST['ps'];
-            $kraftstoffart = $_POST['kraftstoffart'];
-            $getriebeart = $_POST['getriebeart'];
-            $erstzulassung = $_POST['erstzulassung'];
-            $auktionsbeginnDatum = $_POST['auktionsbeginnDatum'];
-            $auktionsendeDatum = $_POST['auktionsendeDatum'];
-            $auktionsbeginnUhrzeit = $_POST['auktionsbeginnUhrzeit'];
-            $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
+    if (isset($_GET['inserieren']) && sizeof($_POST) !== 0) {
+        $error = false;
+        $marke = $_POST['marke'];
+        $modell = $_POST['modell'];
+        $preis = $_POST['preis'];
+        $beschreibung = $_POST['beschreibung'];
+        $kilometerstand = $_POST['kilometerstand'];
+        $ps = $_POST['ps'];
+        $kraftstoffart = $_POST['kraftstoffart'];
+        $getriebeart = $_POST['getriebeart'];
+        $erstzulassung = $_POST['erstzulassung'];
+        $auktionsbeginnDatum = $_POST['auktionsbeginnDatum'];
+        $auktionsendeDatum = $_POST['auktionsendeDatum'];
+        $auktionsbeginnUhrzeit = $_POST['auktionsbeginnUhrzeit'];
+       # $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
+       
+        $filecount = count($_FILES['auktionbilder']['name']);
+
+        $filename = $_FILES['auktionbilder']['name'];
+        echo count($filename);
+
+        for($i=0; $i<$filecount; $i++){
+            $filedata = file_get_contents($_FILES['auktionbilder']['tmp_name'][$i]);
+            if (!$error) {
+                $nr = 0;
+                $nr2 = 0;
+                if ($i == 0 ){
+                    $nr2 = 1;
+                }
+
+                $query = "INSERT INTO Inseratbilder (Inserat_Nr, Bild, Hauptbild) VALUES (:Nr ,:Bild ,:HBild )";
+                $stmt = $db->prepare($query);
+                $stmt-> bindParam('Nr', $nr, PDO::PARAM_INT);
+                $stmt-> bindParam('Bild', $filedata, PDO::PARAM_STR);
+                $stmt-> bindParam('HBild', $nr2, PDO::PARAM_INT);
+                $stmt-> execute();
+                 }
+        }
+
 
             if(!empty($_SESSION['id'])) {
                 $id = $_SESSION['id'];
@@ -50,16 +74,21 @@
                 $db->query($query);
             }
 
-            unset($db);
-        }
-        phpFunctions::printNavigationBar();
+       /* if (!$error) {
+            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsbeginn_Uhrzeit, Auktionsende, Auktionsende_Uhrzeit, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum', '$auktionsbeginnUhrzeit', '$auktionsendeDatum', '$auktionsendeUhrzeit', '$id')";
+            $db->query($query);
+        }*/
+
+        unset($db);
+    }
+    phpFunctions::printNavigationBar();
     ?>
     <div class="Überschrift">
         <h1 class="Überschrift-text">Jetzt Kostenlos Versteigern!</h1>
     </div>
     <section class="Foto-oben"></section>
     <section class="eingaben">
-        <form action="?inserieren=1" method="post">
+        <form action="?inserieren=1" method="post" enctype="multipart/form-data">
             <div class="big-box">
                 <div class="Marke-Modell">
                     <div class="Marke">
@@ -150,7 +179,7 @@
                         <p class="Bilder-text">
                             Bilder
                         </p>
-                        <input class="Bilder-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit" required>
+                        <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="auktionbilder[]" required>
                     </div>
                 </div>
                 <div class="Erstzulassung-Bilder">
