@@ -38,18 +38,17 @@
     <section class="suchergebnisse">
         <h1>Deine Suchergebnisse...</h1>
         <?php
-            if(isset($_GET['Marke'])) {
-                $WHERE = "AND Marke = '" . $_GET['Marke'] . "'";
+            $WHERE = '';
+
+            //Dynmische Markenselektion
+            if(isset($_GET['Marke']) && $_GET['Marke'] !== '') {
+                $WHERE = "AND Marke = '" . $_GET['Marke'] . "' ";
             }
 
-            if(isset($_GET['Modell'])) {
-                $WHERE .= "AND Marke = '" . $_GET['Marke'] . "'";
+            //Dynmische Modellselektion
+            if(isset($_GET['Modell']) && $_GET['Modell'] !== '') {
+                $WHERE .= "AND Modell = '" . $_GET['Modell'] . "'";
             }
-
-        /*  $WHERE = 'AND Preis > 30';
-
-            $WHERE .= 'AND Preis < 50'; */
-
 
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP " . $WHERE . " ORDER BY Auktionsende ASC";
             $resInserat = $db->query($queryInserat);
