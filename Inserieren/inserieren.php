@@ -122,11 +122,19 @@
                         <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart" placeholder="    z.B. Automatikgetriebe">
                     </div>
                 </div>
-                <div class="Erstzulassung">
-                        <p class="Erstzulassung-text">
-                            Erstzulassung
-                        </p>
-                    <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
+                <div class="Erstzulassung-Bilder">
+                    <div class="Erstzulassung">
+                            <p class="Erstzulassung-text">
+                                Erstzulassung
+                            </p>
+                        <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
+                    </div>
+                    <div class= "Bilder">
+                            <p class="Bilder-text">
+                                Bilder
+                            </p>
+                            <input class="Bilder-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit">
+                    </div>
                 </div>
                 <div class="Auktionsbeginn-Uhrzeit">
                     <div class="Auktionsbeginn">
@@ -156,14 +164,7 @@
                         <input class="Uhrzeit-eingabe" type="time" size="40" maxlength="250" name="auktionsbeginnUhrzeit">
                     </div>
                 </div>
-                <div class= "Bilder">
-                    <div class="Bilder-Eingabe">
-                        <p class="Bilder-text">
-                            Bilder
-                        </p>
-                        <input class="Uhrzeit-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit">
-                    </div>
-                </div>
+                
                
                 <input class="Abschicken-button" type="submit" value="Abschicken">
             </div>

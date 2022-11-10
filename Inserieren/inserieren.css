@@ -274,10 +274,10 @@
   margin-bottom: 5px;
 }
 
-.Auktionsbeginn-Uhrzeit{
+.Erstzulassung-Bilder{
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 100%;
   height: auto;
   flex-direction: row;
   justify-content: space-around;
@@ -307,12 +307,47 @@
   margin-bottom: 5px;
 }
 
+.Bilder{
+  border-radius: 10px;
+  background-color: rgb(245, 243, 243);
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  margin-right: 1px;
+  box-sizing: border-box;
+}
+
+.Bilder-eingabe{
+  border-style: solid;
+  border-color: rgb(202, 202, 202);
+  border-radius: 10px;
+  height: 30px;
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+.Bilder-text{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.Auktionsbeginn-Uhrzeit{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
 .Auktionsbeginn{
   border-radius: 10px;
   background-color: rgb(245, 243, 243);
   width: 80%;
   text-align: center;
   margin: 20px;
+  margin-right: 1px;
   box-sizing: border-box;
 }
 
@@ -345,7 +380,6 @@
   width: 80%;
   text-align: center;
   margin: 20px;
-  margin-right: 1px;
   box-sizing: border-box;
 }
 
@@ -353,6 +387,7 @@
   border-style: solid;
   border-color: rgb(202, 202, 202);
   border-radius: 10px;
+  width: 400px;
   height: 30px;
   width: 250px;
   margin-bottom: 15px;
@@ -371,6 +406,7 @@
   text-align: center;
   margin: 20px;
   box-sizing: border-box;
+  margin-right: 1px;
 }
 
 .Auktionsende-eingabe{
@@ -387,29 +423,7 @@
   margin-bottom: 5px;
 }
 
-.Bilder{
-  border-radius: 10px;
-  background-color: rgb(245, 243, 243);
-  width: 80%;
-  text-align: center;
-  margin: 20px;
-  box-sizing: border-box;
-}
 
-.Bilder-Eingabe{
-  background-color: aqua;
-  border-style: solid;
-  border-color: rgb(202, 202, 202);
-  border-radius: 10px;
-  height: 30px;
-  width: 250px;
-  margin-bottom: 15px;
-}
-
-.Bilder-Text{
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
 
 .Abschicken-button{
   font-size: 20px;
