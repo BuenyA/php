@@ -87,11 +87,11 @@
                         </p>
                         <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis" placeholder="    z.B. 10000">
                     </div>
-                    <div class="Beschreibung">
-                        <p class="Beschreibung-text">
-                            Beschreibung
+                    <div class="Erstzulassung">
+                        <p class="Erstzulassung-text">
+                            Erstzulassung
                         </p>
-                        <input class= "Beschreibung-eingabe" type="text" size="40" maxlength="250" name="beschreibung" placeholder="    Erzähle uns etwas über dein Auto">
+                        <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
                     </div>
                 </div>
                 <div class="Kilometerstand-PS">
@@ -122,20 +122,6 @@
                         <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart" placeholder="    z.B. Automatikgetriebe">
                     </div>
                 </div>
-                <div class="Erstzulassung-Bilder">
-                    <div class="Erstzulassung">
-                        <p class="Erstzulassung-text">
-                            Erstzulassung
-                        </p>
-                        <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung">
-                    </div>
-                    <div class= "Bilder">
-                        <p class="Bilder-text">
-                            Bilder
-                        </p>
-                        <input class="Bilder-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit">
-                    </div>
-                </div>
                 <div class="Auktionsbeginn-Uhrzeit">
                     <div class="Auktionsbeginn">
                         <p class="Auktionsbeginn-text">
@@ -162,6 +148,20 @@
                             Uhrzeit
                         </p>
                         <input class="Uhrzeit-eingabe" type="time" size="40" maxlength="250" name="auktionsbeginnUhrzeit">
+                    </div>
+                </div>
+                <div class="Erstzulassung-Bilder">
+                    <div class="Beschreibung">
+                        <p class="Beschreibung-text">
+                            Beschreibung
+                        </p>
+                        <input class= "Beschreibung-eingabe" type="text" size="40" maxlength="250" name="beschreibung" placeholder="    Erzähle uns etwas über dein Auto">
+                    </div>
+                    <div class= "Bilder">
+                        <p class="Bilder-text">
+                            Bilder
+                        </p>
+                        <input class="Bilder-eingabe" type="file" multiple="multiple" accept="image/*" name="auktionsbeginnUhrzeit">
                     </div>
                 </div>
                 

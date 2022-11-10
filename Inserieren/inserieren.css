@@ -144,7 +144,7 @@
   background-color: rgb(245, 243, 243);
   width: 80%;
   text-align: center;
-  margin: 20px;
+  margin: 0 0 0 20px;
   box-sizing: border-box;
 }
 
@@ -289,7 +289,6 @@
   width: 80%;
   text-align: center;
   margin: 20px;
-  margin-right: 1px;
   box-sizing: border-box;
 }
 
