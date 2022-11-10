@@ -38,7 +38,21 @@
     <section class="suchergebnisse">
         <h1>Deine Suchergebnisse...</h1>
         <?php
-        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID ORDER BY Erstzulassung ASC";
+
+        if(isset($_GET['Marke'])) {
+            $WHERE = "AND Marke = '" . $_GET['Marke'] . "'";
+        }
+
+        if(isset($_GET['Modell'])) {
+            $WHERE .= "AND Marke = '" . $_GET['Marke'] . "'";
+        }
+
+       /*  $WHERE = 'AND Preis > 30';
+
+        $WHERE .= 'AND Preis < 50'; */
+
+
+        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP " . $WHERE . " ORDER BY Auktionsende ASC";
         $resInserat = $db->query($queryInserat);
 
         if (empty($_SESSION['user'])) {

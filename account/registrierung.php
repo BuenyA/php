@@ -51,7 +51,6 @@
             //Datenbank schließen
             unset($db);
         }
-
     ?>
     <div class="navigationMenuLogo">
         <img src="image/AutostarLogo.png" width="200" height="40" onclick="reloadWindow()">

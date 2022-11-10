@@ -235,8 +235,17 @@
                         </div>
                     </div>';
 
-            //Email als Input-Feld, wenn nicht angemeldet
-            if (empty($_SESSION['user'])) {
+            //Wenn Autkion ausgelaufen
+            if ($rowIns['Auktionsende'] < date('Y-m-d H:i:s')) {
+                echo $rowIns['Auktionsende'];
+                echo '</div>
+                    </form>
+                </div>
+            </div>
+            ';
+
+            //Wenn User ein Gast ist
+            } elseif (empty($_SESSION['user'])) {
                 echo '</div>
                         <div class="angebotAufgebenRight">
                             <h7><b>Dein Gebot:</b></h7>
@@ -251,7 +260,7 @@
             </div>
             ';
 
-            //Statisches Email-Feld, wenn angemeldet
+            //Wenn User angemeldet ist
             } else {
                 echo '</div>
                         <div class="angebotAufgebenRight">

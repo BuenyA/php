@@ -14,6 +14,8 @@
 
 <body>
     <?php
+
+    //Einbinden von Funktionen
     require '../db.php';
     require '../phpFunctions.php';
     session_start();
@@ -25,6 +27,19 @@
     }
     if (empty($_SESSION['user'])) {
         echo '<script>linkToAnmeldung();</script>';
+    }
+    if (isset($_GET['insertMerken']) && sizeof($_POST) !== 0) {
+        $InseratNrPost = $_POST['InseratNr'];
+        $AccIDPost = $_POST['AccID'];
+        $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
+        $resMerken = $db->query($queryMerken);
+        if ($resMerken !== false && $resMerken->rowCount() > 0) {
+            $queryMerkenDelete = "DELETE FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
+            $resMerkenDelete = $db->query($queryMerkenDelete);
+        } else {
+            $queryMerkenInsert = "INSERT INTO Merken(InseratNr, AccountNr) VALUES ('$InseratNrPost','$AccIDPost')";
+            $resMerkenInsert = $db->query($queryMerkenInsert);
+        }
     }
     phpFunctions::printNavigationBar();
     ?>
@@ -121,7 +136,7 @@
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
                                     <li class="accountManagementNavigationElementsActive"><a href="?page=MeinKonto">Mein Konto</a></li>
-                                    <li><a href="?page=MeineInserate">Meine Auktionen</a></li>
+                                    <li><a href="?page=MeineAuktionen">Meine Auktionen</a></li>
                                     <li><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
                                 </ul>
@@ -205,13 +220,13 @@
                             </div>';
 
         //Verwaltung meiner Inserate
-        } elseif ($_GET['page'] == 'MeineInserate') {
+        } elseif ($_GET['page'] == 'MeineAuktionen') {
             echo '<h1>Meine Auktionen</h1>
                         <div class="accountManagementBody">
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
                                     <li><a href="?page=MeinKonto">Mein Konto</a></li>
-                                    <li class="accountManagementNavigationElementsActive"><a href="?page=MeineInserate">Meine Auktionen</a></li>
+                                    <li class="accountManagementNavigationElementsActive"><a href="?page=MeineAuktionen">Meine Auktionen</a></li>
                                     <li><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
                                 </ul>
@@ -219,38 +234,53 @@
                             <div class="accountManagementElements">';
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE account_ID = " . $_SESSION['id'];
             $resInserat = $db->query($queryInserat);
+
+            if(!$resInserat->rowCount() > 0) {
+                echo '<h1 class="keinFavorit">Sie haben keine Auktionen inseriert</h1>';
+            }
+
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
                 foreach ($resInserat as $row) {
+                    $InsNr = $row['Inserat_Nr'];
+                    $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
+                    $resAngebot = $db->query($queryAngebot);
+                    if($resAngebot->rowCount() > 0) {
+                        $rowAngebot = $resAngebot->fetch();
+                        $preis = $rowAngebot['Angebot'];
+                    } else {
+                        $preis = $row['Preis'];
+                    }
                     echo '
-                        <div class="topOfferPlace">
+                        <a class="topOfferLink" href="../Angebote/produkt.php?produkt='.$row['Inserat_Nr'].'">
                             <div class="topOffers">
-                                <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
                                 <div class="topOffersRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'], 0, '.', '.') . ' €</b></p>
+                                        <p class="auktionspreis"><b>' . number_format($preis ,0, '.', '.') . ' €</b></p>
                                     </div>
+                                    <h5 id="counter'.$row['Auktionsende'].'"></h5>
                                     <p>
-                                        ' . number_format($row['Kilometerstand'], 0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
                                     </p>
                                     <p>
                                         ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
                                         Tel.: +49 123 456789</br>
                                         Ort: ' . $row['ort'] . '
                                     </p>
-                                    <button>
-                                        <img src="image/herz.png" width="13" height="13">
-                                        Merken
-                                    </button>
+                                    <form action="?insertMerken=1" method="post">
+                                        <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
+                                        <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
+                                    </form>
                                 </div>
                             </div>
-                        </div>
-                        ';
+                        </a>';
                 }
-                echo '
-                        </div>
-                    ';
             }
+            echo '
+                    </div>
+                ';
+
         //Verwaltung meiner Gebote
         } elseif ($_GET['page'] == 'MeineGebote') {
             echo '<h1>Meine Gebote</h1>
@@ -258,42 +288,52 @@
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
                                     <li><a href="?page=MeinKonto">Mein Konto</a></li>
-                                    <li><a href="?page=MeineInserate">Meine Auktionen</a></li>
+                                    <li><a href="?page=MeineAuktionen">Meine Auktionen</a></li>
                                     <li class="accountManagementNavigationElementsActive"><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
 
-            //Selektireung auf E-Mail funktioniert noch nicht
-            $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.Account_Nr = Accounts.account_ID JOIN Inserat ON Inserat.Inserat_Nr = Angebote.Inserat_Nr WHERE Angebote.Account_Nr = " . $_SESSION['id'] . " OR Angebote.Email = '" . $_SESSION['user'] . "'";
+            //Selektireung auf E-Mail funktioniert noch nicht----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.Account_Nr = Accounts.account_ID JOIN Inserat ON Inserat.Inserat_Nr = Angebote.Inserat_Nr WHERE Angebote.Account_Nr = " . $_SESSION['id'] . " OR Angebote.Email = '" . $_SESSION['user'] . "' ORDER BY Angebote.Erstellt_Am DESC";
             $resInserat = $db->query($queryInserat);
+
+            //Wenn Favoriten vorhanden sind...
+            if(!$resInserat->rowCount() > 0) {
+                echo '<h1 class="keinFavorit">Sie haben keine Auktionen favorisiert</h1>';
+            }
+
+            //Drucke Gebote
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
                 foreach ($resInserat as $row) {
                     echo '
-                    <a class="topOfferLink" href="../?produkt='.$row['Inserat_Nr'].'">
+                    <a class="topOfferLink" href="../Angebote/produkt.php?produkt='.$row['Inserat_Nr'].'">
                         <div class="topOfferPlace">
                             <div class="gebotBox">
-                                <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="200" height="200">
-                                <div class="topOffersRight">
+                                <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="150" height="150">
+                                <div class="geboteRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($row['Preis'], 0, '.', '.') . ' €</b></p>
                                     </div>
+                                    <p class="anfangspreis">Ursprünglicher Preis: ' . number_format($row['Preis'], 0, '.', '.') . ' €</p>
                                     <p>
                                         ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
                                         Tel.: +49 123 456789</br>
                                         Ort: ' . $row['ort'] . '
                                     </p>
                                 </div>
+                                <p class="auktionspreisGebot"><b>' . number_format($row['Angebot'], 0, '.', '.') . ' €</b></p>
                             </div>
                         </div>
                     </a>';
                 }
-                echo '
+                
+            }
+            echo '
                         </div>
                     ';
-            }
+
         //Verwaltung meiner favorisierten Auktionen
         } elseif ($_GET['page'] == 'MeineFavoriten') {
             echo '<h1>Meine Favoriten</h1>
@@ -301,7 +341,7 @@
                             <div class="accountManagementNavigation">
                                 <ul class="accountManagementNavigationElements">
                                     <li><a href="?page=MeinKonto">Mein Konto</a></li>
-                                    <li><a href="?page=MeineInserate">Meine Auktionen</a></li>
+                                    <li><a href="?page=MeineAuktionen">Meine Auktionen</a></li>
                                     <li><a href="?page=MeineGebote">Meine Gebote</a></li>
                                     <li class="accountManagementNavigationElementsActive"><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
                                 </ul>
@@ -312,28 +352,50 @@
             //Selektierung der Favoriten
             $queryInserat = "SELECT * FROM Merken JOIN Inserat ON Merken.InseratNr = Inserat.Inserat_Nr JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE AccountNr = $ID";
             $resInserat = $db->query($queryInserat);
+
+            //Erster Datensatz
             $rowInserat = $resInserat->fetch();
 
-            //Selektierung nach Angeboten
-            $InsNr = $rowInserat['InseratNr'];
-            echo $rowInserat['InseratNr'];
-            $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
-            $resAngebot = $db->query($queryAngebot);
-            if($resAngebot->rowCount() > 0) {
-                $rowAngebot = $resAngebot->fetch();
-                $preis = $rowAngebot['Angebot'];
-                echo $preis;
+            //Dynamische Wahl, welche Klasse dem Merken-Button vergeben werden soll 
+            if ($resInserat !== false && $resInserat->rowCount() > 0) {
+                $cssClassVariable = 'merkenButtonPressed';
             } else {
-                $preis = $row['Preis'];
+                $cssClassVariable = 'merkenButton';
+            }
+            
+            //Wenn Favoriten vorhanden sind...
+            if($resInserat->rowCount() > 0) {
+
+                //Selektierung nach Angeboten
+                $InsNr = $rowInserat['InseratNr'];
+                $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
+                $resAngebot = $db->query($queryAngebot);
+                if($resAngebot->rowCount() > 0) {
+                    $rowAngebot = $resAngebot->fetch();
+                    $preis = $rowAngebot['Angebot'];
+                } else {
+                    $preis = $rowInserat['Preis'];
+                }
+
+                //Counter für die dynamische Zeitanzeige Klasse
+                $counter = 0;
+
+                //Variablendeklaration für dynamische Zeitanzeige
+                $waiting_day = strtotime($rowInserat['Auktionsende']);
+                $getDateTime = date("F d, Y H:i:s", $waiting_day); // JavaScript Variable
+
+                $resInserat = $db->query($queryInserat);
+            } else {
+                echo '<h1 class="keinFavorit">Sie haben keine Auktionen favorisiert</h1>';
             }
 
             //Row zurücksetzen
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
                 foreach ($resInserat as $row) {
                     echo '
-                        <a class="topOfferLink" href="../?produkt='.$row['Inserat_Nr'].'">
+                        <a class="topOfferLink" href="../Angebote/produkt.php?produkt='.$row['Inserat_Nr'].'">
                             <div class="topOffers">
-                                <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
                                 <div class="topOffersRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
@@ -357,20 +419,18 @@
                                 </div>
                             </div>
                         </a>';
+                $counter = $counter + 1;
                 }
-                echo '
-                        </div>
-                    ';
             }
+            echo '
+                    </div>
+                ';
         }
         ?>
-        <div class="accountManagementSpace">
-
-        </div>
-        </div>
+        <div class="accountManagementSpace"></div>
     </section>
     <?php
-    phpFunctions::printFooter();
+        phpFunctions::printFooter();
     ?>
 </body>
 
