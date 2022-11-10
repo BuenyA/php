@@ -37,3 +37,13 @@ function calculateTime(getDateTime, counter = '') {
         }
     }, 100);
 }
+
+function auswaehlen(s){
+    wert=s.options[s.selectedIndex].value;
+    if (wert!=0) {
+         location.href='index.php?Marke=' + wert;
+    }
+    else {
+        location.href='index.php';
+    }
+} 
