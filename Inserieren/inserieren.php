@@ -75,14 +75,7 @@
                 $stmt-> bindParam('HBild', $nr2, PDO::PARAM_INT);
                 $stmt-> execute();
                  }
-        }
-
-
-           
-
-            
-
-     
+        }     
         unset($db);
     }
     phpFunctions::printNavigationBar();
@@ -99,13 +92,13 @@
                         <p class="Marke-text">
                             Marke
                         </p>
-                        <input class="Marke-eingabe" type="text" size="40" maxlength="250" name="marke" placeholder="    z.B. Mercedes" required>
+                        <input class="Marke-eingabe" type="text" size="40" maxlength="250" name="marke" placeholder="z.B. Mercedes" required>
                     </div>
                     <div class="Modell">
                         <p class="Modell-text">
                             Modell
                         </p>
-                        <input class="Modell-eingabe" type="text" size="40" maxlength="250" name="modell" placeholder="    z.B. A-Klasse" required>
+                        <input class="Modell-eingabe" type="text" size="40" maxlength="250" name="modell" placeholder="z.B. A-Klasse" required>
                     </div>
                 </div>
                 <div class="Preis-Beschreibung">
@@ -113,13 +106,13 @@
                         <p class="Preis-text">
                             Preis
                         </p>
-                        <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis" placeholder="    z.B. 10000" required>
+                        <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis" placeholder="z.B. 10000" required>
                     </div>
                     <div class="Erstzulassung">
                         <p class="Erstzulassung-text">
                             Erstzulassung
                         </p>
-                        <input class="Erstzulassung-eingabe" type="number" min="0" max="3000" name="erstzulassung" placeholder="    z.B. Jahr" required>
+                        <input class="Erstzulassung-eingabe" type="number" min="0" max="3000" name="erstzulassung" placeholder="z.B. Jahr" required>
                     </div>
                 </div>
                 <div class="Kilometerstand-PS">
@@ -127,13 +120,13 @@
                         <p class="Kilometerstand-text">
                             Kilometerstand
                         </p>
-                        <input class= "Kilometerstand-eingabe" type="number" size="40" maxlength="250" name="kilometerstand" placeholder="    z.B. 150000" required>
+                        <input class="Kilometerstand-eingabe" type="number" size="40" maxlength="250" name="kilometerstand" placeholder="z.B. 150.000" required>
                     </div>
                     <div class="PS">
                         <p class="PS-text">
                             PS
                         </p>
-                        <input class="PS-eingabe" type="number" size="40" maxlength="250" name="ps" placeholder="    z.B. 200" required>
+                        <input class="PS-eingabe" type="number" size="40" maxlength="250" name="ps" placeholder="z.B. 200" required>
                     </div>
                 </div>
                 <div class="Kraftstoffart-Getriebeart">
@@ -141,13 +134,13 @@
                         <p class="Kraftstoffart-text">
                             Kraftstoffart
                         </p>
-                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="250" name="kraftstoffart" placeholder="    z.B. Benzin" required>
+                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="250" name="kraftstoffart" placeholder="z.B. Benzin" required>
                     </div>
                     <div class="Getriebeart">
                         <p class="Getriebeart-text">
                             Getriebeart
                         </p>
-                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart" placeholder="    z.B. Automatikgetriebe" required>
+                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart" placeholder="z.B. Automatikgetriebe" required>
                     </div>
                 </div>
                 <div class="Auktionsbeginn-Uhrzeit">
