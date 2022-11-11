@@ -362,3 +362,7 @@ textarea {
     margin-bottom: 1em;
     opacity: 80%;
 }
+
+.hidden {
+    display: none;
+}

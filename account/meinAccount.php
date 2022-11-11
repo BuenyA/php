@@ -322,6 +322,7 @@
                                             <div class="auktionsAnzeigeElement">
                                                 <label>Erstzullasung</label>
                                                 <input type="year" value="'.$row['Erstzulassung'].'"/ required>
+                                                <input class="hidden" type="number" name="Inserat_Nr" value="'.$row['Inserat_Nr'].'"/>
                                             </div>
                                             <div class="auktionsAnzeigeElement auktionsAnzeigeElementBeschreibung">
                                                 <label>Beschreibung</label>
