@@ -46,8 +46,6 @@
         for($i=0; $i<$filecount; $i++){
             $filedata = file_get_contents($_FILES['auktionbilder']['tmp_name'][$i]);
             
-            //Wieso fügt ihr der Inserat_Nr eine 0/1 hinzu -> Die Inserat_Nr ist eine FK zum dazugehörigen Inseratdatensatz
-            //Zuert muss der Datensatz in die Inserattabelle hinzugefügt werden -> Danach, mit dem Kenntniss des PK, die Inseratbilder hinzufügen
             if (!$error) {
                 $nr = 0;
                 $nr2 = 0;
