@@ -47,6 +47,7 @@
     $query = "SELECT * FROM accounts WHERE account_ID = '$session_ID'";
     $resAcc = $db->query($query);
     $row = $resAcc->fetch();
+    
 
 
     //Falls Änderungen zum Account kamen -> in die Datenbank 
@@ -124,7 +125,7 @@
 
         //Falls Änderungen zu einem Inserat kamen -> in die Datenbank 
         if (isset($_POST['auktionSpeichern'])) {
-        
+      
             //Werte aus der Form entnehmen und in Variablen speichern
             $inseratNr = $_POST['Inserat_Nr'];
             $marke = $_POST['input__marke'];
@@ -134,8 +135,9 @@
             $kraftstoffart = $_POST['input__kraftstoffart'];
             $getriebeart = $_POST['input__getriebeart'];
             $auktionsbeginn = $_POST['input__auktionsbeginn'];
-            $auktionsende = $_POST['input__aktionsende'];
+            $auktionsende = $_POST['input__auktionsende'];
             $erstzulassung = $_POST['input__erstzulassung'];
+            $beschreibung = $_POST['input__beschreibung'];
             //Variable die schaut ob eine Änderung durchgeführt wurde
             $aenderung = false;
     
@@ -193,13 +195,19 @@
                 $query = "UPDATE `Inserat` SET `Erstzulassung`='$erstzulassung' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
+            }
+            //Änderung Beschreibung
+            if ($beschreibung != $row['Beschreibung'] && $beschreibung != "") {
+                $query = "UPDATE `Inserat` SET `Beschreibung`='$beschreibung' WHERE `Inserat_Nr`='$inseratNr'";
+                $db->query($query);
+                $aenderung = true;
             }                         
 
     
             //Falls eine Änderung durchgeführt wurde
             if ($aenderung) {
                 //Weiterleitung zu Bestätigungsseite
-                echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+                //echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
             }
         }
 
