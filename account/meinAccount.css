@@ -10,9 +10,6 @@ label {
     font-weight: 400;
 }
 
-.screen {
-}
-
 .login__field {
     display: grid;
     margin: 1em;
@@ -292,6 +289,11 @@ label {
     border: 1px solid rgb(255, 255, 255);
     cursor: pointer;
 }
+
+.button {
+    margin-left: 1em;
+}
+
 
 .gebotBox img {
     object-fit: cover;

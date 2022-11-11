@@ -60,7 +60,7 @@
                                                 <h5 id="counter'.$counter.'"></h5>
                                                 <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
                                                 <p>
-                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . ', ' . $row['Erstzulassung'] . '
                                                 </p>
                                                 <p>
                                                     ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
@@ -89,7 +89,7 @@
                                                 <h5 id="counter'.$counter.'"></h5>
                                                 <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
                                                 <p>
-                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . ', ' . $row['Erstzulassung'] . '
                                                 </p>
                                                 <p>
                                                     ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
@@ -165,7 +165,7 @@
                                                 <h5 id="counter'.$counter.'"></h5>
                                                 <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
                                                 <p>
-                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . ', ' . $row['Erstzulassung'] . '
                                                 </p>
                                                 <p>
                                                     ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
@@ -196,7 +196,7 @@
                                                 <h5 id="counter'.$counter.'"></h5>
                                                 <script>calculateTime("'.$getDateTime.'", "'.$counter.'");</script>
                                                 <p>
-                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
+                                                    ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . ', ' . $row['Erstzulassung'] . '
                                                 </p>
                                                 <p>
                                                     ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
