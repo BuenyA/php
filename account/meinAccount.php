@@ -266,7 +266,7 @@
 
                     echo '
                             <div class="auktionsAnzeige">
-                                <form action="?inseratAendern=1" method="post">
+                                <form method="post">
                                     <div class="auktionsAnzeigeTop">
                                         <div class="auktionsAnzeigePics">
                                             <h10>'.$row['Marke'].' '.$row['Modell'].'</h10>
@@ -331,10 +331,10 @@
                                     </div>
                                     <div class="seperator"></div>
                                     <div class="auktionsAnzeigeBottom">
-                                        <div class="auktionsAnzeigeBottomLoeschen">
+                                        <div class="auktionsAnzeigeBottomLoeschen" name="auktionLoeschen">
                                             <button >Auktion löschen</button>
                                         </div>
-                                        <div class="auktionsAnzeigeBottomSpeichern">
+                                        <div class="auktionsAnzeigeBottomSpeichern" name="auktionSpeichern">
                                             <button>Auktion speichern</button>
                                         </div>
                                     </div>

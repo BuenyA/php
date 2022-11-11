@@ -333,6 +333,10 @@ label {
     transition: 0.2s;
 }
 
+.accountManagementBox h2 {
+    text-align: center;
+}
+
 .screen__content input {
     justify-self: center;
     border: none;
