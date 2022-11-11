@@ -109,16 +109,17 @@
                             </div>
                             <div class="Erstzulassung">
                                 <h2>Erstzulassung</h2>
-                                <input type="search" placeholder="Jahr" autocomplete="off" maxlength="10" type="number" name="Erstzulassung">
+                                <input type="search" placeholder="Ab Jahr..." autocomplete="off" maxlength="10" type="number" name="Erstzulassung">
                             </div>
                         </div>
                         <div>
-                            <div class="Preis">
+                            <div class="Erstzulassung">
                                 <h2>Preis</h2>
-                                <div class="preisAngabe">
+                                <!-- <div class="preisAngabe">
                                     <input type="search" placeholder="Von..." autocomplete="off" maxlength="10" type="number" name="preisVon">
                                     <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number" name="preisBis">
-                                </div>
+                                </div> -->
+                                <input type="search" placeholder="Bis..." autocomplete="off" maxlength="10" type="number" name="preisBis">
                             </div>
                             <div class="btnAngebotSuchenDiv">
                                 <h2>Suchen</h2>
