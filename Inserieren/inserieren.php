@@ -36,7 +36,7 @@
         $auktionsbeginnDatum = $_POST['auktionsbeginnDatum'];
         $auktionsendeDatum = $_POST['auktionsendeDatum'];
         $auktionsbeginnUhrzeit = $_POST['auktionsbeginnUhrzeit'];
-       // $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
+        $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
        
         $filecount = count($_FILES['auktionbilder']['name']);
 
@@ -119,7 +119,7 @@
                         <p class="Erstzulassung-text">
                             Erstzulassung
                         </p>
-                        <input class="Erstzulassung-eingabe" type="date" size="40" maxlength="250" name="erstzulassung" required>
+                        <input class="Erstzulassung-eingabe" type="number" min="0" max="3000" name="erstzulassung" placeholder="    z.B. Jahr" required>
                     </div>
                 </div>
                 <div class="Kilometerstand-PS">
@@ -175,7 +175,7 @@
                         <p class="Uhrzeit-text">
                             Uhrzeit
                         </p>
-                        <input class="Uhrzeit-eingabe" type="time" size="40" maxlength="250" name="auktionsbeginnUhrzeit" required>
+                        <input class="Uhrzeit-eingabe" type="time" size="40" maxlength="250" name="auktionsendeUhrzeit" required>
                     </div>
                 </div>
                 <div class="Erstzulassung-Bilder">
