@@ -13,7 +13,7 @@
 
 .accountManagementNavigation {
     min-width: 15em;
-    min-height: 10em;
+    min-height: 50em;
 }
 
 .accountManagementNavigationElements {
@@ -84,11 +84,117 @@
     /* background-color: #ff4d00; */
 }
 
+.accountManagementElements button {
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 5px;
+    width: 12em;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    border: 1.5px solid rgb(255, 109, 46);
+    transition: 0.5s;
+}
+
+.accountManagementElements button:hover {
+    cursor: pointer;
+    background-color: rgb(255, 109, 46);
+    color: white;
+}
+
 .keinFavorit {
     text-align: center;
     color: gray;
     font-weight: 200;
     font-family: 'Roboto', sans-serif;
+}
+
+.auktionsAnzeige {
+    display: grid;
+    justify-content: space-around;
+    background-color: white;
+    padding-top: 1em;
+    width: 50em;
+    height: 42em;
+    border-radius: 10px;
+    border: 1px solid rgb(194, 194, 194);
+    transition: 0.2s;
+}
+
+.auktionsAnzeige:hover {
+    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, 0.1);
+    border: 1px solid rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.auktionsAnzeigeTop {
+    display: flex;
+    justify-content: space-around;
+    width: 50em;
+    margin-top: 2em;
+}
+
+.auktionsAnzeige img {
+    object-fit: cover;
+    object-position: 40%;
+}
+
+.auktionsAnzeigeRight label {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+}
+.auktionsAnzeigeRight input {
+    justify-self: center;
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 5px;
+    padding-left: 24px;
+    font-weight: 700;
+    width: 11em;
+    margin: 0px 0 20px;
+    transition: .2s;
+}
+
+.auktionsAnzeigeRight input:active,
+.auktionsAnzeigeRight input:focus,
+.auktionsAnzeigeRight input:hover {
+    outline: none;
+    border-bottom-color: #ff6600;
+}
+
+.auktionsAnzeigeZeile {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.auktionsAnzeigeElement {
+    display: grid;
+    width: 12em;
+}
+
+.auktionsAnzeigeElement textarea {
+    width: 30em;
+    height: 10em;
+}
+
+.accountManagementSpaceAuktion {
+    width: 2em;
+}
+
+.seperator {
+    height: 0.5px;
+    width: 80%;
+    background-color: rgb(183, 183, 183);
+    justify-self: center;
+}
+
+.auktionsAnzeigeBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .gebotBox {

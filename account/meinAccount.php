@@ -41,95 +41,95 @@
             $resMerkenInsert = $db->query($queryMerkenInsert);
         }
     }
+    
+    //aktuelle Daten des Session Users aus der Datenbank laden
+    $session_ID = $_SESSION['id'];
+    $query = "SELECT * FROM accounts WHERE account_ID = '$session_ID'";
+    $resAcc = $db->query($query);
+    $row = $resAcc->fetch();
+
+
+    //Falls Änderungen kamen -> in die Datenbank 
+    if (isset($_POST['aendern__submit'])) {
+
+        //Werte aus der Form entnehmen und in Variablen speichern
+        $vorname = $_POST['input__vorname'];
+        $nachname = $_POST['input__nachname'];
+        $plz = $_POST['input__plz'];
+        $ort = $_POST['input__ort'];
+        $adresse = $_POST['input__adresse'];
+        $telefonnummer = $_POST['input__telefonnummer'];
+        $email = $_POST['input__email'];
+        $passwort1 = $_POST['input__passwort1'];
+        $passwort2 = $_POST['input__passwort2'];
+        $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
+        //Variable die schaut ob eine Änderung durchgeführt wurde
+        $aenderung = false;
+
+        //SQL Statements, falls eine Änderung unternommen wurde
+        //Änderung Vorname
+        if ($vorname != $row['vorname'] && $vorname != "") {
+            $query = "UPDATE `Accounts` SET `vorname`='$vorname' WHERE `account_ID`='$session_ID'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Nachname
+        if ($nachname != $row['nachname'] && $nachname != "") {
+            $query = "UPDATE `Accounts` SET `nachname`='$nachname' WHERE `account_ID`='$session_ID'";
+            $db->query($query);
+        }
+        //Änderung Postleihzahl
+        if ($plz != $row['plz'] && $plz != "" && is_numeric($plz) && strlen($plz) == 5) {
+            $query = "UPDATE `Accounts` SET `plz`='$plz' WHERE `account_ID`='$session_ID'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Ort
+        if ($ort != $row['ort'] && $ort != "") {
+            $query = "UPDATE `Accounts` SET `ort`='$ort' WHERE `account_ID`='$session_ID'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Adresse
+        if ($adresse != $row['adresse'] && $adresse != "") {
+            $query = "UPDATE `Accounts` SET `adresse`='$adresse' WHERE `account_ID`='$session_ID'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Telefonnummer
+        if ($telefonnummer != $row['telefon_Nr'] && $telefonnummer != "" && is_numeric($telefonnummer) && strlen($telefonnummer) < 20) {
+            $query = "UPDATE `Accounts` SET `telefon_Nr`='$telefonnummer' WHERE `account_ID`='$session_ID'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Email
+        if ($email != $row['email'] && $email != "" && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $query = "UPDATE `Accounts` SET `email`='$email' WHERE `account_ID`='$session_ID'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Passwort
+        if($passwort1 != null && $passwort2 != null && $passwortHash != null && $passwort1 != "" && $passwort2 != "" && $passwort1 == $passwort2) {
+            $query = "UPDATE `Accounts` SET `passwort`='$passwortHash' WHERE `account_ID`='$session_ID'";
+            $db->query($query);
+            $aenderung = true;
+        }
+
+        //Falls eine Änderung durchgeführt wurde
+        if ($aenderung) {
+            //Weiterleitung zu Bestätigungsseite
+            echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+        }
+
+        // echo '<script>window.location = "./meinAccount.php";</script>';
+
+    }
     phpFunctions::printNavigationBar();
     ?>
     <section class="accountManagement">
         <?php
         if ($_GET['page'] == 'MeinKonto') {
-
-            //aktuelle Daten des Session Users aus der Datenbank laden
-            $session_ID = $_SESSION['id'];
-            $query = "SELECT * FROM accounts WHERE account_ID = '$session_ID'";
-            $resAcc = $db->query($query);
-            $row = $resAcc->fetch();
-
-
-            //Falls Änderungen kamen -> in die Datenbank 
-            if (isset($_POST['aendern__submit'])) {
-
-                //Werte aus der Form entnehmen und in Variablen speichern
-                $vorname = $_POST['textarea__vorname'];
-                $nachname = $_POST['textarea__nachname'];
-                $plz = $_POST['textarea__plz'];
-                $ort = $_POST['textarea__ort'];
-                $adresse = $_POST['textarea__adresse'];
-                $telefonnummer = $_POST['textarea__telefonnummer'];
-                $email = $_POST['textarea__email'];
-                $passwort1 = $_POST['textarea__passwort1'];
-                $passwort2 = $_POST['textarea__passwort2'];
-                $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
-                //Variable die schaut ob eine Änderung durchgeführt wurde
-                $aenderung = false;
-
-                //SQL Statements, falls eine Änderung unternommen wurde
-                //Änderung Vorname
-                if ($vorname != $row['vorname'] && $vorname != "") {
-                    $query = "UPDATE `Accounts` SET `vorname`='$vorname' WHERE `account_ID`='$session_ID'";
-                    $db->query($query);
-                    $aenderung = true;
-                }
-                //Änderung Nachname
-                if ($nachname != $row['nachname'] && $nachname != "") {
-                    $query = "UPDATE `Accounts` SET `nachname`='$nachname' WHERE `account_ID`='$session_ID'";
-                    $db->query($query);
-                }
-                //Änderung Postleihzahl
-                if ($plz != $row['plz'] && $plz != "" && is_numeric($plz) && strlen($plz) == 5) {
-                    $query = "UPDATE `Accounts` SET `plz`='$plz' WHERE `account_ID`='$session_ID'";
-                    $db->query($query);
-                    $aenderung = true;
-                }
-                //Änderung Ort
-                if ($ort != $row['ort'] && $ort != "") {
-                    $query = "UPDATE `Accounts` SET `ort`='$ort' WHERE `account_ID`='$session_ID'";
-                    $db->query($query);
-                    $aenderung = true;
-                }
-                //Änderung Adresse
-                if ($adresse != $row['adresse'] && $adresse != "") {
-                    $query = "UPDATE `Accounts` SET `adresse`='$adresse' WHERE `account_ID`='$session_ID'";
-                    $db->query($query);
-                    $aenderung = true;
-                }
-                //Änderung Telefonnummer
-                if ($telefonnummer != $row['telefon_Nr'] && $telefonnummer != "" && is_numeric($telefonnummer) && strlen($telefonnummer) < 20) {
-                    $query = "UPDATE `Accounts` SET `telefon_Nr`='$telefonnummer' WHERE `account_ID`='$session_ID'";
-                    $db->query($query);
-                    $aenderung = true;
-                }
-                //Änderung Email
-                if ($email != $row['email'] && $email != "" && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $query = "UPDATE `Accounts` SET `email`='$email' WHERE `account_ID`='$session_ID'";
-                    $db->query($query);
-                    $aenderung = true;
-                }
-                //Änderung Passwort
-                if($passwort1 != null && $passwort2 != null && $passwortHash != null && $passwort1 != "" && $passwort2 != "" && $passwort1 == $passwort2) {
-                    $query = "UPDATE `Accounts` SET `passwort`='$passwortHash' WHERE `account_ID`='$session_ID'";
-                    $db->query($query);
-                    $aenderung = true;
-                }
-
-                //Falls eine Änderung durchgeführt wurde
-                if ($aenderung) {
-                    //Weiterleitung zu Bestätigungsseite
-                    echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
-                }
-
-                // echo '<script>window.location = "./meinAccount.php";</script>';
-
-            }
-
+            
             //Meine Account Bearbeitung
             echo '<h1>Guten Tag ' . $_SESSION['vorname'] . '</h1>
                         <div class="accountManagementBody">
@@ -151,51 +151,51 @@
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input vorname -->
-                                                        <textarea name="textarea__vorname" rows= "1" cols="20">' . $row['vorname'] . '</textarea>
+                                                        <input name="input__vorname" value="'.$row['vorname'].'"/>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input nachname -->
-                                                        <textarea name="textarea__nachname" rows= "1" cols="20">' . $row['nachname'] . '</textarea>
+                                                        <input name="input__nachname" value="'.$row['nachname'].'"/>
                                                     </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field login__field__plz">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input plz -->
-                                                        <textarea name="textarea__plz" rows= "1" cols="20">' . $row['plz'] . '</textarea>
+                                                        <input name="input__plz" value="'.$row['plz'].'"/>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input ort -->
-                                                        <textarea name="textarea__ort" rows= "1" cols="20">' . $row['ort'] . '</textarea>
+                                                        <input name="input__ort" value="'.$row['ort'].'"/>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input adresse -->
-                                                        <textarea name="textarea__adresse" rows= "1" cols="20">' . $row['adresse'] . '</textarea>
+                                                        <input name="input__adresse" value="'.$row['adresse'].'"/>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-lock"></i>
                                                         <!-- input telefonnummer -->
-                                                    <textarea name="textarea__telefonnummer" rows= "1" cols="20">' . $row['telefon_Nr'] . '</textarea>
+                                                    <input name="input__telefonnummer" value="'.$row['telefon_Nr'].'" />
                                                 </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input email -->
-                                                        <textarea name="textarea__email" rows= "1" cols="20">' . $row['email'] . '</textarea>
+                                                        <input name="input__email" value="'.$row['email'].'"/>
                                                     </div>
                                                     <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input passwort -->
-                                                        <textarea name="textarea__passwort1" rows= "1" cols="20"></textarea>
+                                                        <input name="input__passwort1" />
                                                 </div>
                                                 <div class="login__field">
                                                         <i class="login__icon fas fa-user"></i>
                                                         <!-- input passwort -->
-                                                        <textarea name="textarea__passwort2" rows= "1" cols="20"></textarea>
+                                                        <input name="input__passwort2" />
                                                 </div>
                                                 </div>
                                                 <button class="button login__submit" name="aendern__submit">
@@ -217,7 +217,8 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>';
+                            </div>
+                        <div class="accountManagementSpace"></div>';
 
         //Verwaltung meiner Inserate
         } elseif ($_GET['page'] == 'MeineAuktionen') {
@@ -232,54 +233,122 @@
                                 </ul>
                             </div>
                             <div class="accountManagementElements">';
+
+            //Selektierung der Auktionen
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE account_ID = " . $_SESSION['id'];
             $resInserat = $db->query($queryInserat);
 
+            //Ausgabe, falls keien Inserate vorhanden
             if(!$resInserat->rowCount() > 0) {
                 echo '<h1 class="keinFavorit">Sie haben keine Auktionen inseriert</h1>';
             }
 
+            //Anzeige der Inserate
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
                 foreach ($resInserat as $row) {
                     $InsNr = $row['Inserat_Nr'];
+
+                    //Selektierung der Angebote für den Preis
                     $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
                     $resAngebot = $db->query($queryAngebot);
+                    
+                    //Preisselektierung
                     if($resAngebot->rowCount() > 0) {
                         $rowAngebot = $resAngebot->fetch();
                         $preis = $rowAngebot['Angebot'];
                     } else {
                         $preis = $row['Preis'];
                     }
+
+                    //Selektierung der Bilder -> ORDER BY erstellt am
+                    $queryAngebot = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr ORDER BY Erstellt_Am DESC";
+                    $resAngebot = $db->query($queryAngebot);
+
                     echo '
-                        <a class="topOfferLink" href="../Angebote/produkt.php?produkt='.$row['Inserat_Nr'].'">
-                            <div class="topOffers">
-                                <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                                <div class="topOffersRight">
-                                    <div class="topOffersRightTop">
-                                        <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
-                                        <p class="auktionspreis"><b>' . number_format($preis ,0, '.', '.') . ' €</b></p>
+                            <div class="auktionsAnzeige">
+                                <h1>Deine Auktion: '.$row['Marke'].' '.$row['Modell'].'</h1>
+                                <div class="seperator"></div>
+                                <div class="auktionsAnzeigeTop">
+                                    <div class="auktionsAnzeigePics">
+                                        <h1>Bilder</h1>
+                                        <div>
+                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
+                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
+                                        </div>
+                                        <div>
+                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
+                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
+                                        </div>
+                                        <div>
+                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
+                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
+                                        </div>
+                                        <button>Bilder hinzufügen</button>
                                     </div>
-                                    <h5 id="counter'.$row['Auktionsende'].'"></h5>
-                                    <p>
-                                        ' . number_format($row['Kilometerstand'] ,0, ',', '.') . ' km, ' . ceil($row['PS'] / 1.35962) . ' kW (' . $row['PS'] . ' PS), ' . $row['Kraftstoffart'] . ', ' . $row['Getriebeart'] . '
-                                    </p>
-                                    <p>
-                                        ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
-                                        Tel.: +49 123 456789</br>
-                                        Ort: ' . $row['ort'] . '
-                                    </p>
-                                    <form action="?insertMerken=1" method="post">
-                                        <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
-                                        <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
-                                    </form>
+                                    <div class="auktionsAnzeigeRight">
+                                        <h1>Daten</h1>
+                                        <div class="auktionsAnzeigeZeile">
+                                            <div class="auktionsAnzeigeElement">
+                                                <label>Marke</label>
+                                                <input type="text" value="'.$row['Marke'].'"/>
+                                            </div>
+                                            <div class="auktionsAnzeigeElement">
+                                                <label>Modell</label>
+                                                <input type="text" value="'.$row['Modell'].'"/>
+                                            </div>
+                                        </div>
+                                        <div class="auktionsAnzeigeZeile">
+                                            <div class="auktionsAnzeigeElement">
+                                                <label>Kilometerstand</label>
+                                                <input type="text" value="'.number_format($row['Kilometerstand'], 0, '.', '.').'"/>
+                                            </div>
+                                            <div class="auktionsAnzeigeElement">
+                                                <label>PS</label>
+                                                <input type="text" value="'.number_format($row['PS'], 0, '.', '.').'"/>
+                                            </div>
+                                        </div>
+                                        <div class="auktionsAnzeigeZeile">
+                                            <div class="auktionsAnzeigeElement">
+                                                <label>Kraftstoffart</label>
+                                                <input type="text" value="'.$row['Kraftstoffart'].'"/>
+                                            </div>
+                                            <div class="auktionsAnzeigeElement">
+                                                <label>Getriebeart</label>
+                                                <input type="text" value="'.$row['Getriebeart'].'"/>
+                                            </div>
+                                        </div>
+                                        <div class="auktionsAnzeigeZeile">
+                                            <div class="auktionsAnzeigeElement">
+                                                <label>Auktionsbeginn</label>
+                                                <input type="text" value="'.$row['Auktionsbeginn'].'"/>
+                                            </div>
+                                            <div class="auktionsAnzeigeElement">
+                                                <label>Auktionsende</label>
+                                                <input type="text" value="'.$row['Auktionsende'].'"/>
+                                            </div>
+                                        </div>
+                                        <div class="auktionsAnzeigeElement">
+                                            <label>Auktionsende</label>
+                                            <input type="text" value="'.$row['Erstzulassung'].'"/>
+                                        </div>
+                                        <div class="auktionsAnzeigeElement">
+                                            <label>Beschreibung</label>
+                                            <textarea type="text">"'.$row['Beschreibung'].'"</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="auktionsAnzeigeBottom">
+                                    <button>Auktion löschen</button>
+                                    <button>Auktion speichern</button>
                                 </div>
                             </div>
-                        </a>';
+                            ';
                 }
             }
             echo '
                     </div>
-                ';
+                <div class="accountManagementSpaceAuktion"></div>
+                    ';
 
         //Verwaltung meiner Gebote
         } elseif ($_GET['page'] == 'MeineGebote') {
@@ -332,7 +401,7 @@
             }
             echo '
                         </div>
-                    ';
+                    <div class="accountManagementSpace"></div>';
 
         //Verwaltung meiner favorisierten Auktionen
         } elseif ($_GET['page'] == 'MeineFavoriten') {
@@ -424,10 +493,10 @@
             }
             echo '
                     </div>
+                <div class="accountManagementSpace"></div>
                 ';
         }
         ?>
-        <div class="accountManagementSpace"></div>
     </section>
     <?php
         phpFunctions::printFooter();
