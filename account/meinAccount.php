@@ -97,7 +97,7 @@
             $aenderung = true;
         }
         //Änderung Telefonnummer
-        if ($telefonnummer != $row['telefon_Nr'] && $telefonnummer != "" && is_numeric($telefonnummer) && strlen($telefonnummer) < 20) {
+        if ($telefonnummer != $row['telefon_Nr'] && $telefonnummer != "" && is_numeric($telefonnummer) && strlen($telefonnummer) < 16) {
             $query = "UPDATE `Accounts` SET `telefon_Nr`='$telefonnummer' WHERE `account_ID`='$session_ID'";
             $db->query($query);
             $aenderung = true;
