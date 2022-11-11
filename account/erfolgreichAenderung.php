@@ -12,7 +12,7 @@
 <body>
     <div>
         <img class="haken" src="../image/prufen.png" width="100" heigth="100">
-        <h1>Vielen Dank für Ihre Accountänderung!</h1>
+        <h1>Vielen Dank für Ihre Änderung!</h1>
         <h2>Die neuen Daten wurden abgespeichert</h2>
         <button onClick="window.location = './meinAccount.php'">Zurück</button>
     </div>
