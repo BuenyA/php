@@ -45,10 +45,30 @@
                 $WHERE = "AND Marke = '" . $_GET['Marke'] . "' ";
             }
 
-            //Dynmische Modellselektion
+/*             //Dynmische Modellselektion
             if(isset($_GET['Modell']) && $_GET['Modell'] !== '') {
-                $WHERE .= "AND Modell = '" . $_GET['Modell'] . "'";
+                $WHERE .= "AND Modell = '" . $_GET['Modell'] . "' ";
             }
+
+            //Dynmische Kilometerselektion
+            if (isset($_GET['KM']) && $_GET['KM'] !== '') {
+                $WHERE .= "AND Kilometerstand = '" . $_GET['KM'] . "' <= Kilometerstand ";
+            }
+
+            //Dynmische Erstzulassungselektion
+            if (isset($_GET['Erstzulassung']) && $_GET['Erstzulassung'] !== '') {
+                $WHERE .= "AND Erstzulassung = '" . $_GET['Erstzulassung'] . "' >= Erstzulassung ";
+            }
+
+            //Dynmische preisVonselektion
+            if (isset($_GET['preisVon']) && $_GET['preisVon'] !== '') {
+                $WHERE .= "AND Preis = '" . $_GET['preisVon'] . "' >= Preis ";
+            }
+
+            //Dynmische preisBisselektion
+            if (isset($_GET['preisBis']) && $_GET['preisBis'] !== '') {
+                $WHERE .= "AND Preis = '" . $_GET['preisBis'] . "' <= Preis ";
+            } */
 
             $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP " . $WHERE . " ORDER BY Auktionsende ASC";
             $resInserat = $db->query($queryInserat);
