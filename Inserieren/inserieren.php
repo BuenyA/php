@@ -36,18 +36,33 @@
         $auktionsbeginnDatum = $_POST['auktionsbeginnDatum'];
         $auktionsendeDatum = $_POST['auktionsendeDatum'];
         $auktionsbeginnUhrzeit = $_POST['auktionsbeginnUhrzeit'];
-       # $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
+       // $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
        
         $filecount = count($_FILES['auktionbilder']['name']);
 
         $filename = $_FILES['auktionbilder']['name'];
-        echo count($filename);
+
+        if(!empty($_SESSION['id'])) {
+            $id = $_SESSION['id'];
+        } else {
+            $error = true;
+            echo '<script>linkToAnmeldung();</script>';
+        }
+
+        if (!$error) {
+            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsende, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum $auktionsbeginnUhrzeit', '$auktionsendeDatum $auktionsendeUhrzeit', '$id')";
+            $db->query($query);
+        }
+        if (!$error) {
+            $query = "SELECT MAX(Inserat_Nr) FROM Inserat WHERE 1";
+            $stmt = $db->query($query);
+            $inserat_nr = $stmt->fetch(); 
+        }
 
         for($i=0; $i<$filecount; $i++){
             $filedata = file_get_contents($_FILES['auktionbilder']['tmp_name'][$i]);
             
             if (!$error) {
-                $nr = 0;
                 $nr2 = 0;
                 if ($i == 0 ){
                     $nr2 = 1;
@@ -55,7 +70,7 @@
 
                 $query = "INSERT INTO Inseratbilder (Inserat_Nr, Bild, Hauptbild) VALUES (:Nr ,:Bild ,:HBild )";
                 $stmt = $db->prepare($query);
-                $stmt-> bindParam('Nr', $nr, PDO::PARAM_INT);
+                $stmt-> bindParam('Nr', $inserat_nr[0], PDO::PARAM_INT);
                 $stmt-> bindParam('Bild', $filedata, PDO::PARAM_STR);
                 $stmt-> bindParam('HBild', $nr2, PDO::PARAM_INT);
                 $stmt-> execute();
@@ -63,23 +78,11 @@
         }
 
 
-            if(!empty($_SESSION['id'])) {
-                $id = $_SESSION['id'];
-            } else {
-                $error = true;
-                echo '<script>linkToAnmeldung();</script>';
-            }
+           
 
-            if (!$error) {
-                $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsbeginn_Uhrzeit, Auktionsende, Auktionsende_Uhrzeit, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum', '$auktionsbeginnUhrzeit', '$auktionsendeDatum', '$auktionsendeUhrzeit', '$id')";
-                $db->query($query);
-            }
+            
 
-       /* if (!$error) {
-            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsbeginn_Uhrzeit, Auktionsende, Auktionsende_Uhrzeit, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum', '$auktionsbeginnUhrzeit', '$auktionsendeDatum', '$auktionsendeUhrzeit', '$id')";
-            $db->query($query);
-        }*/
-
+     
         unset($db);
     }
     phpFunctions::printNavigationBar();
