@@ -412,10 +412,10 @@
                                     <div class="seperator"></div>
                                     <div class="auktionsAnzeigeBottom">
                                         <div class="auktionsAnzeigeBottomLoeschen" name="auktionLoeschen">
-                                            <button >Auktion löschen</button>
+                                            <button  >Auktion löschen</button>
                                         </div>
-                                        <div class="auktionsAnzeigeBottomSpeichern" name="auktionSpeichern">
-                                            <button>Auktion speichern</button>
+                                        <div class="auktionsAnzeigeBottomSpeichern">
+                                            <button name="auktionSpeichern">Auktion speichern</button>
                                         </div>
                                     </div>
                                 </form>
