@@ -149,53 +149,53 @@
                                             <form class="login" method="post">
                                                 <div class="login__field__section">
                                                     <div class="login__field">
-                                                        <i class="login__icon fas fa-user"></i>
                                                         <!-- input vorname -->
+                                                        <label>Vorname</label>
                                                         <input name="input__vorname" value="'.$row['vorname'].'"/>
                                                     </div>
                                                     <div class="login__field">
-                                                        <i class="login__icon fas fa-lock"></i>
                                                         <!-- input nachname -->
+                                                        <label>Nachname</label>
                                                         <input name="input__nachname" value="'.$row['nachname'].'"/>
                                                     </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field login__field__plz">
-                                                        <i class="login__icon fas fa-user"></i>
                                                         <!-- input plz -->
+                                                        <label>PLZ</label>
                                                         <input name="input__plz" value="'.$row['plz'].'"/>
                                                     </div>
                                                     <div class="login__field">
-                                                        <i class="login__icon fas fa-lock"></i>
                                                         <!-- input ort -->
+                                                        <label>Ort</label>
                                                         <input name="input__ort" value="'.$row['ort'].'"/>
                                                     </div>
                                                     <div class="login__field">
-                                                        <i class="login__icon fas fa-lock"></i>
                                                         <!-- input adresse -->
+                                                        <label>Adresse</label>
                                                         <input name="input__adresse" value="'.$row['adresse'].'"/>
                                                     </div>
                                                     <div class="login__field">
-                                                        <i class="login__icon fas fa-lock"></i>
                                                         <!-- input telefonnummer -->
+                                                        <label>Telefonnummer</label>
                                                     <input name="input__telefonnummer" value="'.$row['telefon_Nr'].'" />
                                                 </div>
                                                 </div>
                                                 <div class="login__field__section">
                                                     <div class="login__field">
-                                                        <i class="login__icon fas fa-user"></i>
                                                         <!-- input email -->
+                                                        <label>E-Mail</label>
                                                         <input name="input__email" value="'.$row['email'].'"/>
                                                     </div>
                                                     <div class="login__field">
-                                                        <i class="login__icon fas fa-user"></i>
                                                         <!-- input passwort -->
+                                                        <label>Passwort</label>
                                                         <input name="input__passwort1" />
                                                 </div>
                                                 <div class="login__field">
-                                                        <i class="login__icon fas fa-user"></i>
-                                                        <!-- input passwort -->
-                                                        <input name="input__passwort2" />
+                                                    <!-- input passwort -->
+                                                    <label>Passwort wiederholen</label>
+                                                    <input name="input__passwort2" />
                                                 </div>
                                                 </div>
                                                 <button class="button login__submit" name="aendern__submit">
@@ -218,7 +218,7 @@
                                     </div>
                                 </div>
                             </div>
-                        <div class="accountManagementSpace"></div>';
+                        ';
 
         //Verwaltung meiner Inserate
         } elseif ($_GET['page'] == 'MeineAuktionen') {
@@ -266,88 +266,85 @@
 
                     echo '
                             <div class="auktionsAnzeige">
-                                <h1>Deine Auktion: '.$row['Marke'].' '.$row['Modell'].'</h1>
-                                <div class="seperator"></div>
-                                <div class="auktionsAnzeigeTop">
-                                    <div class="auktionsAnzeigePics">
-                                        <h1>Bilder</h1>
-                                        <div>
-                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
-                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
-                                        </div>
-                                        <div>
-                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
-                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
-                                        </div>
-                                        <div>
-                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
-                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="100" height="100">
-                                        </div>
-                                        <button>Bilder hinzufügen</button>
-                                    </div>
-                                    <div class="auktionsAnzeigeRight">
-                                        <h1>Daten</h1>
-                                        <div class="auktionsAnzeigeZeile">
-                                            <div class="auktionsAnzeigeElement">
-                                                <label>Marke</label>
-                                                <input type="text" value="'.$row['Marke'].'"/>
-                                            </div>
-                                            <div class="auktionsAnzeigeElement">
-                                                <label>Modell</label>
-                                                <input type="text" value="'.$row['Modell'].'"/>
+                                <form action="?inseratAendern=1" method="post">
+                                    <div class="auktionsAnzeigeTop">
+                                        <div class="auktionsAnzeigePics">
+                                            <h10>'.$row['Marke'].' '.$row['Modell'].'</h10>
+                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="600" height="300">
+                                            <div class="auktionsAnzeigePicsButton">
+                                                <button>Bilder hinzufügen</button>
+                                                <button>Bild löschen</button>
                                             </div>
                                         </div>
-                                        <div class="auktionsAnzeigeZeile">
-                                            <div class="auktionsAnzeigeElement">
-                                                <label>Kilometerstand</label>
-                                                <input type="text" value="'.number_format($row['Kilometerstand'], 0, '.', '.').'"/>
+                                        <div class="seperator"></div>
+                                        <div class="auktionsAnzeigeDaten">
+                                            <h10>Daten</h10>
+                                            <div class="auktionsAnzeigeZeile">
+                                                <div class="auktionsAnzeigeElement">
+                                                    <label>Marke</label>
+                                                    <input type="text" value="'.$row['Marke'].'"/ required>
+                                                </div>
+                                                <div class="auktionsAnzeigeElement">
+                                                    <label>Modell</label>
+                                                    <input type="text" value="'.$row['Modell'].'"/ required>
+                                                </div>
+                                            </div>
+                                            <div class="auktionsAnzeigeZeile">
+                                                <div class="auktionsAnzeigeElement">
+                                                    <label>Kilometerstand</label>
+                                                    <input type="text" value="'.number_format($row['Kilometerstand'], 0, '.', '.').'"/ required>
+                                                </div>
+                                                <div class="auktionsAnzeigeElement">
+                                                    <label>PS</label>
+                                                    <input type="text" value="'.number_format($row['PS'], 0, '.', '.').'"/ required>
+                                                </div>
+                                            </div>
+                                            <div class="auktionsAnzeigeZeile">
+                                                <div class="auktionsAnzeigeElement">
+                                                    <label>Kraftstoffart</label>
+                                                    <input type="text" value="'.$row['Kraftstoffart'].'"/ required>
+                                                </div>
+                                                <div class="auktionsAnzeigeElement">
+                                                    <label>Getriebeart</label>
+                                                    <input type="text" value="'.$row['Getriebeart'].'"/ required>
+                                                </div>
+                                            </div>
+                                            <div class="auktionsAnzeigeZeile">
+                                                <div class="auktionsAnzeigeElement">
+                                                    <label>Auktionsbeginn</label>
+                                                    <input type="datetime" value="'.$row['Auktionsbeginn'].'"/ required>
+                                                </div>
+                                                <div class="auktionsAnzeigeElement">
+                                                    <label>Auktionsende</label>
+                                                    <input type="datetime" value="'.$row['Auktionsende'].'"/ required>
+                                                </div>
                                             </div>
                                             <div class="auktionsAnzeigeElement">
-                                                <label>PS</label>
-                                                <input type="text" value="'.number_format($row['PS'], 0, '.', '.').'"/>
+                                                <label>Erstzullasung</label>
+                                                <input type="year" value="'.$row['Erstzulassung'].'"/ required>
                                             </div>
-                                        </div>
-                                        <div class="auktionsAnzeigeZeile">
-                                            <div class="auktionsAnzeigeElement">
-                                                <label>Kraftstoffart</label>
-                                                <input type="text" value="'.$row['Kraftstoffart'].'"/>
+                                            <div class="auktionsAnzeigeElement auktionsAnzeigeElementBeschreibung">
+                                                <label>Beschreibung</label>
+                                                <textarea type="text">"'.$row['Beschreibung'].'"</textarea>
                                             </div>
-                                            <div class="auktionsAnzeigeElement">
-                                                <label>Getriebeart</label>
-                                                <input type="text" value="'.$row['Getriebeart'].'"/>
-                                            </div>
-                                        </div>
-                                        <div class="auktionsAnzeigeZeile">
-                                            <div class="auktionsAnzeigeElement">
-                                                <label>Auktionsbeginn</label>
-                                                <input type="text" value="'.$row['Auktionsbeginn'].'"/>
-                                            </div>
-                                            <div class="auktionsAnzeigeElement">
-                                                <label>Auktionsende</label>
-                                                <input type="text" value="'.$row['Auktionsende'].'"/>
-                                            </div>
-                                        </div>
-                                        <div class="auktionsAnzeigeElement">
-                                            <label>Auktionsende</label>
-                                            <input type="text" value="'.$row['Erstzulassung'].'"/>
-                                        </div>
-                                        <div class="auktionsAnzeigeElement">
-                                            <label>Beschreibung</label>
-                                            <textarea type="text">"'.$row['Beschreibung'].'"</textarea>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="auktionsAnzeigeBottom">
-                                    <button>Auktion löschen</button>
-                                    <button>Auktion speichern</button>
-                                </div>
+                                    <div class="seperator"></div>
+                                    <div class="auktionsAnzeigeBottom">
+                                        <div class="auktionsAnzeigeBottomLoeschen">
+                                            <button >Auktion löschen</button>
+                                        </div>
+                                        <div class="auktionsAnzeigeBottomSpeichern">
+                                            <button>Auktion speichern</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                             ';
                 }
             }
             echo '
                     </div>
-                <div class="accountManagementSpaceAuktion"></div>
                     ';
 
         //Verwaltung meiner Gebote
@@ -370,7 +367,7 @@
 
             //Wenn Favoriten vorhanden sind...
             if(!$resInserat->rowCount() > 0) {
-                echo '<h1 class="keinFavorit">Sie haben keine Auktionen favorisiert</h1>';
+                echo '<h1 class="keinFavorit">Sie haben kein Gebot abgegeben</h1>';
             }
 
             //Drucke Gebote
@@ -401,7 +398,7 @@
             }
             echo '
                         </div>
-                    <div class="accountManagementSpace"></div>';
+                    ';
 
         //Verwaltung meiner favorisierten Auktionen
         } elseif ($_GET['page'] == 'MeineFavoriten') {
@@ -493,10 +490,10 @@
             }
             echo '
                     </div>
-                <div class="accountManagementSpace"></div>
                 ';
         }
         ?>
+    <div class="accountManagementSpace"></div>
     </section>
     <?php
         phpFunctions::printFooter();
