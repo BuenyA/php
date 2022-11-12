@@ -407,7 +407,7 @@
                                                 </div>
                                             </div>
                                             <div class="auktionsAnzeigeElement">
-                                                <label>Erstzullasung</label>
+                                                <label>Erstzulassung</label>
                                                 <input type="year" name ="input__erstzulassung" value="'.$row['Erstzulassung'].'"/ required>
                                                 <input class="hidden" type="number" name="Inserat_Nr" value="'.$row['Inserat_Nr'].'"/>
                                             </div>
