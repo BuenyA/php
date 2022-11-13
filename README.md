@@ -23,4 +23,4 @@ Dabei werden lediglich andere SQL-Statements verwendet, die die Angebote anders 
 
 
 
-Überall muss ein trim ran
+Überall muss ein trim rein
