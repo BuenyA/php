@@ -50,7 +50,7 @@
         }
 
         if (!$error) {
-            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsende, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum $auktionsbeginnUhrzeit', '$auktionsendeDatum $auktionsendeUhrzeit', '$id')";
+            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsende, Account_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum $auktionsbeginnUhrzeit', '$auktionsendeDatum $auktionsendeUhrzeit', '$id')";
             $db->query($query);
         }
         if (!$error) {

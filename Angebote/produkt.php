@@ -54,7 +54,7 @@
         }
 
         //Selektierung der Auktion
-        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Inserat.Inserat_Nr = $proID";
+        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Account_Nr = Accounts.Account_Nr WHERE Inserat.Inserat_Nr = $proID";
         $resInserat = $db->query($queryInserat);
         $rowIns = $resInserat->fetch();
         $waiting_day = strtotime($rowIns['Auktionsende']);
