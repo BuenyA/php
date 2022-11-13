@@ -148,7 +148,7 @@
                         $rowBilder = $resBilder->fetch();
 
                         //Selektion, ob der verwendete Account, dass jeweilige Produkt favorisiert hat
-                        $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InsNr AND AccountNr = $AccNr";
+                        $queryMerken = "SELECT * FROM Merken WHERE Inserat_Nr = $InsNr AND Account_Nr = $AccNr";
                         $resMerken = $db->query($queryMerken);
 
                         //Dynamische Wahl, welche Klasse dem Merken-Button vergeben werden soll 
