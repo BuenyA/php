@@ -207,7 +207,7 @@
             //Falls eine Änderung durchgeführt wurde
             if ($aenderung) {
                 //Weiterleitung zu Bestätigungsseite
-                //echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+                echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
             }
         }
 
