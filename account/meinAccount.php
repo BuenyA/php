@@ -216,12 +216,11 @@
         }
 
         //Falls das Inserat gelöscht wird
-        if (isset($_POST['auktionloeschena'])) {
+        if (isset($_POST['auktionLoeschen'])) {
       
             //Werte aus der Form entnehmen und in Variablen speichern
             $inseratNr = trim($_POST['Inserat_Nr']);
-
-            $query = "DELETE * FROM `Inserat` WHERE `Inserat_Nr`='$inseratNr'";
+            $query = "DELETE FROM Inserat WHERE Inserat_Nr = $inseratNr";
             $db->query($query);
 
             //Weiterleitung zu Bestätigungsseite
@@ -437,8 +436,8 @@
                                     </div>
                                     <div class="seperator"></div>
                                     <div class="auktionsAnzeigeBottom">
-                                        <div class="auktionsAnzeigeBottomLoeschen" name="auktionLoeschen">
-                                            <button >Auktion löschen</button>
+                                        <div class="auktionsAnzeigeBottomLoeschen">
+                                            <button name="auktionLoeschen">Auktion löschen</button>
                                         </div>
                                         <div class="auktionsAnzeigeBottomSpeichern">
                                             <button name="auktionSpeichern">Auktion speichern</button>
