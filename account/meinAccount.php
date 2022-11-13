@@ -207,8 +207,22 @@
             //Falls eine Änderung durchgeführt wurde
             if ($aenderung) {
                 //Weiterleitung zu Bestätigungsseite
-                //echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+                echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
             }
+        }
+
+        //Löschung des Inserates
+        if (isset($_POST['auktionloeschenaaa'])) {
+      
+            //Wert aus der Form entnehmen und in Variablen speichern
+            $inseratNr = $_POST['Inserat_Nr'];
+
+            $query = "DELETE FROM `Inserat` WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+
+            //Weiterleitung zu Bestätigungsseite
+            echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+
         }
 
     phpFunctions::printNavigationBar();
@@ -420,7 +434,7 @@
                                     <div class="seperator"></div>
                                     <div class="auktionsAnzeigeBottom">
                                         <div class="auktionsAnzeigeBottomLoeschen" name="auktionLoeschen">
-                                            <button  >Auktion löschen</button>
+                                            <button  name="auktionloeschenaaa">Auktion löschen</button>
                                         </div>
                                         <div class="auktionsAnzeigeBottomSpeichern">
                                             <button name="auktionSpeichern">Auktion speichern</button>
