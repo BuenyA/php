@@ -24,19 +24,19 @@
 
     if (isset($_GET['inserieren']) && sizeof($_POST) !== 0) {
         $error = false;
-        $marke = $_POST['marke'];
-        $modell = $_POST['modell'];
-        $preis = $_POST['preis'];
-        $beschreibung = $_POST['beschreibung'];
-        $kilometerstand = $_POST['kilometerstand'];
-        $ps = $_POST['ps'];
-        $kraftstoffart = $_POST['kraftstoffart'];
-        $getriebeart = $_POST['getriebeart'];
-        $erstzulassung = $_POST['erstzulassung'];
-        $auktionsbeginnDatum = $_POST['auktionsbeginnDatum'];
-        $auktionsendeDatum = $_POST['auktionsendeDatum'];
-        $auktionsbeginnUhrzeit = $_POST['auktionsbeginnUhrzeit'];
-        $auktionsendeUhrzeit = $_POST['auktionsendeUhrzeit'];
+        $marke = trim($_POST['marke']);
+        $modell = trim($_POST['modell']);
+        $preis = trim($_POST['preis']);
+        $beschreibung = trim($_POST['beschreibung']);
+        $kilometerstand = trim($_POST['kilometerstand']);
+        $ps = trim($_POST['ps']);
+        $kraftstoffart = trim($_POST['kraftstoffart']);
+        $getriebeart = trim($_POST['getriebeart']);
+        $erstzulassung = trim($_POST['erstzulassung']);
+        $auktionsbeginnDatum = trim($_POST['auktionsbeginnDatum']);
+        $auktionsendeDatum = trim($_POST['auktionsendeDatum']);
+        $auktionsbeginnUhrzeit = trim($_POST['auktionsbeginnUhrzeit']);
+        $auktionsendeUhrzeit = trim($_POST['auktionsendeUhrzeit']);
        
         $filecount = count($_FILES['auktionbilder']['name']);
 
@@ -50,7 +50,7 @@
         }
 
         if (!$error) {
-            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsende, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum $auktionsbeginnUhrzeit', '$auktionsendeDatum $auktionsendeUhrzeit', '$id')";
+            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsende, Account_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum $auktionsbeginnUhrzeit', '$auktionsendeDatum $auktionsendeUhrzeit', '$id')";
             $db->query($query);
         }
         if (!$error) {

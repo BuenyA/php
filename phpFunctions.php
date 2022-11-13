@@ -40,6 +40,13 @@
                         } else {
                             $preis = $row['Preis'];
                         }
+
+                        //Selekt des Hauptbildes
+                        $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr AND Hauptbild = 1 LIMIT 1";
+                        $resBilder = $db->query($queryBilder);
+                        $rowBilder = $resBilder->fetch();
+                        //<img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                        
                         
                         //Variablendeklaration für dynamische Zeitanzeige
                         $waiting_day = strtotime($row['Auktionsende']);
@@ -51,7 +58,7 @@
                                 <div class="topOfferPlace">
                                     <a class="topOfferLink" href="'.$url.'?produkt='.$row['Inserat_Nr'].'">
                                         <div class="topOffers">
-                                            <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                            <img src="data:image/png;base64,'.base64_encode($rowBilder['Bild']).'" width="250" height="250"/>
                                             <div class="topOffersRight">
                                                 <div class="topOffersRightTop">
                                                     <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
@@ -80,7 +87,7 @@
                             echo '
                                     <a class="topOfferLink" href="'.$url.'?produkt='.$row['Inserat_Nr'].'">
                                         <div class="topOffers">
-                                            <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                            <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="250" height="250"/>
                                             <div class="topOffersRight">
                                                 <div class="topOffersRightTop">
                                                     <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
@@ -135,6 +142,11 @@
                             $preis = $row['Preis'];
                         }
 
+                        //Selekt des Hauptbildes
+                        $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr AND Hauptbild = 1 LIMIT 1";
+                        $resBilder = $db->query($queryBilder);
+                        $rowBilder = $resBilder->fetch();
+
                         //Selektion, ob der verwendete Account, dass jeweilige Produkt favorisiert hat
                         $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InsNr AND AccountNr = $AccNr";
                         $resMerken = $db->query($queryMerken);
@@ -156,7 +168,7 @@
                                 <div class="topOfferPlace">
                                     <a class="topOfferLink" href="'.$url.'?produkt='.$row['Inserat_Nr'].'">
                                         <div class="topOffers">
-                                            <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                            <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="250" height="250"/>
                                             <div class="topOffersRight">
                                                 <div class="topOffersRightTop">
                                                     <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
@@ -187,7 +199,7 @@
                             echo '
                                     <a class="topOfferLink" href="'.$url.'?produkt='.$row['Inserat_Nr'].'">
                                         <div class="topOffers">
-                                            <img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                            <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="250" height="250"/>
                                             <div class="topOffersRight">
                                                 <div class="topOffersRightTop">
                                                     <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>

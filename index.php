@@ -78,7 +78,7 @@
                                     echo "<option value=''>Bitte wählen...</option>";
                                     foreach ($resInserat as $row) {
                                         if (isset($_GET['Marke']) && $_GET['Marke'] == $row['Marke']) {
-                                            echo "<option value='".$row["Marke"]."' selected value>".$row["Marke"]."</option>";
+                                            echo "<option value='".$row["Marke"]."' selected>".$row["Marke"]."</option>";
                                         } else {
                                             echo "<option value='".$row["Marke"]."'>".$row["Marke"]."</option>";
                                         }
@@ -92,7 +92,7 @@
                                     <?php
                                         echo "<option value=''>Bitte wählen...</option>";
                                         if (isset($_GET['Marke'])) {
-                                            $query = "SELECT * FROM Inserat WHERE Marke = '" . $_GET['Marke'] . "'GROUP BY Modell";
+                                            $query = "SELECT * FROM Inserat WHERE Marke = '" . $_GET['Marke'] . "' GROUP BY Modell";
                                             $resInserat = $db->query($query);
                                             foreach ($resInserat as $row) {
                                                 echo '<option>'.$row['Modell'].'</option>';
@@ -137,7 +137,7 @@
     <section class="topOffer">
         <h1>Top-Angebote</h1>
         <?php
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP ORDER BY Preis ASC";
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Account_Nr = Accounts.Account_Nr WHERE Auktionsende >= CURRENT_TIMESTAMP ORDER BY Preis ASC";
             $resInserat = $db->query($queryInserat);
 
             if (empty($_SESSION['user'])) {
@@ -154,7 +154,7 @@
     <section class="topOffer">
         <h1>Last-Minute-Angebote...</h1>
         <?php
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP ORDER BY Auktionsende ASC";
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Account_Nr = Accounts.Account_Nr WHERE Auktionsende >= CURRENT_TIMESTAMP ORDER BY Auktionsende ASC";
             $resInserat = $db->query($queryInserat);
             if (empty($_SESSION['user'])) {
                 phpFunctions::showOffer(8, $resInserat, 0, 4);

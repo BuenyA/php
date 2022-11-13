@@ -44,7 +44,7 @@
     
     //aktuelle Daten des Session Users aus der Datenbank laden
     $session_ID = $_SESSION['id'];
-    $query = "SELECT * FROM accounts WHERE account_ID = '$session_ID'";
+    $query = "SELECT * FROM accounts WHERE Account_Nr = '$session_ID'";
     $resAcc = $db->query($query);
     $row = $resAcc->fetch();
     
@@ -70,48 +70,48 @@
         //SQL Statements, falls eine Änderung unternommen wurde
         //Änderung Vorname
         if ($vorname != $row['vorname'] && $vorname != "") {
-            $query = "UPDATE `Accounts` SET `vorname`='$vorname' WHERE `account_ID`='$session_ID'";
+            $query = "UPDATE `Accounts` SET `vorname`='$vorname' WHERE `Account_Nr`='$session_ID'";
             $db->query($query);
             $aenderung = true;
         }
         //Änderung Nachname
         if ($nachname != $row['nachname'] && $nachname != "") {
-            $query = "UPDATE `Accounts` SET `nachname`='$nachname' WHERE `account_ID`='$session_ID'";
+            $query = "UPDATE `Accounts` SET `nachname`='$nachname' WHERE `Account_Nr`='$session_ID'";
             $db->query($query);
         }
         //Änderung Postleihzahl
         if ($plz != $row['plz'] && $plz != "" && is_numeric($plz) && strlen($plz) == 5) {
-            $query = "UPDATE `Accounts` SET `plz`='$plz' WHERE `account_ID`='$session_ID'";
+            $query = "UPDATE `Accounts` SET `plz`='$plz' WHERE `Account_Nr`='$session_ID'";
             $db->query($query);
             $aenderung = true;
         }
         //Änderung Ort
         if ($ort != $row['ort'] && $ort != "") {
-            $query = "UPDATE `Accounts` SET `ort`='$ort' WHERE `account_ID`='$session_ID'";
+            $query = "UPDATE `Accounts` SET `ort`='$ort' WHERE `Account_Nr`='$session_ID'";
             $db->query($query);
             $aenderung = true;
         }
         //Änderung Adresse
         if ($adresse != $row['adresse'] && $adresse != "") {
-            $query = "UPDATE `Accounts` SET `adresse`='$adresse' WHERE `account_ID`='$session_ID'";
+            $query = "UPDATE `Accounts` SET `adresse`='$adresse' WHERE `Account_Nr`='$session_ID'";
             $db->query($query);
             $aenderung = true;
         }
         //Änderung Telefonnummer
         if ($telefonnummer != $row['telefon_Nr'] && $telefonnummer != "" && is_numeric($telefonnummer) && strlen($telefonnummer) < 16) {
-            $query = "UPDATE `Accounts` SET `telefon_Nr`='$telefonnummer' WHERE `account_ID`='$session_ID'";
+            $query = "UPDATE `Accounts` SET `telefon_Nr`='$telefonnummer' WHERE `Account_Nr`='$session_ID'";
             $db->query($query);
             $aenderung = true;
         }
         //Änderung Email
         if ($email != $row['email'] && $email != "" && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $query = "UPDATE `Accounts` SET `email`='$email' WHERE `account_ID`='$session_ID'";
+            $query = "UPDATE `Accounts` SET `email`='$email' WHERE `Account_Nr`='$session_ID'";
             $db->query($query);
             $aenderung = true;
         }
         //Änderung Passwort
         if($passwort1 != null && $passwort2 != null && $passwortHash != null && $passwort1 != "" && $passwort2 != "" && $passwort1 == $passwort2) {
-            $query = "UPDATE `Accounts` SET `passwort`='$passwortHash' WHERE `account_ID`='$session_ID'";
+            $query = "UPDATE `Accounts` SET `passwort`='$passwortHash' WHERE `Account_Nr`='$session_ID'";
             $db->query($query);
             $aenderung = true;
         }
@@ -322,7 +322,7 @@
                             <div class="accountManagementElements">';
 
             //Selektierung der Auktionen
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE account_ID = " . $_SESSION['id'];
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Account_Nr = Accounts.Account_Nr WHERE Account_Nr = " . $_SESSION['id'];
             $resInserat = $db->query($queryInserat);
 
             //Ausgabe, falls keien Inserate vorhanden
@@ -407,7 +407,7 @@
                                                 </div>
                                             </div>
                                             <div class="auktionsAnzeigeElement">
-                                                <label>Erstzullasung</label>
+                                                <label>Erstzulassung</label>
                                                 <input type="year" name ="input__erstzulassung" value="'.$row['Erstzulassung'].'"/ required>
                                                 <input class="hidden" type="number" name="Inserat_Nr" value="'.$row['Inserat_Nr'].'"/>
                                             </div>
@@ -450,7 +450,7 @@
                             <div class="accountManagementElements">';
 
             //Selektireung auf E-Mail funktioniert noch nicht----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.Account_Nr = Accounts.account_ID JOIN Inserat ON Inserat.Inserat_Nr = Angebote.Inserat_Nr WHERE Angebote.Account_Nr = " . $_SESSION['id'] . " OR Angebote.Email = '" . $_SESSION['user'] . "' ORDER BY Angebote.Erstellt_Am DESC";
+            $queryInserat = "SELECT * FROM Angebote JOIN Accounts ON Angebote.Account_Nr = Accounts.Account_Nr JOIN Inserat ON Inserat.Inserat_Nr = Angebote.Inserat_Nr WHERE Angebote.Account_Nr = " . $_SESSION['id'] . " OR Angebote.Email = '" . $_SESSION['user'] . "' ORDER BY Angebote.Erstellt_Am DESC";
             $resInserat = $db->query($queryInserat);
 
             //Wenn Favoriten vorhanden sind...
@@ -504,7 +504,7 @@
             $ID = $_SESSION['id'];
 
             //Selektierung der Favoriten
-            $queryInserat = "SELECT * FROM Merken JOIN Inserat ON Merken.InseratNr = Inserat.Inserat_Nr JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE AccountNr = $ID";
+            $queryInserat = "SELECT * FROM Merken JOIN Inserat ON Merken.InseratNr = Inserat.Inserat_Nr JOIN Accounts ON Inserat.Account_Nr = Accounts.Account_Nr WHERE AccountNr = $ID";
             $resInserat = $db->query($queryInserat);
 
             //Erster Datensatz

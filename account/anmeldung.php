@@ -26,7 +26,7 @@
                 if (password_verify($_POST['input__passwort'], $rowLog['passwort'])) {
                     if ($res !== false && $res->rowCount() > 0) {
                         $_SESSION['user'] = $_POST['input__email'];
-                        $_SESSION['id'] = $rowLog['account_ID'];
+                        $_SESSION['id'] = $rowLog['Account_NR'];
                         $_SESSION['vorname'] = $rowLog['vorname'];
                         $_SESSION['nachname'] = $rowLog['nachname'];
                     }
