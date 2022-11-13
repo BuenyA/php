@@ -54,15 +54,15 @@
     if (isset($_POST['aendern__submit'])) {
 
         //Werte aus der Form entnehmen und in Variablen speichern
-        $vorname = $_POST['input__vorname'];
-        $nachname = $_POST['input__nachname'];
-        $plz = $_POST['input__plz'];
-        $ort = $_POST['input__ort'];
-        $adresse = $_POST['input__adresse'];
-        $telefonnummer = $_POST['input__telefonnummer'];
-        $email = $_POST['input__email'];
-        $passwort1 = $_POST['input__passwort1'];
-        $passwort2 = $_POST['input__passwort2'];
+        $vorname = trim($_POST['input__vorname']);
+        $nachname = trim($_POST['input__nachname']);
+        $plz = trim($_POST['input__plz']);
+        $ort = trim($_POST['input__ort']);
+        $adresse = trim($_POST['input__adresse']);
+        $telefonnummer = trim($_POST['input__telefonnummer']);
+        $email = trim($_POST['input__email']);
+        $passwort1 = trim($_POST['input__passwort1']);
+        $passwort2 = trim($_POST['input__passwort2']);
         $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
         //Variable die schaut ob eine Änderung durchgeführt wurde
         $aenderung = false;
@@ -127,17 +127,17 @@
         if (isset($_POST['auktionSpeichern'])) {
       
             //Werte aus der Form entnehmen und in Variablen speichern
-            $inseratNr = $_POST['Inserat_Nr'];
-            $marke = $_POST['input__marke'];
-            $modell = $_POST['input__modell'];
-            $kilometerstand = $_POST['input__kilometerstand'];
-            $ps = $_POST['input__ps'];
-            $kraftstoffart = $_POST['input__kraftstoffart'];
-            $getriebeart = $_POST['input__getriebeart'];
-            $auktionsbeginn = $_POST['input__auktionsbeginn'];
-            $auktionsende = $_POST['input__auktionsende'];
-            $erstzulassung = $_POST['input__erstzulassung'];
-            $beschreibung = $_POST['input__beschreibung'];
+            $inseratNr = trim($_POST['Inserat_Nr']);
+            $marke = trim($_POST['input__marke']);
+            $modell = trim($_POST['input__modell']);
+            $kilometerstand = trim($_POST['input__kilometerstand']);
+            $ps = trim($_POST['input__ps']);
+            $kraftstoffart = trim($_POST['input__kraftstoffart']);
+            $getriebeart = trim($_POST['input__getriebeart']);
+            $auktionsbeginn = trim($_POST['input__auktionsbeginn']);
+            $auktionsende = trim($_POST['input__auktionsende']);
+            $erstzulassung = trim($_POST['input__erstzulassung']);
+            $beschreibung = trim($_POST['input__beschreibung']);
             //Variable die schaut ob eine Änderung durchgeführt wurde
             $aenderung = false;
     
@@ -209,6 +209,20 @@
                 //Weiterleitung zu Bestätigungsseite
                 //echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
             }
+        }
+
+        //Falls das Inserat gelöscht wird
+        if (isset($_POST['auktionloeschena'])) {
+      
+            //Werte aus der Form entnehmen und in Variablen speichern
+            $inseratNr = trim($_POST['Inserat_Nr']);
+
+            $query = "DELETE * FROM `Inserat` WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+
+            //Weiterleitung zu Bestätigungsseite
+            echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+            
         }
 
     phpFunctions::printNavigationBar();
@@ -420,7 +434,7 @@
                                     <div class="seperator"></div>
                                     <div class="auktionsAnzeigeBottom">
                                         <div class="auktionsAnzeigeBottomLoeschen" name="auktionLoeschen">
-                                            <button  >Auktion löschen</button>
+                                            <button  name="auktionloeschena>Auktion löschen</button>
                                         </div>
                                         <div class="auktionsAnzeigeBottomSpeichern">
                                             <button name="auktionSpeichern">Auktion speichern</button>
