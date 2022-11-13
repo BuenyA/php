@@ -39,7 +39,7 @@ function calculateTime(getDateTime, counter = '') {
 }
 
 function auswaehlen(s){
-    wert = s.options[s.selectedIndex].value;
+    wert=s.options[s.selectedIndex].value;
     if (wert!=0) {
          location.href='index.php?Marke=' + wert;
     }

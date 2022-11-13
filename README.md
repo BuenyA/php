@@ -20,7 +20,3 @@ Diese implementieren sowohl das übergeordnete Stylesheet und JS-Script als auch
 
 Die Seiten TopAngebote und LastMinute ähneln sich stark in ihrer Struktur.
 Dabei werden lediglich andere SQL-Statements verwendet, die die Angebote anders selektieren.
-
-
-
-Überall muss ein trim ran
