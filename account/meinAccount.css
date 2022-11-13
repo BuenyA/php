@@ -21,7 +21,7 @@ label {
 
 
 .accountManagement {
-    min-height: 40em;
+    min-height: 30em;
     display: grid;
     justify-content: space-around;
     align-items: center;
@@ -29,6 +29,7 @@ label {
 
 .accountManagementBody {
     min-width: 90vw;
+    min-height: 40em;
     display: flex;
     justify-content: space-between;
 }
@@ -103,7 +104,10 @@ label {
     justify-content: center;
     align-items: flex-start;
     min-height: 40em;
-    /* background-color: #ff4d00; */
+}
+
+.accountManagementElementsAcc {
+    height: 40em;
 }
 
 .accountManagementElements button {
@@ -137,7 +141,7 @@ label {
     background-color: white;
     padding-top: 1em;
     margin: 0 0 2em 0;
-    width: 40em;
+    width: 45em;
     height: 69em;
     border-radius: 10px;
     /* border: 1px solid rgb(194, 194, 194); */
@@ -413,7 +417,11 @@ label {
 
     .accountManagementBox,
     .accountAusloggenBox {
-        width: 40em;
+        width: 45em;
+    }
+
+    .screen__content input {
+        width: 9em;
     }
 }
 

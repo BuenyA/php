@@ -245,7 +245,7 @@
                                     <li><a href="?page=MeineFavoriten">Meine Favoriten</a></li>
                                 </ul>
                             </div>
-                            <div class="accountManagementElements">
+                            <div class="accountManagementElements accountManagementElementsAcc">
                                 <div class="accountManagementBox">
                                     <h2>Mein Account</h2>
                                     <div class="screen">
