@@ -106,13 +106,13 @@
                         <p class="Preis-text">
                             Preis
                         </p>
-                        <input class="Preis-eingabe" type="number" size="40" maxlength="250" name="preis" placeholder="z.B. 10000" required>
+                        <input class="Preis-eingabe" type="number" size="40" min="1" maxlength="250" name="preis" placeholder="z.B. 10000" required>
                     </div>
                     <div class="Erstzulassung">
                         <p class="Erstzulassung-text">
                             Erstzulassung
                         </p>
-                        <input class="Erstzulassung-eingabe" type="number" min="0" max="3000" name="erstzulassung" placeholder="z.B. Jahr" required>
+                        <input class="Erstzulassung-eingabe" type="number" min="1901" max="3000" name="erstzulassung" placeholder="z.B. Jahr" required>
                     </div>
                 </div>
                 <div class="Kilometerstand-PS">
