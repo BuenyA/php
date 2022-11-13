@@ -112,7 +112,7 @@
                         <p class="Erstzulassung-text">
                             Erstzulassung
                         </p>
-                        <input class="Erstzulassung-eingabe" type="number" min="0" max="3000" name="erstzulassung" placeholder="z.B. Jahr" required>
+                        <input class="Erstzulassung-eingabe" type="number" min="1000" max="3000" name="erstzulassung" placeholder="z.B. Jahr" required>
                     </div>
                 </div>
                 <div class="Kilometerstand-PS">
