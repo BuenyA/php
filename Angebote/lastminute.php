@@ -33,6 +33,13 @@
                 $resMerkenInsert = $db->query($queryMerkenInsert);
             }
         }
+
+        $anzeigen = 10;
+
+        if (isset($_POST['btnMehrAnzeigen'])) {
+            $anzeigen = $anzeigen + 10;
+        }
+
         phpFunctions::printNavigationBar();
     ?>
     <section class="baldAblaufend">
@@ -42,13 +49,13 @@
         $resInserat = $db->query($queryInserat);
         
         if (empty($_SESSION['user'])) {
-            phpFunctions::showOffer(6, $resInserat);
+            phpFunctions::showOffer($anzeigen, $resInserat);
         } else {
-            phpFunctions::showOffer(6, $resInserat, $_SESSION['id']);
+            phpFunctions::showOffer($anzeigen, $resInserat, $_SESSION['id']);
         }
         unset($db);
         ?>
-        <button class="btnMehrAnzeigen">
+        <button class="btnMehrAnzeigen" name="btnMehrAnzeigen">
             Mehr Anzeigen
             <img src="image/down-arrow.png" width="20" height="20">
         </button>

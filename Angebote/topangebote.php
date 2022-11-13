@@ -17,9 +17,11 @@
         session_start();
         require '../db.php';
         require '../phpFunctions.php';
+        
         if (isset($_GET['anmelden'])) {
             echo '<script>linkToAnmeldung();</script>';
         }
+
         if (isset($_GET['insertMerken']) && sizeof($_POST) !== 0) {
             $InseratNrPost = $_POST['InseratNr'];
             $AccIDPost = $_POST['AccID'];
@@ -33,6 +35,13 @@
                 $resMerkenInsert = $db->query($queryMerkenInsert);
             }
         }
+
+        $anzeigen = 10;
+
+        if (isset($_POST['btnMehrAnzeigen'])) {
+            $anzeigen = $anzeigen + 10;
+        }
+
         phpFunctions::printNavigationBar();
     ?>
     <section class="topAngebote">
@@ -42,14 +51,14 @@
         $resInserat = $db->query($queryInserat);
         
         if (empty($_SESSION['user'])) {
-            phpFunctions::showOffer(6, $resInserat);
+            phpFunctions::showOffer($anzeigen, $resInserat);
         } else {
-            phpFunctions::showOffer(6, $resInserat, $_SESSION['id']);
+            phpFunctions::showOffer($anzeigen, $resInserat, $_SESSION['id']);
         }
 
         unset($db);
         ?>
-        <button class="btnMehrAnzeigen">
+        <button class="btnMehrAnzeigen" name="btnMehrAnzeigen">
             Mehr Anzeigen
             <img src="image/down-arrow.png" width="20" height="20">
         </button>

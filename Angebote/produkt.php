@@ -82,7 +82,7 @@
                         <div class="slideshow">';
             
             //Selektierung nach den Inseratbildern
-            $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr ORDER BY Erstellt_Am DESC";
+            $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr ORDER BY Erstellt_Am ASC";
             $resBilder = $db->query($queryBilder);
             
             foreach ($resBilder as $rowBilder) {

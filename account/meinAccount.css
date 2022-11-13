@@ -141,7 +141,7 @@ label {
     background-color: white;
     padding-top: 1em;
     margin: 0 0 2em 0;
-    width: 45em;
+    width: 42em;
     height: 69em;
     border-radius: 10px;
     /* border: 1px solid rgb(194, 194, 194); */
@@ -182,8 +182,79 @@ label {
     width: 20em;
 }
 
-.auktionsAnzeigePics button {
-    justify-self: center;
+.slideshow {
+    height: 25em;
+    width: 40em;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.slide-bild {
+    width: 100%;
+}
+
+.pfeil {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    font-size: 50px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    color: rgba(255, 255, 255, 0.5);
+    user-select: none;
+    cursor: pointer;
+}
+
+.pfeil:hover {
+    color: white;
+}
+
+.pfeil-links {
+    left: 0;
+}
+
+.pfeil-rechts {
+    right: 0;
+}
+
+.indikatorenliste {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    list-style-type: none;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.indikator {
+    padding: 0 10px;
+    user-select: none;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 2s;
+}
+
+.aktiv {
+    opacity: 1;
 }
 
 .auktionsAnzeige img {
@@ -417,11 +488,11 @@ label {
 
     .accountManagementBox,
     .accountAusloggenBox {
-        width: 45em;
+        width: 42em;
     }
 
     .screen__content input {
-        width: 9em;
+        width: 8.5em;
     }
 }
 

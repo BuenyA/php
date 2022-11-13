@@ -127,106 +127,131 @@
         }
     }
 
-        //Falls Änderungen zu einem Inserat kamen -> in die Datenbank 
-        if (isset($_POST['auktionSpeichern'])) {
-      
-            //Werte aus der Form entnehmen und in Variablen speichern
-            $inseratNr = trim($_POST['Inserat_Nr']);
-            $marke = trim($_POST['input__marke']);
-            $modell = trim($_POST['input__modell']);
-            $kilometerstand = trim($_POST['input__kilometerstand']);
-            $ps = trim($_POST['input__ps']);
-            $kraftstoffart = trim($_POST['input__kraftstoffart']);
-            $getriebeart = trim($_POST['input__getriebeart']);
-            $auktionsbeginn = trim($_POST['input__auktionsbeginn']);
-            $auktionsende = trim($_POST['input__auktionsende']);
-            $erstzulassung = trim($_POST['input__erstzulassung']);
-            $beschreibung = trim($_POST['input__beschreibung']);
-            //Variable die schaut ob eine Änderung durchgeführt wurde
-            $aenderung = false;
-    
-            //SQL Statements, falls eine Änderung unternommen wurde
-            //Änderung Marke
-            if ($marke != $rowInserat['Marke'] && $marke != "") {
-                $query = "UPDATE `Inserat` SET `Marke`='$marke' WHERE `Inserat_Nr`='$inseratNr'";
-                $db->query($query);
-                $aenderung = true;
-            }
-            //Änderung Modell
-            if ($modell != $rowInserat['Modell'] && $modell != "") {
-                $query = "UPDATE `Inserat` SET `Modell`='$modell' WHERE `Inserat_Nr`='$inseratNr'";
-                $db->query($query);
-                $aenderung = true;
-            }
-            //Änderung Kilometerstand
-            if ($kilometerstand != $rowInserat['Kilometerstand'] && $kilometerstand != "") {
-                $query = "UPDATE `Inserat` SET `Kilometerstand`='$kilometerstand' WHERE `Inserat_Nr`='$inseratNr'";
-                $db->query($query);
-                $aenderung = true;
-            }
-            //Änderung PS
-            if ($ps != $rowInserat['PS'] && $ps != "") {
-                $query = "UPDATE `Inserat` SET `PS`='$ps' WHERE `Inserat_Nr`='$inseratNr'";
-                $db->query($query);
-                $aenderung = true;
-            }
-            //Änderung Kraftstoffart
-            if ($kraftstoffart != $rowInserat['Kraftstoffart'] && $kraftstoffart != "") {
-                $query = "UPDATE `Inserat` SET `Kraftstoffart`='$kraftstoffart' WHERE `Inserat_Nr`='$inseratNr'";
-                $db->query($query);
-                $aenderung = true;
-            }
-            //Änderung Getriebeart
-            if ($getriebeart != $rowInserat['Getriebeart'] && $getriebeart != "") {
-                $query = "UPDATE `Inserat` SET `Getriebeart`='$getriebeart' WHERE `Inserat_Nr`='$inseratNr'";
-                $db->query($query);
-                $aenderung = true;
-            }
-            //Änderung Auktionsbeginn
-            if ($auktionsbeginn != $rowInserat['Auktionsbeginn'] && $auktionsbeginn != "") {
-                $query = "UPDATE `Inserat` SET `Auktionsbeginn`='$auktionsbeginn' WHERE `Inserat_Nr`='$inseratNr'";
-                $db->query($query);
-                $aenderung = true;
-            }
-            //Änderung Auktionsende
-            if ($auktionsende != $rowInserat['Auktionsende'] && $auktionsende != "") {
-                $query = "UPDATE `Inserat` SET `Auktionsende`='$auktionsende' WHERE `Inserat_Nr`='$inseratNr'";
-                $db->query($query);
-                $aenderung = true;
-            }
-            //Änderung Erstzulassung
-            if ($erstzulassung != $rowInserat['Erstzulassung'] && $erstzulassung != "") {
-                $query = "UPDATE `Inserat` SET `Erstzulassung`='$erstzulassung' WHERE `Inserat_Nr`='$inseratNr'";
-                $db->query($query);
-                $aenderung = true;
-            }
-            //Änderung Beschreibung
-            if ($beschreibung != $rowInserat['Beschreibung'] && $beschreibung != "") {
-                $query = "UPDATE `Inserat` SET `Beschreibung`='$beschreibung' WHERE `Inserat_Nr`='$inseratNr'";
-                $db->query($query);
-                $aenderung = true;
-            }                         
+    //Falls Änderungen zu einem Inserat kamen -> in die Datenbank 
+    if (isset($_POST['auktionSpeichern'])) {
+  
+        //Werte aus der Form entnehmen und in Variablen speichern
+        $inseratNr = trim($_POST['Inserat_Nr']);
+        $marke = trim($_POST['input__marke']);
+        $modell = trim($_POST['input__modell']);
+        $kilometerstand = trim($_POST['input__kilometerstand']);
+        $ps = trim($_POST['input__ps']);
+        $kraftstoffart = trim($_POST['input__kraftstoffart']);
+        $getriebeart = trim($_POST['input__getriebeart']);
+        $auktionsbeginn = trim($_POST['input__auktionsbeginn']);
+        $auktionsende = trim($_POST['input__auktionsende']);
+        $erstzulassung = trim($_POST['input__erstzulassung']);
+        $beschreibung = trim($_POST['input__beschreibung']);
+        //Variable die schaut ob eine Änderung durchgeführt wurde
+        $aenderung = false;
 
-    
-            //Falls eine Änderung durchgeführt wurde
-            if ($aenderung) {
-                //Weiterleitung zu Bestätigungsseite
-                echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
-            }
-        }
-
-        //Falls das Inserat gelöscht wird
-        if (isset($_POST['auktionLoeschen'])) {
-      
-            //Werte aus der Form entnehmen und in Variablen speichern
-            $inseratNr = trim($_POST['Inserat_Nr']);
-            $query = "DELETE FROM Inserat WHERE Inserat_Nr = $inseratNr";
+        //SQL Statements, falls eine Änderung unternommen wurde
+        //Änderung Marke
+        if ($marke != $rowInserat['Marke'] && $marke != "") {
+            $query = "UPDATE `Inserat` SET `Marke`='$marke' WHERE `Inserat_Nr`='$inseratNr'";
             $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Modell
+        if ($modell != $rowInserat['Modell'] && $modell != "") {
+            $query = "UPDATE `Inserat` SET `Modell`='$modell' WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Kilometerstand
+        if ($kilometerstand != $rowInserat['Kilometerstand'] && $kilometerstand != "") {
+            $query = "UPDATE `Inserat` SET `Kilometerstand`='$kilometerstand' WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung PS
+        if ($ps != $rowInserat['PS'] && $ps != "") {
+            $query = "UPDATE `Inserat` SET `PS`='$ps' WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Kraftstoffart
+        if ($kraftstoffart != $rowInserat['Kraftstoffart'] && $kraftstoffart != "") {
+            $query = "UPDATE `Inserat` SET `Kraftstoffart`='$kraftstoffart' WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Getriebeart
+        if ($getriebeart != $rowInserat['Getriebeart'] && $getriebeart != "") {
+            $query = "UPDATE `Inserat` SET `Getriebeart`='$getriebeart' WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Auktionsbeginn
+        if ($auktionsbeginn != $rowInserat['Auktionsbeginn'] && $auktionsbeginn != "") {
+            $query = "UPDATE `Inserat` SET `Auktionsbeginn`='$auktionsbeginn' WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Auktionsende
+        if ($auktionsende != $rowInserat['Auktionsende'] && $auktionsende != "") {
+            $query = "UPDATE `Inserat` SET `Auktionsende`='$auktionsende' WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Erstzulassung
+        if ($erstzulassung != $rowInserat['Erstzulassung'] && $erstzulassung != "") {
+            $query = "UPDATE `Inserat` SET `Erstzulassung`='$erstzulassung' WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+            $aenderung = true;
+        }
+        //Änderung Beschreibung
+        if ($beschreibung != $rowInserat['Beschreibung'] && $beschreibung != "") {
+            $query = "UPDATE `Inserat` SET `Beschreibung`='$beschreibung' WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+            $aenderung = true;
+        }                         
 
+        //Falls eine Änderung durchgeführt wurde
+        if ($aenderung) {
             //Weiterleitung zu Bestätigungsseite
             echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
-            
         }
+    }
+
+    //Falls das Inserat gelöscht wird
+    if (isset($_POST['auktionLoeschen'])) {
+  
+        //Werte aus der Form entnehmen und in Variablen speichern
+        $inseratNr = trim($_POST['Inserat_Nr']);
+        $query = "DELETE FROM Inserat WHERE Inserat_Nr = $inseratNr";
+        $db->query($query);
+
+        //Weiterleitung zu Bestätigungsseite
+        echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+        
+    }
+
+    //Inseratbilder ersetzen
+    if (isset($_POST['bilderErsetzen'])) {
+  
+        //Werte aus der Form entnehmen und in Variablen speichern
+        $inseratNr = trim($_POST['Inserat_Nr']);
+        $query = "DELETE FROM Inserat WHERE Inserat_Nr = $inseratNr";
+        $db->query($query);
+        
+        //Weiterleitung zu Bestätigungsseite
+        echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+        
+    }
+
+    //Inseratbilder ersetzen
+    if (isset($_POST['bilderHinzufuegen'])) {
+  
+        //Werte aus der Form entnehmen und in Variablen speichern
+        $inseratNr = trim($_POST['Inserat_Nr']);
+        $query = "DELETE FROM Inserat WHERE Inserat_Nr = $inseratNr";
+        $db->query($query);
+        
+        //Weiterleitung zu Bestätigungsseite
+        echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+        
+    }
 
     phpFunctions::printNavigationBar();
     ?>
@@ -365,8 +390,9 @@
                     }
 
                     //Selektierung der Bilder -> ORDER BY erstellt am
-                    $queryAngebot = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr ORDER BY Erstellt_Am DESC";
-                    $resAngebot = $db->query($queryAngebot);
+                    $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr ORDER BY Erstellt_Am ASC";
+                    $resBilder = $db->query($queryBilder);
+                    $rowBilder = $resBilder->fetch();
 
                     echo '
                             <div class="auktionsAnzeige">
@@ -374,10 +400,10 @@
                                     <div class="auktionsAnzeigeTop">
                                         <div class="auktionsAnzeigePics">
                                             <h10>'.$rowInserat['Marke'].' '.$rowInserat['Modell'].'</h10>
-                                            <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="600" height="300">
+                                            <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="600" height="300"/>
                                             <div class="auktionsAnzeigePicsButton">
-                                                <button>Bilder hinzufügen</button>
-                                                <button>Bild löschen</button>
+                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderErsetzen[]" required>
+                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderHinzufuegen[]" required>
                                             </div>
                                         </div>
                                         <div class="seperator"></div>
@@ -478,11 +504,17 @@
             //Drucke Gebote
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
                 foreach ($resInserat as $row) {
+
+                    //Selektierung nach den Inseratbildern
+                    $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = ".$row['Inserat_Nr']." AND Hauptbild = 1 ORDER BY Erstellt_Am DESC";
+                    $resBilder = $db->query($queryBilder);
+                    $rowBilder = $resBilder->fetch();
+
                     echo '
                     <a class="topOfferLink" href="../Angebote/produkt.php?produkt='.$row['Inserat_Nr'].'">
                         <div class="topOfferPlace">
                             <div class="gebotBox">
-                                <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="150" height="150">
+                                <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="150" height="150"/>
                                 <div class="geboteRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
@@ -563,10 +595,16 @@
             //Row zurücksetzen
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
                 foreach ($resInserat as $row) {
+
+                    //Selektierung nach den Inseratbildern
+                    $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = ".$row['Inserat_Nr']." AND Hauptbild = 1 ORDER BY Erstellt_Am DESC";
+                    $resBilder = $db->query($queryBilder);
+                    $rowBilder = $resBilder->fetch();
+
                     echo '
                         <a class="topOfferLink" href="../Angebote/produkt.php?produkt='.$row['Inserat_Nr'].'">
                             <div class="topOffers">
-                                <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
+                                <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="250" height="250"/>
                                 <div class="topOffersRight">
                                     <div class="topOffersRightTop">
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
@@ -603,6 +641,7 @@
     <?php
         phpFunctions::printFooter();
     ?>
+    <script src="./slideshow.js"></script>
 </body>
 
 </html>
