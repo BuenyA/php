@@ -78,6 +78,7 @@
         if ($nachname != $row['nachname'] && $nachname != "") {
             $query = "UPDATE `Accounts` SET `nachname`='$nachname' WHERE `account_ID`='$session_ID'";
             $db->query($query);
+            $aenderung = true;
         }
         //Änderung Postleihzahl
         if ($plz != $row['plz'] && $plz != "" && is_numeric($plz) && strlen($plz) == 5) {
