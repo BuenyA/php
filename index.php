@@ -78,7 +78,7 @@
                                     echo "<option value=''>Bitte wählen...</option>";
                                     foreach ($resInserat as $row) {
                                         if (isset($_GET['Marke']) && $_GET['Marke'] == $row['Marke']) {
-                                            echo "<option value='".$row["Marke"]."' selected value>".$row["Marke"]."</option>";
+                                            echo "<option value='".$row["Marke"]."' selected>".$row["Marke"]."</option>";
                                         } else {
                                             echo "<option value='".$row["Marke"]."'>".$row["Marke"]."</option>";
                                         }
@@ -92,7 +92,7 @@
                                     <?php
                                         echo "<option value=''>Bitte wählen...</option>";
                                         if (isset($_GET['Marke'])) {
-                                            $query = "SELECT * FROM Inserat WHERE Marke = '" . $_GET['Marke'] . "'GROUP BY Modell";
+                                            $query = "SELECT * FROM Inserat WHERE Marke = '" . $_GET['Marke'] . "' GROUP BY Modell";
                                             $resInserat = $db->query($query);
                                             foreach ($resInserat as $row) {
                                                 echo '<option>'.$row['Modell'].'</option>';

@@ -70,6 +70,12 @@
         } else {
             $preis = $rowIns['Preis'];
         }
+
+        //Selektierung nach den Inseratbildern
+        $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr ORDER BY Erstellt_Am DESC";
+        $resBilder = $db->query($queryBilder);
+        $rowBilder = $resBilder->fetch();
+
         phpFunctions::printNavigationBar();
     ?>
     <section class="produkt">
@@ -78,7 +84,9 @@
             echo '
                 <div class="produktArea">
                     <div class="produktAreaLeft">
-                        <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="640" height="400">
+                        <img class="produktAreaLeftArrow" src="../image/right-arrow2.png" width="200" height="200">
+                        <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="640" height="400"/>
+                        <img class="produktAreaLeftArrow" src="../image/right-arrow2.png" width="200" height="200">
                     </div>
                     <div class="produktAreaRight">
                         <div class="produktAreaRightElements">
