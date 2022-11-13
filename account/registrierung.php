@@ -18,15 +18,15 @@
         //Warten bis der Benutzer eine Aktion ausführt
         if(isset($_GET['registieren']) && sizeof($_POST) !== 0) {                
             //Variablen die der Benutzer eingegeben hat aus dem Formular in Variabeln speichern
-            $vorname = $_POST['input__vorname'];
-            $nachname = $_POST['input__nachname'];
-            $plz = $_POST['input__plz'];
-            $ort = $_POST['input__ort'];
-            $adresse = $_POST['input__adresse'];
-            $telefonnummer = $_POST['input__telefonnummer'];
-            $email = $_POST['input__email'];
-            $passwort1 = $_POST['input__passwort1'];
-            $passwort2 = $_POST['input__passwort2'];
+            $vorname = trim($_POST['input__vorname']);
+            $nachname = trim($_POST['input__nachname']);
+            $plz = trim($_POST['input__plz']);
+            $ort = trim($_POST['input__ort']);
+            $adresse = trim($_POST['input__adresse']);
+            $telefonnummer = trim($_POST['input__telefonnummer']);
+            $email = trim($_POST['input__email']);
+            $passwort1 = trim($_POST['input__passwort1']);
+            $passwort2 = trim($_POST['input__passwort2']);
             $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
 
             //Die Eingabe war korrekt

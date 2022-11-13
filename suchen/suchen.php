@@ -21,8 +21,8 @@
             echo '<script>linkToAnmeldung()";</script>';
         }
         if (isset($_GET['insertMerken']) && sizeof($_POST) !== 0) {
-            $InseratNrPost = $_POST['InseratNr'];
-            $AccIDPost = $_POST['AccID'];
+            $InseratNrPost = trim($_POST['InseratNr']);
+            $AccIDPost = trim($_POST['AccID']);
             $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
             $resMerken = $db->query($queryMerken);
             if ($resMerken !== false && $resMerken->rowCount() > 0) {

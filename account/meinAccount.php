@@ -47,22 +47,25 @@
     $query = "SELECT * FROM accounts WHERE account_ID = '$session_ID'";
     $resAcc = $db->query($query);
     $row = $resAcc->fetch();
-    
+
+    $query = "SELECT * FROM Inserat WHERE Inhaber_Nr = '$session_ID'";
+    $resAcc = $db->query($query);
+    $rowInserat = $resAcc->fetch();
 
 
     //Falls Änderungen zum Account kamen -> in die Datenbank 
     if (isset($_POST['aendern__submit'])) {
 
         //Werte aus der Form entnehmen und in Variablen speichern
-        $vorname = $_POST['input__vorname'];
-        $nachname = $_POST['input__nachname'];
-        $plz = $_POST['input__plz'];
-        $ort = $_POST['input__ort'];
-        $adresse = $_POST['input__adresse'];
-        $telefonnummer = $_POST['input__telefonnummer'];
-        $email = $_POST['input__email'];
-        $passwort1 = $_POST['input__passwort1'];
-        $passwort2 = $_POST['input__passwort2'];
+        $vorname = trim($_POST['input__vorname']);
+        $nachname = trim($_POST['input__nachname']);
+        $plz = trim($_POST['input__plz']);
+        $ort = trim($_POST['input__ort']);
+        $adresse = trim($_POST['input__adresse']);
+        $telefonnummer = trim($_POST['input__telefonnummer']);
+        $email = trim($_POST['input__email']);
+        $passwort1 = trim($_POST['input__passwort1']);
+        $passwort2 = trim($_POST['input__passwort2']);
         $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
         //Variable die schaut ob eine Änderung durchgeführt wurde
         $aenderung = false;
@@ -78,6 +81,7 @@
         if ($nachname != $row['nachname'] && $nachname != "") {
             $query = "UPDATE `Accounts` SET `nachname`='$nachname' WHERE `account_ID`='$session_ID'";
             $db->query($query);
+            $aenderung = true;
         }
         //Änderung Postleihzahl
         if ($plz != $row['plz'] && $plz != "" && is_numeric($plz) && strlen($plz) == 5) {
@@ -127,77 +131,77 @@
         if (isset($_POST['auktionSpeichern'])) {
       
             //Werte aus der Form entnehmen und in Variablen speichern
-            $inseratNr = $_POST['Inserat_Nr'];
-            $marke = $_POST['input__marke'];
-            $modell = $_POST['input__modell'];
-            $kilometerstand = $_POST['input__kilometerstand'];
-            $ps = $_POST['input__ps'];
-            $kraftstoffart = $_POST['input__kraftstoffart'];
-            $getriebeart = $_POST['input__getriebeart'];
-            $auktionsbeginn = $_POST['input__auktionsbeginn'];
-            $auktionsende = $_POST['input__auktionsende'];
-            $erstzulassung = $_POST['input__erstzulassung'];
-            $beschreibung = $_POST['input__beschreibung'];
+            $inseratNr = trim($_POST['Inserat_Nr']);
+            $marke = trim($_POST['input__marke']);
+            $modell = trim($_POST['input__modell']);
+            $kilometerstand = trim($_POST['input__kilometerstand']);
+            $ps = trim($_POST['input__ps']);
+            $kraftstoffart = trim($_POST['input__kraftstoffart']);
+            $getriebeart = trim($_POST['input__getriebeart']);
+            $auktionsbeginn = trim($_POST['input__auktionsbeginn']);
+            $auktionsende = trim($_POST['input__auktionsende']);
+            $erstzulassung = trim($_POST['input__erstzulassung']);
+            $beschreibung = trim($_POST['input__beschreibung']);
             //Variable die schaut ob eine Änderung durchgeführt wurde
             $aenderung = false;
     
             //SQL Statements, falls eine Änderung unternommen wurde
             //Änderung Marke
-            if ($marke != $row['Marke'] && $marke != "") {
+            if ($marke != $rowInserat['Marke'] && $marke != "") {
                 $query = "UPDATE `Inserat` SET `Marke`='$marke' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
             }
             //Änderung Modell
-            if ($modell != $row['Modell'] && $modell != "") {
+            if ($modell != $rowInserat['Modell'] && $modell != "") {
                 $query = "UPDATE `Inserat` SET `Modell`='$modell' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
             }
             //Änderung Kilometerstand
-            if ($kilometerstand != $row['Kilometerstand'] && $kilometerstand != "") {
+            if ($kilometerstand != $rowInserat['Kilometerstand'] && $kilometerstand != "") {
                 $query = "UPDATE `Inserat` SET `Kilometerstand`='$kilometerstand' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
             }
             //Änderung PS
-            if ($ps != $row['PS'] && $ps != "") {
+            if ($ps != $rowInserat['PS'] && $ps != "") {
                 $query = "UPDATE `Inserat` SET `PS`='$ps' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
             }
             //Änderung Kraftstoffart
-            if ($kraftstoffart != $row['Kraftstoffart'] && $kraftstoffart != "") {
+            if ($kraftstoffart != $rowInserat['Kraftstoffart'] && $kraftstoffart != "") {
                 $query = "UPDATE `Inserat` SET `Kraftstoffart`='$kraftstoffart' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
             }
             //Änderung Getriebeart
-            if ($getriebeart != $row['Getriebeart'] && $getriebeart != "") {
+            if ($getriebeart != $rowInserat['Getriebeart'] && $getriebeart != "") {
                 $query = "UPDATE `Inserat` SET `Getriebeart`='$getriebeart' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
             }
             //Änderung Auktionsbeginn
-            if ($auktionsbeginn != $row['Auktionsbeginn'] && $auktionsbeginn != "") {
+            if ($auktionsbeginn != $rowInserat['Auktionsbeginn'] && $auktionsbeginn != "") {
                 $query = "UPDATE `Inserat` SET `Auktionsbeginn`='$auktionsbeginn' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
             }
             //Änderung Auktionsende
-            if ($auktionsende != $row['Auktionsende'] && $auktionsende != "") {
+            if ($auktionsende != $rowInserat['Auktionsende'] && $auktionsende != "") {
                 $query = "UPDATE `Inserat` SET `Auktionsende`='$auktionsende' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
             }
             //Änderung Erstzulassung
-            if ($erstzulassung != $row['Erstzulassung'] && $erstzulassung != "") {
+            if ($erstzulassung != $rowInserat['Erstzulassung'] && $erstzulassung != "") {
                 $query = "UPDATE `Inserat` SET `Erstzulassung`='$erstzulassung' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
             }
             //Änderung Beschreibung
-            if ($beschreibung != $row['Beschreibung'] && $beschreibung != "") {
+            if ($beschreibung != $rowInserat['Beschreibung'] && $beschreibung != "") {
                 $query = "UPDATE `Inserat` SET `Beschreibung`='$beschreibung' WHERE `Inserat_Nr`='$inseratNr'";
                 $db->query($query);
                 $aenderung = true;
@@ -207,8 +211,22 @@
             //Falls eine Änderung durchgeführt wurde
             if ($aenderung) {
                 //Weiterleitung zu Bestätigungsseite
-                //echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+                echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
             }
+        }
+
+        //Falls das Inserat gelöscht wird
+        if (isset($_POST['auktionloeschena'])) {
+      
+            //Werte aus der Form entnehmen und in Variablen speichern
+            $inseratNr = trim($_POST['Inserat_Nr']);
+
+            $query = "DELETE * FROM `Inserat` WHERE `Inserat_Nr`='$inseratNr'";
+            $db->query($query);
+
+            //Weiterleitung zu Bestätigungsseite
+            echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+            
         }
 
     phpFunctions::printNavigationBar();
@@ -332,8 +350,8 @@
 
             //Anzeige der Inserate
             if ($resInserat !== false && $resInserat->rowCount() > 0) {
-                foreach ($resInserat as $row) {
-                    $InsNr = $row['Inserat_Nr'];
+                foreach ($resInserat as $rowInserat) {
+                    $InsNr = $rowInserat['Inserat_Nr'];
 
                     //Selektierung der Angebote für den Preis
                     $queryAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = $InsNr ORDER BY Angebot DESC";
@@ -344,7 +362,7 @@
                         $rowAngebot = $resAngebot->fetch();
                         $preis = $rowAngebot['Angebot'];
                     } else {
-                        $preis = $row['Preis'];
+                        $preis = $rowInserat['Preis'];
                     }
 
                     //Selektierung der Bilder -> ORDER BY erstellt am
@@ -356,7 +374,7 @@
                                 <form method="post">
                                     <div class="auktionsAnzeigeTop">
                                         <div class="auktionsAnzeigePics">
-                                            <h10>'.$row['Marke'].' '.$row['Modell'].'</h10>
+                                            <h10>'.$rowInserat['Marke'].' '.$rowInserat['Modell'].'</h10>
                                             <img src="../image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="600" height="300">
                                             <div class="auktionsAnzeigePicsButton">
                                                 <button>Bilder hinzufügen</button>
@@ -369,58 +387,58 @@
                                             <div class="auktionsAnzeigeZeile">
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Marke</label>
-                                                    <input type="text" name ="input__marke" value="'.$row['Marke'].'"/ required>
+                                                    <input type="text" name ="input__marke" value="'.$rowInserat['Marke'].'"/ required>
                                                 </div>
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Modell</label>
-                                                    <input type="text" name ="input__modell" value="'.$row['Modell'].'"/ required>
+                                                    <input type="text" name ="input__modell" value="'.$rowInserat['Modell'].'"/ required>
                                                 </div>
                                             </div>
                                             <div class="auktionsAnzeigeZeile">
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Kilometerstand</label>
-                                                    <input type="text" name ="input__kilometerstand" value="'.number_format($row['Kilometerstand'], 0, '.', '.').'"/ required>
+                                                    <input type="text" name ="input__kilometerstand" value="'.number_format($rowInserat['Kilometerstand'], 0, '.', '.').'"/ required>
                                                 </div>
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>PS</label>
-                                                    <input type="text" name ="input__ps" value="'.number_format($row['PS'], 0, '.', '.').'"/ required>
+                                                    <input type="text" name ="input__ps" value="'.number_format($rowInserat['PS'], 0, '.', '.').'"/ required>
                                                 </div>
                                             </div>
                                             <div class="auktionsAnzeigeZeile">
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Kraftstoffart</label>
-                                                    <input type="text" name ="input__kraftstoffart" value="'.$row['Kraftstoffart'].'"/ required>
+                                                    <input type="text" name ="input__kraftstoffart" value="'.$rowInserat['Kraftstoffart'].'"/ required>
                                                 </div>
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Getriebeart</label>
-                                                    <input type="text" name ="input__getriebeart" value="'.$row['Getriebeart'].'"/ required>
+                                                    <input type="text" name ="input__getriebeart" value="'.$rowInserat['Getriebeart'].'"/ required>
                                                 </div>
                                             </div>
                                             <div class="auktionsAnzeigeZeile">
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Auktionsbeginn</label>
-                                                    <input type="datetime" name ="input__auktionsbeginn" value="'.$row['Auktionsbeginn'].'"/ required>
+                                                    <input type="datetime" name ="input__auktionsbeginn" value="'.$rowInserat['Auktionsbeginn'].'"/ required>
                                                 </div>
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Auktionsende</label>
-                                                    <input type="datetime" name ="input__auktionsende" value="'.$row['Auktionsende'].'"/ required>
+                                                    <input type="datetime" name ="input__auktionsende" value="'.$rowInserat['Auktionsende'].'"/ required>
                                                 </div>
                                             </div>
                                             <div class="auktionsAnzeigeElement">
                                                 <label>Erstzulassung</label>
-                                                <input type="year" name ="input__erstzulassung" value="'.$row['Erstzulassung'].'"/ required>
-                                                <input class="hidden" type="number" name="Inserat_Nr" value="'.$row['Inserat_Nr'].'"/>
+                                                <input type="year" name ="input__erstzulassung" value="'.$rowInserat['Erstzulassung'].'"/ required>
+                                                <input class="hidden" type="number" name="Inserat_Nr" value="'.$rowInserat['Inserat_Nr'].'"/>
                                             </div>
                                             <div class="auktionsAnzeigeElement auktionsAnzeigeElementBeschreibung">
                                                 <label>Beschreibung</label>
-                                                <textarea name ="input__beschreibung" type="text">"'.$row['Beschreibung'].'"</textarea>
+                                                <textarea name ="input__beschreibung" type="text">"'.$rowInserat['Beschreibung'].'"</textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="seperator"></div>
                                     <div class="auktionsAnzeigeBottom">
                                         <div class="auktionsAnzeigeBottomLoeschen" name="auktionLoeschen">
-                                            <button  >Auktion löschen</button>
+                                            <button >Auktion löschen</button>
                                         </div>
                                         <div class="auktionsAnzeigeBottomSpeichern">
                                             <button name="auktionSpeichern">Auktion speichern</button>
