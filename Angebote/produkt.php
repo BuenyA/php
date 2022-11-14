@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autostar - Last Minute Angebote</title>
+    <title>Autostar - Angebot</title>
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="../stylesheet.css">
     <link rel="stylesheet" href="produkt.css">
@@ -28,7 +28,7 @@
             }
             $produktURL = substr($url, strrpos($url, '.php' ) + 4);
         } else {
-            echo '<script>reloadWindow();</script>';
+            header('Location: ../index.php');
         }
         
         //Insert Angebote
@@ -50,7 +50,7 @@
             $db->query($query);
 
             //Laden der Dankesseite
-            echo '<script>loadDanke();</script>';
+            header('Location: ./vielenDankAngebot.php');
         }
 
         //Selektierung der Auktion

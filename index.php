@@ -17,7 +17,7 @@
         require './db.php';
         require './phpFunctions.php';
         if (isset($_GET['anmelden'])) {
-            echo '<script>window.location = "./account/anmeldung.php";</script>';
+            header('Location: ./account/anmeldung.php');
         }
         if (isset($_GET['insertMerken']) && sizeof($_POST) !== 0) {
             $InseratNrPost = $_POST['InseratNr'];

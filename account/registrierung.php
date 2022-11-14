@@ -36,7 +36,8 @@
                 $db->query($query);
 
                 //Weiterleitung zu Bestätigungsseite
-                echo '<script>window.location = "./erfolgreichRegistriert.php";</script>';                
+                header('Location: ./erfolgreichRegistriert.php');
+
             } else {
                 //Überprüft ob eine gültige Email eingegeben wurde
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {

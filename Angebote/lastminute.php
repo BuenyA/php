@@ -18,7 +18,7 @@
         require '../db.php';
         require '../phpFunctions.php';
         if (isset($_GET['anmelden'])) {
-            echo '<script>linkToAnmeldung();</script>';
+            header('Location: ../account/anmeldung.php');
         }
         if (isset($_GET['insertMerken']) && sizeof($_POST) !== 0) {
             $InseratNrPost = $_POST['InseratNr'];
@@ -55,10 +55,12 @@
         }
         unset($db);
         ?>
-        <button class="btnMehrAnzeigen" name="btnMehrAnzeigen">
-            Mehr Anzeigen
-            <img src="image/down-arrow.png" width="20" height="20">
-        </button>
+        <form method="post">
+            <button class="btnMehrAnzeigen" name="btnMehrAnzeigen">
+                Mehr Anzeigen
+                <img src="image/down-arrow.png" width="20" height="20">
+            </button>
+        </form>
     </section>
     <?php
         phpFunctions::printFooter();

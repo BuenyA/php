@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autostar - Last Minute Angebote</title>
+    <title>Autostar - Top Angebote</title>
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="../stylesheet.css">
     <link rel="stylesheet" href="topangebote.css">
@@ -19,7 +19,7 @@
         require '../phpFunctions.php';
         
         if (isset($_GET['anmelden'])) {
-            echo '<script>linkToAnmeldung();</script>';
+            header('Location: ../account/anmeldung.php');
         }
 
         if (isset($_GET['insertMerken']) && sizeof($_POST) !== 0) {
@@ -58,10 +58,12 @@
 
         unset($db);
         ?>
-        <button class="btnMehrAnzeigen" name="btnMehrAnzeigen">
-            Mehr Anzeigen
-            <img src="image/down-arrow.png" width="20" height="20">
-        </button>
+        <form method="post">
+            <button class="btnMehrAnzeigen" name="btnMehrAnzeigen">
+                Mehr Anzeigen
+                <img src="image/down-arrow.png" width="20" height="20">
+            </button>
+        </form>
     </section>
     <?php
         phpFunctions::printFooter();

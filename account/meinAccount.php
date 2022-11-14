@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autostar - Last Minute Angebote</title>
+    <title>Mein Account</title>
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="../stylesheet.css">
     <link rel="stylesheet" href="meinAccount.css">
@@ -21,12 +21,13 @@
     session_start();
     if (isset($_GET['abmelden'])) {
         session_destroy();
-        echo "<script>reloadWindow();</script>";
+        header('Location: ../index.php');
+
     } elseif (!isset($_GET['page'])) {
-        echo '<script>reloadWindowMeinAccount();</script>';
+        header('Location: ?page=MeinKonto');
     }
     if (empty($_SESSION['user'])) {
-        echo '<script>linkToAnmeldung();</script>';
+        header('Location: ./anmeldung.php');
     }
     if (isset($_GET['insertMerken']) && sizeof($_POST) !== 0) {
         $InseratNrPost = $_POST['InseratNr'];
@@ -123,7 +124,7 @@
         //Falls eine Änderung durchgeführt wurde
         if ($aenderung) {
             //Weiterleitung zu Bestätigungsseite
-            echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+            header('Location: ./erfolgreichAenderung.php');
         }
     }
 
@@ -210,7 +211,7 @@
         //Falls eine Änderung durchgeführt wurde
         if ($aenderung) {
             //Weiterleitung zu Bestätigungsseite
-            echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+            header('Location: ./erfolgreichAenderung.php');
         }
     }
 
@@ -223,11 +224,10 @@
         $db->query($query);
 
         //Weiterleitung zu Bestätigungsseite
-        echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
-        
+        header('Location: ./erfolgreichAenderung.php');
     }
 
-    //Inseratbilder ersetzen
+    /* //Inseratbilder ersetzen
     if (isset($_POST['bilderErsetzen'])) {
   
         //Werte aus der Form entnehmen und in Variablen speichern
@@ -236,11 +236,11 @@
         $db->query($query);
         
         //Weiterleitung zu Bestätigungsseite
-        echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+        header('Location: ./erfolgreichAenderung.php');
         
     }
 
-    //Inseratbilder ersetzen
+    //Inseratbilder hinzufügen
     if (isset($_POST['bilderHinzufuegen'])) {
   
         //Werte aus der Form entnehmen und in Variablen speichern
@@ -249,9 +249,9 @@
         $db->query($query);
         
         //Weiterleitung zu Bestätigungsseite
-        echo '<script>window.location = "./erfolgreichAenderung.php";</script>';   
+        header('Location: ./erfolgreichAenderung.php');
         
-    }
+    } */
 
     phpFunctions::printNavigationBar();
     ?>
@@ -402,8 +402,8 @@
                                             <h10>'.$rowInserat['Marke'].' '.$rowInserat['Modell'].'</h10>
                                             <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="600" height="300"/>
                                             <div class="auktionsAnzeigePicsButton">
-                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderErsetzen[]" required>
-                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderHinzufuegen[]" required>
+                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderErsetzen[]">
+                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderHinzufuegen[]">
                                             </div>
                                         </div>
                                         <div class="seperator"></div>

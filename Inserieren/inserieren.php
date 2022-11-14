@@ -18,7 +18,7 @@
         require '../phpFunctions.php';
 
         if (empty($_SESSION['user'])) {
-            echo '<script>linkToAnmeldung();</script>';
+            header('Location: ../account/anmeldung.php');
         }
 
 
@@ -46,7 +46,7 @@
             $id = $_SESSION['id'];
         } else {
             $error = true;
-            echo '<script>linkToAnmeldung();</script>';
+            header('Location: ./account/anmeldung.php');
         }
 
         if (!$error) {
