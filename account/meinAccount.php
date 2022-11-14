@@ -139,8 +139,6 @@
         $ps = trim($_POST['input__ps']);
         $kraftstoffart = trim($_POST['input__kraftstoffart']);
         $getriebeart = trim($_POST['input__getriebeart']);
-        $auktionsbeginn = trim($_POST['input__auktionsbeginn']);
-        $auktionsende = trim($_POST['input__auktionsende']);
         $erstzulassung = trim($_POST['input__erstzulassung']);
         $beschreibung = trim($_POST['input__beschreibung']);
         //Variable die schaut ob eine Änderung durchgeführt wurde
@@ -180,18 +178,6 @@
         //Änderung Getriebeart
         if ($getriebeart != $rowInserat['Getriebeart'] && $getriebeart != "") {
             $query = "UPDATE `Inserat` SET `Getriebeart`='$getriebeart' WHERE `Inserat_Nr`='$inseratNr'";
-            $db->query($query);
-            $aenderung = true;
-        }
-        //Änderung Auktionsbeginn
-        if ($auktionsbeginn != $rowInserat['Auktionsbeginn'] && $auktionsbeginn != "") {
-            $query = "UPDATE `Inserat` SET `Auktionsbeginn`='$auktionsbeginn' WHERE `Inserat_Nr`='$inseratNr'";
-            $db->query($query);
-            $aenderung = true;
-        }
-        //Änderung Auktionsende
-        if ($auktionsende != $rowInserat['Auktionsende'] && $auktionsende != "") {
-            $query = "UPDATE `Inserat` SET `Auktionsende`='$auktionsende' WHERE `Inserat_Nr`='$inseratNr'";
             $db->query($query);
             $aenderung = true;
         }
@@ -402,8 +388,8 @@
                                             <h10>'.$rowInserat['Marke'].' '.$rowInserat['Modell'].'</h10>
                                             <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="600" height="300"/>
                                             <div class="auktionsAnzeigePicsButton">
-                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderErsetzen[]">
-                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderHinzufuegen[]">
+                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderErsetzen[]" />
+                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderHinzufuegen[]" />
                                             </div>
                                         </div>
                                         <div class="seperator"></div>
@@ -422,7 +408,7 @@
                                             <div class="auktionsAnzeigeZeile">
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Kilometerstand</label>
-                                                    <input type="text" name ="input__kilometerstand" value="'.number_format($rowInserat['Kilometerstand'], 0, '.', '.').'"/ required>
+                                                    <input type="text" name ="input__kilometerstand" value="'.$rowInserat['Kilometerstand'].'"/ required>
                                                 </div>
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>PS</label>
@@ -439,16 +425,7 @@
                                                     <input type="text" name ="input__getriebeart" value="'.$rowInserat['Getriebeart'].'"/ required>
                                                 </div>
                                             </div>
-                                            <div class="auktionsAnzeigeZeile">
-                                                <div class="auktionsAnzeigeElement">
-                                                    <label>Auktionsbeginn</label>
-                                                    <input type="datetime" name ="input__auktionsbeginn" value="'.$rowInserat['Auktionsbeginn'].'"/ required>
-                                                </div>
-                                                <div class="auktionsAnzeigeElement">
-                                                    <label>Auktionsende</label>
-                                                    <input type="datetime" name ="input__auktionsende" value="'.$rowInserat['Auktionsende'].'"/ required>
-                                                </div>
-                                            </div>
+                                            
                                             <div class="auktionsAnzeigeElement">
                                                 <label>Erstzulassung</label>
                                                 <input type="year" name ="input__erstzulassung" value="'.$rowInserat['Erstzulassung'].'"/ required>
@@ -510,10 +487,20 @@
                     $resBilder = $db->query($queryBilder);
                     $rowBilder = $resBilder->fetch();
 
+                    //Selektierung auf das höchste Angebot
+                    $queryMaxAngebot = "SELECT * FROM Angebote WHERE Inserat_Nr = ".$row['Inserat_Nr']." AND Angebot > ".$row['Angebot'];
+                    $resMaxAngebot = $db->query($queryMaxAngebot);
+
+                    if($resMaxAngebot->rowCount() > 0) {
+                        $cssGebotBox = 'maxGebot';
+                    } else {
+                        $cssGebotBox = '';
+                    }
+
                     echo '
                     <a class="topOfferLink" href="../Angebote/produkt.php?produkt='.$row['Inserat_Nr'].'">
                         <div class="topOfferPlace">
-                            <div class="gebotBox">
+                            <div class="gebotBox '.$cssGebotBox.'">
                                 <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="150" height="150"/>
                                 <div class="geboteRight">
                                     <div class="topOffersRightTop">

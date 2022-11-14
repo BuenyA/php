@@ -24,3 +24,5 @@ Dabei werden lediglich andere SQL-Statements verwendet, die die Angebote anders 
 
 
 Überall muss ein trim ran
+
+php.ini muss konfiguriert werden

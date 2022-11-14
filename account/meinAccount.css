@@ -104,6 +104,7 @@ label {
     justify-content: center;
     align-items: flex-start;
     min-height: 40em;
+    width: 42em;
 }
 
 .accountManagementElementsAcc {
@@ -374,6 +375,10 @@ label {
 .gebotBox img {
     object-fit: cover;
     object-position: 40%;
+}
+
+.maxGebot img {
+    filter: grayscale(100%);
 }
 
 .topOffersRight {
