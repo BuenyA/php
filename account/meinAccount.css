@@ -401,6 +401,16 @@ label {
     color: gray;
 }
 
+.ueberboten {
+    display: none;
+    color: red;
+}
+
+.ueberboten2 {
+    display: grid;
+    color: red;
+}
+
 .accountManagementBox {
     display: grid;
     align-items: center;

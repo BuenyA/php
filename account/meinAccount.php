@@ -388,7 +388,7 @@
                                             <h10>'.$rowInserat['Marke'].' '.$rowInserat['Modell'].'</h10>
                                             <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="600" height="300"/>
                                             <div class="auktionsAnzeigePicsButton">
-                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderErsetzen[]" />
+                                                <label>Bilder hinzufügen</label>
                                                 <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderHinzufuegen[]" />
                                             </div>
                                         </div>
@@ -433,7 +433,7 @@
                                             </div>
                                             <div class="auktionsAnzeigeElement auktionsAnzeigeElementBeschreibung">
                                                 <label>Beschreibung</label>
-                                                <textarea name ="input__beschreibung" type="text">"'.$rowInserat['Beschreibung'].'"</textarea>
+                                                <textarea name ="input__beschreibung" type="text">'.$rowInserat['Beschreibung'].'</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -493,8 +493,10 @@
 
                     if($resMaxAngebot->rowCount() > 0) {
                         $cssGebotBox = 'maxGebot';
+                        $cssUeberboten = 'ueberboten2';
                     } else {
                         $cssGebotBox = '';
+                        $cssUeberboten = 'ueberboten';
                     }
 
                     echo '
@@ -507,6 +509,7 @@
                                         <h2>' . $row['Marke'] . ' ' . $row['Modell'] . '</h2>
                                     </div>
                                     <p class="anfangspreis">Ursprünglicher Preis: ' . number_format($row['Preis'], 0, '.', '.') . ' €</p>
+                                    <p class="'.$cssUeberboten.'">Du wurdest überboten!</p>
                                     <p>
                                         ' . $row['vorname'] . ' ' . $row['nachname'] . ' </br>
                                         Tel.: +49 123 456789</br>
