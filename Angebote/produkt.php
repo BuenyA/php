@@ -53,10 +53,16 @@
             header('Location: ./vielenDankAngebot.php');
         }
 
-        //Selektierung der Auktion
+        //Selektierung nach dem Inserat
         $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Inserat.Inserat_Nr = $proID";
         $resInserat = $db->query($queryInserat);
+        
+        if($resInserat->rowCount() == 0) {
+            header('Location: ../index.php');
+        }
+
         $rowIns = $resInserat->fetch();
+
         $waiting_day = strtotime($rowIns['Auktionsende']);
         $getDateTime = date("F d, Y H:i:s", $waiting_day);
 

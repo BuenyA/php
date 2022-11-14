@@ -176,8 +176,8 @@ label {
 }
 
 .auktionsAnzeigePicsButton {
+    display: grid;
     justify-self: center;
-    display: flex;
     justify-content: space-around;
     align-items: center;
     width: 20em;
