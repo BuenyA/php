@@ -16,8 +16,12 @@
     </div>
     <div class="container">
         <?php
-        require('../db.php');
         session_start();
+        if(!empty($_SESSION['user'])) {
+            header('Location: ../index.php');
+        }
+
+        require('../db.php');
         if (isset($_GET['anmelden']) && sizeof($_POST) !== 0) {
             $query = "SELECT * FROM Accounts WHERE email = '" . $_POST['input__email'] . "'";
             $res = $db->query($query);
@@ -67,8 +71,6 @@
                     <span class="screen__background__shape screen__background__shape1"></span>
                 </div>
             </div>';
-        } else {
-            echo "<script>reloadWindow();</script>";
         }
         ?>
     </div>

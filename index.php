@@ -50,7 +50,7 @@
                         if (empty($_SESSION['user'])) {
                             echo '
                             <div class="navigationMenuButtonAnmelden">
-                            <button onclick="window.location.href = \'account/anmeldung.php\'"><b>Anmelden</b></button>
+                                <button onclick="window.location.href = \'account/anmeldung.php\'"><b>Anmelden</b></button>
                             </div>
                             <div class="navigationMenuButtonRegistrieren">
                                 <button onclick="window.location.href = \'account/registrierung.php\'"><b>Registrieren</b></button>
