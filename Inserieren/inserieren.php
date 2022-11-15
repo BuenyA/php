@@ -8,7 +8,7 @@
     <title>Inserat aufgeben</title>
     <link rel="stylesheet" href="../stylesheet.css">
     <link rel="stylesheet" href="inserieren.css">
-    <script language="javascript" type="text/javascript" src="inserieren.js"></script>
+   
 </head>
 
 <body>
@@ -50,8 +50,22 @@
         }
 
         if (!$error) {
-            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsende, Inhaber_Nr) VALUES ('$marke', '$modell', $preis, '$beschreibung', $kilometerstand, $ps, '$kraftstoffart', '$getriebeart', '$erstzulassung', '$auktionsbeginnDatum $auktionsbeginnUhrzeit', '$auktionsendeDatum $auktionsendeUhrzeit', '$id')";
-            $db->query($query);
+            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsende, Inhaber_Nr) VALUES (:Marke, :modell, :preis, :beschreibung, :kilometerstand, :ps, :kraftstoffart, :getriebeart, :erstzulassung, :auktionsbeginnDatum :auktionsbeginnUhrzeit, :auktionsendeDatum :auktionsendeUhrzeit, :id)";
+            $stmt = $db->prepare($query);
+            $stmt-> bindParam('Marke',$marke, PDO::PARAM_STR);
+            $stmt-> bindParam('modell',$modell, PDO::PARAM_STR);
+            $stmt-> bindParam('preis',$preis, PDO::PARAM_INT);
+            $stmt-> bindParam('beschreibung',$beschreibung, PDO::PARAM_STR);
+            $stmt-> bindParam('kilometerstand',$kilometerstand, PDO::PARAM_INT);
+            $stmt-> bindParam('ps',$ps, PDO::PARAM_INT);
+            $stmt-> bindParam('kraftstoffart',$kraftstoffart, PDO::PARAM_STR);
+            $stmt-> bindParam('getriebeart',$getriebeart, PDO::PARAM_STR);
+            $stmt-> bindParam('erstzulassung',$erstzulassung, PDO::PARAM_INT);
+            $stmt-> bindParam('auktionsbeginnDatum',$auktionsbeginnDatum, PDO::PARAM_STR);
+            $stmt-> bindParam('auktionsbeginnUhrzeit',$auktionsbeginnUhrzeit, PDO::PARAM_STR);
+            $stmt-> bindParam('auktionsendeDatum',$auktionsendeDatum, PDO::PARAM_STR);
+            $stmt-> bindParam('auktionsendeUhrzeit',$auktionsendeUhrzeit, PDO::PARAM_STR);
+            $stmt-> bindParam('id',$id, PDO::PARAM_INT);
         }
         if (!$error) {
             $query = "SELECT MAX(Inserat_Nr) FROM Inserat WHERE 1";
@@ -85,7 +99,7 @@
     </div>
     <section class="Foto-oben"></section>
     <section class="eingaben">
-        <form action="?inserieren=1" method="post" enctype="multipart/form-data">
+        <form action="?inserieren=1" method="post" enctype="multipart/form-data" id="inserieren">
             <div class="big-box">
                 <div class="Marke-Modell">
                     <div class="Marke">
@@ -106,7 +120,7 @@
                         <p class="Preis-text">
                             Preis
                         </p>
-                        <input class="Preis-eingabe" type="number" size="40" min="1" maxlength="250" name="preis" placeholder="z.B. 10000" required>
+                        <input class="Preis-eingabe" type="number" size="40" min="1" maxlength="8" name="preis" placeholder="z.B. 10000" required>
                     </div>
                     <div class="Erstzulassung">
                         <p class="Erstzulassung-text">
@@ -120,13 +134,13 @@
                         <p class="Kilometerstand-text">
                             Kilometerstand
                         </p>
-                        <input class="Kilometerstand-eingabe" type="number" size="40" maxlength="250" name="kilometerstand" placeholder="z.B. 150.000" required>
+                        <input class="Kilometerstand-eingabe" type="number" size="40" maxlength="8" name="kilometerstand" placeholder="z.B. 150.000" required>
                     </div>
                     <div class="PS">
                         <p class="PS-text">
                             PS
                         </p>
-                        <input class="PS-eingabe" type="number" size="40" maxlength="250" name="ps" placeholder="z.B. 200" required>
+                        <input class="PS-eingabe" type="number" size="40" maxlength="5" name="ps" placeholder="z.B. 200" required>
                     </div>
                 </div>
                 <div class="Kraftstoffart-Getriebeart">
@@ -134,13 +148,13 @@
                         <p class="Kraftstoffart-text">
                             Kraftstoffart
                         </p>
-                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="250" name="kraftstoffart" placeholder="z.B. Benzin" required>
+                        <input class= "Kraftstoffart-eingabe" type="text" size="40" maxlength="30" name="kraftstoffart" placeholder="z.B. Benzin" required>
                     </div>
                     <div class="Getriebeart">
                         <p class="Getriebeart-text">
                             Getriebeart
                         </p>
-                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="250" name="getriebeart" placeholder="z.B. Automatikgetriebe" required>
+                        <input class="Getriebeart-eingabe" type="text" size="40" maxlength="30" name="getriebeart" placeholder="z.B. Automatikgetriebe" required>
                     </div>
                 </div>
                 <div class="Auktionsbeginn-Uhrzeit">
@@ -148,7 +162,7 @@
                         <p class="Auktionsbeginn-text">
                             Auktionsbeginn
                         </p>
-                        <input class="Auktionsbeginn-eingabe" type="date" size="40" maxlength="250" name="auktionsbeginnDatum" required>
+                        <input class="Auktionsbeginn-eingabe" type="date" size="40" maxlength="250" name="auktionsbeginnDatum" id="beginndatum" required>
                     </div>
                     <div class="Uhrzeit">
                         <p class="Uhrzeit-text">
@@ -162,7 +176,7 @@
                         <p class="Auktionsende-text">
                             Auktionsende
                         </p>
-                        <input class="Auktionsende-eingabe" type="date" size="40" maxlength="250" name="auktionsendeDatum" required>
+                        <input class="Auktionsende-eingabe" min="auktionsbeginnDatum" type="date" size="40" maxlength="250" name="auktionsendeDatum" id="endedatum" required>
                     </div>
                     <div class="Uhrzeit">
                         <p class="Uhrzeit-text">
@@ -220,6 +234,7 @@
     <?php
         phpFunctions::printFooter();
     ?>
+     <script language="javascript" type="text/javascript" src="inserieren.js"></script>
 </body>
 
 </html>
