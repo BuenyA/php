@@ -17,10 +17,6 @@
     <div class="container">
         <?php
         session_start();
-        if(!empty($_SESSION['user'])) {
-            header('Location: ../index.php');
-        }
-
         require('../db.php');
         if (isset($_GET['anmelden']) && sizeof($_POST) !== 0) {
             $query = "SELECT * FROM Accounts WHERE email = '" . $_POST['input__email'] . "'";
@@ -36,6 +32,9 @@
                     }
                 }
             }
+        }
+        if(!empty($_SESSION['user'])) {
+            header('Location: ../index.php');
         }
         if (empty($_SESSION['user'])) {
             echo '
