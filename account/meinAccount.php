@@ -144,6 +144,9 @@
         //Variable die schaut ob eine Änderung durchgeführt wurde
         $aenderung = false;
 
+       /*  $filecount = count($_FILES['auktionbilder']['name']);
+        $filename = $_FILES['auktionbilder']['name']; */
+
         //SQL Statements, falls eine Änderung unternommen wurde
         //Änderung Marke
         if ($marke != $rowInserat['Marke'] && $marke != "") {
@@ -199,6 +202,16 @@
             //Weiterleitung zu Bestätigungsseite
             header('Location: ./erfolgreichAenderung.php');
         }
+
+        /* for($i = 0; $i < $filecount; $i++){
+            $filedata = file_get_contents($_FILES['auktionbilder']['tmp_name'][$i]);
+            $query = "INSERT INTO Inseratbilder (Inserat_Nr, Bild, Hauptbild) VALUES (:Nr ,:Bild ,:HBild )";
+            $stmt = $db->prepare($query);
+            $stmt-> bindParam('Nr', $inseratNr, PDO::PARAM_INT);
+            $stmt-> bindParam('Bild', $filedata, PDO::PARAM_STR);
+            $stmt-> bindParam('HBild', 0, PDO::PARAM_INT);
+            $stmt-> execute();
+        } */
     }
 
     //Falls das Inserat gelöscht wird
@@ -227,7 +240,7 @@
     }
 
     //Inseratbilder hinzufügen
-    if (isset($_POST['bilderHinzufuegen'])) {
+    if (isset($_POST['auktionbilder'])) {
   
         //Werte aus der Form entnehmen und in Variablen speichern
         $inseratNr = trim($_POST['Inserat_Nr']);
@@ -389,7 +402,7 @@
                                             <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="600" height="300"/>
                                             <div class="auktionsAnzeigePicsButton">
                                                 <label>Bilder hinzufügen</label>
-                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="bilderHinzufuegen[]" />
+                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="auktionbilder[]">
                                             </div>
                                         </div>
                                         <div class="seperator"></div>
@@ -397,43 +410,43 @@
                                             <h10>Daten</h10>
                                             <div class="auktionsAnzeigeZeile">
                                                 <div class="auktionsAnzeigeElement">
-                                                    <label>Marke</label>
-                                                    <input type="text" name ="input__marke" value="'.$rowInserat['Marke'].'"/ required>
+                                                    <label>Marke</label> 
+                                                    <input type="text" name="input__marke" value="'.$rowInserat['Marke'].'"/ required>
                                                 </div>
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Modell</label>
-                                                    <input type="text" name ="input__modell" value="'.$rowInserat['Modell'].'"/ required>
+                                                    <input type="text" name="input__modell" value="'.$rowInserat['Modell'].'"/ required>
                                                 </div>
                                             </div>
                                             <div class="auktionsAnzeigeZeile">
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Kilometerstand</label>
-                                                    <input type="text" name ="input__kilometerstand" value="'.$rowInserat['Kilometerstand'].'"/ required>
+                                                    <input type="text" name="input__kilometerstand" value="'.$rowInserat['Kilometerstand'].'"/ required>
                                                 </div>
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>PS</label>
-                                                    <input type="text" name ="input__ps" value="'.number_format($rowInserat['PS'], 0, '.', '.').'"/ required>
+                                                    <input type="text" name="input__ps" value="'.number_format($rowInserat['PS'], 0, '.', '.').'"/ required>
                                                 </div>
                                             </div>
                                             <div class="auktionsAnzeigeZeile">
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Kraftstoffart</label>
-                                                    <input type="text" name ="input__kraftstoffart" value="'.$rowInserat['Kraftstoffart'].'"/ required>
+                                                    <input type="text" name="input__kraftstoffart" value="'.$rowInserat['Kraftstoffart'].'"/ required>
                                                 </div>
                                                 <div class="auktionsAnzeigeElement">
                                                     <label>Getriebeart</label>
-                                                    <input type="text" name ="input__getriebeart" value="'.$rowInserat['Getriebeart'].'"/ required>
+                                                    <input type="text" name="input__getriebeart" value="'.$rowInserat['Getriebeart'].'"/ required>
                                                 </div>
                                             </div>
                                             
                                             <div class="auktionsAnzeigeElement">
                                                 <label>Erstzulassung</label>
-                                                <input type="year" name ="input__erstzulassung" value="'.$rowInserat['Erstzulassung'].'"/ required>
+                                                <input type="year" name="input__erstzulassung" value="'.$rowInserat['Erstzulassung'].'"/ required>
                                                 <input class="hidden" type="number" name="Inserat_Nr" value="'.$rowInserat['Inserat_Nr'].'"/>
                                             </div>
                                             <div class="auktionsAnzeigeElement auktionsAnzeigeElementBeschreibung">
                                                 <label>Beschreibung</label>
-                                                <textarea name ="input__beschreibung" type="text">'.$rowInserat['Beschreibung'].'</textarea>
+                                                <textarea name="input__beschreibung" type="text">'.$rowInserat['Beschreibung'].'</textarea>
                                             </div>
                                         </div>
                                     </div>

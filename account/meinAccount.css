@@ -183,6 +183,11 @@ label {
     width: 20em;
 }
 
+.auktionsAnzeigePicsButton label {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
 .slideshow {
     height: 25em;
     width: 40em;
