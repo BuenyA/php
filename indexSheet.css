@@ -426,6 +426,55 @@ h5 {
     cursor: pointer;
 }
 
+.jetztRegistrieren {
+    background-color: #0e1625;
+    /* background-color: #191f22; */
+    color: white;
+    height: 20em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jetztRegistrierenBox {
+    width: 80em;
+    height: 15em;
+}
+
+.jetztRegistrierenBox {
+    text-align: center;
+}
+
+.jetztRegistrierenBox h1 {
+    /* margin-bottom: 1em;
+    font-size: 2em; */
+    font-size: 2.5em;
+    font-weight: 400;
+    margin-bottom: 1em;
+    font-family: 'El Messiri', sans-serif;
+}
+
+.jetztRegistrierenBox p {
+    font-size: 17px;
+}
+
+.jetztRegistrierenBox button {
+    margin-top: 2em;
+    border: 2px solid white;
+    background-color: white;
+    padding: 7.5px 30px 7.5px 30px;
+    border-radius: 20px;
+    font-size: 20px;
+    transition: .2s;
+}
+
+.jetztRegistrierenBox button:hover {
+    /* background-color: #192845; */
+    background-color: #0e1625;
+    color: white;
+    cursor: pointer;
+}
+
 .AutostarApp {
     background-color: #ff4d00;
     display: flex;
@@ -582,6 +631,7 @@ h5 {
 .footer {
     min-height: 30em;
     background-color: #191f22;
+    /* background-color: #0e1625; */
     display: grid;
     justify-content: center;
     align-items: center;

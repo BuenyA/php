@@ -151,6 +151,19 @@
             <img src="image/right-arrows.png" width="20" height="20">
         </a>
     </section>
+    <section class="jetztRegistrieren">
+        <div class="jetztRegistrierenBox">
+            <div>
+                <h1>Jetzt registrieren und von ausgezeichneten Vorteilen profitieren</h1>
+                <p>Zusammen mit Autostar.de bieten wir dir das größte Online-Auktion-Angebot in Deutschland.</p>
+                <p>Registrieren Sie sich jetzt!</p>
+                <button onclick="window.location.href = './account/registrierung.php';">Jetzt registrieren!</button>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </section>
     <section class="topOffer">
         <h1>Last-Minute-Angebote...</h1>
         <?php
