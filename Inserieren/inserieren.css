@@ -463,13 +463,15 @@ input {
 }
 
 .textBox {
-  box-shadow: 0px 0px 3px 3px rgb(233, 233, 233);
+  box-shadow: 0px 0px 3px 3px rgb(255, 255, 255);
+  border: 1px solid rgb(202, 202, 202);
   transition: 0.2s;
   width: 23em;
 }
 
 .textBox:hover {
-  box-shadow: 0px 0px 3px 3px rgb(207, 207, 207);
+  box-shadow: 0px 0px 4px 4px rgb(233, 233, 233);
+  border: 1px solid rgb(255, 255, 255);
 }
 
 .Text-left{
@@ -483,7 +485,7 @@ input {
 
 .Text-middle{
   border-radius: 10px;
-  background-color: rgb(255, 253, 253);
+  background-color: rgb(255, 255, 255);
   text-align: center;
   margin: 20px;
   box-sizing: border-box;
