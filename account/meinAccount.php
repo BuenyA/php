@@ -144,9 +144,6 @@
         //Variable die schaut ob eine Änderung durchgeführt wurde
         $aenderung = false;
 
-       /*  $filecount = count($_FILES['auktionbilder']['name']);
-        $filename = $_FILES['auktionbilder']['name']; */
-
         //SQL Statements, falls eine Änderung unternommen wurde
         //Änderung Marke
         if ($marke != $rowInserat['Marke'] && $marke != "") {
@@ -202,16 +199,6 @@
             //Weiterleitung zu Bestätigungsseite
             header('Location: ./erfolgreichAenderung.php');
         }
-
-        /* for($i = 0; $i < $filecount; $i++){
-            $filedata = file_get_contents($_FILES['auktionbilder']['tmp_name'][$i]);
-            $query = "INSERT INTO Inseratbilder (Inserat_Nr, Bild, Hauptbild) VALUES (:Nr ,:Bild ,:HBild )";
-            $stmt = $db->prepare($query);
-            $stmt-> bindParam('Nr', $inseratNr, PDO::PARAM_INT);
-            $stmt-> bindParam('Bild', $filedata, PDO::PARAM_STR);
-            $stmt-> bindParam('HBild', 0, PDO::PARAM_INT);
-            $stmt-> execute();
-        } */
     }
 
     //Falls das Inserat gelöscht wird
@@ -224,32 +211,6 @@
 
         //Weiterleitung zu Bestätigungsseite
         header('Location: ./erfolgreichAenderung.php');
-    } */
-
-    /* //Inseratbilder ersetzen
-    if (isset($_POST['bilderErsetzen'])) {
-  
-        //Werte aus der Form entnehmen und in Variablen speichern
-        $inseratNr = trim($_POST['Inserat_Nr']);
-        $query = "DELETE FROM Inserat WHERE Inserat_Nr = $inseratNr";
-        $db->query($query);
-        
-        //Weiterleitung zu Bestätigungsseite
-        header('Location: ./erfolgreichAenderung.php');
-        
-    }
-
-    //Inseratbilder hinzufügen
-    if (isset($_POST['auktionbilder'])) {
-  
-        //Werte aus der Form entnehmen und in Variablen speichern
-        $inseratNr = trim($_POST['Inserat_Nr']);
-        $query = "DELETE FROM Inserat WHERE Inserat_Nr = $inseratNr";
-        $db->query($query);
-        
-        //Weiterleitung zu Bestätigungsseite
-        header('Location: ./erfolgreichAenderung.php');
-        
     } */
 
     phpFunctions::printNavigationBar();
@@ -400,10 +361,6 @@
                                         <div class="auktionsAnzeigePics">
                                             <h10>'.$rowInserat['Marke'].' '.$rowInserat['Modell'].'</h10>
                                             <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="600" height="300"/>
-                                            <div class="auktionsAnzeigePicsButton">
-                                                <label>Bilder hinzufügen</label>
-                                                <input class="Bilder-eingabe" type="file" multiple accept="image/*" name="auktionbilder[]">
-                                            </div>
                                         </div>
                                         <div class="seperator"></div>
                                         <div class="auktionsAnzeigeDaten">
