@@ -437,7 +437,7 @@ h5 {
 }
 
 .jetztRegistrierenBox {
-    width: 80em;
+    width: 70em;
     height: 15em;
 }
 
@@ -446,8 +446,6 @@ h5 {
 }
 
 .jetztRegistrierenBox h1 {
-    /* margin-bottom: 1em;
-    font-size: 2em; */
     font-size: 2.5em;
     font-weight: 400;
     margin-bottom: 1em;
