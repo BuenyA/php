@@ -140,6 +140,10 @@ h5 {
     cursor: pointer;
 }
 
+.header {
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
 .searchBarFilterBox {
     min-height: 20em;
     display: grid;
@@ -428,6 +432,7 @@ h5 {
 
 .jetztRegistrieren {
     background-color: #0e1625;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
     /* background-color: #191f22; */
     color: white;
     height: 20em;
@@ -479,6 +484,7 @@ h5 {
     justify-content: center;
     align-items: center;
     min-height: 35em;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
 .AutostarAppText {
@@ -629,10 +635,10 @@ h5 {
 .footer {
     min-height: 30em;
     background-color: #191f22;
-    /* background-color: #0e1625; */
     display: grid;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
 .footerArea {
