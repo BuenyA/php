@@ -202,7 +202,7 @@
     }
 
     //Falls das Inserat gelöscht wird
-/*     if (isset($_POST['auktionLoeschen'])) {
+    if (isset($_POST['auktionLoeschen'])) {
   
         //Werte aus der Form entnehmen und in Variablen speichern
         $inseratNr = trim($_POST['Inserat_Nr']);
@@ -211,7 +211,7 @@
 
         //Weiterleitung zu Bestätigungsseite
         header('Location: ./erfolgreichAenderung.php');
-    } */
+    }
 
     phpFunctions::printNavigationBar();
     ?>
