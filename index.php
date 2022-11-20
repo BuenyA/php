@@ -137,7 +137,7 @@
     <section class="topOffer">
         <h1>Top-Angebote</h1>
         <?php
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP ORDER BY Preis ASC";
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP AND Auktionsbeginn <= CURRENT_TIMESTAMP ORDER BY Preis ASC";
             $resInserat = $db->query($queryInserat);
 
             if (empty($_SESSION['user'])) {
@@ -167,7 +167,7 @@
     <section class="topOffer">
         <h1>Last-Minute-Angebote...</h1>
         <?php
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP ORDER BY Auktionsende ASC";
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP AND Auktionsbeginn <= CURRENT_TIMESTAMP ORDER BY Auktionsende ASC";
             $resInserat = $db->query($queryInserat);
             if (empty($_SESSION['user'])) {
                 phpFunctions::showOffer(8, $resInserat, 0, 4);

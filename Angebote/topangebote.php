@@ -47,7 +47,7 @@
     <section class="topAngebote">
         <h1>Top-Angebote</h1>
         <?php
-        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP ORDER BY Preis ASC";
+        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP AND Auktionsbeginn <= CURRENT_TIMESTAMP ORDER BY Preis ASC";
         $resInserat = $db->query($queryInserat);
         
         if (empty($_SESSION['user'])) {

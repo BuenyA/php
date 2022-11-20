@@ -65,7 +65,7 @@
                 $WHERE .= "AND Preis <= '" . $_GET['preisBis'] . "' ";
             } 
 
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP " . $WHERE . " ORDER BY Auktionsende ASC";
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP AND Auktionsbeginn <= CURRENT_TIMESTAMP " . $WHERE . " ORDER BY Auktionsende ASC";
             $resInserat = $db->query($queryInserat);
 
             if (empty($_SESSION['user'])) {

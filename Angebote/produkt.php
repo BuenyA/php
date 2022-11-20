@@ -270,8 +270,7 @@
                     </div>';
 
             //Wenn Autkion ausgelaufen
-            if ($rowIns['Auktionsende'] < date('Y-m-d H:i:s')) {
-                echo $rowIns['Auktionsende'];
+            if ($rowIns['Auktionsende'] < date('Y-m-d H:i:s') || $rowIns['Auktionsbeginn'] > date('Y-m-d H:i:s')) {
                 echo '</div>
                     </form>
                 </div>
