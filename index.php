@@ -33,7 +33,7 @@
             }
         }
     ?>
-    <section>
+    <section class="header">
         <div class="backgroundImageFilter">
             <div class="navigationMenu">
                 <div class="navigationMenuLogo">
@@ -156,7 +156,7 @@
             <div>
                 <h1>Jetzt registrieren und von ausgezeichneten Vorteilen profitieren</h1>
                 <p>Zusammen mit Autostar.de bieten wir dir das größte Online-Auktion-Angebot in Deutschland.</p>
-                <p>Registrieren Sie sich jetzt!</p>
+                <p>Registrieren dich jetzt!</p>
                 <button onclick="window.location.href = './account/registrierung.php';">Jetzt registrieren!</button>
             </div>
             <div>
