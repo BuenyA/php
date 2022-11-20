@@ -33,10 +33,8 @@
         $kraftstoffart = trim($_POST['kraftstoffart']);
         $getriebeart = trim($_POST['getriebeart']);
         $erstzulassung = trim($_POST['erstzulassung']);
-        $auktionsbeginnDatum = trim($_POST['auktionsbeginnDatum']);
-        $auktionsendeDatum = trim($_POST['auktionsendeDatum']);
-        $auktionsbeginnUhrzeit = trim($_POST['auktionsbeginnUhrzeit']);
-        $auktionsendeUhrzeit = trim($_POST['auktionsendeUhrzeit']);
+        $auktionsbeginnDatum = trim($_POST['auktionsbeginnDatum']) . " " . trim($_POST['auktionsbeginnUhrzeit']);
+        $auktionsendeDatum = trim($_POST['auktionsendeDatum']) . " " . trim($_POST['auktionsendeUhrzeit']);
        
         $filecount = count($_FILES['auktionbilder']['name']);
 
@@ -50,7 +48,7 @@
         }
 
         if (!$error) {
-            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsende, Inhaber_Nr) VALUES (:Marke, :modell, :preis, :beschreibung, :kilometerstand, :ps, :kraftstoffart, :getriebeart, :erstzulassung, :auktionsbeginnDatum :auktionsbeginnUhrzeit, :auktionsendeDatum :auktionsendeUhrzeit, :id)";
+            $query = "INSERT INTO Inserat (Marke, Modell, Preis, Beschreibung, Kilometerstand, PS, Kraftstoffart, Getriebeart, Erstzulassung, Auktionsbeginn, Auktionsende, Inhaber_Nr) VALUES (:Marke, :modell, :preis, :beschreibung, :kilometerstand, :ps, :kraftstoffart, :getriebeart, :erstzulassung, :auktionsbeginnDatum, :auktionsendeDatum, :id)";
             $stmt = $db->prepare($query);
             $stmt-> bindParam('Marke',$marke, PDO::PARAM_STR);
             $stmt-> bindParam('modell',$modell, PDO::PARAM_STR);
@@ -62,10 +60,9 @@
             $stmt-> bindParam('getriebeart',$getriebeart, PDO::PARAM_STR);
             $stmt-> bindParam('erstzulassung',$erstzulassung, PDO::PARAM_INT);
             $stmt-> bindParam('auktionsbeginnDatum',$auktionsbeginnDatum, PDO::PARAM_STR);
-            $stmt-> bindParam('auktionsbeginnUhrzeit',$auktionsbeginnUhrzeit, PDO::PARAM_STR);
             $stmt-> bindParam('auktionsendeDatum',$auktionsendeDatum, PDO::PARAM_STR);
-            $stmt-> bindParam('auktionsendeUhrzeit',$auktionsendeUhrzeit, PDO::PARAM_STR);
             $stmt-> bindParam('id',$id, PDO::PARAM_INT);
+            $stmt-> execute();
         }
         if (!$error) {
             $query = "SELECT MAX(Inserat_Nr) FROM Inserat WHERE 1";
