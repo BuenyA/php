@@ -29,7 +29,7 @@
     if (empty($_SESSION['user'])) {
         header('Location: ./anmeldung.php');
     }
-    if (isset($_GET['insertMerken']) && sizeof($_POST) !== 0) {
+    if (isset($_POST['insertMerken'])) {
         $InseratNrPost = $_POST['InseratNr'];
         $AccIDPost = $_POST['AccID'];
         $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
@@ -580,10 +580,10 @@
                                         Tel.: +49 123 456789</br>
                                         Ort: ' . $row['ort'] . '
                                     </p>
-                                    <form action="?insertMerken=1" method="post">
+                                    <form method="post">
                                         <input class="displayNone" type="text" name="InseratNr" value="'.$row['Inserat_Nr'].'">
                                         <input class="displayNone" type="text" name="AccID" value="'.$_SESSION['id'].'">
-                                        <input type="submit" value="      Merken" class="'.$cssClassVariable.'" />
+                                        <input type="submit" value="      Merken" name="insertMerken" class="'.$cssClassVariable.'" />
                                     </form>
                                 </div>
                             </div>

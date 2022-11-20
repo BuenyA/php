@@ -20,7 +20,7 @@
         if (isset($_GET['anmelden'])) {
             echo '<script>linkToAnmeldung()";</script>';
         }
-        if (isset($_GET['insertMerken']) && sizeof($_POST) !== 0) {
+        if (isset($_POST['insertMerken'])) {
             $InseratNrPost = trim($_POST['InseratNr']);
             $AccIDPost = trim($_POST['AccID']);
             $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
