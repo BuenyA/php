@@ -22,7 +22,7 @@
         }
 
 
-    if (isset($_GET['inserieren']) && sizeof($_POST) !== 0) {
+    if (isset($_POST['inserieren'])) {
         $error = false;
         $marke = trim($_POST['marke']);
         $modell = trim($_POST['modell']);
@@ -96,7 +96,7 @@
     </div>
     <section class="Foto-oben"></section>
     <section class="eingaben">
-        <form action="?inserieren=1" method="post" enctype="multipart/form-data" id="inserieren">
+        <form method="post" enctype="multipart/form-data" id="inserieren">
             <div class="big-box">
                 <div class="Marke-Modell">
                     <div class="Marke">
@@ -198,7 +198,7 @@
                             <textarea class="Beschreibung-eingabe" type="text" name="beschreibung" required>Erzähle uns etwas über dein Auto</textarea>
                     </div>
                 </div>
-                <input class="Abschicken-button" type="submit" value="Abschicken">
+                <input class="Abschicken-button" type="submit" name="inserieren" value="Abschicken">
             </div>
         </form>
     </section>
