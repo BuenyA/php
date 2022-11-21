@@ -28,10 +28,10 @@ h5 {
 
 .navigationMenu {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    width: 99vw;
     min-height: 12vh;
-    width: 88vw;
     align-self: flex-start;
     font-family: 'El Messiri', sans-serif;
 }
