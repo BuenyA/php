@@ -33,11 +33,19 @@
                 $resMerkenInsert = $db->query($queryMerkenInsert);
             }
         }
+
         phpFunctions::printNavigationBar();
-    ?>
-    <section class="suchergebnisse">
-        <h1>Deine Suchergebnisse...</h1>
-        <?php
+
+        if (isset($_POST['mehrAnzeigenValue'])) {
+            $anzeigen = (int)$_POST['mehrAnzeigenValue'] + 10;
+        } else {
+            $anzeigen = 10;
+        }
+
+        echo '<section class="baldAblaufend">
+                <h1>Top-Angebote</h1>
+            ';
+
             $WHERE = '';
 
             //Dynmische Markenselektion
@@ -73,15 +81,19 @@
             } else {
                 phpFunctions::showOffer(10, $resInserat, $_SESSION['id']);
             }
-            unset($db);
-        ?>
-        <button class="btnMehrAnzeigen">
-            Mehr Anzeigen
-            <img src="image/down-arrow.png" width="20" height="20">
-        </button>
-    </section>
-    <?php
+            
+            echo '<form method="post">
+                        <input class="hidden" type="number" name="mehrAnzeigenValue" value="'.$anzeigen.'"/>
+                        <button class="btnMehrAnzeigen" name="btnMehrAnzeigen">
+                            Mehr Anzeigen
+                            <img src="image/down-arrow.png" width="20" height="20">
+                        </button>
+                    </form>
+                </section>
+                ';
+
         phpFunctions::printFooter();
+        unset($db);
     ?>
 </body>
 

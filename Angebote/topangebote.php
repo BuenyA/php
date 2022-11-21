@@ -36,38 +36,41 @@
             }
         }
 
-        $anzeigen = 10;
-
-        if (isset($_POST['btnMehrAnzeigen'])) {
-            $anzeigen = $anzeigen + 10;
+        if (isset($_POST['mehrAnzeigenValue'])) {
+            $anzeigen = (int)$_POST['mehrAnzeigenValue'] + 10;
+        } else {
+            $anzeigen = 10;
         }
 
         phpFunctions::printNavigationBar();
-    ?>
-    <section class="topAngebote">
-        <h1>Top-Angebote</h1>
-        <?php
-        $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP AND Auktionsbeginn <= CURRENT_TIMESTAMP ORDER BY Preis ASC";
-        $resInserat = $db->query($queryInserat);
-        
-        if (empty($_SESSION['user'])) {
-            phpFunctions::showOffer($anzeigen, $resInserat);
-        } else {
-            phpFunctions::showOffer($anzeigen, $resInserat, $_SESSION['id']);
-        }
 
-        unset($db);
+        echo '
+            <section class="baldAblaufend">
+                <h1>Top-Angebote</h1>
+            ';
+
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE Auktionsende >= CURRENT_TIMESTAMP AND Auktionsbeginn <= CURRENT_TIMESTAMP ORDER BY Preis ASC";
+            $resInserat = $db->query($queryInserat);
+            
+            if (empty($_SESSION['user'])) {
+                phpFunctions::showOffer($anzeigen, $resInserat);
+            } else {
+                phpFunctions::showOffer($anzeigen, $resInserat, $_SESSION['id']);
+            }
+
+            echo '<form method="post">
+                            <input class="hidden" type="number" name="mehrAnzeigenValue" value="'.$anzeigen.'"/>
+                            <button class="btnMehrAnzeigen" name="btnMehrAnzeigen">
+                                Mehr Anzeigen
+                                <img src="image/down-arrow.png" width="20" height="20">
+                            </button>
+                        </form>
+                    </section>
+                            ';
+
+            phpFunctions::printFooter();
+            unset($db);
         ?>
-        <form method="post">
-            <button class="btnMehrAnzeigen" name="btnMehrAnzeigen">
-                Mehr Anzeigen
-                <img src="image/down-arrow.png" width="20" height="20">
-            </button>
-        </form>
-    </section>
-    <?php
-        phpFunctions::printFooter();
-    ?>
 </body>
 
 </html>

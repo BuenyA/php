@@ -72,7 +72,7 @@
                             <div class="Marke">
                                 <h2>Marke</h2>
                                 <?php
-                                    $query = "SELECT * FROM Inserat GROUP BY Marke";
+                                    $query = "SELECT * FROM Inserat WHERE Inserat_Nr > 0 GROUP BY Marke";
                                     $resInserat = $db->query($query);
                                     echo "<select name='Marke' onChange='auswaehlen(this)'>";
                                     echo "<option value=''>Bitte wählen...</option>";
