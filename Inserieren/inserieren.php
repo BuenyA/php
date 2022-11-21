@@ -88,6 +88,7 @@
                  }
         }     
         unset($db);
+        header('Location: ./erfolgreichInseriert.php');
     }
     phpFunctions::printNavigationBar();
     ?>
