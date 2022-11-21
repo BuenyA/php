@@ -90,25 +90,37 @@
             //Selektierung nach den Inseratbildern
             $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr ORDER BY Erstellt_Am ASC";
             $resBilder = $db->query($queryBilder);
-            
-            foreach ($resBilder as $rowBilder) {
+            if($resBilder->rowCount() >0) {
+                foreach ($resBilder as $rowBilder) {
+                    echo '
+                            <div class="slide">
+                                <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="640" height="400"/>
+                            </div>
+                    ';
+                }
+    
+                echo '
+                                <a class="pfeil pfeil-links" onclick="umschalten(-1)"><span>&#10094;</span></a>
+                                <a class="pfeil pfeil-rechts" onclick="umschalten(1)"><span>&#10095;</span></a>
+                                <ol class="indikatorenliste">';
+    
+                for ($i=0; $i < $resBilder->rowCount(); $i++) { 
+                    echo '
+                        <li class="indikator" onclick="springeZuEintrag(i)">&#8226;</li>
+                    ';
+                }
+            } else {
+                $queryBilder = "SELECT * FROM Inseratbilder WHERE Bild_Nr = 0 LIMIT 1";
+                $resBilder = $db->query($queryBilder);
+                $rowBilder = $resBilder->fetch();
+
                 echo '
                         <div class="slide">
                             <img src="data:image/jpeg;base64,'.base64_encode($rowBilder['Bild']).'" width="640" height="400"/>
                         </div>
-                ';
-            }
-
-            echo '
-                            <a class="pfeil pfeil-links" onclick="umschalten(-1)"><span>&#10094;</span></a>
-                            <a class="pfeil pfeil-rechts" onclick="umschalten(1)"><span>&#10095;</span></a>
-                            <ol class="indikatorenliste">';
-
-            for ($i=0; $i < $resBilder->rowCount(); $i++) { 
-                echo '
-                    <li class="indikator" onclick="springeZuEintrag(i)">&#8226;</li>
-                ';
-            }
+                        <ol class="indikatorenliste">
+                        <li class="indikator" onclick="springeZuEintrag(i)">&#8226;</li>';
+            }        
             
             echo '
                             </ol>

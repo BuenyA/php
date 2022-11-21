@@ -44,9 +44,13 @@
                         //Selekt des Hauptbildes
                         $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr AND Hauptbild = 1 LIMIT 1";
                         $resBilder = $db->query($queryBilder);
-                        $rowBilder = $resBilder->fetch();
-                        //<img src="image/auto_jaguar.jpg" alt="Bild konnte nicht geladen werden..." width="250" height="250">
-                        
+                        if($resBilder->rowCount() >0) {
+                            $rowBilder = $resBilder->fetch();
+                        } else {
+                            $queryBilder = "SELECT * FROM Inseratbilder WHERE Bild_Nr = 0 LIMIT 1";
+                            $resBilder = $db->query($queryBilder);
+                            $rowBilder = $resBilder->fetch();
+                        }                        
                         
                         //Variablendeklaration für dynamische Zeitanzeige
                         $waiting_day = strtotime($row['Auktionsende']);
