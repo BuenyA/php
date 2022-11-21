@@ -47,7 +47,7 @@ h6 {
     left: 0;
     overflow: hidden;
     opacity: 0;
-    transition: opacity 2s;
+    transition: opacity 0.7s;
 }
 
 .slide-bild {
