@@ -4,6 +4,10 @@ form {
   justify-content: center;
 }
 
+.btnMehrAnzeigen:hover {
+  cursor: pointer;
+}
+
 .suchergebnisse {
   display: grid;
   align-items: center;

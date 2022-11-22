@@ -77,9 +77,9 @@
             $resInserat = $db->query($queryInserat);
 
             if (empty($_SESSION['user'])) {
-                phpFunctions::showOffer(10, $resInserat);
+                phpFunctions::showOffer($anzeigen, $resInserat);
             } else {
-                phpFunctions::showOffer(10, $resInserat, $_SESSION['id']);
+                phpFunctions::showOffer($anzeigen, $resInserat, $_SESSION['id']);
             }
             
             echo '<form method="post">
