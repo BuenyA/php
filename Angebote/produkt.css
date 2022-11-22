@@ -10,7 +10,7 @@ h6 {
 }
 
 .produktArea {
-    height: 25em;
+    min-height: 25em;
     width: 70em;
     display: flex;
     align-items: center;
@@ -110,7 +110,6 @@ h6 {
     border: 1px solid rgb(202, 202, 202);
     border-radius: 10px;
     width: 20em;
-    height: 25em;
 }
 
 .produktAreaRightElements {
