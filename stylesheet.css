@@ -191,6 +191,7 @@ textarea {
 
 .topOffersRightTop h2 {
     margin-top: 5px;
+    max-width: 10em;
     font-family: 'Roboto', sans-serif;
 }
 
