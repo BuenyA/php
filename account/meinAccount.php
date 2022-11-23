@@ -58,16 +58,16 @@
     if (isset($_POST['aendern__submit'])) {
 
         //Werte aus der Form entnehmen und in Variablen speichern
-        $vorname = trim($_POST['input__vorname']);
-        $nachname = trim($_POST['input__nachname']);
-        $plz = trim($_POST['input__plz']);
-        $ort = trim($_POST['input__ort']);
-        $adresse = trim($_POST['input__adresse']);
-        $telefonnummer = trim($_POST['input__telefonnummer']);
-        $email = trim($_POST['input__email']);
-        $passwort1 = trim($_POST['input__passwort1']);
-        $passwort2 = trim($_POST['input__passwort2']);
-        $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
+        $vorname = htmlentities(trim($_POST['input__vorname']));
+        $nachname = htmlentities(trim($_POST['input__nachname']));
+        $plz = htmlentities(trim($_POST['input__plz']);
+        $ort = htmlentities(trim($_POST['input__ort']));
+        $adresse = htmlentities(trim($_POST['input__adresse']));
+        $telefonnummer = htmlentities(trim($_POST['input__telefonnummer']));
+        $email = htmlentities(trim($_POST['input__email']));
+        $passwort1 = htmlentities(trim($_POST['input__passwort1']));
+        $passwort2 = htmlentities(trim($_POST['input__passwort2']));
+        $passwortHash = htmlentities(password_hash($passwort1, PASSWORD_DEFAULT));
         //Variable die schaut ob eine Änderung durchgeführt wurde
         $aenderung = false;
 
@@ -132,15 +132,15 @@
     if (isset($_POST['auktionSpeichern'])) {
   
         //Werte aus der Form entnehmen und in Variablen speichern
-        $inseratNr = trim($_POST['Inserat_Nr']);
-        $marke = trim($_POST['input__marke']);
-        $modell = trim($_POST['input__modell']);
-        $kilometerstand = trim($_POST['input__kilometerstand']);
-        $ps = trim($_POST['input__ps']);
-        $kraftstoffart = trim($_POST['input__kraftstoffart']);
-        $getriebeart = trim($_POST['input__getriebeart']);
-        $erstzulassung = trim($_POST['input__erstzulassung']);
-        $beschreibung = trim($_POST['input__beschreibung']);
+        $inseratNr = htmlentities(trim($_POST['Inserat_Nr']));
+        $marke = htmlentities(trim($_POST['input__marke']));
+        $modell = htmlentities(trim($_POST['input__modell']));
+        $kilometerstand = htmlentities(trim($_POST['input__kilometerstand']));
+        $ps = htmlentities(trim($_POST['input__ps']));
+        $kraftstoffart = htmlentities(trim($_POST['input__kraftstoffart']));
+        $getriebeart = htmlentities(trim($_POST['input__getriebeart']));
+        $erstzulassung = htmlentities(trim($_POST['input__erstzulassung']));
+        $beschreibung = htmlentities(trim($_POST['input__beschreibung']));
         //Variable die schaut ob eine Änderung durchgeführt wurde
         $aenderung = false;
 
