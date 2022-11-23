@@ -24,17 +24,17 @@
 
     if (isset($_POST['inserieren'])) {
         $error = false;
-        $marke = trim($_POST['marke']);
-        $modell = trim($_POST['modell']);
-        $preis = trim($_POST['preis']);
-        $beschreibung = trim($_POST['beschreibung']);
-        $kilometerstand = trim($_POST['kilometerstand']);
-        $ps = trim($_POST['ps']);
-        $kraftstoffart = trim($_POST['kraftstoffart']);
-        $getriebeart = trim($_POST['getriebeart']);
-        $erstzulassung = trim($_POST['erstzulassung']);
-        $auktionsbeginnDatum = trim($_POST['auktionsbeginnDatum']) . " " . trim($_POST['auktionsbeginnUhrzeit']);
-        $auktionsendeDatum = trim($_POST['auktionsendeDatum']) . " " . trim($_POST['auktionsendeUhrzeit']);
+        $marke = htmlentities(trim($_POST['marke']));
+        $modell = htmlentities(trim($_POST['modell']));
+        $preis = htmlentities(trim($_POST['preis']));
+        $beschreibung = htmlentities(trim($_POST['beschreibung']));
+        $kilometerstand = htmlentities(trim($_POST['kilometerstand']));
+        $ps = htmlentities(trim($_POST['ps']));
+        $kraftstoffart = htmlentities(trim($_POST['kraftstoffart']));
+        $getriebeart = htmlentities(trim($_POST['getriebeart']));
+        $erstzulassung = htmlentities(trim($_POST['erstzulassung']));
+        $auktionsbeginnDatum = htmlentities(trim($_POST['auktionsbeginnDatum']) . " " . trim($_POST['auktionsbeginnUhrzeit']));
+        $auktionsendeDatum = htmlentities(trim($_POST['auktionsendeDatum']) . " " . trim($_POST['auktionsendeUhrzeit']));
        
         $filecount = count($_FILES['auktionbilder']['name']);
 
