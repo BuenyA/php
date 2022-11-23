@@ -58,20 +58,7 @@
     if (isset($_POST['aendern__submit'])) {
 
         //Werte aus der Form entnehmen und in Variablen speichern
-        $stmt = $db->prepare($query);
-        $stmt->bindParam('input__vorname', $input__vorname, PDO::PARAM_STR);
-        $stmt->bindParam('input__nachname', $input__nachnamee, PDO::PARAM_STR);
-        $stmt->bindParam('input__plz', $input__plz, PDO::PARAM_STR);
-        $stmt->bindParam('input__ort', $input__ort, PDO::PARAM_STR);
-        $stmt->bindParam('input__adresse', $input__adresse, PDO::PARAM_STR);
-        $stmt->bindParam('input__telefonnummer', $input__telefonnummer, PDO::PARAM_STR);
-        $stmt->bindParam('input__email', $input__email, PDO::PARAM_STR);
-        $stmt->bindParam('input__passwort1', $input__passwort1, PDO::PARAM_STR);
-        $stmt->bindParam('input__passwort2', $input__passwort2, PDO::PARAM_STR);
-        $stmt->execute();
-
-        //Habe ich drinn gelassen falls das obere falsch ist
-    /*    $vorname = trim($_POST['input__vorname']);
+        $vorname = trim($_POST['input__vorname']);
         $nachname = trim($_POST['input__nachname']);
         $plz = trim($_POST['input__plz']);
         $ort = trim($_POST['input__ort']);
@@ -81,8 +68,6 @@
         $passwort1 = trim($_POST['input__passwort1']);
         $passwort2 = trim($_POST['input__passwort2']);
         $passwortHash = password_hash($passwort1, PASSWORD_DEFAULT);
-        */
-
         //Variable die schaut ob eine Änderung durchgeführt wurde
         $aenderung = false;
 
@@ -145,23 +130,9 @@
 
     //Falls Änderungen zu einem Inserat kamen -> in die Datenbank 
     if (isset($_POST['auktionSpeichern'])) {
-
+  
         //Werte aus der Form entnehmen und in Variablen speichern
-
-        $stmt = $db->prepare($query);
-        $stmt->bindParam('Inserat_Nr', $Inserat_Nr, PDO::PARAM_STR);
-        $stmt->bindParam('input__marke', $input__marke, PDO::PARAM_STR);
-        $stmt->bindParam('input__modell', $input__modell, PDO::PARAM_STR);
-        $stmt->bindParam('input__kilometerstand', $input__kilometerstand, PDO::PARAM_STR);
-        $stmt->bindParam('input__ps', $input__ps, PDO::PARAM_STR);
-        $stmt->bindParam('nput__kraftstoffart', $nput__kraftstoffart, PDO::PARAM_STR);
-        $stmt->bindParam('input__getriebeart', $input__getriebeart, PDO::PARAM_STR);
-        $stmt->bindParam('input__erstzulassung', $input__erstzulassung, PDO::PARAM_STR);
-        $stmt->bindParam('input__beschreibung', $input__beschreibung, PDO::PARAM_STR);
-        $stmt->execute();
-
-        //Habe ich drin gelassen falls das obere falsch ist
-       /* $inseratNr = trim($_POST['Inserat_Nr']);
+        $inseratNr = trim($_POST['Inserat_Nr']);
         $marke = trim($_POST['input__marke']);
         $modell = trim($_POST['input__modell']);
         $kilometerstand = trim($_POST['input__kilometerstand']);
@@ -170,8 +141,6 @@
         $getriebeart = trim($_POST['input__getriebeart']);
         $erstzulassung = trim($_POST['input__erstzulassung']);
         $beschreibung = trim($_POST['input__beschreibung']);
-*/
-
         //Variable die schaut ob eine Änderung durchgeführt wurde
         $aenderung = false;
 
