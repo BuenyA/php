@@ -85,7 +85,7 @@
                 $stmt-> bindParam('Bild', $filedata, PDO::PARAM_STR);
                 $stmt-> bindParam('HBild', $nr2, PDO::PARAM_INT);
                 $stmt-> execute();
-                 }
+                }
         }     
         unset($db);
         header('Location: ./erfolgreichInseriert.php');
