@@ -54,7 +54,7 @@
         }
     ?>
     <div class="navigationMenuLogo">
-        <img src="image/AutostarLogo.png" width="200" height="40" onclick="reloadWindow()">
+        <img src="../image/AutostarLogo.png" width="200" height="40" onclick="reloadWindow()">
     </div>
     <div class="container">
         <div class="screen">

@@ -25,4 +25,7 @@ Dabei werden lediglich andere SQL-Statements verwendet, die die Angebote anders 
 
 Überall muss ein trim ran
 
-php.ini muss konfiguriert werden
+php.ini post_max_size=64M
+php.ini upload_max_filesize=64M
+
+docker-compose.yml UPLOAD_LIMIT = 64M

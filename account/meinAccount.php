@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mein Account</title>
-    <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
+    <link rel="icon" type="image/png" href="../image/AutostarLogoIconTab.png">
     <link rel="stylesheet" href="../stylesheet.css">
     <link rel="stylesheet" href="meinAccount.css">
     <script language="javascript" type="text/javascript" src="../index.js"></script>
