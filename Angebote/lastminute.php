@@ -59,7 +59,7 @@
                         <input class="hidden" type="number" name="mehrAnzeigenValue" value="'.$anzeigen.'"/>
                         <button class="btnMehrAnzeigen" name="btnMehrAnzeigen">
                             Mehr Anzeigen
-                            <img src="image/down-arrow.png" width="20" height="20">
+                            <img src="../image/down-arrow.png" width="20" height="20">
                         </button>
                     </form>
                 </section>

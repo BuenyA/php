@@ -247,7 +247,7 @@
                 echo '
                 <div class="navigationMenu">
                     <div class="navigationMenuLogo">
-                        <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = \'../index.php\'">
+                        <img src="../image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = \'../index.php\'">
                     </div>
                     <ul class="navigationElements">
                         <li><a href="../index.php">Home</a></li>
@@ -271,7 +271,7 @@
                 echo '
                 <div class="navigationMenu">
                     <div class="navigationMenuLogo">
-                        <img src="image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = \'../index.php\'">
+                        <img src="../image/AutostarLogo.png" width="200" height="40" onclick="window.location.href = \'../index.php\'">
                     </div>
                     <ul class="navigationElements">
                         <li><a href="../index.php">Home</a></li>
@@ -331,7 +331,7 @@
                     </div>
                 </div>
                 <div class="footerBelow">
-                    <img src="image/AutostarLogo.png" width="200" height="40">
+                    <img src="../image/AutostarLogo.png" width="200" height="40">
                     <p class="footerFooter">Unsere AGBs - Datenschutzerklärung - Impressum - Hinweise zu Cookies - Hinweise zu interessenbasierter Werbung </br>
                         ©1996-2022 Autostar AG und Partner-Unternehmen</p>
                 </div>
