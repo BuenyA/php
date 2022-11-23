@@ -19,7 +19,7 @@ input {
 }
 
 .Überschrift{
-  background-image: url("image/werkstatt.jpg");
+  background-image: url("../image/werkstatt.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
