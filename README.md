@@ -9,9 +9,11 @@ Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
 # Instalisierung:
 
 1. Möglichkeit
+
 Den gesamten Ordner "docker-for-students-main" in Docker composen.
 
 2.  Möglichkeit
+
 2.1 Das Repository downloaden
 2.2 In den bereits bereitgestellten "docker-for-students-main" importieren
 2.3 In der php.ini die "post_max_size=64M" auf 64 MB setzen.
