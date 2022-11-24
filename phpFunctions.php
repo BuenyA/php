@@ -149,7 +149,13 @@
                         //Selekt des Hauptbildes
                         $queryBilder = "SELECT * FROM Inseratbilder WHERE Inserat_Nr = $InsNr AND Hauptbild = 1 LIMIT 1";
                         $resBilder = $db->query($queryBilder);
-                        $rowBilder = $resBilder->fetch();
+                        if($resBilder->rowCount() >0) {
+                            $rowBilder = $resBilder->fetch();
+                        } else {
+                            $queryBilder = "SELECT * FROM Inseratbilder WHERE Bild_Nr = 0 LIMIT 1";
+                            $resBilder = $db->query($queryBilder);
+                            $rowBilder = $resBilder->fetch();
+                        }
 
                         //Selektion, ob der verwendete Account, dass jeweilige Produkt favorisiert hat
                         $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InsNr AND AccountNr = $AccNr";
