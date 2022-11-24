@@ -17,7 +17,7 @@
         //Start Session + Dateieinbindung + Print Navigationbar
         session_start();
         require '../allgemeines/db.php';
-        require '../phpFunctions.php';
+        require '../allgemeines/phpFunctions.php';
 
         //Produkt Selektierung
         $url = $_SERVER['REQUEST_URI'];

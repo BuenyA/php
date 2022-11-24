@@ -15,7 +15,7 @@
     <?php
         session_start();
         require '../allgemeines/db.php';
-        require '../phpFunctions.php';
+        require '../allgemeines/phpFunctions.php';
 
         if (empty($_SESSION['user'])) {
             header('Location: ../account/anmeldung.php');
