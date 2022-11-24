@@ -28,7 +28,7 @@ Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
         3. Anschließend wird die Datei "php.ini" mit dem Befehel "vi php.ini" bearbeitet
 
 
-# Kurzbeschreibung der Kategorien:
+# Allgemeines
 Es gibt ein übergeordnetes Stylesheet und JS-Script, welche von den untergeordneten Seiten implementiert werden.
 Zudem gibt es eine übergeordnete PHP-Klasse (phpFunctions), die alle übergreifende Funktionen beinhaltet.
     Stylesheet:  »stylesheet.css«
