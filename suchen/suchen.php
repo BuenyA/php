@@ -18,9 +18,9 @@
         require '../db.php';
         require '../phpFunctions.php';
         if (isset($_GET['anmelden'])) {
-            echo '<script>linkToAnmeldung()";</script>';
+            header('Location: ../account/anmeldung.php');
         }
-        if (isset($_POST['insertMerken'])) {
+        /* if (isset($_POST['insertMerken'])) {
             $InseratNrPost = $_POST['InseratNr'];
             $AccIDPost = $_POST['AccID'];
             $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
@@ -32,7 +32,8 @@
                 $queryMerkenInsert = "INSERT INTO Merken(InseratNr, AccountNr) VALUES ('$InseratNrPost','$AccIDPost')";
                 $resMerkenInsert = $db->query($queryMerkenInsert);
             }
-        }
+        } */
+        phpFunctions::merkenButton();
 
         phpFunctions::printNavigationBar();
 
@@ -43,7 +44,7 @@
         }
 
         echo '<section class="baldAblaufend">
-                <h1>Top-Angebote</h1>
+                <h1>Deine Suchergebnisse...</h1>
             ';
 
             $WHERE = '';
