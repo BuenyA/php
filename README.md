@@ -4,6 +4,7 @@ Dieses Projekt stellt eine automobilspezifische Auktionsseite dar, welche im Rah
 Dabei wurden folgende Richtlinien beachtet: https://elearning.dhbw-stuttgart.de/moodle/pluginfile.php/177147/mod_resource/content/1/Auktion.pdf
 
 GitHub-Repository: https://github.com/BuenyA/php
+
 Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
 
 # Installierung:
