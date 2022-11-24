@@ -1,6 +1,9 @@
+# Autostar
+
 Dieses Projekt stellt eine automobilspezifische Auktionsseite dar, welche im Rahmen der "php-Vorlesung" programmiert wurde.
 Dabei wurden folgende Richtlinien beachtet: https://elearning.dhbw-stuttgart.de/moodle/pluginfile.php/177147/mod_resource/content/1/Auktion.pdf
 
+Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
 
 # Instalisierung:
 
