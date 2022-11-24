@@ -8,7 +8,7 @@
     <title>Autostar - Deine Auktionsseite für Automobile!</title>
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png">
     <link rel="stylesheet" href="indexSheet.css">
-    <script language="javascript" type="text/javascript" src="index.js"></script>
+    <script language="javascript" type="text/javascript" src="./allgemeines/index.js"></script>
 </head>
 
 <body>
@@ -223,8 +223,49 @@
             <img src="image/AutostarProductsBig.png" width="1000" height="500">
         </div>
     </section>
-    <?php
-        phpFunctions::printFooter();
-    ?>
+    <section class="footer">
+        <div class="footerArea">
+            <div class="footerRegion">
+                <h4><b>Unternehmen</b></h4>
+                <p>Über Uns</p>
+                <p>Kontakt</p>
+                <p>Hilfe</p>
+            </div>
+            <div class="footerRegion">
+                <h4><b>Verkaufen</b></h4>
+                <p>Verkäuferportal</p>
+                <p>Anleitung zum Verkaufen</p>
+                <p>News für gewerbliche Verkäufer</p>
+                <p>Gebühren</p>
+                <p>eBay Shop eröffnen</p>
+                <p>Grundsätze für Verkäufer: Übersicht</p>
+                <p>Verkäufer-Tools</p>
+                <p>Versand</p>
+                <p>International verkaufen</p>
+                <p>Rechtsportal</p>
+                <p>Verkäuferschutz</p>
+                <p>Elektronik-Ankauf</p>
+            </div>
+            <div class="footerRegion">
+                <h4><b>Handel</b></h4>
+                <p>Anmelden</p>
+                <p>Registrieren</p>
+                <p>Verkaufen</p>
+                <p>Händler AGBs</p>
+            </div>
+            <div class="footerRegion">
+                <h4><b>Hilfe</b></h4>
+                <p>Barrierefreiheit</p>
+                <p>Sicherheitsportal</p>
+                <p>Rechtsportal</p>
+                <p>Fragen und Antworten</p>
+            </div>
+        </div>
+        <div class="footerBelow">
+            <img src="./image/AutostarLogo.png" width="200" height="40">
+            <p class="footerFooter">Unsere AGBs - Datenschutzerklärung - Impressum - Hinweise zu Cookies - Hinweise zu interessenbasierter Werbung </br>
+                ©1996-2022 Autostar AG und Partner-Unternehmen</p>
+        </div>
+    </section>
 </body>
 </html>

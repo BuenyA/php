@@ -301,7 +301,7 @@ textarea {
     color: black;
     font-size: 12px;
     font-weight: 500;
-    background: url("./image/herz.png") no-repeat left;
+    background: url("../image/herz.png") no-repeat left;
     background-size: 15px;
     filter: invert(100%);
     background-color: #00b2ff;

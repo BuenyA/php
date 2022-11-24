@@ -324,7 +324,7 @@
                             <div class="accountManagementElements">';
 
             //Selektierung der Auktionen
-            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE account_ID = " . $_SESSION['id'];
+            $queryInserat = "SELECT * FROM Inserat JOIN Accounts ON Inserat.Inhaber_Nr = Accounts.account_ID WHERE account_ID = " . $_SESSION['id'] . " ORDER BY Inserat.Erstellt_Am DESC";
             $resInserat = $db->query($queryInserat);
 
             //Ausgabe, falls keien Inserate vorhanden
