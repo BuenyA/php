@@ -25,7 +25,7 @@ Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
    PS.: Die Schritte 3 und 4 müssen im Kernel durchgeführt werden.
         Dafür muss der Container php in der Konsole geöffnet werden.
         Daraufhin muss mit dem Befehl "cd /usr/etc/local/php/" zum php-Ordner navigiert werden.
-        Anschließend wird die Datei "php.ini" mit dem Befehel "vi php.ini" bearbeitet
+        Anschließend wird die Datei "php.ini" mit dem Befehel "vi php.ini" bearbeitet.
 
 
 # Allgemeines
