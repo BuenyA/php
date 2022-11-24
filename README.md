@@ -2,7 +2,7 @@ Dieses Projekt stellt eine automobilspezifische Auktionsseite dar, welche im Rah
 Dabei wurden folgende Richtlinien beachtet: https://elearning.dhbw-stuttgart.de/moodle/pluginfile.php/177147/mod_resource/content/1/Auktion.pdf
 
 
-Instalisierung:
+# Instalisierung:
 
 1. Möglichkeit
 
@@ -16,19 +16,19 @@ Zudem gibt es eine übergeordnete PHP-Klasse (phpFunctions), die alle übergreif
 
 Kurzbeschreibung der Kategorien:
 
--> Index
+# Index
 Die Hauptseite (auch Homeseite) wird durch die index.php abgebildet.
 Dabei wird das Stylesheet »indexSheet.css« miteingebunden.
 Die index.php ist mit der »Anmeldung.php« die einzige Seite, die das übergeordnete Stylesheet (stylesheet.css) nicht einbindet.
 
 
--> Account
+# Account
 Im Verzeichnis "Account" befinden sich alle Seite, die sich um die Thematik Konto drehen.
 Dazu gehören die Anmelden-, Registrieren-, AccountVerwaltung- und PasswortVergessen-seite.
 Diese implementieren sowohl das übergeordnete Stylesheet und JS-Script als auch deren einiges Stylesheet.
 
 
--> Angebote
+# Angebote
 Die Kategorie Angebote mit den Seiten TopAngebote und LastMinute ähneln sich stark in ihrer Struktur.
 Dabei werden lediglich andere SQL-Statements verwendet, die die Angebote anders selektieren.
 
@@ -38,12 +38,12 @@ Ist man angemeldet -> So wird die E-Mail direkt aus der Datenbank gezogen.
 Ist man nicht angemeldet -> So wird die E-Mail manuell vom Nutzer angegeben.
 
 
--> Inserieren
+# Inserieren
 Die Kategorie Inserieren bietet die Möglichkeit eine Auktion aufzugeben.
 Dabei ist die Inserierung mit einem Login-Mechanismus geschützt und kann nur von angemeldeten Kunden verwendet werden.
 
 
--> Suchen
+# Suchen
 Die Suchen Kategorie wurde nach den Seiten Top-Angebote und Last-Minute entwickelt.
 Der bedeutende Unterschied ist jedoch die dynamische SQL-Abfrage.
 Diese wird entsprechend den gesetzten Filter generiert.
