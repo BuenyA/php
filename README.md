@@ -70,7 +70,7 @@ Der bedeutende Unterschied ist jedoch die dynamische SQL-Abfrage. Diese wird ent
 
 # Image
 Das Image Verzeichnis beinhaltet alle Bilder, die auf der Webseite verwendet wurden.
-Dazu zählen Hintergrundbilder, Icons und vieles mehr.
+Dazu zählen Hintergrundbilder, icons und vieles mehr.
 
 
 # phpFunctions
