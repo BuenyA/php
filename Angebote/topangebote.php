@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autostar - Top Angebote</title>
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
-    <link rel="stylesheet" href="../stylesheet.css">
+    <link rel="stylesheet" href="../allgemeines/stylesheet.css">
     <link rel="stylesheet" href="topangebote.css">
     <script language="javascript" type="text/javascript" src="../index.js"></script>
 </head>

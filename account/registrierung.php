@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrieren</title>
-    <link rel="stylesheet" href="../stylesheet.css">
+    <link rel="stylesheet" href="../allgemeines/stylesheet.css">
     <link rel="stylesheet" href="registrierung.css">
     <script language="javascript" type="text/javascript" src="../index.js"></script>
 </head>
