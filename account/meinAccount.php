@@ -60,7 +60,7 @@
         //Werte aus der Form entnehmen und in Variablen speichern
         $vorname = htmlentities(trim($_POST['input__vorname']));
         $nachname = htmlentities(trim($_POST['input__nachname']));
-        $plz = htmlentities(trim($_POST['input__plz']);
+        $plz = htmlentities(trim($_POST['input__plz']));
         $ort = htmlentities(trim($_POST['input__ort']));
         $adresse = htmlentities(trim($_POST['input__adresse']));
         $telefonnummer = htmlentities(trim($_POST['input__telefonnummer']));
