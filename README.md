@@ -14,14 +14,14 @@ Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
 
 2. Möglichkeit
 
-    2.1 Das Repository downloaden
-    2.2 In den bereits bereitgestellten "docker-for-students-main" importieren
-    2.3 In der php.ini die "post_max_size=64M" auf 64 MB setzen.
-    2.4 In der php.ibi die "upload_max_filesize=64M" auf 64MB setzte.
-    2.5 In der Datei "docker-compose.yml" im Ordner "docker-for-students-main" die UPLOAD_SIZE auf 64M erweitern
-    2.6 Die Datenbank aus dem Repository einbinden
+    -> Das Repository downloaden
+    -> In den bereits bereitgestellten "docker-for-students-main" importieren
+    -> In der php.ini die "post_max_size=64M" auf 64 MB setzen.
+    -> In der php.ibi die "upload_max_filesize=64M" auf 64MB setzte.
+    -> In der Datei "docker-compose.yml" im Ordner "docker-for-students-main" die UPLOAD_SIZE auf 64M erweitern
+    -> Die Datenbank aus dem Repository einbinden
 
-PS. Die Schritte 2.3 und 2.4 müssen im Kernel durchgeführt werden.
+PS. Die Schritte 3 und 4 müssen im Kernel durchgeführt werden.
     1. Dafür muss der Container php in der Konsole geöffnet werden.
     2. Daraufhin muss mit dem Befehl "cd /usr/etc/local/php/" zum php-Ordner navigiert werden.
     3. Anschließend wird die Datei "php.ini" mit dem Befehel "vi php.ini" bearbeitet
