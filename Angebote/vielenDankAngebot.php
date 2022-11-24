@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vielen Dank für Ihr Angebot!</title>
     <link rel="stylesheet" href="produkt.css">
-    <script language="javascript" type="text/javascript" src="../index.js"></script>
+    <script language="javascript" type="text/javascript" src="../allgemeines/index.js"></script>
     <link rel="stylesheet" href="./vielenDankAngebot.css">
 </head>
 <body>

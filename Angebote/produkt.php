@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="image/AutostarLogoIconTab.png" wid>
     <link rel="stylesheet" href="../allgemeines/stylesheet.css">
     <link rel="stylesheet" href="produkt.css">
-    <script language="javascript" type="text/javascript" src="../index.js"></script>
+    <script language="javascript" type="text/javascript" src="../allgemeines/index.js"></script>
 </head>
 
 <body>

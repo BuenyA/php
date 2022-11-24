@@ -8,7 +8,7 @@
     <title>Registrieren</title>
     <link rel="stylesheet" href="../allgemeines/stylesheet.css">
     <link rel="stylesheet" href="registrierung.css">
-    <script language="javascript" type="text/javascript" src="../index.js"></script>
+    <script language="javascript" type="text/javascript" src="../allgemeines/index.js"></script>
 </head>
 
 <body>
