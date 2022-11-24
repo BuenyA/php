@@ -11,7 +11,7 @@ Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
 
 1. Möglichkeit
 
-    - Den gesamten Ordner "docker-for-students-main" in Docker composen.
+    - Den gesamten Ordner "docker-for-students-main" - der in Moodle eingereicht wurde - in Docker composen.
 
 2. Möglichkeit
 
