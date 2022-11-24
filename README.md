@@ -6,7 +6,7 @@ Dabei wurden folgende Richtlinien beachtet: https://elearning.dhbw-stuttgart.de/
 GitHub-Repository: https://github.com/BuenyA/php
 Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
 
-# Instalisierung:
+# Installierung:
 
 1. Möglichkeit
 
@@ -26,12 +26,14 @@ Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
         2. Daraufhin muss mit dem Befehl "cd /usr/etc/local/php/" zum php-Ordner navigiert werden.
         3. Anschließend wird die Datei "php.ini" mit dem Befehel "vi php.ini" bearbeitet
 
+
 # Kurzbeschreibung der Kategorien:
 Es gibt ein übergeordnetes Styleheet und JS-Script, welche von den untergeordneten Seiten implementiert werden.
 Zudem gibt es eine übergeordnete PHP-Klasse (phpFunctions), die alle übergreifende Funktionen beinhaltet.
     Stylesheet:  »stylesheet.css«
     JS-Script:   »index.js«
     PHP-Klasse:  »phpFunctions.php«
+
 
 # Index
 Die Hauptseite (auch Homeseite) wird durch die index.php abgebildet.
@@ -66,10 +68,15 @@ Der bedeutende Unterschied ist jedoch die dynamische SQL-Abfrage.
 Diese wird entsprechend den gesetzten Filter generiert.
 
 
+# Image
+Das Image Verzeichnis beinhaltet alle Bilder, die auf der Webseite verwendet wurden.
+Dazu zählen Hintergrundbilder, Icons und vieles mehr.
 
-Überall muss ein trim ran
 
-php.ini post_max_size=64M
-php.ini upload_max_filesize=64M
+# phpFunctions
+phpFunctions.php ist eine php-Klasse die viele ausgelagerte Funktionen besitzt.
+Dazu zählt bspw. der Header und Footer. Des weiteren sind auch die dynamischen Angebot-Anzeigen ausgelagert.
 
-docker-compose.yml UPLOAD_LIMIT = 64M
+
+# db
+Die Kategorie db stellt eine Verbindung zur Autostar-Datenbank her.
