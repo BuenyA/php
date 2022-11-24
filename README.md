@@ -28,7 +28,7 @@ Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
 
 
 # Kurzbeschreibung der Kategorien:
-Es gibt ein übergeordnetes Styleheet und JS-Script, welche von den untergeordneten Seiten implementiert werden.
+Es gibt ein übergeordnetes Stylesheet und JS-Script, welche von den untergeordneten Seiten implementiert werden.
 Zudem gibt es eine übergeordnete PHP-Klasse (phpFunctions), die alle übergreifende Funktionen beinhaltet.
     Stylesheet:  »stylesheet.css«
     JS-Script:   »index.js«
@@ -58,14 +58,13 @@ Ist man nicht angemeldet -> So wird die E-Mail manuell vom Nutzer angegeben.
 
 
 # Inserieren
-Die Kategorie Inserieren bietet die Möglichkeit eine Auktion aufzugeben.
+Die Kategorie Inserieren bietet die Möglichkeit, eine Auktion aufzugeben.
 Dabei ist die Inserierung mit einem Login-Mechanismus geschützt und kann nur von angemeldeten Kunden verwendet werden.
 
 
 # Suchen
 Die Suchen Kategorie wurde nach den Seiten Top-Angebote und Last-Minute entwickelt.
-Der bedeutende Unterschied ist jedoch die dynamische SQL-Abfrage.
-Diese wird entsprechend den gesetzten Filter generiert.
+Der bedeutende Unterschied ist jedoch die dynamische SQL-Abfrage. Diese wird entsprechend den gesetzten Filtern generiert.
 
 
 # Image
@@ -74,8 +73,8 @@ Dazu zählen Hintergrundbilder, Icons und vieles mehr.
 
 
 # phpFunctions
-phpFunctions.php ist eine php-Klasse die viele ausgelagerte Funktionen besitzt.
-Dazu zählt bspw. der Header und Footer. Des weiteren sind auch die dynamischen Angebot-Anzeigen ausgelagert.
+phpFunctions.php ist eine php-Klasse, die viele ausgelagerte Funktionen besitzt.
+Dazu zählt bspw. der Header und Footer. Des Weiteren sind auch die dynamischen Angebot-Anzeigen ausgelagert.
 
 
 # db
