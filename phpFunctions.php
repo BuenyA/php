@@ -239,22 +239,6 @@
             }
         }
 
-        public static function merkenButton() {
-            if (isset($_POST['insertMerken'])) {
-                $InseratNrPost = $_POST['InseratNr'];
-                $AccIDPost = $_POST['AccID'];
-                $queryMerken = "SELECT * FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
-                $resMerken = $db->query($queryMerken);
-                if ($resMerken !== false && $resMerken->rowCount() > 0) {
-                    $queryMerkenDelete = "DELETE FROM Merken WHERE InseratNr = $InseratNrPost AND AccountNr = $AccIDPost";
-                    $resMerkenDelete = $db->query($queryMerkenDelete);
-                } else {
-                    $queryMerkenInsert = "INSERT INTO Merken(InseratNr, AccountNr) VALUES ('$InseratNrPost','$AccIDPost')";
-                    $resMerkenInsert = $db->query($queryMerkenInsert);
-                }
-            }
-        }
-
         //Druckt die Navigationbar
         public static function printNavigationBar() {
 
