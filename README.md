@@ -21,10 +21,10 @@ Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
     - In der Datei "docker-compose.yml" im Ordner "docker-for-students-main" die UPLOAD_SIZE auf 64M erweitern
     - Die Datenbank aus dem Repository einbinden
 
-PS. Die Schritte 3 und 4 müssen im Kernel durchgeführt werden.
-    1. Dafür muss der Container php in der Konsole geöffnet werden.
-    2. Daraufhin muss mit dem Befehl "cd /usr/etc/local/php/" zum php-Ordner navigiert werden.
-    3. Anschließend wird die Datei "php.ini" mit dem Befehel "vi php.ini" bearbeitet
+    - PS. Die Schritte 3 und 4 müssen im Kernel durchgeführt werden.
+        1. Dafür muss der Container php in der Konsole geöffnet werden.
+        2. Daraufhin muss mit dem Befehl "cd /usr/etc/local/php/" zum php-Ordner navigiert werden.
+        3. Anschließend wird die Datei "php.ini" mit dem Befehel "vi php.ini" bearbeitet
 
 # Kurzbeschreibung der Kategorien:
 Es gibt ein übergeordnetes Styleheet und JS-Script, welche von den untergeordneten Seiten implementiert werden.
