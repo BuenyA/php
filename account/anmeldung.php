@@ -17,7 +17,7 @@
     <div class="container">
         <?php
         session_start();
-        require('../db.php');
+        require('../allgemeines/db.php');
         if (isset($_GET['anmelden']) && sizeof($_POST) !== 0) {
             $query = "SELECT * FROM Accounts WHERE email = '" . $_POST['input__email'] . "'";
             $res = $db->query($query);

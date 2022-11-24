@@ -14,7 +14,7 @@
 <body>
     <?php
         //Datenbank import
-        require('../db.php');
+        require('../allgemeines/db.php');
         //Warten bis der Benutzer eine Aktion ausführt
         if(isset($_GET['registieren']) && sizeof($_POST) !== 0) {                
             //Variablen die der Benutzer eingegeben hat aus dem Formular in Variabeln speichern

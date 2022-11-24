@@ -16,7 +16,7 @@
     <?php
 
     //Einbinden von Funktionen
-    require '../db.php';
+    require '../allgemeines/db.php';
     require '../phpFunctions.php';
     session_start();
     if (isset($_GET['abmelden'])) {

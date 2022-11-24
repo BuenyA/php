@@ -14,7 +14,7 @@
 <body>
     <?php
         session_start();
-        require '../db.php';
+        require '../allgemeines/db.php';
         require '../phpFunctions.php';
 
         if (empty($_SESSION['user'])) {

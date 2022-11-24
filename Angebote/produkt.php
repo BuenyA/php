@@ -16,7 +16,7 @@
     <?php
         //Start Session + Dateieinbindung + Print Navigationbar
         session_start();
-        require '../db.php';
+        require '../allgemeines/db.php';
         require '../phpFunctions.php';
 
         //Produkt Selektierung
