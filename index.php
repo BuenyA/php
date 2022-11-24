@@ -14,7 +14,7 @@
 <body>
     <?php
         session_start();
-        require './db.php';
+        require './allgemeines/db.php';
         require './phpFunctions.php';
         if (isset($_GET['anmelden'])) {
             header('Location: ./account/anmeldung.php');
