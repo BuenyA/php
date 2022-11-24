@@ -11,7 +11,7 @@ Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
 
 1. Möglichkeit
 
-    - Den gesamten Ordner "docker-for-students-main" in Docker composen.
+    - Den gesamten Ordner "docker-for-students-main" - der in Moodle eingereicht wurde - in Docker composen.
 
 2. Möglichkeit
 
@@ -31,6 +31,7 @@ Autoren: Bünyamin Aydemir, Robin Schmied, Eray Pala, Justin Janke, Ergin Ekici
 # Allgemeines
 Es gibt ein übergeordnetes Stylesheet und JS-Script, welche von den untergeordneten Seiten implementiert werden.
 Zudem gibt es eine übergeordnete PHP-Klasse (phpFunctions), die alle übergreifende Funktionen beinhaltet.
+Die Klasse db stellt eine Verbindung zur Autostar-Datenbank her.
     Stylesheet:  »stylesheet.css«
     JS-Script:   »index.js«
     PHP-Klasse:  »phpFunctions.php«
@@ -76,7 +77,3 @@ Dazu zählen Hintergrundbilder, icons und vieles mehr.
 # phpFunctions
 phpFunctions.php ist eine php-Klasse, die viele ausgelagerte Funktionen besitzt.
 Dazu zählt bspw. der Header und Footer. Des Weiteren sind auch die dynamischen Angebot-Anzeigen ausgelagert.
-
-
-# db
-Die Kategorie db stellt eine Verbindung zur Autostar-Datenbank her.
